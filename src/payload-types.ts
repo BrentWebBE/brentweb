@@ -73,6 +73,8 @@ export interface Config {
   blocks: {};
   collections: {
     pages: Page;
+    projects: Project;
+    testimonials: Testimonial;
     media: Media;
     'menu-items': MenuItem;
     'product-categories': ProductCategory;
@@ -111,6 +113,8 @@ export interface Config {
   };
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'menu-items': MenuItemsSelect<false> | MenuItemsSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
@@ -139,7 +143,7 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('nl-BE' | 'en') | ('nl-BE' | 'en')[];
   globals: {
     header: Header;
     footer: Footer;
@@ -150,7 +154,7 @@ export interface Config {
     footer: FooterSelect<false> | FooterSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
-  locale: null;
+  locale: 'nl-BE' | 'en';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -206,17 +210,30 @@ export interface UserAuthOperations {
  */
 export interface Page {
   id: string;
+  /**
+   * Internal and in the browser tab. The H1 lives in the Hero block.
+   */
   title: string;
   layout: (
     | HeroBlock
-    | TextImageBlock
+    | PainPointsBlock
     | ServicesBlock
-    | GalleryBlock
+    | ProjectsBlock
+    | TestimonialsBlock
+    | FeaturesBlock
+    | StepsBlock
+    | PricingBlock
+    | PricingTableBlock
+    | EstimatorBlock
     | FAQBlock
+    | TextImageBlock
+    | TimelineBlock
+    | WebsiteCheckBlock
     | CallToActionBlock
-    | OpeningHoursBlock
     | ContactBlock
     | ContentBlock
+    | GalleryBlock
+    | OpeningHoursBlock
     | MenuBlock
     | ArchiveBlock
     | ProductGridBlock
@@ -228,6 +245,22 @@ export interface Page {
      */
     image?: (string | null) | Media;
     description?: string | null;
+    /**
+     * For thank-you pages and other pages that don't belong in search.
+     */
+    noIndex?: boolean | null;
+  };
+  structuredData?: {
+    type?: ('none' | 'service' | 'local') | null;
+    serviceName?: string | null;
+    scopes?: ('website' | 'web_app' | 'api_integration' | 'automation')[] | null;
+    areaServed?:
+      | {
+          kind: 'City' | 'AdministrativeArea';
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   publishedAt?: string | null;
   /**
@@ -244,22 +277,27 @@ export interface Page {
  * via the `definition` "HeroBlock".
  */
 export interface HeroBlock {
-  type: 'highImpact' | 'mediumImpact' | 'lowImpact';
-  richText?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  variant?: ('home' | 'page') | null;
+  greeting?: boolean | null;
+  /**
+   * E.g. ", I'm Brent."
+   */
+  greetingSuffix?: string | null;
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  title: string;
+  /**
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   */
+  intro?: string | null;
+  paragraphs?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
   links?:
     | {
         link: {
@@ -269,6 +307,10 @@ export interface HeroBlock {
             | ({
                 relationTo: 'pages';
                 value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
               } | null)
             | ({
                 relationTo: 'posts';
@@ -284,20 +326,58 @@ export interface HeroBlock {
         id?: string | null;
       }[]
     | null;
-  media?: (string | null) | Media;
+  /**
+   * E.g. "Fixed price up front".
+   */
+  trustItems?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  image?: (string | null) | Media;
+  imageCaption?: string | null;
+  /**
+   * E.g. "that's me!"
+   */
+  note?: string | null;
+  /**
+   * The price range comes from the estimator.
+   */
+  priceScopes?: ('website' | 'web_app' | 'api_integration' | 'automation')[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
+ * via the `definition` "projects".
  */
-export interface Post {
+export interface Project {
   id: string;
   title: string;
-  heroImage?: (string | null) | Media;
-  content: {
+  client?: string | null;
+  sector?: string | null;
+  period?: string | null;
+  abstract: string;
+  summary?: string | null;
+  cover?: (string | null) | Media;
+  coverMobile?: (string | null) | Media;
+  /**
+   * Real figures only.
+   */
+  metrics?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  outcomes?: string[] | null;
+  /**
+   * The problem, the approach, the result. Leave empty if there is no write-up yet.
+   */
+  body?: {
     root: {
       type: string;
       children: {
@@ -311,9 +391,28 @@ export interface Post {
       version: number;
     };
     [k: string]: unknown;
+  } | null;
+  technical?: {
+    tags?: string[] | null;
+    summary?: string | null;
+    decisions?: string[] | null;
+    body?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    githubUrl?: string | null;
   };
-  relatedPosts?: (string | Post)[] | null;
-  categories?: (string | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -322,14 +421,13 @@ export interface Post {
     image?: (string | null) | Media;
     description?: string | null;
   };
+  status?: ('active' | 'maintained' | 'finished' | 'decommissioned') | null;
+  liveUrl?: string | null;
+  /**
+   * Lowest first in lists.
+   */
+  order?: number | null;
   publishedAt?: string | null;
-  authors?: (string | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -439,6 +537,56 @@ export interface FolderInterface {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  title: string;
+  heroImage?: (string | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (string | Post)[] | null;
+  categories?: (string | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (string | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -491,53 +639,29 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextImageBlock".
+ * via the `definition` "PainPointsBlock".
  */
-export interface TextImageBlock {
-  richText: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  image: string | Media;
-  imagePosition: 'left' | 'right';
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+export interface PainPointsBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading: string;
+  items: {
+    problem: string;
+    fix: string;
+    id?: string | null;
+  }[];
+  /**
+   * Clicking it prefills the contact form with the problem.
+   */
+  linkLabel?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'textImage';
+  blockType: 'painPoints';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -561,6 +685,10 @@ export interface ServicesBlock {
             value: string | Page;
           } | null)
         | ({
+            relationTo: 'projects';
+            value: string | Project;
+          } | null)
+        | ({
             relationTo: 'posts';
             value: string | Post;
           } | null);
@@ -575,18 +703,267 @@ export interface ServicesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GalleryBlock".
+ * via the `definition` "ProjectsBlock".
  */
-export interface GalleryBlock {
-  heading?: string | null;
+export interface ProjectsBlock {
   /**
-   * The image caption is shown below the photo.
+   * Optional. Short and informal, e.g. "how I work".
    */
-  images: (string | Media)[];
-  columns: '2' | '3' | '4';
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  intro?: string | null;
+  mode?: ('selected' | 'all') | null;
+  items?:
+    | {
+        project: string | Project;
+        /**
+         * Replaces the short summary, e.g. why this project is on this page.
+         */
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  layout?: ('cards' | 'list') | null;
+  showLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   id?: string | null;
   blockName?: string | null;
-  blockType: 'gallery';
+  blockType: 'projects';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  /**
+   * Leave empty to show every visible testimonial.
+   */
+  testimonials?: (string | Testimonial)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  quote: string;
+  lang?: ('nl' | 'en') | null;
+  name?: string | null;
+  role?: string | null;
+  business: string;
+  website?: string | null;
+  /**
+   * E.g. "Client since 2021".
+   */
+  context?: string | null;
+  project?: (string | null) | Project;
+  visible?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock".
+ */
+export interface FeaturesBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  /**
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   */
+  intro?: string | null;
+  style?: ('cards' | 'ticks' | 'compact') | null;
+  background?: boolean | null;
+  items: {
+    title?: string | null;
+    /**
+     * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+     */
+    body?: string | null;
+    id?: string | null;
+  }[];
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'features';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepsBlock".
+ */
+export interface StepsBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading: string;
+  intro?: string | null;
+  steps: {
+    title: string;
+    body?: string | null;
+    id?: string | null;
+  }[];
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'steps';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock".
+ */
+export interface PricingBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading: string;
+  /**
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   */
+  note?: string | null;
+  ctaTitle?: string | null;
+  ctaBody?: string | null;
+  ctaLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricing';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingTableBlock".
+ */
+export interface PricingTableBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading: string;
+  intro?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingTable';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EstimatorBlock".
+ */
+export interface EstimatorBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  intro?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'estimator';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -619,6 +996,124 @@ export interface FAQBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextImageBlock".
+ */
+export interface TextImageBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  richText: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: string | Media;
+  imagePosition: 'left' | 'right';
+  photoStyle?: ('polaroid' | 'frame' | 'plain') | null;
+  caption?: string | null;
+  note?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textImage';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock".
+ */
+export interface TimelineBlock {
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  intro?: string | null;
+  groups: {
+    label: string;
+    entries?:
+      | {
+          period: string;
+          title: string;
+          organisation?: string | null;
+          description?: string | null;
+          note?: string | null;
+          tags?: string[] | null;
+          current?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'timeline';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WebsiteCheckBlock".
+ */
+export interface WebsiteCheckBlock {
+  variant?: ('banner' | 'form') | null;
+  /**
+   * Optional. Short and informal, e.g. "how I work".
+   */
+  eyebrow?: string | null;
+  /**
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   */
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * The banner sends the typed address to this page.
+   */
+  checkPage?: (string | null) | Page;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'websiteCheck';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
@@ -648,6 +1143,10 @@ export interface CallToActionBlock {
                 value: string | Page;
               } | null)
             | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null)
+            | ({
                 relationTo: 'posts';
                 value: string | Post;
               } | null);
@@ -667,215 +1166,24 @@ export interface CallToActionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "OpeningHoursBlock".
- */
-export interface OpeningHoursBlock {
-  heading?: string | null;
-  /**
-   * Manage the hours themselves in Settings → Site settings → Opening hours.
-   */
-  intro?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'openingHours';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactBlock".
  */
 export interface ContactBlock {
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  form: string | Form;
   /**
-   * Address, phone and email from site settings.
+   * Optional. Short and informal, e.g. "how I work".
    */
-  showContactDetails?: boolean | null;
+  eyebrow?: string | null;
   /**
-   * Google Maps → Share → Embed a map → copy the HTML and paste it here. The link is extracted automatically.
+   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
    */
-  mapEmbedUrl?: string | null;
+  heading: string;
+  intro?: string | null;
+  messagePlaceholder?: string | null;
+  formNote?: string | null;
+  showMap?: boolean | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'contact';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "forms".
- */
-export interface Form {
-  id: string;
-  title: string;
-  fields?:
-    | (
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            defaultValue?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'checkbox';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'country';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'email';
-          }
-        | {
-            message?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'message';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'number';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            placeholder?: string | null;
-            options?:
-              | {
-                  label: string;
-                  value: string;
-                  id?: string | null;
-                }[]
-              | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'select';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'state';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'text';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'textarea';
-          }
-      )[]
-    | null;
-  submitButtonLabel?: string | null;
-  confirmationType?: ('message' | 'redirect') | null;
-  confirmationMessage?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  redirect?: {
-    url: string;
-  };
-  emails?:
-    | {
-        emailTo?: string | null;
-        cc?: string | null;
-        bcc?: string | null;
-        replyTo?: string | null;
-        emailFrom?: string | null;
-        subject: string;
-        message?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -910,6 +1218,10 @@ export interface ContentBlock {
                 value: string | Page;
               } | null)
             | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null)
+            | ({
                 relationTo: 'posts';
                 value: string | Post;
               } | null);
@@ -926,6 +1238,35 @@ export interface ContentBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock".
+ */
+export interface GalleryBlock {
+  heading?: string | null;
+  /**
+   * The image caption is shown below the photo.
+   */
+  images: (string | Media)[];
+  columns: '2' | '3' | '4';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OpeningHoursBlock".
+ */
+export interface OpeningHoursBlock {
+  heading?: string | null;
+  /**
+   * Manage the hours themselves in Settings → Site settings → Opening hours.
+   */
+  intro?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'openingHours';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1168,11 +1509,180 @@ export interface Redirect {
           value: string | Page;
         } | null)
       | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
           relationTo: 'posts';
           value: string | Post;
         } | null);
     url?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "forms".
+ */
+export interface Form {
+  id: string;
+  title: string;
+  fields?:
+    | (
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            defaultValue?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'checkbox';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'country';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'email';
+          }
+        | {
+            message?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'message';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'number';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            placeholder?: string | null;
+            options?:
+              | {
+                  label: string;
+                  value: string;
+                  id?: string | null;
+                }[]
+              | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'select';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'state';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'text';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            defaultValue?: string | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'textarea';
+          }
+      )[]
+    | null;
+  submitButtonLabel?: string | null;
+  confirmationType?: ('message' | 'redirect') | null;
+  confirmationMessage?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  redirect?: {
+    url: string;
+  };
+  emails?:
+    | {
+        emailTo?: string | null;
+        cc?: string | null;
+        bcc?: string | null;
+        replyTo?: string | null;
+        emailFrom?: string | null;
+        subject: string;
+        message?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1469,6 +1979,14 @@ export interface PayloadLockedDocument {
         value: string | Page;
       } | null)
     | ({
+        relationTo: 'projects';
+        value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null)
+    | ({
         relationTo: 'media';
         value: string | Media;
       } | null)
@@ -1596,14 +2114,24 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
-        textImage?: T | TextImageBlockSelect<T>;
+        painPoints?: T | PainPointsBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
-        gallery?: T | GalleryBlockSelect<T>;
+        projects?: T | ProjectsBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
+        features?: T | FeaturesBlockSelect<T>;
+        steps?: T | StepsBlockSelect<T>;
+        pricing?: T | PricingBlockSelect<T>;
+        pricingTable?: T | PricingTableBlockSelect<T>;
+        estimator?: T | EstimatorBlockSelect<T>;
         faq?: T | FAQBlockSelect<T>;
+        textImage?: T | TextImageBlockSelect<T>;
+        timeline?: T | TimelineBlockSelect<T>;
+        websiteCheck?: T | WebsiteCheckBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
-        openingHours?: T | OpeningHoursBlockSelect<T>;
         contact?: T | ContactBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
+        gallery?: T | GalleryBlockSelect<T>;
+        openingHours?: T | OpeningHoursBlockSelect<T>;
         menu?: T | MenuBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         productGrid?: T | ProductGridBlockSelect<T>;
@@ -1614,6 +2142,21 @@ export interface PagesSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        noIndex?: T;
+      };
+  structuredData?:
+    | T
+    | {
+        type?: T;
+        serviceName?: T;
+        scopes?: T;
+        areaServed?:
+          | T
+          | {
+              kind?: T;
+              name?: T;
+              id?: T;
+            };
       };
   publishedAt?: T;
   generateSlug?: T;
@@ -1627,8 +2170,18 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "HeroBlock_select".
  */
 export interface HeroBlockSelect<T extends boolean = true> {
-  type?: T;
-  richText?: T;
+  variant?: T;
+  greeting?: T;
+  greetingSuffix?: T;
+  eyebrow?: T;
+  title?: T;
+  intro?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   links?:
     | T
     | {
@@ -1644,33 +2197,34 @@ export interface HeroBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  media?: T;
+  trustItems?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  image?: T;
+  imageCaption?: T;
+  note?: T;
+  priceScopes?: T;
   id?: T;
   blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextImageBlock_select".
+ * via the `definition` "PainPointsBlock_select".
  */
-export interface TextImageBlockSelect<T extends boolean = true> {
-  richText?: T;
-  image?: T;
-  imagePosition?: T;
-  links?:
+export interface PainPointsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  items?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        problem?: T;
+        fix?: T;
         id?: T;
       };
+  linkLabel?: T;
   id?: T;
   blockName?: T;
 }
@@ -1705,12 +2259,144 @@ export interface ServicesBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GalleryBlock_select".
+ * via the `definition` "ProjectsBlock_select".
  */
-export interface GalleryBlockSelect<T extends boolean = true> {
+export interface ProjectsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
   heading?: T;
-  images?: T;
-  columns?: T;
+  intro?: T;
+  mode?: T;
+  items?:
+    | T
+    | {
+        project?: T;
+        note?: T;
+        id?: T;
+      };
+  layout?: T;
+  showLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  testimonials?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock_select".
+ */
+export interface FeaturesBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  style?: T;
+  background?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        id?: T;
+      };
+  enableLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepsBlock_select".
+ */
+export interface StepsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        id?: T;
+      };
+  enableLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock_select".
+ */
+export interface PricingBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  note?: T;
+  ctaTitle?: T;
+  ctaBody?: T;
+  ctaLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingTableBlock_select".
+ */
+export interface PricingTableBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EstimatorBlock_select".
+ */
+export interface EstimatorBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
   id?: T;
   blockName?: T;
 }
@@ -1727,6 +2413,78 @@ export interface FAQBlockSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextImageBlock_select".
+ */
+export interface TextImageBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  richText?: T;
+  image?: T;
+  imagePosition?: T;
+  photoStyle?: T;
+  caption?: T;
+  note?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock_select".
+ */
+export interface TimelineBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  groups?:
+    | T
+    | {
+        label?: T;
+        entries?:
+          | T
+          | {
+              period?: T;
+              title?: T;
+              organisation?: T;
+              description?: T;
+              note?: T;
+              tags?: T;
+              current?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WebsiteCheckBlock_select".
+ */
+export interface WebsiteCheckBlockSelect<T extends boolean = true> {
+  variant?: T;
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  checkPage?: T;
   id?: T;
   blockName?: T;
 }
@@ -1756,23 +2514,15 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "OpeningHoursBlock_select".
- */
-export interface OpeningHoursBlockSelect<T extends boolean = true> {
-  heading?: T;
-  intro?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactBlock_select".
  */
 export interface ContactBlockSelect<T extends boolean = true> {
-  introContent?: T;
-  form?: T;
-  showContactDetails?: T;
-  mapEmbedUrl?: T;
+  eyebrow?: T;
+  heading?: T;
+  intro?: T;
+  messagePlaceholder?: T;
+  formNote?: T;
+  showMap?: T;
   id?: T;
   blockName?: T;
 }
@@ -1799,6 +2549,27 @@ export interface ContentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock_select".
+ */
+export interface GalleryBlockSelect<T extends boolean = true> {
+  heading?: T;
+  images?: T;
+  columns?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OpeningHoursBlock_select".
+ */
+export interface OpeningHoursBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
   id?: T;
   blockName?: T;
 }
@@ -1840,6 +2611,71 @@ export interface ProductGridBlockSelect<T extends boolean = true> {
   limit?: T;
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  client?: T;
+  sector?: T;
+  period?: T;
+  abstract?: T;
+  summary?: T;
+  cover?: T;
+  coverMobile?: T;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  outcomes?: T;
+  body?: T;
+  technical?:
+    | T
+    | {
+        tags?: T;
+        summary?: T;
+        decisions?: T;
+        body?: T;
+        githubUrl?: T;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  status?: T;
+  liveUrl?: T;
+  order?: T;
+  publishedAt?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  quote?: T;
+  lang?: T;
+  name?: T;
+  role?: T;
+  business?: T;
+  website?: T;
+  context?: T;
+  project?: T;
+  visible?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2496,6 +3332,10 @@ export interface Header {
                 value: string | Page;
               } | null)
             | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null)
+            | ({
                 relationTo: 'posts';
                 value: string | Post;
               } | null);
@@ -2505,6 +3345,25 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  cta: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2525,6 +3384,10 @@ export interface Footer {
                 value: string | Page;
               } | null)
             | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null)
+            | ({
                 relationTo: 'posts';
                 value: string | Post;
               } | null);
@@ -2534,6 +3397,11 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  /**
+   * E.g. "Thanks for scrolling!"
+   */
+  note?: string | null;
+  blurb?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2546,6 +3414,11 @@ export interface SiteSetting {
   businessName: string;
   logo?: (string | null) | Media;
   vatNumber?: string | null;
+  kboNumber?: string | null;
+  vatExempt?: boolean | null;
+  availability?: ('open' | 'limited' | 'unavailable') | null;
+  personName?: string | null;
+  portrait?: (string | null) | Media;
   address?: {
     street?: string | null;
     postalCode?: string | null;
@@ -2553,6 +3426,17 @@ export interface SiteSetting {
   };
   phone?: string | null;
   email?: string | null;
+  whatsapp?: string | null;
+  bookingUrl?: string | null;
+  locations?:
+    | {
+        name: string;
+        lat: number;
+        lng: number;
+        id?: string | null;
+      }[]
+    | null;
+  replyNote?: string | null;
   /**
    * Add a day twice for a lunch break (e.g. 09:00–12:00 and 13:30–18:00).
    */
@@ -2638,6 +3522,15 @@ export interface HeaderSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  cta?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2661,6 +3554,8 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  note?: T;
+  blurb?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2673,6 +3568,11 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   businessName?: T;
   logo?: T;
   vatNumber?: T;
+  kboNumber?: T;
+  vatExempt?: T;
+  availability?: T;
+  personName?: T;
+  portrait?: T;
   address?:
     | T
     | {
@@ -2682,6 +3582,17 @@ export interface SiteSettingsSelect<T extends boolean = true> {
       };
   phone?: T;
   email?: T;
+  whatsapp?: T;
+  bookingUrl?: T;
+  locations?:
+    | T
+    | {
+        name?: T;
+        lat?: T;
+        lng?: T;
+        id?: T;
+      };
+  replyNote?: T;
   openingHours?:
     | T
     | {
@@ -2741,6 +3652,10 @@ export interface TaskSchedulePublish {
           value: string | Page;
         } | null)
       | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
           relationTo: 'posts';
           value: string | Post;
         } | null);
@@ -2751,6 +3666,51 @@ export interface TaskSchedulePublish {
     } | null;
   };
   output?: unknown;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CalloutBlock".
+ */
+export interface CalloutBlock {
+  text: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'callout';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MetricGridBlock".
+ */
+export interface MetricGridBlock {
+  metrics: {
+    value: string;
+    label: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'metricGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeSnippetBlock".
+ */
+export interface CodeSnippetBlock {
+  language?: ('tsx' | 'javascript' | 'rust' | 'markup' | 'css' | 'bash' | 'json' | 'yaml') | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'codeSnippet';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2787,16 +3747,6 @@ export interface CodeBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'code';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
- */
-export interface MediaBlock {
-  media: string | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

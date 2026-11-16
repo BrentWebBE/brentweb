@@ -28,7 +28,8 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const relationID = (value: unknown): string | undefined => {
   if (typeof value === 'string') return value
-  if (value && typeof value === 'object' && 'id' in value) return String((value as { id: unknown }).id)
+  if (value && typeof value === 'object' && 'id' in value)
+    return String((value as { id: unknown }).id)
   return undefined
 }
 
@@ -37,7 +38,10 @@ const parseJSON = <T>(value: string | undefined, field: string): T => {
   return JSON.parse(value) as T
 }
 
-const findTransaction = async (payload: Payload, paymentIntentID: string): Promise<Transaction | undefined> => {
+const findTransaction = async (
+  payload: Payload,
+  paymentIntentID: string,
+): Promise<Transaction | undefined> => {
   const { docs } = await payload.find({
     collection: 'transactions',
     depth: 0,
@@ -49,7 +53,10 @@ const findTransaction = async (payload: Payload, paymentIntentID: string): Promi
   return docs[0]
 }
 
-const waitForOrder = async (payload: Payload, paymentIntentID: string): Promise<Order | undefined> => {
+const waitForOrder = async (
+  payload: Payload,
+  paymentIntentID: string,
+): Promise<Order | undefined> => {
   const deadline = Date.now() + WAIT_FOR_OTHER_SETTLEMENT_MS
   while (Date.now() < deadline) {
     const transaction = await findTransaction(payload, paymentIntentID)
@@ -84,7 +91,12 @@ export const settleStripePayment = async ({
 
   const existingOrderID = relationID(transaction.order)
   if (existingOrderID) {
-    const order = await payload.findByID({ collection: 'orders', id: existingOrderID, depth: 0, overrideAccess: true })
+    const order = await payload.findByID({
+      collection: 'orders',
+      id: existingOrderID,
+      depth: 0,
+      overrideAccess: true,
+    })
     return { status: 'settled', order, created: false }
   }
 
@@ -96,7 +108,10 @@ export const settleStripePayment = async ({
     throw new Error(`Amount/currency mismatch for PaymentIntent ${paymentIntent.id}`)
   }
 
-  const items = parseJSON<CartItemSnapshot[]>(paymentIntent.metadata.cartItemsSnapshot, 'cartItemsSnapshot')
+  const items = parseJSON<CartItemSnapshot[]>(
+    paymentIntent.metadata.cartItemsSnapshot,
+    'cartItemsSnapshot',
+  )
   const shippingAddress = paymentIntent.metadata.shippingAddress
     ? parseJSON<Record<string, unknown>>(paymentIntent.metadata.shippingAddress, 'shippingAddress')
     : undefined

@@ -9,6 +9,8 @@ import { fileURLToPath } from 'url'
 
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { Projects } from './collections/Projects'
+import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
 import { features } from './features'
 import { Footer } from './Footer/config'
@@ -20,6 +22,7 @@ import { basePlugins } from './plugins'
 import { SiteSettings } from './SiteSettings/config'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { contentLocale, localeLabels, locales } from './lib/locales'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,6 +30,8 @@ const dirname = path.dirname(filename)
 // Feature modules are only registered when their flag is on (see src/features.ts).
 const collections: CollectionConfig[] = [
   Pages,
+  Projects,
+  Testimonials,
   Media,
   ...(features.menu ? menuCollections : []),
   ...(features.ecommerce ? ecommerceCollections() : []),
@@ -72,7 +77,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: ' – BrentWeb CMS',
+      titleSuffix: ' – BrentWeb',
     },
     user: Users.slug,
     livePreview: {
@@ -97,6 +102,13 @@ export default buildConfig({
         },
       ],
     },
+  },
+  // Content languages. The codes double as URL prefixes (/nl-BE, /en). Dutch is written
+  // first; an untranslated field falls back to it.
+  localization: {
+    locales: locales.map((code) => ({ code, label: localeLabels[code] })),
+    defaultLocale: contentLocale,
+    fallback: true,
   },
   i18n: {
     fallbackLanguage: 'nl',

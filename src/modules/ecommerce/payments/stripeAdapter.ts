@@ -38,29 +38,44 @@ export const shopStripeAdapter = (): PaymentAdapter => {
     webhookSecret,
     webhooks: {
       'payment_intent.succeeded': async ({ event, req }) => {
-        await settleStripePayment({ payload: req.payload, paymentIntent: event.data.object as Stripe.PaymentIntent })
+        await settleStripePayment({
+          payload: req.payload,
+          paymentIntent: event.data.object as Stripe.PaymentIntent,
+        })
       },
       'payment_intent.canceled': async ({ event, req }) => {
-        await markPaymentCancelled({ payload: req.payload, paymentIntent: event.data.object as Stripe.PaymentIntent })
+        await markPaymentCancelled({
+          payload: req.payload,
+          paymentIntent: event.data.object as Stripe.PaymentIntent,
+        })
       },
       'payment_intent.payment_failed': ({ event, req }) => {
         const intent = event.data.object as Stripe.PaymentIntent
-        req.payload.logger.info(`Payment attempt failed for ${intent.id}: ${intent.last_payment_error?.message ?? 'unknown'}`)
+        req.payload.logger.info(
+          `Payment attempt failed for ${intent.id}: ${intent.last_payment_error?.message ?? 'unknown'}`,
+        )
       },
     },
   })
 
-  const initiatePayment: PaymentAdapter['initiatePayment'] = async ({ data, req, transactionsSlug }) => {
+  const initiatePayment: PaymentAdapter['initiatePayment'] = async ({
+    data,
+    req,
+    transactionsSlug,
+  }) => {
     const { payload } = req
     const { billingAddress, cart, currency, customerEmail, shippingAddress } = data
     const body = (req.data ?? {}) as { acceptedTerms?: unknown }
 
     if (!secretKey) throw new Error('Stripe is not configured (STRIPE_SECRET_KEY).')
-    if (body.acceptedTerms !== true) throw new Error('De algemene voorwaarden moeten aanvaard worden.')
+    if (body.acceptedTerms !== true)
+      throw new Error('De algemene voorwaarden moeten aanvaard worden.')
     const missing = await getMissingLegalPages(payload)
-    if (missing.length > 0) throw new Error(`Checkout geblokkeerd: ontbrekende pagina's (${missing.join(', ')}).`)
+    if (missing.length > 0)
+      throw new Error(`Checkout geblokkeerd: ontbrekende pagina's (${missing.join(', ')}).`)
     if (!cart?.items?.length) throw new Error('Winkelmand is leeg.')
-    if (!customerEmail || typeof customerEmail !== 'string') throw new Error('E-mailadres is verplicht.')
+    if (!customerEmail || typeof customerEmail !== 'string')
+      throw new Error('E-mailadres is verplicht.')
     if (currency !== 'EUR') throw new Error('Enkel EUR wordt ondersteund.')
 
     const amount = cart.subtotal
@@ -70,7 +85,11 @@ export const shopStripeAdapter = (): PaymentAdapter => {
 
     const items = cart.items.map((item) => {
       const product = typeof item.product === 'object' ? item.product.id : item.product
-      const variant = item.variant ? (typeof item.variant === 'object' ? item.variant.id : item.variant) : undefined
+      const variant = item.variant
+        ? typeof item.variant === 'object'
+          ? item.variant.id
+          : item.variant
+        : undefined
       return { product, quantity: item.quantity, ...(variant ? { variant } : {}) }
     })
 

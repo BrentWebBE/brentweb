@@ -10,8 +10,19 @@ import { FAQ } from '@/blocks/FAQ/config'
 import { Gallery } from '@/blocks/Gallery/config'
 import { Hero } from '@/blocks/Hero/config'
 import { OpeningHours } from '@/blocks/OpeningHours/config'
+import { Estimator } from '@/blocks/Estimator/config'
+import { Features } from '@/blocks/Features/config'
+import { PainPoints } from '@/blocks/PainPoints/config'
+import { Pricing } from '@/blocks/Pricing/config'
+import { PricingTable } from '@/blocks/PricingTable/config'
+import { ProjectsBlock } from '@/blocks/Projects/config'
 import { Services } from '@/blocks/Services/config'
+import { Steps } from '@/blocks/Steps/config'
+import { TestimonialsBlock } from '@/blocks/Testimonials/config'
 import { TextImage } from '@/blocks/TextImage/config'
+import { Timeline } from '@/blocks/Timeline/config'
+import { WebsiteCheck } from '@/blocks/WebsiteCheck/config'
+import { SCOPE_OPTIONS } from '@/lib/scopes'
 import { features } from '@/features'
 import { blogPageBlocks } from '@/modules/blog'
 import { ecommercePageBlocks } from '@/modules/ecommerce'
@@ -32,14 +43,24 @@ import {
 
 const layoutBlocks = [
   Hero,
-  TextImage,
+  PainPoints,
   Services,
-  Gallery,
+  ProjectsBlock,
+  TestimonialsBlock,
+  Features,
+  Steps,
+  Pricing,
+  PricingTable,
+  Estimator,
   FAQ,
+  TextImage,
+  Timeline,
+  WebsiteCheck,
   CallToAction,
-  OpeningHours,
   Contact,
   Content,
+  Gallery,
+  OpeningHours,
   ...(features.menu ? menuPageBlocks : []),
   ...(features.blog ? blogPageBlocks : []),
   ...(features.ecommerce ? ecommercePageBlocks : []),
@@ -88,7 +109,14 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'title',
       type: 'text',
       label: l('Titel', 'Title'),
+      localized: true,
       required: true,
+      admin: {
+        description: l(
+          'Intern en in de browsertab. De H1 staat in het Hero-blok.',
+          'Internal and in the browser tab. The H1 lives in the Hero block.',
+        ),
+      },
     },
     {
       type: 'tabs',
@@ -104,6 +132,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 plural: l('Blokken', 'Blocks'),
               },
               blocks: layoutBlocks,
+              // Each language has its own layout: a translation can add or drop a block.
+              localized: true,
               required: true,
               admin: {
                 initCollapsed: true,
@@ -116,6 +146,7 @@ export const Pages: CollectionConfig<'pages'> = {
         adminOnlyTab({
           name: 'meta',
           label: 'SEO',
+          localized: true,
           fields: [
             OverviewField({
               titlePath: 'meta.title',
@@ -138,6 +169,73 @@ export const Pages: CollectionConfig<'pages'> = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+            {
+              name: 'noIndex',
+              type: 'checkbox',
+              label: l('Niet indexeren (noindex)', "Don't index (noindex)"),
+              admin: {
+                description: l(
+                  "Voor bedankpagina's en andere pagina's die niet in Google horen.",
+                  "For thank-you pages and other pages that don't belong in search.",
+                ),
+              },
+            },
+          ],
+        }),
+        adminOnlyTab({
+          name: 'structuredData',
+          label: l('Structured data', 'Structured data'),
+          fields: [
+            {
+              name: 'type',
+              type: 'select',
+              label: l('Soort pagina', 'Page type'),
+              defaultValue: 'none',
+              options: [
+                { label: l('Gewone pagina', 'Regular page'), value: 'none' },
+                {
+                  label: l('Dienst (Service + Offer)', 'Service (Service + Offer)'),
+                  value: 'service',
+                },
+                { label: l('Lokale pagina (regio)', 'Local page (region)'), value: 'local' },
+              ],
+            },
+            {
+              name: 'serviceName',
+              type: 'text',
+              label: l('Naam van de dienst', 'Service name'),
+              localized: true,
+              admin: { condition: (_, siblingData) => siblingData?.type === 'service' },
+            },
+            {
+              name: 'scopes',
+              type: 'select',
+              hasMany: true,
+              label: l('Prijsvork uit', 'Price range from'),
+              options: SCOPE_OPTIONS,
+              admin: { condition: (_, siblingData) => siblingData?.type === 'service' },
+            },
+            {
+              name: 'areaServed',
+              type: 'array',
+              label: l('Gebied', 'Area served'),
+              admin: { condition: (_, siblingData) => siblingData?.type === 'local' },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'kind',
+                      type: 'select',
+                      defaultValue: 'City',
+                      options: ['City', 'AdministrativeArea'],
+                      required: true,
+                    },
+                    { name: 'name', type: 'text', required: true },
+                  ],
+                },
+              ],
+            },
           ],
         }),
       ],
@@ -150,7 +248,7 @@ export const Pages: CollectionConfig<'pages'> = {
         position: 'sidebar',
       },
     },
-    slugField(),
+    slugField({ localized: true }),
   ],
   hooks: {
     afterChange: [revalidatePage],

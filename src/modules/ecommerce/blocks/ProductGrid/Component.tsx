@@ -8,7 +8,11 @@ import { ProductGridList } from '../../components/ProductCard'
 import { getProducts } from '../../utilities/queries'
 
 const idOf = (value: unknown): string | undefined =>
-  typeof value === 'string' ? value : value && typeof value === 'object' && 'id' in value ? String(value.id) : undefined
+  typeof value === 'string'
+    ? value
+    : value && typeof value === 'object' && 'id' in value
+      ? String(value.id)
+      : undefined
 
 export const ProductGridBlock: React.FC<ProductGridBlockProps> = async ({
   category,
@@ -21,7 +25,9 @@ export const ProductGridBlock: React.FC<ProductGridBlockProps> = async ({
 
   const items =
     source === 'selection'
-      ? await getProducts({ ids: (products ?? []).map(idOf).filter((id): id is string => Boolean(id)) })
+      ? await getProducts({
+          ids: (products ?? []).map(idOf).filter((id): id is string => Boolean(id)),
+        })
       : await getProducts({ categoryID: idOf(category), limit: limit ?? 8 })
 
   return (

@@ -1,86 +1,118 @@
 import React from 'react'
 
-import type { ContactBlock as ContactBlockProps } from '@/payload-types'
+import type { ContactBlock as Props } from '@/payload-types'
 
-import { FormBlock, type FormBlockType } from '@/blocks/Form/Component'
-import RichText from '@/components/RichText'
+import { LazyContactForm } from '@/components/contact/LazyContactForm'
+import { MapFacade } from '@/components/contact/MapFacade'
+import { Note } from '@/components/handmade/Note'
+import { SectionHeading } from '@/components/handmade/SectionHeading'
+import type { Locale } from '@/lib/locales'
+import { ui } from '@/lib/ui-strings'
+import { runtimeEnv } from '@/utilities/runtimeEnv'
 import { getSiteSettings } from '@/utilities/getSiteSettings'
-import { cn } from '@/utilities/ui'
 
-import { isAllowedMapEmbedUrl } from './mapEmbed'
-
-export const ContactBlock: React.FC<ContactBlockProps> = async ({
-  form,
-  introContent,
-  mapEmbedUrl,
-  showContactDetails,
-}) => {
-  const settings = showContactDetails ? await getSiteSettings() : null
-  const address = settings?.address
-  const hasAddress = Boolean(address?.street || address?.city)
-  const showDetails = Boolean(settings && (hasAddress || settings.phone || settings.email))
+/**
+ * The contact section: who you're talking to and how to reach me on the left, the
+ * form on a sheet of paper on the right. Always anchored at #contact, so pain-point
+ * links and CTAs can jump here.
+ */
+export async function ContactBlock({
+  eyebrow,
+  formNote,
+  heading,
+  intro,
+  locale,
+  messagePlaceholder,
+  showMap,
+}: Props & { locale: Locale }) {
+  const settings = await getSiteSettings(locale)
+  const t = ui(locale)
+  const locations = (settings?.locations ?? []).map(({ lat, lng, name }) => ({ lat, lng, name }))
+  const tel = settings?.phone?.replace(/[^\d+]/g, '')
 
   return (
-    <section className="container">
-      {introContent && (
-        <RichText className="mb-10 max-w-2xl" data={introContent} enableGutter={false} />
-      )}
+    <section className="section scroll-mt-24" id="contact">
+      <div className="container grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+        <div>
+          <SectionHeading eyebrow={eyebrow} heading={heading} intro={intro} locale={locale} />
 
-      <div className={cn('grid gap-10', { 'lg:grid-cols-[2fr_1fr]': showDetails })}>
-        {form && typeof form === 'object' && (
-          <FormBlock
-            className="w-full"
-            enableIntro={false}
-            // The generated `Form` type and the plugin's form type describe the same document.
-            form={form as unknown as FormBlockType['form']}
-          />
-        )}
+          <dl className="grid gap-5">
+            {settings?.phone && (
+              <div>
+                <dt className="hand text-xl text-muted-foreground">{t.phone}</dt>
+                <dd>
+                  <a className="link-hand text-lg font-semibold" href={`tel:${tel}`}>
+                    {settings.phone}
+                  </a>
+                  {settings.whatsapp && (
+                    <>
+                      {' · '}
+                      <a
+                        className="link-hand text-lg"
+                        href={settings.whatsapp}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {t.whatsapp}
+                      </a>
+                    </>
+                  )}
+                </dd>
+              </div>
+            )}
+            {settings?.email && (
+              <div>
+                <dt className="hand text-xl text-muted-foreground">{t.email}</dt>
+                <dd>
+                  <a className="link-hand text-lg" href={`mailto:${settings.email}`}>
+                    {settings.email}
+                  </a>
+                </dd>
+              </div>
+            )}
+            {settings?.availability && (
+              <div>
+                <dt className="sr-only">Status</dt>
+                <dd className="flex items-center gap-2">
+                  <span
+                    aria-hidden="true"
+                    className={
+                      settings.availability === 'open'
+                        ? 'size-2.5 rounded-full bg-success'
+                        : settings.availability === 'limited'
+                          ? 'size-2.5 rounded-full bg-warning'
+                          : 'size-2.5 rounded-full bg-error'
+                    }
+                  />
+                  {t.availability[settings.availability]}
+                </dd>
+              </div>
+            )}
+          </dl>
 
-        {showDetails && settings && (
-          <address className="not-italic flex flex-col gap-4">
-            {settings.businessName && (
-              <p className="font-heading text-xl">{settings.businessName}</p>
-            )}
-            {hasAddress && (
-              <p>
-                {address?.street}
-                <br />
-                {[address?.postalCode, address?.city].filter(Boolean).join(' ')}
-              </p>
-            )}
-            {settings.phone && (
-              <p>
-                <a
-                  className="underline-offset-4 hover:underline"
-                  href={`tel:${settings.phone.replace(/[^\d+]/g, '')}`}
-                >
-                  {settings.phone}
-                </a>
-              </p>
-            )}
-            {settings.email && (
-              <p>
-                <a className="underline-offset-4 hover:underline" href={`mailto:${settings.email}`}>
-                  {settings.email}
-                </a>
-              </p>
-            )}
-          </address>
-        )}
-      </div>
+          {settings?.replyNote && (
+            <p className="mt-6 max-w-md text-muted-foreground">{settings.replyNote}</p>
+          )}
 
-      {isAllowedMapEmbedUrl(mapEmbedUrl) && (
-        <div className="mt-10 overflow-hidden rounded-[var(--radius)] border border-border">
-          <iframe
-            allowFullScreen
-            className="block h-[24rem] w-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src={mapEmbedUrl}
-            title={settings?.businessName ? `Kaart – ${settings.businessName}` : 'Kaart'}
-          />
+          {showMap && locations.length > 0 && (
+            <div className="mt-8">
+              <MapFacade googleMapsKey={runtimeEnv('GOOGLE_MAPS_API_KEY')} locations={locations} />
+            </div>
+          )}
         </div>
-      )}
+
+        <div className="relative">
+          <Note arrow="down" className="absolute -top-10 right-4 hidden md:inline-flex" tilt={4}>
+            {locale === 'nl-BE' ? 'ik lees alles zelf' : 'I read every one myself'}
+          </Note>
+          <div className="paper-sheet p-6 md:p-9">
+            <LazyContactForm
+              formNote={formNote ?? undefined}
+              messagePlaceholder={messagePlaceholder ?? undefined}
+            />
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

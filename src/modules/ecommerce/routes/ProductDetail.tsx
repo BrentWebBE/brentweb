@@ -54,7 +54,11 @@ export async function ProductDetail({ params }: ProductRouteArgs) {
             <ul className="grid grid-cols-4 gap-2">
               {images.slice(1).map((image) => (
                 <li key={image.id}>
-                  <MediaComponent imgClassName="aspect-square w-full rounded-[var(--radius)] object-cover" resource={image} size="25vw" />
+                  <MediaComponent
+                    imgClassName="aspect-square w-full rounded-[var(--radius)] object-cover"
+                    resource={image}
+                    size="25vw"
+                  />
                 </li>
               ))}
             </ul>

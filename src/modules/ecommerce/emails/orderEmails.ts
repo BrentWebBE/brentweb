@@ -16,7 +16,11 @@ const escape = (value: unknown): string =>
 type Line = { title: string; quantity: number; lineTotal: number | undefined }
 
 const idOf = (value: unknown): string | undefined =>
-  typeof value === 'string' ? value : value && typeof value === 'object' && 'id' in value ? String(value.id) : undefined
+  typeof value === 'string'
+    ? value
+    : value && typeof value === 'object' && 'id' in value
+      ? String(value.id)
+      : undefined
 
 const loadLines = async (payload: Payload, order: Order): Promise<Line[]> => {
   const lines: Line[] = []
@@ -24,10 +28,22 @@ const loadLines = async (payload: Payload, order: Order): Promise<Line[]> => {
     const productID = idOf(item.product)
     const variantID = idOf(item.variant)
     const product = productID
-      ? await payload.findByID({ collection: 'products', id: productID, depth: 0, overrideAccess: true, disableErrors: true })
+      ? await payload.findByID({
+          collection: 'products',
+          id: productID,
+          depth: 0,
+          overrideAccess: true,
+          disableErrors: true,
+        })
       : null
     const variant = variantID
-      ? await payload.findByID({ collection: 'variants', id: variantID, depth: 0, overrideAccess: true, disableErrors: true })
+      ? await payload.findByID({
+          collection: 'variants',
+          id: variantID,
+          depth: 0,
+          overrideAccess: true,
+          disableErrors: true,
+        })
       : null
     const unit = variant?.priceInEUR ?? product?.priceInEUR ?? undefined
     lines.push({
@@ -74,8 +90,18 @@ const layout = (title: string, body: string, businessName: string) => `<!doctype
 </body></html>`
 
 /** Order confirmation for the customer + "new order" notification for the shop owner. */
-export const sendOrderEmails = async ({ payload, order }: { payload: Payload; order: Order }): Promise<void> => {
-  const settings = await payload.findGlobal({ slug: 'site-settings', depth: 0, overrideAccess: true })
+export const sendOrderEmails = async ({
+  payload,
+  order,
+}: {
+  payload: Payload
+  order: Order
+}): Promise<void> => {
+  const settings = await payload.findGlobal({
+    slug: 'site-settings',
+    depth: 0,
+    overrideAccess: true,
+  })
   const businessName = settings?.businessName || 'Webshop'
   const serverURL = runtimeEnv('NEXT_PUBLIC_SERVER_URL') ?? ''
   const lines = await loadLines(payload, order)
@@ -117,6 +143,8 @@ export const sendOrderEmails = async ({ payload, order }: { payload: Payload; or
       ...(customerEmail ? { replyTo: customerEmail } : {}),
     })
   } else {
-    payload.logger.warn(`Order ${order.orderNumber}: no shop e-mail in SiteSettings, owner notification skipped`)
+    payload.logger.warn(
+      `Order ${order.orderNumber}: no shop e-mail in SiteSettings, owner notification skipped`,
+    )
   }
 }

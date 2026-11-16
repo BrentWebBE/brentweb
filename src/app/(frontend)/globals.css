@@ -2,6 +2,7 @@
 @import 'tw-animate-css';
 /* Per-client tokens (colors, fonts, radius, spacing). */
 @import '../../client/theme.css';
+@import '../../client/handmade.css';
 
 @config '../../../tailwind.config.mjs';
 
@@ -79,10 +80,12 @@
     }
   }
 
-  @variant 2xl {
-    .container {
-      max-width: var(--breakpoint-2xl);
-    }
+  /* Capped at xl: a personal site reads better a little narrower. */
+  .container-prose {
+    width: 100%;
+    max-width: 44rem;
+    margin-inline: auto;
+    padding-inline: var(--space-gutter);
   }
 }
 
@@ -91,6 +94,7 @@
   --font-sans: var(--font-body);
   --font-heading: var(--font-display);
   --font-mono: var(--font-code);
+  --font-hand: var(--font-handwriting);
   --spacing: var(--space-unit);
   --spacing-section: var(--space-section);
   --spacing-gutter: var(--space-gutter);

@@ -7,6 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
+import { eyebrowField } from '@/fields/heading'
 import { linkGroup } from '@/fields/linkGroup'
 import { l } from '@/utilities/label'
 
@@ -18,6 +19,7 @@ export const TextImage: Block = {
     plural: l('Tekst + afbeelding', 'Text + image'),
   },
   fields: [
+    eyebrowField(),
     {
       name: 'richText',
       type: 'richText',
@@ -56,6 +58,34 @@ export const TextImage: Block = {
           admin: { layout: 'horizontal', width: '50%' },
         },
       ],
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'photoStyle',
+          type: 'select',
+          label: l('Fotostijl', 'Photo style'),
+          defaultValue: 'polaroid',
+          options: [
+            { label: l('Polaroid met tape', 'Taped polaroid'), value: 'polaroid' },
+            { label: l('Getekend kader', 'Sketched frame'), value: 'frame' },
+            { label: l('Gewoon', 'Plain'), value: 'plain' },
+          ],
+          admin: { width: '50%' },
+        },
+        {
+          name: 'caption',
+          type: 'text',
+          label: l('Handgeschreven onderschrift', 'Handwritten caption'),
+          admin: { width: '50%' },
+        },
+      ],
+    },
+    {
+      name: 'note',
+      type: 'text',
+      label: l('Handgeschreven notitie', 'Handwritten note'),
     },
     linkGroup({
       appearances: ['default', 'outline'],

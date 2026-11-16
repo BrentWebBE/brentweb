@@ -31,7 +31,11 @@ export async function ProductListing({ searchParams }: ProductListingArgs) {
                 className={cn('rounded-full border border-border px-4 py-1 text-sm', {
                   'border-primary bg-primary text-primary-foreground': isActive,
                 })}
-                href={c.slug ? `${shopRoutes.listing}?categorie=${encodeURIComponent(c.slug)}` : shopRoutes.listing}
+                href={
+                  c.slug
+                    ? `${shopRoutes.listing}?categorie=${encodeURIComponent(c.slug)}`
+                    : shopRoutes.listing
+                }
                 key={c.id}
               >
                 {c.title}

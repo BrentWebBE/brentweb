@@ -32,7 +32,11 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="font-medium">{product.title}</h3>
         <p className="text-sm tabular-nums text-muted-foreground">
-          {soldOut ? 'Uitverkocht' : cents !== null ? `${from ? 'vanaf ' : ''}${formatCents(cents)}` : ''}
+          {soldOut
+            ? 'Uitverkocht'
+            : cents !== null
+              ? `${from ? 'vanaf ' : ''}${formatCents(cents)}`
+              : ''}
         </p>
       </div>
     </Link>

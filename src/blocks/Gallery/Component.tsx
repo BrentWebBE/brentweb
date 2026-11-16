@@ -12,13 +12,17 @@ const columnClasses: Record<GalleryBlockProps['columns'], string> = {
   '4': 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
 }
 
-export const GalleryBlock: React.FC<GalleryBlockProps> = ({ columns, heading, images }) => {
+export const GalleryBlock: React.FC<GalleryBlockProps & { locale?: string }> = ({
+  columns,
+  heading,
+  images,
+}) => {
   const resolved = (images ?? []).filter((img): img is MediaType => typeof img === 'object')
 
   if (resolved.length === 0) return null
 
   return (
-    <section className="container">
+    <section className="section container">
       {heading && <h2 className="font-heading text-3xl md:text-4xl mb-8">{heading}</h2>}
       <ul className={cn('grid gap-4', columnClasses[columns])}>
         {resolved.map((image) => (

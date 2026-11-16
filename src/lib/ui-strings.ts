@@ -1,0 +1,165 @@
+import type { Locale } from '@/lib/locales'
+
+/**
+ * Interface copy for the site shell and the blocks: labels, not content. Content lives
+ * in Payload; the form and estimator strings live in src/messages/*.json.
+ */
+const nl = {
+  skipToContent: 'Naar de inhoud',
+  mainNav: 'Hoofdmenu',
+  menuOpen: 'Menu',
+  menuClose: 'Sluiten',
+  language: 'Taal',
+  switchTo: 'Lees deze pagina in het Engels',
+  themeDark: 'Donkere modus',
+  themeLight: 'Lichte modus',
+  backToTop: 'Terug naar boven',
+  privacy: 'Privacybeleid',
+  kbo: 'Ondernemingsnummer',
+  vat: 'Btw',
+  vatExempt: 'Kleine onderneming, vrijgesteld van btw (art. 56bis WBTW)',
+  call: 'Bel me',
+  whatsapp: 'WhatsApp',
+  email: 'Mail',
+  phone: 'Telefoon',
+  elsewhere: 'Elders',
+  contactTitle: 'Contact',
+  pagesTitle: 'Pagina’s',
+  availability: {
+    open: 'Ik heb ruimte voor nieuwe projecten',
+    limited: 'Beperkt ruimte voor nieuwe projecten',
+    unavailable: 'Momenteel geen nieuwe projecten',
+  },
+  projects: {
+    status: {
+      active: 'Online',
+      maintained: 'Ik onderhoud dit nog',
+      finished: 'Afgerond',
+      decommissioned: 'Gearchiveerd',
+    },
+    read: 'Lees hoe het ging',
+    visit: 'Bekijk de site',
+    source: 'Bekijk de code',
+    all: 'Alle projecten',
+    back: 'Alle projecten',
+    outcomes: 'Wat het opleverde',
+    technical: 'De technische kant',
+    technicalHint: 'stack, keuzes en afwegingen',
+    decisions: 'Belangrijkste keuzes',
+    stack: 'Gebouwd met',
+    next: 'Volgend project',
+    noWriteUp: 'De volledige uitwerking komt er nog aan. Hier al de korte versie.',
+    client: 'Klant',
+    period: 'Periode',
+  },
+  price: {
+    label: 'Gebruikelijke prijs',
+    duration: 'Duurt meestal',
+    weeks: '{min} tot {max} weken',
+  },
+  pricingTable: { type: 'Soort project', price: 'Prijs', duration: 'Duurt meestal' },
+  scopes: {
+    website: 'Website',
+    web_app: 'Webapplicatie op maat',
+    api_integration: 'Koppeling met een andere dienst',
+    automation: 'Automatisering',
+  },
+  painFixLabel: 'Wat helpt',
+  testimonialCase: 'Lees het project',
+  websiteCheckBanner: {
+    label: 'Adres van uw website',
+    placeholder: 'www.uwzaak.be',
+    button: 'Gratis rapport',
+  },
+  timelineCurrent: 'nu',
+  breadcrumbHome: 'Home',
+  notFound: {
+    title: 'Deze pagina bestaat niet (meer).',
+    body: 'De link is misschien verouderd, of er sloop een typfout in het adres. Geen zorgen, hier vindt u de weg terug:',
+    home: 'Naar de homepage',
+    note: 'oeps',
+  },
+}
+
+type Strings = typeof nl
+
+const en: Strings = {
+  skipToContent: 'Skip to content',
+  mainNav: 'Main menu',
+  menuOpen: 'Menu',
+  menuClose: 'Close',
+  language: 'Language',
+  switchTo: 'Read this page in Dutch',
+  themeDark: 'Dark mode',
+  themeLight: 'Light mode',
+  backToTop: 'Back to top',
+  privacy: 'Privacy policy',
+  kbo: 'Company number',
+  vat: 'VAT',
+  vatExempt: 'Small business, exempt from VAT (art. 56bis WBTW)',
+  call: 'Call me',
+  whatsapp: 'WhatsApp',
+  email: 'Email',
+  phone: 'Phone',
+  elsewhere: 'Elsewhere',
+  contactTitle: 'Contact',
+  pagesTitle: 'Pages',
+  availability: {
+    open: 'I have room for new projects',
+    limited: 'Limited room for new projects',
+    unavailable: 'Not taking new projects right now',
+  },
+  projects: {
+    status: {
+      active: 'Live',
+      maintained: 'I still maintain this',
+      finished: 'Finished',
+      decommissioned: 'Archived',
+    },
+    read: 'Read how it went',
+    visit: 'Visit the site',
+    source: 'View the code',
+    all: 'All projects',
+    back: 'All projects',
+    outcomes: 'What it changed',
+    technical: 'The technical side',
+    technicalHint: 'stack, choices and trade-offs',
+    decisions: 'Key decisions',
+    stack: 'Built with',
+    next: 'Next project',
+    noWriteUp: 'The full write-up is still to come. Here is the short version.',
+    client: 'Client',
+    period: 'Period',
+  },
+  price: { label: 'Usual price', duration: 'Usually takes', weeks: '{min} to {max} weeks' },
+  pricingTable: { type: 'Kind of project', price: 'Price', duration: 'Usually takes' },
+  scopes: {
+    website: 'Website',
+    web_app: 'Custom web application',
+    api_integration: 'Integration with another service',
+    automation: 'Automation',
+  },
+  painFixLabel: 'What helps',
+  testimonialCase: 'Read the project',
+  websiteCheckBanner: {
+    label: 'Your website address',
+    placeholder: 'www.yourbusiness.com',
+    button: 'Free report',
+  },
+  timelineCurrent: 'now',
+  breadcrumbHome: 'Home',
+  notFound: {
+    title: 'This page doesn’t exist (anymore).',
+    body: 'The link may be outdated, or there’s a typo in the address. No worries, here’s the way back:',
+    home: 'Go to the homepage',
+    note: 'oops',
+  },
+}
+
+const STRINGS: Record<Locale, Strings> = { 'nl-BE': nl, en }
+
+export const ui = (locale: Locale): Strings => STRINGS[locale]
+
+/** "{min} tot {max} weken" → filled. */
+export const fill = (template: string, params: Record<string, string | number>): string =>
+  template.replace(/\{(\w+)\}/g, (m, k: string) => (k in params ? String(params[k]) : m))

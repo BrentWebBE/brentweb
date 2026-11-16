@@ -5,5 +5,6 @@ import { features } from '@/features'
 /** Collections that internal links (link field, rich text links, redirects) can point to. */
 export const linkableCollections: CollectionSlug[] = [
   'pages',
+  'projects',
   ...(features.blog ? ['posts' as const] : []),
 ]

@@ -6,7 +6,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   locale: 'nl_BE',
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/logo-social.png`,
     },
   ],
 }

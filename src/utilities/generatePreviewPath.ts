@@ -1,32 +1,37 @@
 import { PreviewSearchParams } from '@/app/(frontend)/next/preview/route'
 import { PayloadRequest, CollectionSlug } from 'payload'
 
-const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
-  posts: '/posts',
-  products: '/shop/product',
-  pages: '',
-}
+import { contentLocale } from '@/lib/locales'
+import { isLocale } from '@/lib/locale'
+import { docHref } from '@/lib/routing'
 
 type Props = {
-  collection: keyof typeof collectionPrefixMap
+  collection: CollectionSlug
   slug: string
   req: PayloadRequest
 }
 
-export const generatePreviewPath = ({ collection, slug }: Props) => {
-  if (slug === undefined || slug === null) {
-    return null
-  }
+/**
+ * Preview URL for the document being edited, in the locale the editor has selected,
+ * so live preview shows the language being edited.
+ */
+export const generatePreviewPath = ({ collection, slug, req }: Props) => {
+  if (slug === undefined || slug === null) return null
 
-  // Encode to support slugs with special characters
-  const encodedSlug = encodeURIComponent(slug)
+  const locale = isLocale(req?.locale) ? req.locale : contentLocale
+  const prefix: Partial<Record<CollectionSlug, string>> = {
+    posts: '/posts',
+    products: '/shop/product',
+  }
+  const path =
+    collection in prefix
+      ? `${prefix[collection]}/${encodeURIComponent(slug)}`
+      : (docHref(locale, collection, { slug }) ?? `/${locale}`)
 
   const encodedParams = new URLSearchParams({
-    path: `${collectionPrefixMap[collection]}/${encodedSlug}`,
+    path,
     previewSecret: process.env.PREVIEW_SECRET || '',
   } satisfies PreviewSearchParams)
 
-  const url = `/next/preview?${encodedParams.toString()}`
-
-  return url
+  return `/next/preview?${encodedParams.toString()}`
 }

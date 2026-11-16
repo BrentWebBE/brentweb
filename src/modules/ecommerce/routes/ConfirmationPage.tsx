@@ -69,7 +69,10 @@ export async function ConfirmationPage({ searchParams }: ConfirmationArgs) {
   if (paymentIntent.status !== 'succeeded') {
     return (
       <Shell title="Betaling niet gelukt">
-        <p>De betaling is geannuleerd of mislukt. Je winkelmand is bewaard; je kan het opnieuw proberen.</p>
+        <p>
+          De betaling is geannuleerd of mislukt. Je winkelmand is bewaard; je kan het opnieuw
+          proberen.
+        </p>
         <Button asChild>
           <Link href={shopRoutes.checkout}>Opnieuw proberen</Link>
         </Button>
@@ -95,7 +98,8 @@ export async function ConfirmationPage({ searchParams }: ConfirmationArgs) {
     <Shell title="Bedankt voor je bestelling!">
       <ClearCartOnSuccess />
       <p>
-        We hebben je betaling van <strong>{formatCents(amount ?? paymentIntent.amount_received)}</strong> goed ontvangen.
+        We hebben je betaling van{' '}
+        <strong>{formatCents(amount ?? paymentIntent.amount_received)}</strong> goed ontvangen.
       </p>
       {orderNumber ? (
         <p>

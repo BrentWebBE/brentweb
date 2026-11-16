@@ -11,19 +11,26 @@ import { isAdminOrEditor } from '@/access/isAdminOrEditor'
 import { isAdminUser } from '@/access/roles'
 import { linkableCollections } from '@/fields/linkableCollections'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
-import { Page, Post } from '@/payload-types'
+import { contentLocale } from '@/lib/locales'
+import { isLocale } from '@/lib/locale'
+import { docHref } from '@/lib/routing'
+import { Page, Post, Project } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { l } from '@/utilities/label'
 
-const generateTitle: GenerateTitle<Post | Page> = async ({ doc, req }) => {
+const generateTitle: GenerateTitle<Post | Page | Project> = async ({ doc, req }) => {
   const settings = await req.payload.findGlobal({ slug: 'site-settings', depth: 0, req })
   return [doc?.title, settings?.businessName].filter(Boolean).join(' | ')
 }
 
-const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
+const generateURL: GenerateURL<Post | Page | Project> = ({ collectionConfig, doc, locale }) => {
   const url = getServerSideURL()
-
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  const href = docHref(
+    isLocale(locale) ? locale : contentLocale,
+    collectionConfig?.slug ?? 'pages',
+    doc,
+  )
+  return href ? `${url}${href}` : url
 }
 
 /**

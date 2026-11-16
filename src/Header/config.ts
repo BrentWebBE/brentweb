@@ -31,6 +31,7 @@ export const Header: GlobalConfig = {
         }),
       ],
       maxRows: 6,
+      localized: true,
       admin: {
         initCollapsed: true,
         components: {
@@ -38,6 +39,14 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    link({
+      appearances: false,
+      overrides: {
+        name: 'cta',
+        label: l('Knop rechts in het menu', 'Button on the right of the menu'),
+        localized: true,
+      },
+    }),
   ],
   hooks: {
     afterChange: [revalidateHeader],

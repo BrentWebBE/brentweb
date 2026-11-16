@@ -1,81 +1,87 @@
 /*
- * Client theme – all per-client styling lives here (and in ./fonts.ts).
- * Tailwind reads these variables via the `@theme inline` block in
- * src/app/(frontend)/globals.css, e.g. `bg-primary`, `font-heading`, `my-section`,
- * `rounded-lg`. Change values here; don't add client styles elsewhere.
+ * BrentWeb theme: "warm & hand-made".
+ *
+ * Paper instead of white, ink instead of black, the brand red from the wordmark as the
+ * one loud colour, and a highlighter yellow for the odd marked-up word. Tailwind reads
+ * these variables via the `@theme inline` block in src/app/(frontend)/globals.css
+ * (`bg-primary`, `font-heading`, `font-hand`, `my-section`, …). The hand-made
+ * component styles live in ./handmade.css.
  */
 
 :root {
-  /* ── Typography ─────────────────────────────────────────────
-   * Font files are loaded in src/client/fonts.ts, which exposes them
-   * as CSS variables (--font-geist-sans, …). */
-  --font-body: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-code: var(--font-geist-mono), ui-monospace, monospace;
+  /* ── Typography ───────────────────────────────────────────── */
+  --font-body: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-handwriting: var(--font-caveat), 'Comic Sans MS', cursive;
+  --font-code: ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
-  /* ── Shape ──────────────────────────────────────────────── */
-  --radius: 0.625rem;
+  /* ── Shape ────────────────────────────────────────────────── */
+  --radius: 0.9rem;
+  /* The "drawn with a pen" border: uneven radii so no two corners match. */
+  --radius-wobbly: 255px 18px 225px 18px / 18px 225px 18px 255px;
+  --radius-wobbly-alt: 18px 225px 18px 255px / 255px 18px 225px 18px;
 
-  /* ── Spacing scale ──────────────────────────────────────────
-   * --space-unit is Tailwind's base step (p-4 = 4 × unit).
-   * --space-section: vertical rhythm between page blocks (`my-section`).
-   * --space-gutter: horizontal container padding. */
+  /* ── Spacing ──────────────────────────────────────────────── */
   --space-unit: 0.25rem;
-  --space-section: clamp(3rem, 6vw, 6rem);
-  --space-gutter: 1rem;
-  --space-gutter-md: 2rem;
+  --space-section: clamp(4rem, 9vw, 8rem);
+  --space-gutter: 1.25rem;
+  --space-gutter-md: 2.5rem;
 
-  /* ── Colors (light) ─────────────────────────────────────── */
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
-  --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --footer: oklch(14.5% 0 0deg);
-  --footer-foreground: oklch(98.5% 0 0deg);
-  --success: oklch(78% 0.08 200deg);
-  --warning: oklch(89% 0.1 75deg);
-  --error: oklch(75% 0.15 25deg);
+  /* ── Colours (light: paper) ───────────────────────────────── */
+  --background: oklch(97.4% 0.013 84deg); /* warm paper */
+  --foreground: oklch(25% 0.018 55deg); /* ink, ~14:1 on paper */
+  --card: oklch(99.2% 0.006 84deg);
+  --card-foreground: oklch(25% 0.018 55deg);
+  --popover: oklch(99.2% 0.006 84deg);
+  --popover-foreground: oklch(25% 0.018 55deg);
+  --primary: oklch(53% 0.19 27deg); /* brand red, deepened for text: ~5.4:1 on paper */
+  --primary-foreground: oklch(98.5% 0.01 84deg);
+  --secondary: oklch(93% 0.02 80deg); /* kraft */
+  --secondary-foreground: oklch(25% 0.018 55deg);
+  --muted: oklch(94% 0.016 82deg);
+  --muted-foreground: oklch(44% 0.02 60deg); /* ~7:1 on paper */
+  --accent: oklch(91% 0.12 98deg); /* highlighter */
+  --accent-foreground: oklch(25% 0.018 55deg);
+  --destructive: oklch(52% 0.2 27deg);
+  --destructive-foreground: oklch(98.5% 0.01 84deg);
+  --border: oklch(84% 0.025 75deg);
+  --input: oklch(80% 0.03 72deg);
+  --ring: oklch(53% 0.19 27deg);
+  --footer: oklch(23% 0.02 55deg);
+  --footer-foreground: oklch(94% 0.015 84deg);
+  --success: oklch(56% 0.1 155deg);
+  --warning: oklch(70% 0.14 75deg);
+  --error: oklch(52% 0.2 27deg);
+  --tape: oklch(88% 0.04 85deg / 70%);
+  --shadow-ink: oklch(25% 0.018 55deg / 90%);
 }
 
-/* ── Colors (dark) ───────────────────────────────────────── */
+/* ── Colours (dark: the desk lamp is on) ─────────────────────── */
 [data-theme='dark'] {
-  --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(17% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
-  --popover: oklch(14.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(98.5% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
-  --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
-  --border: oklch(26.9% 0 0deg);
-  --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
-  --footer: oklch(17% 0 0deg);
-  --footer-foreground: oklch(98.5% 0 0deg);
-  --success: oklch(28% 0.1 200deg);
-  --warning: oklch(35% 0.08 70deg);
-  --error: oklch(45% 0.1 25deg);
+  --background: oklch(21% 0.014 55deg);
+  --foreground: oklch(92% 0.016 84deg);
+  --card: oklch(25% 0.016 55deg);
+  --card-foreground: oklch(92% 0.016 84deg);
+  --popover: oklch(25% 0.016 55deg);
+  --popover-foreground: oklch(92% 0.016 84deg);
+  --primary: oklch(70% 0.16 32deg);
+  --primary-foreground: oklch(18% 0.02 40deg);
+  --secondary: oklch(29% 0.018 60deg);
+  --secondary-foreground: oklch(92% 0.016 84deg);
+  --muted: oklch(28% 0.016 58deg);
+  --muted-foreground: oklch(76% 0.02 75deg);
+  --accent: oklch(52% 0.1 95deg);
+  --accent-foreground: oklch(97% 0.01 84deg);
+  --destructive: oklch(66% 0.18 28deg);
+  --destructive-foreground: oklch(18% 0.02 40deg);
+  --border: oklch(36% 0.02 60deg);
+  --input: oklch(42% 0.02 62deg);
+  --ring: oklch(70% 0.16 32deg);
+  --footer: oklch(17% 0.012 55deg);
+  --footer-foreground: oklch(90% 0.016 84deg);
+  --success: oklch(70% 0.11 155deg);
+  --warning: oklch(78% 0.13 80deg);
+  --error: oklch(66% 0.18 28deg);
+  --tape: oklch(70% 0.03 80deg / 45%);
+  --shadow-ink: oklch(8% 0.01 55deg / 90%);
 }

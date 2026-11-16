@@ -1,53 +1,56 @@
 import React from 'react'
 
-import type { ServicesBlock as ServicesBlockProps } from '@/payload-types'
+import type { ServicesBlock as Props } from '@/payload-types'
 
-import { CMSLink } from '@/components/Link'
-import { Media } from '@/components/Media'
+import { CMSLink, linkHref } from '@/components/Link'
+import { SectionHeading } from '@/components/handmade/SectionHeading'
+import type { Locale } from '@/lib/locales'
+import { fillPrices } from '@/lib/prices'
 import { cn } from '@/utilities/ui'
 
-const columnClasses: Record<ServicesBlockProps['columns'], string> = {
-  '2': 'sm:grid-cols-2',
-  '3': 'sm:grid-cols-2 lg:grid-cols-3',
-  '4': 'sm:grid-cols-2 lg:grid-cols-4',
+const COLS: Record<string, string> = {
+  '2': 'md:grid-cols-2',
+  '3': 'md:grid-cols-2 lg:grid-cols-3',
+  '4': 'md:grid-cols-2 lg:grid-cols-4',
 }
 
-export const ServicesBlock: React.FC<ServicesBlockProps> = ({ columns, heading, intro, items }) => {
+/** Services as index cards; the whole card is the link when there is one. */
+export function ServicesBlock({
+  columns,
+  heading,
+  intro,
+  items,
+  locale,
+}: Props & { locale: Locale }) {
   return (
-    <section className="container">
-      {(heading || intro) && (
-        <div className="mb-10 max-w-2xl">
-          {heading && <h2 className="font-heading text-3xl md:text-4xl">{heading}</h2>}
-          {intro && <p className="mt-4 text-muted-foreground whitespace-pre-line">{intro}</p>}
-        </div>
-      )}
-      <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns])}>
-        {items?.map((item, i) => (
-          <li
-            className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-card text-card-foreground"
-            key={item.id ?? i}
-          >
-            {item.image && typeof item.image === 'object' && (
-              <Media
-                imgClassName="aspect-[4/3] w-full object-cover"
-                resource={item.image}
-                size="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-            )}
-            <div className="flex flex-1 flex-col gap-3 p-6">
-              <h3 className="font-heading text-xl">{item.title}</h3>
-              {item.description && (
-                <p className="text-muted-foreground whitespace-pre-line">{item.description}</p>
-              )}
-              {item.enableLink && item.link && (
-                <div className="mt-auto pt-2">
-                  <CMSLink {...item.link} appearance="link" className="px-0" />
-                </div>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+    <section className="section">
+      <div className="container">
+        <SectionHeading heading={heading} intro={intro} locale={locale} />
+        <ul className={cn('grid gap-6', COLS[columns] ?? COLS['3'])}>
+          {items?.map((item, i) => {
+            const href = item.enableLink && item.link ? linkHref({ locale, ...item.link }) : null
+            return (
+              <li
+                className="paper-card group relative flex flex-col p-6 transition-transform hover:-rotate-1"
+                key={item.id ?? i}
+              >
+                <h3 className="display-3 mb-2">{item.title}</h3>
+                {item.description && (
+                  <p className="text-muted-foreground">{fillPrices(item.description, locale)}</p>
+                )}
+                {href && item.link && (
+                  <CMSLink
+                    {...item.link}
+                    appearance="arrow"
+                    className="mt-auto pt-5 before:absolute before:inset-0 before:content-['']"
+                    locale={locale}
+                  />
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </section>
   )
 }

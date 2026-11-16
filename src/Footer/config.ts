@@ -30,13 +30,27 @@ export const Footer: GlobalConfig = {
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 12,
+      localized: true,
       admin: {
         initCollapsed: true,
         components: {
           RowLabel: '@/Footer/RowLabel#RowLabel',
         },
       },
+    },
+    {
+      name: 'note',
+      type: 'text',
+      label: l('Handgeschreven notitie', 'Handwritten note'),
+      localized: true,
+      admin: { description: l('Bv. "Bedankt voor het scrollen!"', 'E.g. "Thanks for scrolling!"') },
+    },
+    {
+      name: 'blurb',
+      type: 'textarea',
+      label: l('Korte tekst bij het logo', 'Short text by the logo'),
+      localized: true,
     },
   ],
   hooks: {

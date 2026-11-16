@@ -1,23 +1,34 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
+import { draftMode } from 'next/headers'
 import React from 'react'
 
 import { fontVariables } from '@/client/fonts'
 import { AdminBar } from '@/components/AdminBar'
-import { LocalBusinessJsonLd } from '@/components/LocalBusinessJsonLd'
+import { Analytics } from '@/components/analytics/Analytics'
+import { LazyToaster } from '@/components/ui/LazyToaster'
+import { LocaleProvider } from '@/components/LocaleProvider'
+import { MobileActionBar } from '@/components/shell/MobileActionBar'
+import { SiteJsonLd } from '@/components/seo/SiteJsonLd'
 import { features } from '@/features'
-import { ShopProvider } from '@/modules/ecommerce/components/ShopProvider'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
+import { getMessages } from '@/i18n'
+import { pickClientMessages } from '@/lib/client-messages'
+import { htmlLang } from '@/lib/locale'
+import { requestLocale } from '@/lib/requestLocale'
+import { ui } from '@/lib/ui-strings'
+import { ShopProvider } from '@/modules/ecommerce/components/ShopProvider'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { cn } from '@/utilities/ui'
+import { getServerSideURL } from '@/utilities/getURL'
 import { getSiteSettings } from '@/utilities/getSiteSettings'
-import { draftMode } from 'next/headers'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { getAlternates } from '@/utilities/queries'
+import { runtimeEnv } from '@/utilities/runtimeEnv'
 
 import './globals.css'
-import { getServerSideURL } from '@/utilities/getURL'
 
 /**
  * The frontend renders on request instead of being prerendered at build time:
@@ -25,38 +36,54 @@ import { getServerSideURL } from '@/utilities/getURL'
  * - feature flags and the public URL come from the container env at runtime.
  * Published content is cached in the Next data cache (unstable_cache + tags) and
  * invalidated by the Payload hooks, so most requests don't hit MongoDB.
+ *
+ * The locale comes from src/proxy.ts (a request header): this layout sits above the
+ * [locale] segment because it also wraps the feature-module routes.
  */
 export const dynamic = 'force-dynamic'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const [{ isEnabled }, settings] = await Promise.all([draftMode(), getSiteSettings()])
+  const [{ isEnabled }, { locale, pathname }] = await Promise.all([draftMode(), requestLocale()])
+  const [settings, alternates] = await Promise.all([
+    getSiteSettings(locale),
+    getAlternates(pathname),
+  ])
+  const t = ui(locale)
 
   const content = (
     <>
-      <AdminBar
-        adminBarProps={{
-          preview: isEnabled,
-        }}
-      />
-
-      <Header />
-      {children}
-      <Footer />
+      <AdminBar adminBarProps={{ preview: isEnabled }} />
+      <a
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-card focus:px-4 focus:py-2"
+        href="#main"
+      >
+        {t.skipToContent}
+      </a>
+      <Header alternates={alternates} locale={locale} />
+      <main className="flex-1" id="main">
+        {children}
+      </main>
+      <Footer locale={locale} />
+      <MobileActionBar locale={locale} />
+      <LazyToaster />
+      <Analytics websiteId={runtimeEnv('UMAMI_WEBSITE_ID')} />
     </>
   )
 
   return (
-    <html className={cn(fontVariables)} lang="nl-BE" suppressHydrationWarning>
+    <html className={cn(fontVariables)} id="top" lang={htmlLang(locale)} suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/apple-icon.png" rel="apple-touch-icon" />
       </head>
       <body>
-        <LocalBusinessJsonLd settings={settings} />
+        <SiteJsonLd locale={locale} settings={settings} />
         <Providers>
-          {/* The cart provider only exists when the webshop is enabled. */}
-          {features.ecommerce ? <ShopProvider>{content}</ShopProvider> : content}
+          <LocaleProvider locale={locale} messages={pickClientMessages(getMessages(locale))}>
+            {features.ecommerce ? <ShopProvider>{content}</ShopProvider> : content}
+          </LocaleProvider>
         </Providers>
       </body>
     </html>
@@ -64,16 +91,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSiteSettings()
-  const siteName = settings?.businessName || undefined
+  const { locale } = await requestLocale()
+  const settings = await getSiteSettings(locale)
+  const siteName = settings?.personName || settings?.businessName || undefined
   const noIndex = Boolean(settings?.technical?.noIndex)
 
   return {
     metadataBase: new URL(getServerSideURL()),
-    openGraph: mergeOpenGraph({ siteName }),
+    openGraph: mergeOpenGraph({ siteName, locale: locale === 'nl-BE' ? 'nl_BE' : 'en_GB' }),
     robots: noIndex ? { index: false, follow: false } : undefined,
-    twitter: {
-      card: 'summary_large_image',
-    },
+    twitter: { card: 'summary_large_image' },
   }
 }

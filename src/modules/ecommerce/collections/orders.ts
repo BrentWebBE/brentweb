@@ -18,7 +18,12 @@ const refundOnlyByAdmin = (field: Field): Field => {
   const original = field.validate as SelectFieldSingleValidation | undefined
   const validate: SelectFieldSingleValidation = (value, options) => {
     const previous = (options as { previousValue?: unknown }).previousValue
-    if (value === 'refunded' && previous !== 'refunded' && options.req.user && !isAdminUser(options.req.user)) {
+    if (
+      value === 'refunded' &&
+      previous !== 'refunded' &&
+      options.req.user &&
+      !isAdminUser(options.req.user)
+    ) {
       return 'Enkel een beheerder kan een bestelling als terugbetaald markeren.'
     }
     return original ? original(value, options) : true
@@ -44,7 +49,10 @@ export const ordersCollectionOverride: CollectionOverride = ({ defaultCollection
       index: true,
       admin: { position: 'sidebar', readOnly: true },
       hooks: {
-        beforeValidate: [({ value, operation }) => (operation === 'create' && !value ? generateOrderNumber() : value)],
+        beforeValidate: [
+          ({ value, operation }) =>
+            operation === 'create' && !value ? generateOrderNumber() : value,
+        ],
       },
     },
     {

@@ -1,43 +1,52 @@
-import { cn } from '@/utilities/ui'
 import React from 'react'
-import RichText from '@/components/RichText'
 
 import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
-import { CMSLink } from '../../components/Link'
+import { CMSLink } from '@/components/Link'
+import RichText from '@/components/RichText'
+import type { Locale } from '@/lib/locales'
+import { fillPricesInRichText } from '@/lib/fillPricesInRichText'
+import { cn } from '@/utilities/ui'
 
-export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns } = props
+const SPAN = {
+  full: 'lg:col-span-12',
+  half: 'lg:col-span-6',
+  oneThird: 'lg:col-span-4',
+  twoThirds: 'lg:col-span-8',
+}
 
-  const colsSpanClasses = {
-    full: '12',
-    half: '6',
-    oneThird: '4',
-    twoThirds: '8',
-  }
+/**
+ * Plain written content. A single full-width column reads as a letter (narrow measure);
+ * several columns sit side by side.
+ */
+export function ContentBlock({ columns, locale }: ContentBlockProps & { locale: Locale }) {
+  if (!columns?.length) return null
+  const single = columns.length === 1 && (columns[0]?.size ?? 'full') === 'full'
 
   return (
-    <div className="container my-16">
-      <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
-        {columns &&
-          columns.length > 0 &&
-          columns.map((col, index) => {
-            const { enableLink, link, richText, size } = col
-
-            return (
-              <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
-                key={index}
-              >
-                {richText && <RichText data={richText} enableGutter={false} />}
-
-                {enableLink && <CMSLink {...link} />}
-              </div>
-            )
-          })}
+    <section className="section">
+      <div
+        className={
+          single
+            ? 'container-prose'
+            : 'container grid grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-12'
+        }
+      >
+        {columns.map((col, i) => (
+          <div className={cn(!single && SPAN[col.size ?? 'full'])} key={col.id ?? i}>
+            {col.richText && (
+              <RichText
+                data={fillPricesInRichText(col.richText, locale)}
+                enableGutter={false}
+                locale={locale}
+              />
+            )}
+            {col.enableLink && col.link && (
+              <CMSLink {...col.link} appearance="arrow" className="mt-4" locale={locale} />
+            )}
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   )
 }

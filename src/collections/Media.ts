@@ -32,6 +32,7 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
       label: l('Alternatieve tekst', 'Alt text'),
+      localized: true,
       required: true,
       admin: {
         description: l(
@@ -44,6 +45,7 @@ export const Media: CollectionConfig = {
       name: 'caption',
       type: 'richText',
       label: l('Bijschrift', 'Caption'),
+      localized: true,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
