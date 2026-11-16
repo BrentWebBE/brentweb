@@ -14,15 +14,15 @@ import type { AiAnalysis, EstimateInput } from '@/lib/schemas/lead'
 /**
  * The site's paper palette as hex: @react-pdf renders outside a CSS engine and can't
  * read the theme's custom properties. Mirrors the light tokens in
- * src/client/theme.css (converted from oklch); update both together.
+ * src/client/tokens.css (converted from oklch); update both together.
  */
 const BRAND_COLORS = {
-  primary: '#c22826', // --primary
-  foreground: '#291f19', // --foreground
-  mutedForeground: '#5b5048', // --muted-foreground
-  border: '#d4c9b9', // --border
-  muted: '#f1eadf', // --muted
-  accent: '#f6e281', // --accent (highlighter)
+  primary: '#be111e', // --color-accent
+  foreground: '#191211', // --color-ink
+  mutedForeground: '#5f5655', // --color-muted
+  border: '#ded7d6', // --color-rule
+  muted: '#f6f1f0', // --color-paper-2
+  accent: '#ede6e5', // --color-paper-3
 } as const
 
 const styles = StyleSheet.create({

@@ -19,7 +19,7 @@
 const VIEW_BOX = '235 324 625 120'
 
 /** Brand red, as authored in public/logo.svg. */
-const ACCENT = '#eb4a4c'
+const ACCENT = 'var(--color-brand)'
 
 type Tone = 'mark' | 'accent' | 'slogan'
 
@@ -93,7 +93,7 @@ export function Wordmark({ className }: { className?: string }) {
       viewBox={VIEW_BOX}
       className={className}
       role="img"
-      aria-label="Brent Schoenmakers"
+      aria-label="BrentWeb"
       xmlns="http://www.w3.org/2000/svg"
     >
       {PATHS.map(({ d, tone }) => (

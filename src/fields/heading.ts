@@ -38,6 +38,6 @@ export const introField = (overrides: Partial<TextareaField> = {}): TextareaFiel
 
 /** Price placeholders the frontend fills in from the estimator's pricing table. */
 export const PRICE_HELP = l(
-  'Prijzen typ je niet zelf: gebruik {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} of …WeeksMin / …WeeksMax. Die komen uit de kostenraming, zodat ze overal kloppen.',
-  "Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.",
+  'Prijzen typ je niet zelf: gebruik {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} of …WeeksMin / …WeeksMax. Die komen uit de kostenraming, zodat ze overal kloppen.',
+  "Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.",
 )

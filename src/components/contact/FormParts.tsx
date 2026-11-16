@@ -75,7 +75,7 @@ export function ConsentCheckbox({
       <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed">
         <input
           type="checkbox"
-          className="mt-1 size-5 shrink-0 cursor-pointer accent-[var(--primary)]"
+          className="mt-1 size-5 shrink-0 cursor-pointer accent-[var(--color-accent)]"
           {...input}
         />
         <span>

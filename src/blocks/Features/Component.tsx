@@ -8,10 +8,13 @@ import type { Locale } from '@/lib/locales'
 import { fillPrices } from '@/lib/prices'
 import { cn } from '@/utilities/ui'
 
+/**
+ * Short facts in three looks: ticks (a list), compact (a row of facts under hairlines)
+ * and cards (two columns of titled notes). `background` puts the block in a tinted well.
+ */
 export function FeaturesBlock({
   background,
   enableLink,
-  eyebrow,
   heading,
   intro,
   items,
@@ -20,50 +23,70 @@ export function FeaturesBlock({
   style,
 }: Props & { locale: Locale }) {
   const list = items ?? []
+  const content =
+    style === 'ticks' ? (
+      <ul className="list-ticks max-w-[68ch]">
+        {list.map((item, i) => (
+          <li key={item.id ?? i}>
+            {item.title && <strong className="font-medium">{item.title}. </strong>}
+            {item.body && fillPrices(item.body, locale)}
+          </li>
+        ))}
+      </ul>
+    ) : style === 'compact' ? (
+      <dl className="grid gap-x-[var(--gap-columns)] gap-y-[var(--space-xl)] sm:grid-cols-2 lg:grid-cols-4">
+        {list.map((item, i) => (
+          <div
+            className="border-t border-[var(--color-rule)] pt-[var(--space-md)]"
+            key={item.id ?? i}
+          >
+            {item.title && <dt className="font-medium">{item.title}</dt>}
+            {item.body && (
+              <dd className="mt-[var(--space-2xs)] text-[var(--color-ink-2)]">
+                {fillPrices(item.body, locale)}
+              </dd>
+            )}
+          </div>
+        ))}
+      </dl>
+    ) : (
+      <dl
+        className={cn(
+          'grid gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)] md:grid-cols-2',
+          list.length % 3 === 0 && 'lg:grid-cols-3',
+        )}
+      >
+        {list.map((item, i) => (
+          <div
+            className="border-t border-[var(--color-rule)] pt-[var(--space-md)]"
+            key={item.id ?? i}
+          >
+            {item.title && <dt className="h-title mb-[var(--space-xs)]">{item.title}</dt>}
+            {item.body && (
+              <dd className="text-[var(--color-ink-2)]">{fillPrices(item.body, locale)}</dd>
+            )}
+          </div>
+        ))}
+      </dl>
+    )
 
   return (
-    <section className={cn('section', background && 'kraft my-8')}>
-      <div className={cn('container', background && 'py-6')}>
-        <SectionHeading eyebrow={eyebrow} heading={heading} intro={intro} locale={locale} />
-
-        {style === 'ticks' ? (
-          <ul className="list-ticks max-w-3xl text-lg">
-            {list.map((item, i) => (
-              <li key={item.id ?? i}>
-                {item.title && <strong className="font-semibold">{item.title}. </strong>}
-                {item.body && fillPrices(item.body, locale)}
-              </li>
-            ))}
-          </ul>
-        ) : style === 'compact' ? (
-          <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-            {list.map((item, i) => (
-              <div className="border-l-2 border-dashed border-primary/50 pl-4" key={item.id ?? i}>
-                {item.title && <dt className="font-heading text-xl">{item.title}</dt>}
-                {item.body && (
-                  <dd className="mt-1 text-muted-foreground">{fillPrices(item.body, locale)}</dd>
-                )}
-              </div>
-            ))}
-          </dl>
-        ) : (
-          <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {list.map((item, i) => (
-              <li className="paper-card p-6" key={item.id ?? i}>
-                {item.title && <h3 className="display-3 mb-2">{item.title}</h3>}
-                {item.body && (
-                  <p className="text-muted-foreground">{fillPrices(item.body, locale)}</p>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {enableLink && link && (
-          <div className="mt-10">
-            <CMSLink {...link} appearance="arrow" locale={locale} />
-          </div>
-        )}
+    <section className="section">
+      <div className={cn('container', background && 'py-0')}>
+        <div
+          className={cn(
+            background &&
+              'well px-[var(--space-lg)] py-[var(--space-2xl)] md:px-[var(--space-2xl)]',
+          )}
+        >
+          <SectionHeading heading={heading} intro={intro} locale={locale} />
+          {content}
+          {enableLink && link && (
+            <div className="mt-[var(--space-xl)]">
+              <CMSLink {...link} appearance="link" locale={locale} />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

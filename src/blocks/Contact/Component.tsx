@@ -4,20 +4,17 @@ import type { ContactBlock as Props } from '@/payload-types'
 
 import { LazyContactForm } from '@/components/contact/LazyContactForm'
 import { MapFacade } from '@/components/contact/MapFacade'
-import { Note } from '@/components/handmade/Note'
 import { SectionHeading } from '@/components/handmade/SectionHeading'
 import type { Locale } from '@/lib/locales'
 import { ui } from '@/lib/ui-strings'
-import { runtimeEnv } from '@/utilities/runtimeEnv'
 import { getSiteSettings } from '@/utilities/getSiteSettings'
+import { runtimeEnv } from '@/utilities/runtimeEnv'
 
 /**
- * The contact section: who you're talking to and how to reach me on the left, the
- * form on a sheet of paper on the right. Always anchored at #contact, so pain-point
- * links and CTAs can jump here.
+ * Contact: how to reach me on the left (phone first: for many owners a call is easier
+ * than a form), the form on the right. Always at #contact.
  */
 export async function ContactBlock({
-  eyebrow,
   formNote,
   heading,
   intro,
@@ -31,40 +28,36 @@ export async function ContactBlock({
   const tel = settings?.phone?.replace(/[^\d+]/g, '')
 
   return (
-    <section className="section scroll-mt-24" id="contact">
-      <div className="container grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+    <section className="section-l scroll-mt-[var(--nav-height)]" id="contact">
+      <div className="container grid gap-[var(--space-2xl)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-[var(--space-3xl)]">
         <div>
-          <SectionHeading eyebrow={eyebrow} heading={heading} intro={intro} locale={locale} />
-
-          <dl className="grid gap-5">
+          <SectionHeading heading={heading} intro={intro} locale={locale} />
+          <dl className="grid gap-[var(--space-lg)] border-t border-[var(--color-rule)] pt-[var(--space-lg)]">
             {settings?.phone && (
               <div>
-                <dt className="hand text-xl text-muted-foreground">{t.phone}</dt>
-                <dd>
-                  <a className="link-hand text-lg font-semibold" href={`tel:${tel}`}>
+                <dt className="small">{t.phone}</dt>
+                <dd className="mt-[var(--space-3xs)] flex flex-wrap gap-x-[var(--space-lg)]">
+                  <a className="link text-[length:var(--text-xl)] font-bold" href={`tel:${tel}`}>
                     {settings.phone}
                   </a>
                   {settings.whatsapp && (
-                    <>
-                      {' · '}
-                      <a
-                        className="link-hand text-lg"
-                        href={settings.whatsapp}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        {t.whatsapp}
-                      </a>
-                    </>
+                    <a
+                      className="link self-center"
+                      href={settings.whatsapp}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {t.whatsapp}
+                    </a>
                   )}
                 </dd>
               </div>
             )}
             {settings?.email && (
               <div>
-                <dt className="hand text-xl text-muted-foreground">{t.email}</dt>
-                <dd>
-                  <a className="link-hand text-lg" href={`mailto:${settings.email}`}>
+                <dt className="small">{t.email}</dt>
+                <dd className="mt-[var(--space-3xs)]">
+                  <a className="link" href={`mailto:${settings.email}`}>
                     {settings.email}
                   </a>
                 </dd>
@@ -72,45 +65,28 @@ export async function ContactBlock({
             )}
             {settings?.availability && (
               <div>
-                <dt className="sr-only">Status</dt>
-                <dd className="flex items-center gap-2">
-                  <span
-                    aria-hidden="true"
-                    className={
-                      settings.availability === 'open'
-                        ? 'size-2.5 rounded-full bg-success'
-                        : settings.availability === 'limited'
-                          ? 'size-2.5 rounded-full bg-warning'
-                          : 'size-2.5 rounded-full bg-error'
-                    }
-                  />
-                  {t.availability[settings.availability]}
-                </dd>
+                <dt className="small">Status</dt>
+                <dd className="mt-[var(--space-3xs)]">{t.availability[settings.availability]}</dd>
               </div>
             )}
           </dl>
-
           {settings?.replyNote && (
-            <p className="mt-6 max-w-md text-muted-foreground">{settings.replyNote}</p>
+            <p className="mt-[var(--space-lg)] max-w-[52ch] text-[var(--color-ink-2)]">
+              {settings.replyNote}
+            </p>
           )}
-
           {showMap && locations.length > 0 && (
-            <div className="mt-8">
+            <div className="mt-[var(--space-xl)]">
               <MapFacade googleMapsKey={runtimeEnv('GOOGLE_MAPS_API_KEY')} locations={locations} />
             </div>
           )}
         </div>
 
-        <div className="relative">
-          <Note arrow="down" className="absolute -top-10 right-4 hidden md:inline-flex" tilt={4}>
-            {locale === 'nl-BE' ? 'ik lees alles zelf' : 'I read every one myself'}
-          </Note>
-          <div className="paper-sheet p-6 md:p-9">
-            <LazyContactForm
-              formNote={formNote ?? undefined}
-              messagePlaceholder={messagePlaceholder ?? undefined}
-            />
-          </div>
+        <div className="card self-start p-[var(--space-lg)] md:p-[var(--space-xl)]">
+          <LazyContactForm
+            formNote={formNote ?? undefined}
+            messagePlaceholder={messagePlaceholder ?? undefined}
+          />
         </div>
       </div>
     </section>

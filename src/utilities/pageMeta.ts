@@ -35,7 +35,8 @@ export async function pageMetadata({
   path: string
 }): Promise<Metadata> {
   const settings = await getSiteSettings(locale)
-  const siteName = settings?.personName || settings?.businessName || ''
+  // The brand, BrentWeb, in titles and og:site_name; the person is in the Person JSON-LD.
+  const siteName = settings?.businessName || settings?.personName || ''
   const rawTitle = doc.meta?.title || [plainText(doc.title), siteName].filter(Boolean).join(' | ')
   const title = fillPrices(rawTitle, locale)
   const desc = fillPrices(doc.meta?.description || description || '', locale) || undefined

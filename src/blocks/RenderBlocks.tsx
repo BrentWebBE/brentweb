@@ -29,10 +29,16 @@ import { ProductGridBlock } from '@/modules/ecommerce/blocks/ProductGrid/Compone
 type LayoutBlock = Page['layout'][number]
 
 /** Each block pads itself (`.section`), so backgrounds can fill their whole band. */
-const renderBlock = (block: LayoutBlock, locale: Locale): React.ReactNode => {
+const renderBlock = (block: LayoutBlock, locale: Locale, next?: LayoutBlock): React.ReactNode => {
   switch (block.blockType) {
     case 'hero':
-      return <HeroBlock {...block} locale={locale} />
+      return (
+        <HeroBlock
+          {...block}
+          locale={locale}
+          nextIsShowcase={next?.blockType === 'projects' && next.layout === 'showcase'}
+        />
+      )
     case 'painPoints':
       return <PainPointsBlock {...block} locale={locale} />
     case 'services':
@@ -92,7 +98,7 @@ export const RenderBlocks: React.FC<{ blocks: Page['layout']; locale: Locale }> 
   return (
     <>
       {blocks.map((block, index) => (
-        <Fragment key={block.id ?? index}>{renderBlock(block, locale)}</Fragment>
+        <Fragment key={block.id ?? index}>{renderBlock(block, locale, blocks[index + 1])}</Fragment>
       ))}
     </>
   )

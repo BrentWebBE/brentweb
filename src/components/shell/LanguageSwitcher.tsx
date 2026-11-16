@@ -23,24 +23,27 @@ export function LanguageSwitcher({
   locale: Locale
 }) {
   return (
-    <nav
-      aria-label={label}
-      className="flex items-center rounded-full border border-border px-1 text-sm"
-    >
+    <nav aria-label={label} className="flex items-center text-[length:var(--text-sm)]">
       {locales.map((l, i) => (
         <React.Fragment key={l}>
           {i > 0 && (
-            <span aria-hidden="true" className="text-muted-foreground/60">
+            <span aria-hidden="true" className="text-[var(--color-rule)]">
               /
             </span>
           )}
           {l === locale ? (
-            <span aria-current="true" className="px-2 py-1 font-semibold" lang={l}>
+            <span
+              aria-current="true"
+              className="inline-flex min-h-[44px] items-center px-[var(--space-xs)] font-medium text-[var(--color-ink)]"
+              lang={l}
+            >
               {SHORT[l]}
             </span>
           ) : (
             <Link
-              className={cn('px-2 py-1 text-muted-foreground hover:text-foreground')}
+              className={cn(
+                'inline-flex min-h-[44px] items-center px-[var(--space-xs)] text-[var(--color-muted)] hover:text-[var(--color-ink)]',
+              )}
               href={alternates[l] ?? homeHref(l)}
               hrefLang={l}
               lang={l}

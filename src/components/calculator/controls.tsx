@@ -60,10 +60,10 @@ export function OptionCard({
       aria-checked={role === 'radio' ? selected : undefined}
       aria-pressed={role === 'radio' ? undefined : selected}
       className={cn(
-        'group flex h-full flex-col gap-1.5 rounded-[12px_18px_14px_16px] border-[1.5px] bg-card p-4 text-left transition-[transform,box-shadow,border-color,background-color] duration-150',
+        'group flex h-full flex-col gap-1.5 rounded-[var(--radius-card)] border bg-[var(--color-paper)] p-4 text-left transition-[border-color,background-color,box-shadow] duration-[var(--dur-short)]',
         selected
-          ? 'border-foreground bg-[color-mix(in_oklch,var(--accent)_28%,var(--card))] shadow-[3px_4px_0_var(--shadow-ink)]'
-          : 'border-border hover:-rotate-[0.4deg] hover:border-foreground',
+          ? 'border-[var(--color-accent)] bg-[var(--color-paper-2)] shadow-[inset_0_0_0_1px_var(--color-accent)]'
+          : 'border-[var(--color-rule)] hover:border-[var(--color-ink-2)]',
       )}
       onClick={onClick}
     >
@@ -74,7 +74,11 @@ export function OptionCard({
       {description && (
         <span className="text-sm leading-relaxed text-muted-foreground">{description}</span>
       )}
-      {aside && <span className="hand mt-auto pt-1 text-xl text-primary">{aside}</span>}
+      {aside && (
+        <span className="figure mt-auto pt-1 text-sm font-medium text-[var(--color-accent)]">
+          {aside}
+        </span>
+      )}
     </button>
   )
 }
@@ -142,7 +146,7 @@ export function Stepper({
   const id = useId()
   const set = (next: number) => onChange(Math.min(max, Math.max(min, Math.round(next) || min)))
   const buttonClass =
-    'grid size-11 place-items-center rounded-[10px_14px_12px_9px] border-[1.5px] border-foreground bg-card text-xl font-semibold transition-transform hover:-rotate-3 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:rotate-0'
+    'grid size-11 place-items-center rounded-[var(--radius-control)] border border-[var(--color-field-edge)] bg-[var(--color-paper)] text-lg font-medium transition-colors duration-[var(--dur-short)] hover:border-[var(--color-ink)] disabled:cursor-not-allowed disabled:opacity-55'
 
   return (
     <div>
@@ -220,10 +224,10 @@ export function StepNav({
   return (
     <>
       <button type="button" className="btn btn-ghost" onClick={onBack}>
-        ← {backLabel}
+        {backLabel}
       </button>
       <button type="button" className="btn btn-primary" onClick={onNext}>
-        {nextLabel} →
+        {nextLabel}
       </button>
     </>
   )

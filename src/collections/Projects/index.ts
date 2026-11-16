@@ -17,6 +17,7 @@ import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { l } from '@/utilities/label'
 
+import { queueScreenshot } from './hooks/queueScreenshot'
 import { revalidateProject, revalidateProjectDelete } from './hooks/revalidateProject'
 
 /**
@@ -46,6 +47,8 @@ export const Projects: CollectionConfig<'projects'> = {
     abstract: true,
     technical: { tags: true },
     cover: true,
+    screenshot: true,
+    screenshotMobile: true,
     liveUrl: true,
   },
   defaultSort: 'order',
@@ -128,6 +131,49 @@ export const Projects: CollectionConfig<'projects'> = {
                   relationTo: 'media',
                   label: l('Screenshot op gsm (optioneel)', 'Phone screenshot (optional)'),
                   admin: { width: '50%' },
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: l('Live screenshot (automatisch)', 'Live screenshot (automatic)'),
+              admin: {
+                description: l(
+                  'Wekelijks en bij een nieuwe live-URL maakt de site zelf een screenshot van de volledige pagina. Die scrolt vanzelf op de site.',
+                  'Weekly, and whenever the live URL changes, the site takes a full-page screenshot itself. It scrolls by itself on the site.',
+                ),
+              },
+              fields: [
+                {
+                  name: 'autoScreenshot',
+                  type: 'checkbox',
+                  label: l('Automatisch bijhouden', 'Keep up to date automatically'),
+                  defaultValue: true,
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'screenshot',
+                      type: 'upload',
+                      relationTo: 'screenshots',
+                      label: l('Volledige pagina (desktop)', 'Full page (desktop)'),
+                      admin: { width: '50%', readOnly: true },
+                    },
+                    {
+                      name: 'screenshotMobile',
+                      type: 'upload',
+                      relationTo: 'screenshots',
+                      label: l('Volledige pagina (gsm)', 'Full page (phone)'),
+                      admin: { width: '50%', readOnly: true },
+                    },
+                  ],
+                },
+                {
+                  name: 'screenshotAt',
+                  type: 'date',
+                  label: l('Laatst bijgewerkt', 'Last updated'),
+                  admin: { readOnly: true, date: { pickerAppearance: 'dayAndTime' } },
                 },
               ],
             },
@@ -266,7 +312,7 @@ export const Projects: CollectionConfig<'projects'> = {
     slugField({ position: 'sidebar' }),
   ],
   hooks: {
-    afterChange: [revalidateProject],
+    afterChange: [revalidateProject, queueScreenshot],
     beforeChange: [populatePublishedAt],
     afterDelete: [revalidateProjectDelete],
   },

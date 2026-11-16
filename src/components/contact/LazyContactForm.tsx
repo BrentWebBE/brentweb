@@ -1,6 +1,8 @@
 'use client'
 
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { useTranslations } from '@/hooks/useTranslations'
+
 import type { ContactFormProps } from './ContactForm'
 
 const ContactForm = lazy(() => import('./ContactForm'))
@@ -15,6 +17,7 @@ const PREFILL_PARAM = 'probleem'
  * jump when it arrives. Takes the same props as ContactForm.
  */
 export function LazyContactForm(props: ContactFormProps) {
+  const { t } = useTranslations()
   const slot = useRef<HTMLDivElement>(null)
   const [load, setLoad] = useState(false)
 
@@ -42,7 +45,13 @@ export function LazyContactForm(props: ContactFormProps) {
     return () => observer.disconnect()
   }, [])
 
-  const placeholder = <div aria-hidden className="min-h-[38rem]" />
+  // Not an empty box: if the script is slow or fails, the visitor still sees how to reach me.
+  const placeholder = (
+    <div className="grid min-h-[38rem] content-start gap-[var(--space-xs)]">
+      <p className="font-medium">{t('contact.form.loading')}</p>
+      <p className="small">{t('contact.form.loadingAlt')}</p>
+    </div>
+  )
 
   return (
     <div ref={slot}>

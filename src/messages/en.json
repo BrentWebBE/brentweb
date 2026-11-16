@@ -8,7 +8,7 @@
     "blog": "Blog",
     "contact": "Contact",
     "business": "Business",
-    "tech": "Engineering",
+    "tech": "For developers",
     "backToGateway": "Back to the homepage",
     "lab": "Lab",
     "process": "Process",
@@ -22,15 +22,16 @@
     "title": "Full-stack development for growing businesses",
     "tagline": "Websites, internal tools and small integrations, built by one person in Belgium.",
     "location": "Blankenberge & Geel, Belgium",
-    "featuredProject": "Carrosserie Kris",
-    "featured": "Featured",
+    "featuredProject": "Carrosserie Kris, Grobbendonk",
+    "featured": "Recent work",
     "business": {
-      "badge": "FREELANCE DEVELOPER, BELGIUM",
+      "badge": "WEB DEVELOPER FROM GEEL · CYBERSECURITY STUDENT IN BRUGES",
       "title": "Software that ends the manual work.",
       "tagline": "Websites, internal tools and integrations for freelancers and small businesses.",
       "getInTouch": "What does it cost?",
       "imageAlt": "The Carrosserie Kris website, showing the workshop and repair services",
-      "metaTitle": "Websites and custom software in Belgium | Brent Schoenmakers",
+      "phoneImageAlt": "The Carrosserie Kris website on a phone",
+      "metaTitle": "Websites and custom software in Belgium | BrentWeb",
       "metaDescription": "Freelance web developer in Geel and Blankenberge, Belgium: websites, web apps and integrations for small businesses. Fixed price; a website costs {websiteRange}.",
       "bookCall": "Book a free 30-minute call",
       "trust": {
@@ -71,8 +72,8 @@
     "annotation": "← This is me",
     "experience": "Coding since 2019, client work since 2021",
     "business": {
-      "description1": "I'm Brent Schoenmakers, a freelance web developer based in Geel and Blankenberge. I build websites and internal tools for self-employed people and small businesses across Flanders.",
-      "description2": "No account manager and no junior: the person you email writes the code, and is still around when something needs changing.",
+      "description1": "I'm Brent Schoenmakers. I've been programming since I was eleven, and I built my first real website in 2021 for Carrosserie Kris in Grobbendonk, my parents' business. I still maintain it.",
+      "description2": "For my final-year project at ProvilION I built a network security system for schools. In 2026 the mayor of Lommel gave me ProvilION's \"Meest verdienstelijke leerling\" (most meritorious student) award. I now study cybersecurity at Howest in Bruges, which is why I live in Blankenberge. You email or call me, and I write the code. I build with what I know and can maintain myself, because fewer moving parts means less that can break.",
       "title": "The person who will actually build it"
     },
     "tech": {
@@ -191,7 +192,7 @@
   },
   "proof": {
     "badge": "WORK",
-    "title": "Still running in production.",
+    "title": "Recent work",
     "readCaseStudy": "Read the case study"
   },
   "projects": {
@@ -215,13 +216,17 @@
         "status": "maintained",
         "sector": "Client Web Presence",
         "period": "2021 - PRESENT",
-        "abstract": "Local body shop website iterated on continuously since 2021 - performance, SEO, and conversion improvements shipped across a four-year client relationship.",
+        "abstract": "Website for a body shop in Grobbendonk that I have built and run since 2021: speed, findability on Google and a contact form that no longer loses requests.",
         "business": {
-          "summary": "A long-term retainer relationship, not a one-off build. The site is the shop's primary lead channel: fast, findable on Google, and with contact forms that reliably convert visits into quote requests.",
+          "summary": "Since 2021 I have built and maintained the website of this body shop in Grobbendonk. The site is one of the business's main channels: fast, findable on Google, and with a contact form that brings requests straight to the shop.",
           "metrics": [
             {
               "value": "Since 2021",
               "label": "Ongoing partnership"
+            },
+            {
+              "value": "#2",
+              "label": "On Google for \"carrosserie Grobbendonk\", November 2026"
             }
           ],
           "highlights": [
@@ -229,8 +234,8 @@
             "Designed for the phone first"
           ],
           "outcomes": [
-            "Steady inbound quote requests through the website",
-            "Iterative SEO work compounding since 2021",
+            "Quote requests come in directly through the website",
+            "Ongoing work on Google findability since 2021",
             "Client trusts one partner for updates and maintenance"
           ]
         },
@@ -260,9 +265,9 @@
         "status": "maintained",
         "sector": "Client Web Presence",
         "period": "2026 - PRESENT",
-        "abstract": "New website for a full-service garage and tyre centre in Grobbendonk: maintenance, wheel alignment and ADAS calibration, tyres and key service on one fast page. I host and maintain the site.",
+        "abstract": "Logo, website and social media for a full-service garage and tyre centre in Grobbendonk: maintenance, wheel alignment and ADAS calibration, tyres and key service on one fast page. I host and maintain the site.",
         "business": {
-          "summary": "A new website to replace the old one: every service the garage offers, from tyres and rims to ADAS calibration and key service, laid out clearly on one page, with a contact form that sends the car's details straight away. I have hosted and maintained the site since it launched in 2026.",
+          "summary": "A new logo, a new website and social media in the same style. The site shows every service the garage offers, from tyres and rims to ADAS calibration and key service, laid out clearly on one page, with a contact form that sends the car's details straight away. I have hosted and maintained the site since it launched in 2026.",
           "metrics": [
             {
               "value": "2026",
@@ -401,7 +406,7 @@
         "status": "decommissioned",
         "sector": "Hospitality Web",
         "period": "2022 - 2024",
-        "abstract": "Clean, minimal website for a local sandwich shop: menu display, opening hours, mobile-first. Retired when the business closed its doors.",
+        "abstract": "Clean, minimal website for a sandwich shop in Olen: menu display, opening hours, mobile-first. Retired when the business closed its doors.",
         "business": {
           "summary": "A small business got online fast and affordably. The site did one job - show the menu and get people through the door - and did it without ongoing complexity or cost.",
           "metrics": [],
@@ -430,6 +435,7 @@
     "map": {
       "close": "Close",
       "liveLink": "View live site",
+      "archiveLink": "View the archived version",
       "readCaseStudy": "Read the full case study",
       "sourceLink": "View code",
       "status": {
@@ -461,7 +467,7 @@
       },
       "4": {
         "title": "Going live",
-        "body": "Setup, migration and a short walkthrough."
+        "body": "Setup, migration, and I come by to explain and show you everything."
       },
       "5": {
         "title": "After",
@@ -506,14 +512,17 @@
         "not-sure": "No idea yet"
       },
       "website": "Your business website (optional)",
-      "websitePlaceholder": "www.yourbusiness.be"
+      "websitePlaceholder": "www.yourbusiness.be",
+      "loading": "Loading the form…",
+      "loadingAlt": "Not loading? Call or email me directly; the details are right beside this."
     },
     "location": "Location",
     "phone": "Phone",
     "whatsapp": "WhatsApp",
     "whatsappValue": "Send a message",
-    "phoneNote": "I reply within a day or two. I study alongside the business, so I can't always pick up the phone; a WhatsApp message or the form always reaches me.",
+    "phoneNote": "Calls usually work between 1 pm and 7 pm. I study alongside the business, so outside those hours I can't always pick up; a WhatsApp message or the form always reaches me, and I reply within a day or two.",
     "locationValue": "Blankenberge & Geel, Belgium",
+    "visitNote": "I also come to you, to explain things in person and give a demo.",
     "status": "Legal status",
     "statusValue": "Self-employed student (student-zelfstandige)",
     "kbo": "Enterprise number (KBO)",
@@ -524,11 +533,13 @@
     },
     "socialsLabel": "Elsewhere",
     "map": {
-      "showGoogle": "Show maps (loads Google Maps)",
-      "showOsm": "Show maps (loads OpenStreetMap)",
+      "showGoogle": "Show the map",
+      "showOsm": "Show the map",
       "title": "Map of {place}",
       "error": "Google Maps didn't load, this is OpenStreetMap",
-      "places": "My two locations"
+      "places": "My two locations",
+      "loadsGoogle": "Loads Google Maps, only once you click.",
+      "loadsOsm": "Loads OpenStreetMap, only once you click."
     }
   },
   "cta": {
@@ -550,7 +561,7 @@
   "footer": {
     "nodesDiscovered": "Nodes discovered:",
     "annotation": "← Thanks for scrolling!",
-    "copyright": "© {year} Brent Schoenmakers.",
+    "copyright": "© {year} BrentWeb, Brent Schoenmakers.",
     "backToTop": "Back to top",
     "privacy": "Privacy Policy",
     "legalKbo": "Company no. (KBO)",
@@ -580,7 +591,8 @@
           "includes": [
             "A site built by hand in React and Next.js, not a template",
             "Works properly on phones, and fast enough to rank",
-            "Hosting, domain and SSL set up for you"
+            "Hosting, domain and SSL set up for you",
+            "Edit text, photos and opening hours yourself, with Payload"
           ]
         },
         "web_app": {
@@ -593,7 +605,7 @@
           ]
         },
         "api_integration": {
-          "label": "API Integration",
+          "label": "API integration",
           "description": "Connect payments, a CRM, or another service.",
           "includes": [
             "Third-party API integration (payments, CRM, etc.)",
@@ -665,7 +677,7 @@
       "scopeLabel": "Scope selected",
       "timelinePreferenceLabel": "Timeline preference",
       "includedLabel": "What's included",
-      "footer": "This is a rough estimate, not a fixed quote. Get in touch at brent@brentweb.eu to talk through the details.",
+      "footer": "This is a rough estimate, not a fixed quote. Get in touch at brent@brentweb.be to talk through the details.",
       "breakdownLabel": "Breakdown",
       "hoursLabel": "Estimated work",
       "hoursValue": "{hours} hours",
@@ -1060,7 +1072,7 @@
       {
         "title": "Introduction",
         "paragraphs": [
-          "This Privacy Policy explains how Brent Schoenmakers (\"I\", \"me\" or \"my\") collects, uses and protects your personal data when you visit this website (brentweb.be). I am the controller of this data and can be reached at brent@brentweb.eu."
+          "This Privacy Policy explains how Brent Schoenmakers, trading as BrentWeb (\"I\", \"me\" or \"my\") collects, uses and protects your personal data when you visit this website (brentweb.be). I am the controller of this data and can be reached at brent@brentweb.be."
         ],
         "list": []
       },
@@ -1212,6 +1224,14 @@
           {
             "label": "Google Maps and OpenStreetMap:",
             "text": "the map at the bottom of the contact section only loads after you click \"Show map\" yourself. Before that click the site makes no connection to Google or OpenStreetMap at all. After it, that service receives your IP address among other things, as with any website visit, and its own privacy policy applies."
+          },
+          {
+            "label": "Cloudflare:",
+            "text": "all traffic to brentweb.be passes through Cloudflare's network, which protects the site against attacks and abuse. To do that, Cloudflare processes technical data on every visit, such as your IP address. Cloudflare is an American company and may also process that data outside the EU; its own privacy policy applies."
+          },
+          {
+            "label": "Booking page (Nextcloud):",
+            "text": "if you pick a time through \"Book a call\", that happens in my own Nextcloud calendar at cloud.brentweb.be. I then receive your name, your email address, the time you chose and any note you add, and use them only to plan and hold the call."
           }
         ]
       },
@@ -1244,7 +1264,7 @@
           }
         ],
         "afterList": [
-          "To exercise these rights, email brent@brentweb.eu. I will respond within one month.",
+          "To exercise these rights, email brent@brentweb.be. I will respond within one month.",
           "If you are unhappy with how I handle your data, you can lodge a complaint with the Belgian Data Protection Authority, Rue de la Presse 35, 1000 Brussels (www.dataprotectionauthority.be)."
         ]
       },
@@ -1265,12 +1285,12 @@
       {
         "title": "Contact",
         "paragraphs": [
-          "If you have questions about this Privacy Policy, email brent@brentweb.eu."
+          "If you have questions about this Privacy Policy, email brent@brentweb.be."
         ],
         "list": []
       }
     ],
-    "lastUpdatedDate": "2026-10-29"
+    "lastUpdatedDate": "2026-11-03"
   },
   "errors": {
     "title": "Something broke.",
@@ -1278,7 +1298,7 @@
     "retry": "Try again",
     "backHome": "Back to start",
     "notFound": {
-      "metaTitle": "Page not found | Brent Schoenmakers",
+      "metaTitle": "Page not found | BrentWeb",
       "title": "This page doesn't exist (any more).",
       "description": "The link may be out of date, or the address may have a typo.",
       "oldDomain": "Did an old brentweb.eu link bring you here? The site moved to brentweb.be and not every old page still exists. What you were looking for is probably below.",
@@ -1310,6 +1330,7 @@
       }
     },
     "solveLink": "I want to fix this",
+    "caseLink": "How I handled that for {client}",
     "servicesTitle": "Or go straight to a service"
   },
   "pricing": {
@@ -1321,6 +1342,7 @@
     "ctaBody": "A few questions, and you get a price range and timeline, as a PDF too.",
     "cta": "Estimate my project",
     "note": "Once we agree on a price, it doesn't move.",
+    "maintenance": "Maintenance after launch is separate: {basic} a month for hosting, security updates, backups and monitoring, or {active} a month including up to two hours of changes.",
     "vatExempt": "Final prices: as a small business I'm exempt from VAT (art. 56bis Belgian VAT Code).",
     "vatExcluded": "Prices exclude 21% VAT."
   },
@@ -1617,6 +1639,7 @@
   "testimonials": {
     "title": "What clients say",
     "caseLink": "Read the case study",
+    "googleLink": "Read or write a review on Google",
     "items": {
       "carrosserieKris": {
         "context": "Client since 2021, my parents' family business"
@@ -1625,7 +1648,7 @@
         "context": ""
       },
       "leusch": {
-        "context": ""
+        "context": "Client since 2026, review on Google"
       }
     }
   },
@@ -1637,12 +1660,12 @@
     "techLink": "How I handle that technically",
     "items": {
       "updates": {
-        "title": "Updates",
-        "body": "Known security holes are closed before anyone can use them."
+        "title": "Updates every week or month",
+        "body": "I update the software every week or month, and straight away when a known security hole comes up."
       },
       "backups": {
-        "title": "Backups",
-        "body": "If something goes wrong, I restore a working version."
+        "title": "Daily backups",
+        "body": "A backup every day. If something goes wrong, I restore a working version."
       },
       "https": {
         "title": "HTTPS",
@@ -1650,7 +1673,7 @@
       },
       "monitoring": {
         "title": "24/7 monitoring",
-        "body": "If your site goes down, I'm alerted straight away."
+        "body": "A system watches your site day and night. If it goes down, I know within the day."
       }
     }
   },
@@ -1704,7 +1727,7 @@
           },
           {
             "slug": "banden-leusch",
-            "note": "Banden Leusch, also in Grobbendonk: a full-service garage and tyre centre. In 2026 I replaced their old website with a new one, which I have hosted and maintained since."
+            "note": "Banden Leusch, also in Grobbendonk: a full-service garage and tyre centre. In 2026 I made their new logo, their new website and their social media in the same style. I have hosted and maintained the site since."
           }
         ]
       },
@@ -1723,7 +1746,7 @@
           {
             "title": "For businesses in Blankenberge, Bruges and the area around them",
             "paragraphs": [
-              "I work from Blankenberge for businesses along this stretch of coast and just inland: Blankenberge, Zeebrugge, Wenduine, De Haan, Knokke-Heist and Bruges. Restaurants, accommodation, rentals and shops that depend on visitors, but also tradespeople and service businesses that work all year round."
+              "I live in Blankenberge and would like to take on my first projects on the coast, at the same fixed price as in the Kempen. I work for businesses along this stretch of coast and just inland: Blankenberge, Zeebrugge, Wenduine, De Haan, Knokke-Heist and Bruges. Restaurants, accommodation, rentals and shops that depend on visitors, but also tradespeople and service businesses that work all year round."
             ]
           },
           {

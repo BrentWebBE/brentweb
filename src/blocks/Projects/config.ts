@@ -62,7 +62,14 @@ export const ProjectsBlock: Block = {
       label: l('Weergave', 'Layout'),
       defaultValue: 'cards',
       options: [
-        { label: l('Grote kaarten met screenshot', 'Large cards with screenshot'), value: 'cards' },
+        {
+          label: l(
+            'Uitgelicht: live sites op een donkere band',
+            'Showcase: live sites on a dark band',
+          ),
+          value: 'showcase',
+        },
+        { label: l('Raster met live sites', 'Grid of live sites'), value: 'cards' },
         { label: l('Lijst met notities', 'List with notes'), value: 'list' },
       ],
     },

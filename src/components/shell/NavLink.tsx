@@ -6,7 +6,7 @@ import React from 'react'
 
 import { cn } from '@/utilities/ui'
 
-/** A nav item that gets a hand-drawn underline when it's the current section. */
+/** A nav link; the current section is ink with an underline, the rest a step quieter. */
 export function NavLink({
   children,
   className,
@@ -26,31 +26,14 @@ export function NavLink({
     <Link
       aria-current={active ? 'page' : undefined}
       className={cn(
-        'relative rounded-lg px-3 py-2 font-medium text-foreground/80 transition-colors hover:text-foreground',
-        active && 'text-foreground',
+        'inline-flex min-h-[44px] items-center whitespace-nowrap rounded-[var(--radius-control)] px-[var(--space-sm)] font-medium text-[var(--color-ink-2)] decoration-2 underline-offset-[0.5em] transition-colors duration-[var(--dur-short)] hover:text-[var(--color-ink)]',
+        active && 'text-[var(--color-ink)] underline decoration-[var(--color-accent)]',
         className,
       )}
       href={href}
       onClick={onNavigate}
     >
       {children}
-      {active && (
-        <svg
-          aria-hidden="true"
-          className="absolute inset-x-3 -bottom-0.5 h-2 text-primary"
-          preserveAspectRatio="none"
-          viewBox="0 0 100 8"
-        >
-          <path
-            d="M2 5.5C20 2.5 45 3 60 4s28 1.6 38-1"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeWidth="2.5"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-      )}
     </Link>
   )
 }

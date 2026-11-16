@@ -251,12 +251,6 @@ const ordered = (obj: Record<string, Any>) =>
     .sort((a, b) => Number(a) - Number(b))
     .map((k) => obj[k])
 
-/** `Software die het handwerk uit uw zaak haalt.` → mark one word or phrase. */
-const mark = (text: string, phrase: string, kind: 'scribble' | 'highlight' = 'scribble') =>
-  text.includes(phrase)
-    ? text.replace(phrase, kind === 'scribble' ? `_${phrase}_` : `==${phrase}==`)
-    : text
-
 /* ───────────────────────── Static data ───────────────────────── */
 
 const PAGE_SLUGS = {
@@ -278,6 +272,87 @@ const PAGE_SLUGS = {
   localKust: { 'nl-BE': 'website-laten-maken-kust', en: 'website-development-coast' },
 } as const
 type PageKey = keyof typeof PAGE_SLUGS
+
+/**
+ * Clients editing their own site, with Payload. Every claim matches the BrentWeb setup:
+ * editors change content but not layout, SEO or technical settings (roles); drafts with a
+ * live preview and scheduled publishing; opening hours and contact details stored once
+ * (SiteSettings) and used site-wide, structured data included; Dutch admin labels with
+ * help text; open source, self-hosted, daily back-ups. In the estimator it is the paid
+ * base price since November 2026 (the "cms" add-on is gone), so the copy calls it standard.
+ */
+const SELF_EDIT = {
+  'nl-BE': {
+    heading: 'Zelf aanpassen, zonder mij te bellen',
+    intro:
+      'Met Payload, een open-source beheersysteem, past u zelf aan wat vaak verandert. Het zit standaard in elke website die ik bouw.',
+    items: [
+      {
+        title: "Teksten en foto's",
+        body: 'Een nieuwe dienst, een foto van uw laatste werk of een aangepaste prijs: u typt het in en publiceert.',
+      },
+      {
+        title: 'Openingsuren en contactgegevens',
+        body: 'Op één plek aangepast, en meteen overal juist: op elke pagina en in wat Google over uw zaak leest.',
+      },
+      {
+        title: 'Eerst bekijken, dan publiceren',
+        body: 'U ziet uw wijziging op de echte site voor iemand anders ze ziet. Publiceren kan ook op een moment dat u kiest.',
+      },
+      {
+        title: 'Niets om stuk te maken',
+        body: 'U past de inhoud aan, de opmaak en de techniek blijven bij mij. De site blijft snel en netjes, wat u ook wijzigt.',
+      },
+      {
+        title: 'In het Nederlands',
+        body: 'Het beheerscherm is in het Nederlands, met een korte uitleg bij de velden die er een nodig hebben.',
+      },
+      {
+        title: 'Geen licentie, uw gegevens',
+        body: 'Payload is open source: geen maandelijkse licentie. Uw inhoud staat in uw eigen database, met dagelijkse back-ups.',
+      },
+    ],
+    link: 'Bekijk wat een website kost',
+    faq: "Ja. Ik bouw uw site met Payload, een open-source beheersysteem: u logt in, past zelf teksten, foto's, openingsuren en contactgegevens aan en bekijkt een voorbeeld voor u publiceert. Dat zit standaard in de prijs. Voor de rest mailt u mij, en ik antwoord binnen een dag of twee.",
+    trust: 'Zelf aan te passen',
+    included: "Zelf teksten, foto's en openingsuren aanpassen met Payload",
+  },
+  en: {
+    heading: 'Edit it yourself, without calling me',
+    intro:
+      'With Payload, an open-source content system, you change what changes often yourself. It comes standard with every website I build.',
+    items: [
+      {
+        title: 'Text and photos',
+        body: 'A new service, a photo of your latest job or a new price: type it in and publish.',
+      },
+      {
+        title: 'Opening hours and contact details',
+        body: 'Changed in one place, and right everywhere at once: on every page and in what Google reads about your business.',
+      },
+      {
+        title: 'Preview first, then publish',
+        body: 'See your change on the real site before anyone else does. Publishing can also wait for a moment you pick.',
+      },
+      {
+        title: 'Nothing to break',
+        body: 'You edit the content; the layout and the technical side stay with me. The site stays fast and tidy, whatever you change.',
+      },
+      {
+        title: 'In Dutch or English',
+        body: 'The admin works in Dutch or English, with a short explanation under the fields that need one.',
+      },
+      {
+        title: 'No licence, your data',
+        body: 'Payload is open source: no monthly licence. Your content lives in your own database, backed up daily.',
+      },
+    ],
+    link: 'See what a website costs',
+    faq: 'Yes. I build your site with Payload, an open-source content system: you log in, change text, photos, opening hours and contact details yourself, and preview before you publish. It is included in the price. For anything else you email me, and I reply within a day or two.',
+    trust: 'Yours to edit',
+    included: 'Edit text, photos and opening hours yourself, with Payload',
+  },
+} as const
 
 const SERVICES = {
   website: { scopes: ['website'], cases: ['carrosserie-kris', 'banden-leusch'] },
@@ -356,7 +431,25 @@ const TESTIMONIALS = [
     website: 'carrosseriekris.be',
     project: 'carrosserie-kris',
   },
+  {
+    key: 'leusch',
+    // Paragraphs two and three of his Google review (November 2026), word for word.
+    quote:
+      'Vanaf het begin verliep de samenwerking heel aangenaam. Brent luistert goed naar je wensen, denkt actief mee en komt zelf met ideeën en voorstellen om alles nog beter te maken. Je merkt dat hij echt aandacht besteedt aan de details en niet zomaar snel iets in elkaar steekt. Het resultaat is een moderne, professionele website en een nieuw logo die perfect aansluiten bij de uitstraling die ik voor mijn zaak voor ogen had.',
+    lang: 'nl',
+    name: 'Yorick Leusch',
+    business: 'Banden Leusch',
+    website: 'leusch.be',
+    project: 'banden-leusch',
+  },
 ]
+
+/** The Google Business Profile's review link, under the client quotes (lib/site.ts). */
+const GOOGLE_REVIEWS_URL = 'https://g.page/r/CRYPXOL2HLl3EAE/review'
+/** Pain point whose fix ran for a real client (lib/pain-points.ts PAIN_CASE_STUDIES). */
+const PAIN_CASE_STUDIES: Record<string, string> = { '2': 'carrosserie-kris' }
+/** The live site's contact address since November 2026. */
+const CONTACT_EMAIL = 'brent@brentweb.be'
 
 const period = (value: string) =>
   value.toLowerCase().replace(' - ', ' – ').replace('heden', 'nu').replace('present', 'now')
@@ -376,10 +469,23 @@ async function run() {
     'nl-BE': 'Brent Schoenmakers, met de armen gekruist, tegen een grijze muur',
     en: 'Brent Schoenmakers, arms crossed, against a grey wall',
   })
-  const portraitWarm = await upsertMedia(payload, 'profile-original.jpg', {
-    'nl-BE': 'Brent Schoenmakers in een wit hemd met bladerprint, lachend',
-    en: 'Brent Schoenmakers in a white leaf-print shirt, smiling',
+  // A portrait imported with scripts/import-portrait.ts wins over the old one.
+  const imported = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: 'brent-portrait.webp' } },
+    limit: 1,
+    depth: 0,
   })
+  const heroPortrait = imported.docs[0]?.id ?? portrait
+  // The working photo (scripts/import-desk-photo.ts) for the "about" spots; the old
+  // casual portrait was dropped as not professional enough. Falls back to the portrait.
+  const deskPhoto = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: 'brent-at-work.webp' } },
+    limit: 1,
+    depth: 0,
+  })
+  const atWork = deskPhoto.docs[0]?.id ?? heroPortrait
   const projectMedia: Record<string, { cover: string; phone?: string }> = {}
   for (const [slug, img] of Object.entries(PROJECT_IMAGES)) {
     projectMedia[slug] = {
@@ -429,7 +535,7 @@ async function run() {
         order: (index + 1) * 10,
         publishedAt: story?.publishedAt ? new Date(story.publishedAt).toISOString() : undefined,
         meta: {
-          title: story?.title ? `${story.title} | Brent Schoenmakers` : undefined,
+          title: story?.title ? `${story.title} | BrentWeb` : undefined,
           description: story?.summary ?? it.abstract,
           image: projectMedia[slug]?.cover ?? null,
         },
@@ -451,6 +557,7 @@ async function run() {
         quote: t.quote,
         lang: t.lang as 'nl',
         business: t.business,
+        name: (t as { name?: string }).name,
         website: t.website,
         project: projectIds[t.project],
         context: messages[locale].testimonials.items[t.key].context,
@@ -540,7 +647,7 @@ async function run() {
       richText: root([p(m.bookCta.body)]),
       links: links(
         toUrl(contactHref, m.bookCta.button),
-        toUrl('mailto:brent@brentweb.eu', m.bookCta.mail),
+        toUrl(`mailto:${CONTACT_EMAIL}`, m.bookCta.mail),
       ),
     })
     const contactBlock = (variant: 'business' | 'tech'): Layout[number] => ({
@@ -553,10 +660,8 @@ async function run() {
       showMap: variant === 'business',
     })
 
-    /* Home */
-    const heroTitle = nl(locale)
-      ? mark(m.hero.business.title, 'handwerk')
-      : mark(m.hero.business.title, 'manual work')
+    /* Home: who, the live work, the proof, the problems, the prices, the person, contact. */
+    const firstSentence = (text: string) => text.match(/^.*?[.!?](\s|$)/)?.[0].trim() ?? text
     set(
       'home',
       locale,
@@ -567,23 +672,47 @@ async function run() {
           variant: 'home',
           greeting: true,
           greetingSuffix: nl(locale) ? ', ik ben Brent.' : ", I'm Brent.",
-          title: heroTitle,
-          intro: m.hero.tagline,
+          title: m.hero.business.title,
+          intro: firstSentence(m.hero.tagline),
           links: links(
             toPage(ids.pricing, m.hero.business.getInTouch),
             toPage(ids.projects, m.cta.mid.secondary),
           ),
-          trustItems: Object.values(m.hero.business.trust).map((text) => ({
-            text: text as string,
-          })),
-          image: portrait,
+          trustItems: [
+            ...(Object.values(m.hero.business.trust) as string[]),
+            SELF_EDIT[locale].trust,
+          ].map((text) => ({ text })),
+          image: heroPortrait,
           imageCaption: m.hero.location,
-          note: unArrow(m.about.annotation),
+        },
+        {
+          blockType: 'projects',
+          heading: m.proof.title,
+          mode: 'selected',
+          items: ['carrosserie-kris', 'banden-leusch', 'het-smaakpand'].map((slug) => ({
+            project: projectIds[slug],
+          })),
+          layout: 'showcase',
+          showLink: true,
+          link: toPage(ids.projects, nl(locale) ? 'Alle projecten' : 'All projects'),
+        },
+        {
+          blockType: 'testimonials',
+          heading: m.testimonials.title,
+          enableLink: true,
+          link: { ...toUrl(GOOGLE_REVIEWS_URL, m.testimonials.googleLink), newTab: true },
         },
         {
           blockType: 'painPoints',
           heading: m.pain.title,
-          items: ordered(m.pain.items).map((i: Any) => ({ problem: i.problem, fix: i.fix })),
+          items: Object.keys(m.pain.items)
+            .sort((a, b) => Number(a) - Number(b))
+            .map((k) => ({
+              problem: m.pain.items[k].problem,
+              fix: m.pain.items[k].fix,
+              project: PAIN_CASE_STUDIES[k] ? projectIds[PAIN_CASE_STUDIES[k]] : undefined,
+            })),
+          caseLinkLabel: m.pain.caseLink,
           linkLabel: m.pain.solveLink,
         },
         {
@@ -593,40 +722,17 @@ async function run() {
           items: (['website', 'webApp', 'integrations'] as ServiceKey[]).map(serviceCard),
         },
         {
-          blockType: 'websiteCheck',
-          variant: 'banner',
-          heading: m.websiteCheckBanner.text,
-          checkPage: ids.websiteCheck,
-        },
-        {
-          blockType: 'projects',
-          eyebrow: lower(m.proof.badge),
-          heading: mark(m.proof.title, nl(locale) ? 'in productie' : 'in production', 'highlight'),
-          mode: 'selected',
-          items: ['carrosserie-kris', 'banden-leusch'].map((slug) => ({
-            project: projectIds[slug],
-          })),
-          layout: 'cards',
-          showLink: true,
-          link: toPage(ids.projects, nl(locale) ? 'Alle projecten' : 'All projects'),
-        },
-        { blockType: 'testimonials', heading: m.testimonials.title },
-        {
-          blockType: 'features',
-          eyebrow: lower(m.security.eyebrow),
-          heading: m.security.compactTitle,
-          style: 'compact',
-          background: true,
-          items: Object.values(m.security.items).map((i: Any) => ({
-            title: i.title,
-            body: i.body,
-          })),
-        },
-        {
           blockType: 'pricing',
-          eyebrow: lower(m.cta.mid.eyebrow),
           heading: m.pricing.title,
-          note: `${m.pricing.note} ${m.pricing.vatExempt}`,
+          servicePages: [
+            { scope: 'website', page: ids.website },
+            { scope: 'web_app', page: ids.webApp },
+            { scope: 'api_integration', page: ids.integrations },
+            { scope: 'automation', page: ids.integrations },
+          ],
+          note: `${m.pricing.note} ${m.pricing.vatExempt} ${m.pricing.maintenance
+            .replace('{basic}', '{maintenanceBasic}')
+            .replace('{active}', '{maintenanceActive}')}`,
           ctaTitle: m.pricing.ctaTitle,
           ctaBody: m.pricing.ctaBody,
           ctaLink: toPage(ids.pricing, m.pricing.cta),
@@ -639,23 +745,16 @@ async function run() {
           link: toUrl(contactHref, m.process.bookStep),
         },
         {
-          blockType: 'faq',
-          heading: m.faq.title,
-          items: ordered(m.faq.items).map((f: Any) => ({ question: f.q, answer: root([p(f.a)]) })),
-        },
-        {
           blockType: 'textImage',
-          eyebrow: lower(m.about.badge),
           richText: root([
             h('h2', m.about.business.title),
             p(m.about.business.description1),
             p(m.about.business.description2),
           ]),
-          image: portraitWarm,
+          image: atWork,
           imagePosition: 'left',
-          photoStyle: 'polaroid',
-          caption: 'Geel ⇄ Blankenberge',
-          note: m.about.experience,
+          photoStyle: 'plain',
+          caption: m.about.experience,
           links: links(toPage(ids.about, nl(locale) ? 'Meer over mij' : 'More about me')),
         },
         contactBlock('business'),
@@ -663,7 +762,7 @@ async function run() {
       {
         title: m.hero.business.metaTitle,
         description: m.hero.business.metaDescription,
-        image: portrait,
+        image: heroPortrait,
       },
     )
 
@@ -673,6 +772,7 @@ async function run() {
       const def = SERVICES[key]
       const included = [
         ...new Set(def.scopes.flatMap((s) => m.calculator.scope.options[s].includes as string[])),
+        ...(key === 'website' ? [SELF_EDIT[locale].included] : []),
       ]
       const testimonials = (await Promise.all(def.cases.map(testimonialFor))).flat()
       const layout: Layout = [
@@ -683,6 +783,7 @@ async function run() {
           title: item.title,
           intro: item.intro,
           priceScopes: [...def.scopes],
+          showcaseProject: def.cases[0] ? projectIds[def.cases[0]] : undefined,
           links: links(toPage(ids.pricing, sp.ctaPrimary), toUrl(contactHref, sp.ctaSecondary)),
         },
         {
@@ -703,11 +804,34 @@ async function run() {
             { size: 'full', richText: root([h('h2', sp.approachTitle), ...item.approach.map(p)]) },
           ],
         },
+        ...(key === 'website'
+          ? ([
+              {
+                blockType: 'features',
+                heading: SELF_EDIT[locale].heading,
+                intro: SELF_EDIT[locale].intro,
+                style: 'cards',
+                background: true,
+                items: SELF_EDIT[locale].items.map((i) => ({ title: i.title, body: i.body })),
+                enableLink: true,
+                link: toPage(ids.pricing, SELF_EDIT[locale].link),
+              },
+              {
+                blockType: 'features',
+                heading: m.security.compactTitle,
+                intro: m.security.lede,
+                style: 'compact',
+                items: Object.values(m.security.items).map((i: Any) => ({
+                  title: i.title,
+                  body: i.body,
+                })),
+              },
+            ] as Layout)
+          : []),
         {
           blockType: 'features',
           heading: sp.needsTitle,
           style: 'ticks',
-          background: true,
           items: items(item.needs),
         },
         ...(def.cases.length
@@ -725,7 +849,11 @@ async function run() {
         {
           blockType: 'faq',
           heading: sp.faqTitle,
-          items: item.faq.map((f: Any) => ({ question: f.q, answer: root([p(f.a)]) })),
+          items: item.faq.map((f: Any, i: number) => ({
+            question: f.q,
+            // The "can I edit it myself?" answer now names how: Payload, as a paid option.
+            answer: root([p(key === 'website' && i === 2 ? SELF_EDIT[locale].faq : f.a)]),
+          })),
         },
         bookCta(),
         {
@@ -756,11 +884,13 @@ async function run() {
         {
           blockType: 'hero',
           variant: 'page',
-          eyebrow: lower(item.eyebrow),
+          // The short label for the breadcrumb; the old eyebrow carried a middle dot.
+          eyebrow: item.navLabel,
           title: item.title,
           intro: first,
           paragraphs: rest.map((text) => ({ text })),
           priceScopes: ['website'],
+          showcaseProject: item.cases?.[0] ? projectIds[item.cases[0].slug] : undefined,
           links: links(toPage(ids.website, lp.serviceLink), toPage(ids.pricing, m.pricing.cta)),
         },
         {
@@ -818,6 +948,12 @@ async function run() {
           blockType: 'content',
           columns: [{ size: 'full', richText: sectionsToRichText(pg.sections) }],
         },
+        // The objections people raise before they ask for a price (moved off the homepage).
+        {
+          blockType: 'faq',
+          heading: m.faq.title,
+          items: ordered(m.faq.items).map((f: Any) => ({ question: f.q, answer: root([p(f.a)]) })),
+        },
         bookCta(),
       ],
       { title: m.calculator.metaTitle, description: m.calculator.metaDescription },
@@ -840,7 +976,7 @@ async function run() {
         bookCta(),
       ],
       {
-        title: `${m.work.metaTitleList} | Brent Schoenmakers`,
+        title: `${m.work.metaTitleList} | BrentWeb`,
         description: m.work.metaDescriptionList,
       },
     )
@@ -870,13 +1006,13 @@ async function run() {
           variant: 'home',
           greeting: true,
           greetingSuffix: nl(locale) ? ', ik ben Brent.' : ", I'm Brent.",
-          title: mark(m.about.business.title, nl(locale) ? 'echt bouwt' : 'actually build'),
+          title: m.about.business.title,
           intro: `${m.about.business.description1}\n\n${m.about.business.description2}`,
           links: links(
             toUrl(`/${locale}/${PAGE_SLUGS.about[locale]}#contact`, m.about.getInTouch),
             toPage(ids.projects, m.cta.mid.secondary),
           ),
-          image: portraitWarm,
+          image: atWork,
           imageCaption: m.hero.location,
           note: unArrow(m.about.annotation),
         },
@@ -902,7 +1038,7 @@ async function run() {
           background: true,
           items: [
             { title: spec.stackLabel, body: spec.stackValue },
-            { title: spec.frameworksLabel, body: spec.frameworksValue },
+            { title: spec.frameworksLabel, body: `${spec.frameworksValue}, Payload CMS` },
             { title: spec.focusLabel, body: spec.focusValue },
             { title: spec.locationLabel, body: m.hero.location },
           ],
@@ -932,7 +1068,7 @@ async function run() {
           ? 'Over mij: Brent Schoenmakers, webontwikkelaar uit Geel'
           : 'About me: Brent Schoenmakers, web developer from Geel',
         description: m.hero.tech.metaDescription,
-        image: portraitWarm,
+        image: atWork,
       },
     )
 
@@ -1021,7 +1157,7 @@ async function run() {
           columns: [{ size: 'full', richText: sectionsToRichText(pv.sections) }],
         },
       ],
-      { title: `${pv.title} | Brent Schoenmakers`, description: pv.metaDescription },
+      { title: `${pv.title} | BrentWeb`, description: pv.metaDescription },
     )
   }
 
@@ -1079,13 +1215,13 @@ async function run() {
         portrait,
         address: { street: 'Laarsveld 30', postalCode: '2440', city: 'Geel' },
         phone: '+32 465 92 18 62',
-        email: 'brent@brentweb.eu',
+        email: CONTACT_EMAIL,
         whatsapp: 'https://wa.me/32465921862',
         locations: [
           { name: 'Blankenberge', lat: 51.3112589, lng: 3.1323429 },
           { name: 'Geel', lat: 51.1657, lng: 4.9902 },
         ],
-        replyNote: m.contact.phoneNote,
+        replyNote: `${m.contact.phoneNote} ${m.contact.visitNote}`,
         socialLinks: [
           { platform: 'linkedin', url: 'https://www.linkedin.com/in/brent-schoenmakers/' },
           { platform: 'instagram', url: 'https://www.instagram.com/brentweb.be/' },

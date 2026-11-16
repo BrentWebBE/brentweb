@@ -81,7 +81,7 @@ export function CostEstimator({ className }: { className?: string }) {
       ref={rootRef}
     >
       <ol
-        className="mb-10 flex flex-wrap gap-x-5 gap-y-2 border-b-[1.5px] border-dashed border-border pb-5"
+        className="mb-10 flex flex-wrap gap-x-[var(--space-xs)] gap-y-[var(--space-xs)] border-b border-[var(--color-rule)] pb-5 sm:gap-x-5"
         aria-label={t('calculator.stepOf', { current: index + 1, total: steps.length })}
       >
         {steps.map((key, i) => (
@@ -95,15 +95,15 @@ export function CostEstimator({ className }: { className?: string }) {
           >
             <span
               className={cn(
-                'hand grid size-8 place-items-center rounded-full text-xl leading-none',
-                i === index && 'step-number size-9 text-2xl',
-                i < index && 'bg-accent text-accent-foreground',
-                i > index && 'border-[1.5px] border-dashed border-border',
+                'figure grid size-8 place-items-center rounded-full text-sm font-bold leading-none',
+                i === index && 'bg-[var(--color-ink)] text-[var(--color-paper)]',
+                i < index && 'bg-[var(--color-accent)] text-[var(--color-accent-ink)]',
+                i > index && 'border border-[var(--color-rule)] text-[var(--color-muted)]',
               )}
             >
               {i < index ? '✓' : i + 1}
             </span>
-            <span className={cn(i > index && 'hidden sm:inline')}>
+            <span className={cn(i !== index && 'hidden sm:inline')}>
               {t(`calculator.steps.${key}`)}
             </span>
           </li>
@@ -173,7 +173,7 @@ function EstimateTicker({ cost, hours }: { cost: [number, number]; hours: [numbe
       aria-live="polite"
     >
       <div className="paper-card flex flex-wrap items-baseline gap-x-3 gap-y-1 px-5 py-3">
-        <span className="hand text-xl text-primary">{t('calculator.ticker.label')}</span>
+        <span className="small">{t('calculator.ticker.label')}</span>
         <span className="font-heading text-2xl">{formatCostRange(cost, locale)}</span>
         <span className="text-sm text-muted-foreground">
           {t('calculator.ticker.hours', { hours: formatRange(hours, locale) })}

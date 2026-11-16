@@ -1,32 +1,15 @@
 /**
- * BrentWeb fonts, self-hosted by next/font. Each exposes a CSS variable that
- * src/client/theme.css maps to --font-body / --font-display / --font-hand.
- *
- *  - Fraunces: a soft, slightly wonky serif for headings. The SOFT and WONK axes are
- *    what make it feel drawn rather than set.
- *  - Instrument Sans: warm, readable body text.
- *  - Caveat: the handwritten notes in the margins. Not preloaded; it is never the LCP.
+ * One family for the whole site: Rethink Sans, a clear grotesk with a little warmth in
+ * its curves. Professional without the default look; the BrentWeb wordmark (an SVG) is
+ * the only other letterform. Three weights at most: 400 body, 500 labels, 700 heads.
  */
-import { Caveat, Fraunces, Instrument_Sans } from 'next/font/google'
+import { Rethink_Sans } from 'next/font/google'
 
-const fraunces = Fraunces({
+const rethinkSans = Rethink_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-fraunces',
-  axes: ['SOFT', 'WONK', 'opsz'],
+  weight: ['400', '500', '700'],
+  variable: '--font-rethink',
 })
 
-const instrumentSans = Instrument_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-instrument',
-})
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-caveat',
-  preload: false,
-})
-
-export const fontVariables = [fraunces.variable, instrumentSans.variable, caveat.variable].join(' ')
+export const fontVariables = rethinkSans.variable

@@ -4,40 +4,32 @@ import type { Locale } from '@/lib/locales'
 import { fillPrices } from '@/lib/prices'
 import { cn } from '@/utilities/ui'
 
-import { Marked } from './Marked'
+import { plainText } from './Marked'
 
-/** Handwritten eyebrow, a marked-up H2 and an optional intro: the top of most blocks. */
+/**
+ * A section's heading and its one-line intro. No eyebrow above it: the heading names
+ * what follows. `split` puts the intro beside a long heading on wide screens.
+ */
 export function SectionHeading({
-  align = 'left',
   as: Tag = 'h2',
   className,
-  eyebrow,
   heading,
   intro,
   locale,
+  split,
 }: {
-  align?: 'left' | 'center'
   as?: 'h1' | 'h2'
   className?: string
-  eyebrow?: string | null
   heading?: string | null
   intro?: string | null
   locale: Locale
+  split?: boolean
 }) {
-  if (!eyebrow && !heading && !intro) return null
+  if (!heading && !intro) return null
   return (
-    <header
-      className={cn(
-        'mb-10 flex flex-col gap-3 md:mb-14',
-        align === 'center' && 'items-center text-center',
-        className,
-      )}
-    >
-      {eyebrow && <p className="eyebrow -rotate-2">{eyebrow}</p>}
+    <header className={cn('section-head', split && intro && 'section-head--split', className)}>
       {heading && (
-        <Tag className={cn(Tag === 'h1' ? 'display-1' : 'display-2', 'max-w-3xl')}>
-          <Marked text={heading} />
-        </Tag>
+        <Tag className={Tag === 'h1' ? 'display' : 'h-section'}>{plainText(heading)}</Tag>
       )}
       {intro && <p className="lede whitespace-pre-line">{fillPrices(intro, locale)}</p>}
     </header>

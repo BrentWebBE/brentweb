@@ -28,10 +28,10 @@ function getResendClient(): Resend | null {
 
 /** Sender of every lead email. Overridable per container. */
 export const leadFrom = (): string =>
-  runtimeEnv('LEAD_FROM_EMAIL') || 'Brentweb Leads <leads@brentweb.eu>'
+  runtimeEnv('LEAD_FROM_EMAIL') || 'BrentWeb Leads <leads@brentweb.eu>'
 
 /** Where lead notifications go. Overridable per container. */
-export const leadTo = (): string => runtimeEnv('LEAD_NOTIFICATION_EMAIL') || 'brent@brentweb.eu'
+export const leadTo = (): string => runtimeEnv('LEAD_NOTIFICATION_EMAIL') || 'brent@brentweb.be'
 
 /**
  * Sends one email. Never throws; resolves true when the email was accepted.

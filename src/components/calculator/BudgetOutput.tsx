@@ -72,7 +72,7 @@ export function BudgetOutput({
           {facts.map((fact) => (
             <div
               key={fact.label}
-              className="rounded-[10px_14px_12px_9px] border-[1.5px] border-dashed border-border px-4 py-3"
+              className="rounded-[var(--radius-control)] border border-[var(--color-rule)] px-4 py-3"
             >
               <dt className="text-sm text-muted-foreground">{fact.label}</dt>
               <dd className="mt-0.5 text-lg font-semibold">{fact.value}</dd>
@@ -81,18 +81,14 @@ export function BudgetOutput({
         </dl>
       </div>
 
-      {result.isRush && (
-        <p className="hand mt-5 -rotate-1 text-2xl text-primary">
-          {t('calculator.result.rushNote')}
-        </p>
-      )}
+      {result.isRush && <p className="small mt-5">{t('calculator.result.rushNote')}</p>}
 
       <section className="mt-10">
         <h3 className={estimatorClasses.subTitle}>{t('calculator.result.breakdownTitle')}</h3>
         <div className="mt-3 overflow-x-auto">
           <table className="w-full min-w-[32rem] border-collapse text-sm">
             <thead>
-              <tr className="border-b-[1.5px] border-foreground text-left">
+              <tr className="border-b border-[var(--color-ink)] text-left">
                 <th scope="col" className="py-2 pr-3 font-semibold">
                   {t('calculator.result.itemHeader')}
                 </th>
@@ -109,8 +105,8 @@ export function BudgetOutput({
                 <tr
                   key={i}
                   className={cn(
-                    'border-b border-dashed border-border align-top',
-                    line.kind === 'ai' && 'bg-[color-mix(in_oklch,var(--accent)_22%,transparent)]',
+                    'border-b border-[var(--color-rule)] align-top',
+                    line.kind === 'ai' && 'bg-[var(--color-paper-2)]',
                   )}
                 >
                   <td className="py-2 pr-3">
@@ -132,7 +128,7 @@ export function BudgetOutput({
               ))}
             </tbody>
             <tfoot>
-              <tr className="border-t-[1.5px] border-foreground font-semibold">
+              <tr className="border-t border-[var(--color-ink)] font-semibold">
                 <th scope="row" className="py-2 pr-3 text-left">
                   {t('calculator.result.totalLabel')}
                 </th>
@@ -177,7 +173,7 @@ export function BudgetOutput({
 
 export function AiBadge({ label }: { label: string }) {
   return (
-    <span className="mr-2 inline-block -rotate-2 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground">
+    <span className="mr-2 inline-block rounded-full bg-[var(--color-paper-3)] px-2 py-0.5 text-xs font-medium text-[var(--color-ink)]">
       {label}
     </span>
   )

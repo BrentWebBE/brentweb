@@ -1,51 +1,58 @@
 import React from 'react'
 
-import type { PainPointsBlock as Props } from '@/payload-types'
+import Link from 'next/link'
 
-import { Reveal } from '@/components/handmade/Reveal'
+import type { PainPointsBlock as Props, Project } from '@/payload-types'
+
 import { SectionHeading } from '@/components/handmade/SectionHeading'
 import type { Locale } from '@/lib/locales'
-import { CONTACT_PREFILL_PARAM } from '@/lib/routing'
-import { ui } from '@/lib/ui-strings'
+import { CONTACT_PREFILL_PARAM, projectHref } from '@/lib/routing'
 
-const TILTS = [-1.2, 0.8, -0.5, 1.1, -0.9, 0.6]
-
-/** "Klinkt dit bekend?" Each card: the problem as the client would say it, then the fix. */
+/**
+ * "Klinkt dit bekend?": each problem in the visitor's words, set large, with what fixes
+ * it underneath. The link carries the problem into the contact form.
+ */
 export function PainPointsBlock({
-  eyebrow,
+  caseLinkLabel,
   heading,
   items,
   linkLabel,
   locale,
 }: Props & { locale: Locale }) {
-  const t = ui(locale)
   return (
-    <section className="section">
+    <section className="section-l">
       <div className="container">
-        <SectionHeading eyebrow={eyebrow} heading={heading} locale={locale} />
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading heading={heading} locale={locale} />
+        <ol className="grid gap-x-[var(--gap-columns)] gap-y-[var(--space-2xl)] md:grid-cols-3">
           {items?.map((item, i) => (
-            <Reveal
-              as="li"
-              className="paper-card flex flex-col p-6"
+            <li
+              className="flex flex-col border-t-2 border-[var(--color-ink)] pt-[var(--space-lg)]"
               key={item.id ?? i}
-              tilt={TILTS[i % TILTS.length]}
             >
-              <p className="font-heading text-2xl leading-snug">“{item.problem}”</p>
-              <div aria-hidden="true" className="squiggle my-5" />
-              <p className="hand text-xl text-primary">{t.painFixLabel}</p>
-              <p className="mt-1 text-muted-foreground">{item.fix}</p>
+              <p className="h-title mb-[var(--space-md)]">“{item.problem}”</p>
+              <p className="text-[var(--color-ink-2)]">{item.fix}</p>
+              {typeof item.project === 'object' && item.project && caseLinkLabel && (
+                <Link
+                  className="link mt-[var(--space-md)] w-fit"
+                  href={projectHref(locale, (item.project as Project).slug)}
+                >
+                  {caseLinkLabel.replace(
+                    '{client}',
+                    (item.project as Project).client || (item.project as Project).title,
+                  )}
+                </Link>
+              )}
               {linkLabel && (
                 <a
-                  className="link-arrow mt-auto pt-5"
+                  className="link mt-auto w-fit pt-[var(--space-lg)]"
                   href={`?${CONTACT_PREFILL_PARAM}=${encodeURIComponent(item.problem)}#contact`}
                 >
                   {linkLabel}
                 </a>
               )}
-            </Reveal>
+            </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
   )

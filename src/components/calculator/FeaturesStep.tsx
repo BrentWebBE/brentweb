@@ -54,7 +54,7 @@ export function FeaturesStep({ input, update, onBack, onNext }: StepProps) {
         if (keys.length === 0) return null
         return (
           <fieldset key={group}>
-            <legend className="hand text-2xl text-primary">
+            <legend className="text-[length:var(--text-lg)] font-bold">
               {t(`calculator.features.groups.${group}`)}
             </legend>
             <div className={estimatorClasses.optionsThree}>

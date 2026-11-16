@@ -1,10 +1,10 @@
 import type { CollectionConfig } from 'payload'
 
-import { revalidateTag } from 'next/cache'
+import { expireTag } from '@/utilities/expireTag'
 
 import { anyone } from '@/access/anyone'
 import { isAdminOrEditor } from '@/access/isAdminOrEditor'
-import { EXPIRE_NOW, TESTIMONIALS_TAG } from '@/utilities/cacheTags'
+import { TESTIMONIALS_TAG } from '@/utilities/cacheTags'
 import { l } from '@/utilities/label'
 
 /**
@@ -85,13 +85,13 @@ export const Testimonials: CollectionConfig<'testimonials'> = {
   hooks: {
     afterChange: [
       ({ doc, req: { context } }) => {
-        if (!context.disableRevalidate) revalidateTag(TESTIMONIALS_TAG, EXPIRE_NOW)
+        if (!context.disableRevalidate) expireTag(TESTIMONIALS_TAG)
         return doc
       },
     ],
     afterDelete: [
       ({ doc, req: { context } }) => {
-        if (!context.disableRevalidate) revalidateTag(TESTIMONIALS_TAG, EXPIRE_NOW)
+        if (!context.disableRevalidate) expireTag(TESTIMONIALS_TAG)
         return doc
       },
     ],

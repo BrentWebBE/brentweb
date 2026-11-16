@@ -30,7 +30,30 @@ export const PainPoints: Block = {
           required: true,
         },
         { name: 'fix', type: 'textarea', label: l('Oplossing', 'Fix'), required: true },
+        {
+          name: 'project',
+          type: 'relationship',
+          relationTo: 'projects',
+          label: l(
+            'Project waar ik dit oploste (optioneel)',
+            'Project where I solved this (optional)',
+          ),
+          admin: {
+            description: l(
+              'Enkel werk dat echt in gebruik was. Er verschijnt een link onder het probleem.',
+              'Only work that actually ran. A link appears under the problem.',
+            ),
+          },
+        },
       ],
+    },
+    {
+      name: 'caseLinkLabel',
+      type: 'text',
+      label: l('Linktekst naar het project', 'Link label to the project'),
+      admin: {
+        description: l('{client} wordt de naam van de klant.', '{client} becomes the client name.'),
+      },
     },
     {
       name: 'linkLabel',

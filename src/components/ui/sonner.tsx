@@ -18,10 +18,10 @@ const Toaster = ({ style, toastOptions, ...props }: ToasterProps) => {
       className="toaster group"
       style={
         {
-          '--normal-bg': 'var(--card)',
-          '--normal-text': 'var(--foreground)',
-          '--normal-border': 'var(--foreground)',
-          '--border-radius': '14px 22px 16px 20px',
+          '--normal-bg': 'var(--color-paper)',
+          '--normal-text': 'var(--color-ink)',
+          '--normal-border': 'var(--color-rule)',
+          '--border-radius': 'var(--radius-card)',
           ...style,
         } as React.CSSProperties
       }
@@ -29,7 +29,7 @@ const Toaster = ({ style, toastOptions, ...props }: ToasterProps) => {
         ...toastOptions,
         classNames: {
           toast:
-            'group toast font-sans !border-[1.5px] !shadow-[3px_4px_0_var(--shadow-ink)] group-[.toaster]:bg-card group-[.toaster]:text-foreground',
+            'group toast font-sans !shadow-[var(--shadow-card)] group-[.toaster]:bg-card group-[.toaster]:text-foreground',
           description: 'group-[.toast]:text-muted-foreground',
           actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
           cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',

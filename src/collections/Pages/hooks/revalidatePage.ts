@@ -1,9 +1,9 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidateTag } from 'next/cache'
+import { expireTag } from '@/utilities/expireTag'
 
 import type { Page } from '../../../payload-types'
-import { EXPIRE_NOW, PAGES_TAG, pageTag } from '../../../utilities/cacheTags'
+import { PAGES_TAG, pageTag } from '../../../utilities/cacheTags'
 
 /**
  * Pages are cached per slug (and locale, via the cache key). The slug is localized, so
@@ -18,16 +18,16 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   if (context.disableRevalidate) return doc
   if (doc._status === 'published' || previousDoc?._status === 'published') {
     payload.logger.info(`Revalidating pages after a change to "${doc.slug}"`)
-    if (doc.slug) revalidateTag(pageTag(doc.slug), EXPIRE_NOW)
-    revalidateTag(PAGES_TAG, EXPIRE_NOW)
-    revalidateTag('pages-sitemap', 'max')
+    if (doc.slug) expireTag(pageTag(doc.slug))
+    expireTag(PAGES_TAG)
+    expireTag('pages-sitemap', 'max')
   }
   return doc
 }
 
 export const revalidateDelete: CollectionAfterDeleteHook<Page> = ({ doc, req: { context } }) => {
   if (context.disableRevalidate) return doc
-  revalidateTag(PAGES_TAG, EXPIRE_NOW)
-  revalidateTag('pages-sitemap', 'max')
+  expireTag(PAGES_TAG)
+  expireTag('pages-sitemap', 'max')
   return doc
 }

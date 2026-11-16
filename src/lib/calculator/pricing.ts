@@ -40,6 +40,10 @@ export type Range = [number, number]
  * calculator.lines / calculator.features, because they are rendered to Dutch
  * visitors in both the estimator and the generated PDF.
  *
+ * Website hours were lowered in November 2026: sites are built on the Payload starter,
+ * so setup, forms, SEO, blog and webshop reuse finished modules. Ranges are kept narrow
+ * because every site is still built by hand on top of it.
+ *
  * ⚠ TODO(brent): every figure below is a first calibration, not a confirmed
  * price. The rate and capacity drive everything; the hour ranges were tuned so
  * the derived bands in SCOPE_DEFINITIONS land near the ranges the site quoted
@@ -48,7 +52,7 @@ export type Range = [number, number]
  */
 export const PRICING = {
   /** Euros per hour, all work. */
-  hourlyRate: 30,
+  hourlyRate: 40,
   /** Prices are rounded to this many euros, so nothing reads as false precision. */
   roundTo: 25,
   /** Hours per week available for one project: [slow week, good week]. */
@@ -61,10 +65,14 @@ export const PRICING = {
 
 const HOURS = {
   website: {
-    /** Repo, hosting, domain, SSL, deploy pipeline, base layout. */
-    base: [5, 8] as Range,
+    /**
+     * Every website is built on the BrentWeb Payload starter: repo, hosting, domain, SSL,
+     * deploy, base layout, and the client's own Payload admin (editor account, content
+     * set-up, a short walkthrough). Self-editing is standard, so it is priced here.
+     */
+    base: [7, 9] as Range,
     /** Building one page, excluding its design. */
-    perPage: [1, 2] as Range,
+    perPage: [1, 1.5] as Range,
   },
   webApp: {
     /** Architecture, database, authentication, deploy. */
@@ -87,12 +95,12 @@ const HOURS = {
   },
   design: {
     /** Once per project: colours, type, components. */
-    system: { basic: [2, 3], custom: [4, 7], premium: [8, 14] } satisfies Record<
+    system: { basic: [2, 2.5], custom: [4, 7], premium: [8, 14] } satisfies Record<
       DesignLevel,
       Range
     >,
     /** Per page. App screens count at half, they reuse more. */
-    perPage: { basic: [0.5, 0.75], custom: [1, 2], premium: [2, 3.5] } satisfies Record<
+    perPage: { basic: [0.5, 0.6], custom: [1, 2], premium: [2, 3.5] } satisfies Record<
       DesignLevel,
       Range
     >,
@@ -130,12 +138,14 @@ interface FeatureDefinition {
 const WEB: ScopeKey[] = ['website', 'web_app']
 
 export const FEATURES: Record<FeatureKey, FeatureDefinition> = {
-  contact_form: { hours: [1.5, 3], group: 'content', appliesTo: ['website'] },
-  cms: { hours: [6, 10], group: 'content', appliesTo: ['website'] },
-  blog: { hours: [5, 9], group: 'content', appliesTo: ['website'] },
-  gallery: { hours: [2, 4], group: 'content', appliesTo: ['website'] },
+  contact_form: { hours: [1.5, 2], group: 'content', appliesTo: ['website'] },
+  // Standard on every website since November 2026 (in HOURS.website.base): offered for
+  // no project type, so it never shows up as an add-on. Kept so old saved answers parse.
+  cms: { hours: [0, 0], group: 'content', appliesTo: [] },
+  blog: { hours: [3.5, 4.5], group: 'content', appliesTo: ['website'] },
+  gallery: { hours: [2, 2.5], group: 'content', appliesTo: ['website'] },
   search: { hours: [3, 7], group: 'content', appliesTo: WEB },
-  webshop: { hours: [25, 45], group: 'commerce', appliesTo: WEB },
+  webshop: { hours: [20, 26], group: 'commerce', appliesTo: WEB },
   payments: { hours: [6, 12], group: 'commerce', appliesTo: [...WEB, 'api_integration'] },
   booking: { hours: [10, 18], group: 'commerce', appliesTo: WEB },
   invoicing: { hours: [5, 10], group: 'commerce', appliesTo: ['web_app', 'automation'] },
@@ -146,9 +156,9 @@ export const FEATURES: Record<FeatureKey, FeatureDefinition> = {
   notifications: { hours: [3, 5], group: 'users', appliesTo: [...WEB, 'automation'] },
   realtime: { hours: [10, 20], group: 'users', appliesTo: ['web_app'] },
   newsletter: { hours: [2, 4], group: 'marketing', appliesTo: ['website'] },
-  seo: { hours: [3, 5], group: 'marketing', appliesTo: ['website'] },
+  seo: { hours: [2.5, 3], group: 'marketing', appliesTo: ['website'] },
   analytics: { hours: [2, 3], group: 'marketing', appliesTo: WEB },
-  maps: { hours: [1, 2], group: 'marketing', appliesTo: ['website'] },
+  maps: { hours: [1, 1.25], group: 'marketing', appliesTo: ['website'] },
   branding: { hours: [8, 14], group: 'marketing', appliesTo: WEB },
   accessibility: { hours: [5, 10], group: 'technical', appliesTo: WEB },
   data_migration: {
@@ -387,7 +397,7 @@ interface ScopeDefinition {
 const REFERENCE_PROJECTS: Record<ScopeKey, [Partial<EstimateInput>, Partial<EstimateInput>]> = {
   website: [
     { pages: 3, design: 'basic', features: ['contact_form'] },
-    { pages: 6, design: 'custom', features: ['contact_form', 'cms', 'seo', 'analytics'] },
+    { pages: 6, design: 'custom', features: ['contact_form', 'seo', 'analytics'] },
   ],
   web_app: [
     { screens: 3, design: 'basic' },

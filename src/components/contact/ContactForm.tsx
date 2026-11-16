@@ -94,7 +94,7 @@ export function ContactForm({ messagePlaceholder, formNote, className }: Contact
       className={cn('relative grid gap-6', className)}
       noValidate
     >
-      {note && <p className="hand -rotate-1 text-2xl leading-tight text-primary">{note}</p>}
+      {note && <p className="small">{note}</p>}
 
       <Honeypot {...register('honeypot')} />
 

@@ -43,7 +43,11 @@ WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
-    HOSTNAME=0.0.0.0
+    HOSTNAME=0.0.0.0 \
+    CHROME_PATH=/usr/bin/chromium-browser
+# Chromium for the live project screenshots (Payload job "captureScreenshots").
+# Fonts so captured sites render text the way visitors see it.
+RUN apk add --no-cache chromium nss freetype harfbuzz ttf-freefont font-noto font-noto-emoji
 
 # Standalone server + static assets + public files, owned by the unprivileged `node` user
 # (uid 1000) so the Next cache in .next/ is writable.

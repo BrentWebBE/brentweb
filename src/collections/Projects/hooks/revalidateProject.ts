@@ -1,10 +1,10 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidateTag } from 'next/cache'
+import { expireTag } from '@/utilities/expireTag'
 
 import type { Project } from '@/payload-types'
 
-import { EXPIRE_NOW, PROJECTS_TAG, projectTag } from '@/utilities/cacheTags'
+import { PROJECTS_TAG, projectTag } from '@/utilities/cacheTags'
 
 /**
  * Any change to a published project can show up on every page that lists projects,
@@ -18,12 +18,12 @@ export const revalidateProject: CollectionAfterChangeHook<Project> = ({
   if (context.disableRevalidate) return doc
   const wasPublished = previousDoc?._status === 'published'
   if (doc._status === 'published' || wasPublished) {
-    revalidateTag(projectTag(doc.slug), EXPIRE_NOW)
+    expireTag(projectTag(doc.slug))
     if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
-      revalidateTag(projectTag(previousDoc.slug), EXPIRE_NOW)
+      expireTag(projectTag(previousDoc.slug))
     }
-    revalidateTag(PROJECTS_TAG, EXPIRE_NOW)
-    revalidateTag('pages-sitemap', 'max')
+    expireTag(PROJECTS_TAG)
+    expireTag('pages-sitemap', 'max')
   }
   return doc
 }
@@ -33,8 +33,8 @@ export const revalidateProjectDelete: CollectionAfterDeleteHook<Project> = ({
   req: { context },
 }) => {
   if (context.disableRevalidate) return doc
-  if (doc?.slug) revalidateTag(projectTag(doc.slug), EXPIRE_NOW)
-  revalidateTag(PROJECTS_TAG, EXPIRE_NOW)
-  revalidateTag('pages-sitemap', 'max')
+  if (doc?.slug) expireTag(projectTag(doc.slug))
+  expireTag(PROJECTS_TAG)
+  expireTag('pages-sitemap', 'max')
   return doc
 }

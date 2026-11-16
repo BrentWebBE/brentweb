@@ -33,9 +33,10 @@ export function ContentBlock({ columns, locale }: ContentBlockProps & { locale: 
         }
       >
         {columns.map((col, i) => (
-          <div className={cn(!single && SPAN[col.size ?? 'full'])} key={col.id ?? i}>
+          <div className={cn(single ? 'max-w-[68ch]' : SPAN[col.size ?? 'full'])} key={col.id ?? i}>
             {col.richText && (
               <RichText
+                className={cn(single && 'rich-lead')}
                 data={fillPricesInRichText(col.richText, locale)}
                 enableGutter={false}
                 locale={locale}

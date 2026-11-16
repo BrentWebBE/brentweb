@@ -26,8 +26,8 @@ function usableKey(key: string | null | undefined): string | null {
 }
 
 const paneClassName =
-  'sketch-frame aspect-[4/3] w-full overflow-hidden [&_iframe]:size-full [&_iframe]:border-0'
-const labelClassName = 'hand mt-2 text-center text-2xl text-muted-foreground'
+  'site-frame aspect-[4/3] w-full overflow-hidden [&_iframe]:size-full [&_iframe]:border-0'
+const labelClassName = 'small mt-[var(--space-xs)]'
 
 /**
  * Click-to-load map. The page itself never contacts Google (or OpenStreetMap):
@@ -59,38 +59,25 @@ export function MapFacade({
 
   if (!active) {
     return (
-      <div
-        className={cn(
-          'paper-sheet relative grid min-h-64 place-items-center overflow-hidden p-8 text-center',
-          className,
-        )}
-      >
-        {/* A pencil grid, standing in for a map until the visitor asks for one. */}
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-60 [background-image:linear-gradient(var(--border)_1px,transparent_1px),linear-gradient(90deg,var(--border)_1px,transparent_1px)] [background-size:2.5rem_2.5rem] [mask-image:radial-gradient(circle_at_center,black,transparent_75%)]"
-        />
-        <div className="relative grid justify-items-center gap-5">
-          <ul
-            className="flex flex-wrap justify-center gap-x-8 gap-y-2"
-            aria-label={t('contact.map.places')}
-          >
-            {locations.map((place, i) => (
-              <li
-                key={place.name}
-                className={cn(
-                  'hand flex items-center gap-1.5 text-3xl',
-                  i % 2 ? 'rotate-2' : '-rotate-2',
-                )}
-              >
-                <MapPin aria-hidden className="size-6 text-primary" />
-                {place.name}
-              </li>
-            ))}
-          </ul>
-          <button type="button" onClick={() => setActive(true)} className="btn btn-ghost bg-card">
+      <div className={cn('well grid gap-[var(--space-md)] p-[var(--space-lg)]', className)}>
+        <ul
+          aria-label={t('contact.map.places')}
+          className="flex flex-wrap gap-x-[var(--space-lg)] gap-y-[var(--space-xs)]"
+        >
+          {locations.map((place) => (
+            <li className="flex items-center gap-[var(--space-xs)] font-medium" key={place.name}>
+              <MapPin aria-hidden className="size-4 text-[var(--color-accent)]" />
+              {place.name}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap items-center gap-x-[var(--space-md)] gap-y-[var(--space-xs)]">
+          <button className="btn btn-ghost btn-sm" onClick={() => setActive(true)} type="button">
             {apiKey ? t('contact.map.showGoogle') : t('contact.map.showOsm')}
           </button>
+          <span className="small">
+            {apiKey ? t('contact.map.loadsGoogle') : t('contact.map.loadsOsm')}
+          </span>
         </div>
       </div>
     )

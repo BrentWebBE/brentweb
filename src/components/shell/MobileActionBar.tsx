@@ -17,22 +17,19 @@ export async function MobileActionBar({ locale }: { locale: Locale }) {
   return (
     <>
       {/* Keeps the footer's last line clear of the bar. */}
-      <div aria-hidden="true" className="h-16 bg-footer md:hidden" />
+      <div aria-hidden="true" className="h-[80px] bg-[var(--color-field)] md:hidden" />
       <nav
         aria-label={t.contactTitle}
-        className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-2 gap-2 md:hidden"
+        className="fixed inset-x-[var(--space-sm)] bottom-[var(--space-sm)] z-[var(--z-sticky)] grid grid-cols-2 gap-[var(--space-xs)] md:hidden"
       >
         {settings.phone && (
-          <a
-            className="btn btn-primary min-h-12 text-base"
-            href={`tel:${settings.phone.replace(/[^\d+]/g, '')}`}
-          >
+          <a className="btn btn-primary" href={`tel:${settings.phone.replace(/[^\d+]/g, '')}`}>
             {t.call}
           </a>
         )}
         {settings.whatsapp && (
           <a
-            className="btn btn-ghost min-h-12 bg-card text-base"
+            className="btn btn-ghost bg-[var(--color-paper)]"
             href={settings.whatsapp}
             rel="noopener noreferrer"
             target="_blank"

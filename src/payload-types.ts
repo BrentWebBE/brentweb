@@ -76,6 +76,7 @@ export interface Config {
     projects: Project;
     testimonials: Testimonial;
     media: Media;
+    screenshots: Screenshot;
     'menu-items': MenuItem;
     'product-categories': ProductCategory;
     posts: Post;
@@ -116,6 +117,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    screenshots: ScreenshotsSelect<false> | ScreenshotsSelect<true>;
     'menu-items': MenuItemsSelect<false> | MenuItemsSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
@@ -148,11 +150,13 @@ export interface Config {
     header: Header;
     footer: Footer;
     'site-settings': SiteSetting;
+    'payload-jobs-stats': PayloadJobsStat;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'payload-jobs-stats': PayloadJobsStatsSelect<false> | PayloadJobsStatsSelect<true>;
   };
   locale: 'nl-BE' | 'en';
   widgets: {
@@ -161,6 +165,7 @@ export interface Config {
   user: User;
   jobs: {
     tasks: {
+      captureScreenshots: TaskCaptureScreenshots;
       schedulePublish: TaskSchedulePublish;
       inline: {
         input: unknown;
@@ -285,11 +290,11 @@ export interface HeroBlock {
   greetingSuffix?: string | null;
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   title: string;
   /**
-   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
    */
   intro?: string | null;
   paragraphs?:
@@ -342,6 +347,10 @@ export interface HeroBlock {
    */
   note?: string | null;
   /**
+   * Shows this project's automatically updated screenshot to the right of the title.
+   */
+  showcaseProject?: (string | null) | Project;
+  /**
    * The price range comes from the estimator.
    */
   priceScopes?: ('website' | 'web_app' | 'api_integration' | 'automation')[] | null;
@@ -363,6 +372,10 @@ export interface Project {
   summary?: string | null;
   cover?: (string | null) | Media;
   coverMobile?: (string | null) | Media;
+  autoScreenshot?: boolean | null;
+  screenshot?: (string | null) | Screenshot;
+  screenshotMobile?: (string | null) | Screenshot;
+  screenshotAt?: string | null;
   /**
    * Real figures only.
    */
@@ -537,6 +550,25 @@ export interface FolderInterface {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "screenshots".
+ */
+export interface Screenshot {
+  id: string;
+  alt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
@@ -647,14 +679,22 @@ export interface PainPointsBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading: string;
   items: {
     problem: string;
     fix: string;
+    /**
+     * Only work that actually ran. A link appears under the problem.
+     */
+    project?: (string | null) | Project;
     id?: string | null;
   }[];
+  /**
+   * {client} becomes the client name.
+   */
+  caseLinkLabel?: string | null;
   /**
    * Clicking it prefills the contact form with the problem.
    */
@@ -711,7 +751,7 @@ export interface ProjectsBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   intro?: string | null;
@@ -726,7 +766,7 @@ export interface ProjectsBlock {
         id?: string | null;
       }[]
     | null;
-  layout?: ('cards' | 'list') | null;
+  layout?: ('showcase' | 'cards' | 'list') | null;
   showLink?: boolean | null;
   link?: {
     type?: ('reference' | 'custom') | null;
@@ -761,13 +801,33 @@ export interface TestimonialsBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   /**
    * Leave empty to show every visible testimonial.
    */
   testimonials?: (string | Testimonial)[] | null;
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'testimonials';
@@ -803,11 +863,11 @@ export interface FeaturesBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   /**
-   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
    */
   intro?: string | null;
   style?: ('cards' | 'ticks' | 'compact') | null;
@@ -815,7 +875,7 @@ export interface FeaturesBlock {
   items: {
     title?: string | null;
     /**
-     * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+     * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
      */
     body?: string | null;
     id?: string | null;
@@ -854,7 +914,7 @@ export interface StepsBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading: string;
   intro?: string | null;
@@ -897,11 +957,21 @@ export interface PricingBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading: string;
   /**
-   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
+   * A row in the price list links to the page you pick here.
+   */
+  servicePages?:
+    | {
+        scope: 'website' | 'web_app' | 'api_integration' | 'automation';
+        page: string | Page;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Don't type prices: use {websiteRange}, {websiteMin}, {websiteMax}, {webAppRange}, {apiRange}, {automationRange}, {integrationsRange}, {fromPrice}, {maintenanceBasic}, {maintenanceActive} or …WeeksMin / …WeeksMax. They come from the estimator, so they match everywhere.
    */
   note?: string | null;
   ctaTitle?: string | null;
@@ -939,7 +1009,7 @@ export interface PricingTableBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading: string;
   intro?: string | null;
@@ -957,7 +1027,7 @@ export interface EstimatorBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   intro?: string | null;
@@ -1065,7 +1135,7 @@ export interface TimelineBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   intro?: string | null;
@@ -1100,7 +1170,7 @@ export interface WebsiteCheckBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading?: string | null;
   intro?: string | null;
@@ -1174,7 +1244,7 @@ export interface ContactBlock {
    */
   eyebrow?: string | null;
   /**
-   * Tip: wrap a word in _underscores_ for a pen line under it, or in ==equals signs== for highlighter.
+   * Short and concrete: say what the visitor sees or gets here, in six words or fewer.
    */
   heading: string;
   intro?: string | null;
@@ -1927,7 +1997,7 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
+        taskSlug: 'inline' | 'captureScreenshots' | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -1960,10 +2030,19 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
+  taskSlug?: ('inline' | 'captureScreenshots' | 'schedulePublish') | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
+  meta?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1989,6 +2068,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'screenshots';
+        value: string | Screenshot;
       } | null)
     | ({
         relationTo: 'menu-items';
@@ -2206,6 +2289,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
   image?: T;
   imageCaption?: T;
   note?: T;
+  showcaseProject?: T;
   priceScopes?: T;
   id?: T;
   blockName?: T;
@@ -2222,8 +2306,10 @@ export interface PainPointsBlockSelect<T extends boolean = true> {
     | {
         problem?: T;
         fix?: T;
+        project?: T;
         id?: T;
       };
+  caseLinkLabel?: T;
   linkLabel?: T;
   id?: T;
   blockName?: T;
@@ -2295,6 +2381,16 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   heading?: T;
   testimonials?: T;
+  enableLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2363,6 +2459,13 @@ export interface StepsBlockSelect<T extends boolean = true> {
 export interface PricingBlockSelect<T extends boolean = true> {
   eyebrow?: T;
   heading?: T;
+  servicePages?:
+    | T
+    | {
+        scope?: T;
+        page?: T;
+        id?: T;
+      };
   note?: T;
   ctaTitle?: T;
   ctaBody?: T;
@@ -2625,6 +2728,10 @@ export interface ProjectsSelect<T extends boolean = true> {
   summary?: T;
   cover?: T;
   coverMobile?: T;
+  autoScreenshot?: T;
+  screenshot?: T;
+  screenshotMobile?: T;
+  screenshotAt?: T;
   metrics?:
     | T
     | {
@@ -2740,6 +2847,24 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "screenshots_select".
+ */
+export interface ScreenshotsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3268,6 +3393,7 @@ export interface PayloadJobsSelect<T extends boolean = true> {
   queue?: T;
   waitUntil?: T;
   processing?: T;
+  meta?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -3505,6 +3631,24 @@ export interface SiteSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats".
+ */
+export interface PayloadJobsStat {
+  id: string;
+  stats?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -3630,6 +3774,16 @@ export interface SiteSettingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats_select".
+ */
+export interface PayloadJobsStatsSelect<T extends boolean = true> {
+  stats?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "collections_widget".
  */
 export interface CollectionsWidget {
@@ -3637,6 +3791,18 @@ export interface CollectionsWidget {
     [k: string]: unknown;
   };
   width: 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskCaptureScreenshots".
+ */
+export interface TaskCaptureScreenshots {
+  input: {
+    projectId?: string | null;
+  };
+  output: {
+    captured?: number | null;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

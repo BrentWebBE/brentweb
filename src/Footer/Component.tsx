@@ -5,8 +5,7 @@ import type { Locale } from '@/lib/locales'
 
 import { Wordmark } from '@/components/Logo/Wordmark'
 import { linkHref } from '@/components/Link'
-import { Note } from '@/components/handmade/Note'
-import { systemHref } from '@/lib/routing'
+import { homeHref, systemHref } from '@/lib/routing'
 import { ui } from '@/lib/ui-strings'
 import { SOCIAL_PLATFORMS } from '@/SiteSettings/options'
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -16,14 +15,14 @@ const socialLabel = (platform: string, url: string): string => {
   if (platform !== 'other')
     return SOCIAL_PLATFORMS.find((p) => p.value === platform)?.label ?? platform
   try {
-    return new URL(url).hostname.replace(/^www\./, '')
+    const host = new URL(url).hostname.replace(/^www\./, '')
+    return host === 'github.com' ? 'GitHub' : host
   } catch {
     return url
   }
 }
 
-const telHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, '')}`
-
+/** The dark field again: who, the pages, how to reach me, and the legal line. */
 export async function Footer({ locale }: { locale: Locale }) {
   const [footer, settings] = await Promise.all([
     getCachedGlobal('footer', 1, locale)(),
@@ -33,58 +32,35 @@ export async function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear()
   const links = (footer?.navItems ?? [])
     .map(({ id, link }) => ({ id, href: linkHref({ locale, ...link }), label: link.label }))
-    .filter((l) => l.href && l.label)
+    .filter((l): l is { id: string | null | undefined; href: string; label: string } =>
+      Boolean(l.href && l.label),
+    )
+  const tel = settings?.phone?.replace(/[^\d+]/g, '')
 
   return (
-    <footer className="relative mt-auto bg-footer text-footer-foreground">
-      {/* A torn-paper edge instead of a straight line. */}
-      <svg
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-3 h-4 w-full text-footer"
-        preserveAspectRatio="none"
-        viewBox="0 0 1200 16"
-      >
-        <path
-          d="M0 16V9l40-3 38 4 52-6 41 5 47-4 36 3 61-5 44 6 39-4 58 3 33-5 49 6 42-5 51 4 37-3 60 5 41-6 46 4 52-3 39 5 44-4 50 3 46-5 39 4 55-2L1200 8V16Z"
-          fill="currentColor"
-        />
-      </svg>
-
-      <div className="container grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div className="flex flex-col gap-5">
-          <Link aria-label="Brent Schoenmakers, home" className="w-fit" href={`/${locale}`}>
-            <Wordmark className="h-8 w-auto" />
+    <footer className="field mt-auto">
+      <div className="container grid gap-[var(--space-2xl)] py-[var(--space-3xl)] md:grid-cols-2 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="flex flex-col gap-[var(--space-lg)]">
+          <Link aria-label="BrentWeb, home" className="w-fit" href={homeHref(locale)}>
+            <Wordmark className="h-7 w-auto text-[var(--color-field-ink)]" />
           </Link>
-          {footer?.blurb && <p className="max-w-sm text-footer-foreground/80">{footer.blurb}</p>}
-          {settings?.availability && (
-            <p className="flex items-center gap-2 text-sm">
-              <span
-                aria-hidden="true"
-                className={
-                  settings.availability === 'open'
-                    ? 'size-2.5 rounded-full bg-success'
-                    : settings.availability === 'limited'
-                      ? 'size-2.5 rounded-full bg-warning'
-                      : 'size-2.5 rounded-full bg-error'
-                }
-              />
-              {t.availability[settings.availability]}
-            </p>
+          {footer?.blurb && (
+            <p className="max-w-[40ch] text-[var(--color-ink-2)]">{footer.blurb}</p>
           )}
-          {footer?.note && (
-            <Note arrow="none" className="mt-2 text-[oklch(78%_0.13_40deg)]" tilt={-4}>
-              {footer.note}
-            </Note>
+          {settings?.availability && (
+            <p className="text-[length:var(--text-sm)]">{t.availability[settings.availability]}</p>
           )}
         </div>
 
         {links.length > 0 && (
-          <nav aria-label={t.pagesTitle}>
-            <h2 className="hand mb-3 text-2xl text-footer-foreground/70">{t.pagesTitle}</h2>
-            <ul className="flex flex-col gap-2">
+          <nav aria-labelledby="footer-pages">
+            <h2 className="small mb-[var(--space-md)] font-medium" id="footer-pages">
+              {t.pagesTitle}
+            </h2>
+            <ul className="grid gap-[var(--space-xs)]">
               {links.map((l) => (
                 <li key={l.id ?? l.href}>
-                  <Link className="hover:underline hover:decoration-wavy" href={l.href!}>
+                  <Link className="hover:underline" href={l.href}>
                     {l.label}
                   </Link>
                 </li>
@@ -94,11 +70,11 @@ export async function Footer({ locale }: { locale: Locale }) {
         )}
 
         <div>
-          <h2 className="hand mb-3 text-2xl text-footer-foreground/70">{t.contactTitle}</h2>
-          <ul className="flex flex-col gap-2">
+          <h2 className="small mb-[var(--space-md)] font-medium">{t.contactTitle}</h2>
+          <ul className="grid gap-[var(--space-xs)]">
             {settings?.phone && (
               <li>
-                <a className="hover:underline hover:decoration-wavy" href={telHref(settings.phone)}>
+                <a className="hover:underline" href={`tel:${tel}`}>
                   {settings.phone}
                 </a>
               </li>
@@ -106,7 +82,7 @@ export async function Footer({ locale }: { locale: Locale }) {
             {settings?.whatsapp && (
               <li>
                 <a
-                  className="hover:underline hover:decoration-wavy"
+                  className="hover:underline"
                   href={settings.whatsapp}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -117,17 +93,14 @@ export async function Footer({ locale }: { locale: Locale }) {
             )}
             {settings?.email && (
               <li>
-                <a
-                  className="hover:underline hover:decoration-wavy"
-                  href={`mailto:${settings.email}`}
-                >
+                <a className="hover:underline" href={`mailto:${settings.email}`}>
                   {settings.email}
                 </a>
               </li>
             )}
           </ul>
           {settings?.socialLinks && settings.socialLinks.length > 0 && (
-            <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-footer-foreground/80">
+            <ul className="mt-[var(--space-lg)] flex flex-wrap gap-x-[var(--space-lg)] gap-y-[var(--space-xs)] text-[length:var(--text-sm)] text-[var(--color-ink-2)]">
               {settings.socialLinks.map(({ id, platform, url }) => (
                 <li key={id ?? url}>
                   <a
@@ -145,8 +118,8 @@ export async function Footer({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="border-t border-footer-foreground/15">
-        <div className="container flex flex-col gap-2 py-5 text-xs text-footer-foreground/70 md:flex-row md:flex-wrap md:items-center md:gap-x-6">
+      <div className="border-t border-[var(--color-field-rule)]">
+        <div className="container flex flex-col gap-[var(--space-xs)] py-[var(--space-lg)] text-[length:var(--text-sm)] text-[var(--color-ink-2)] md:flex-row md:flex-wrap md:items-center md:gap-x-[var(--space-xl)]">
           <span>
             © {year} {settings?.personName || settings?.businessName}
           </span>
@@ -168,7 +141,7 @@ export async function Footer({ locale }: { locale: Locale }) {
             {t.privacy}
           </Link>
           <a className="hover:underline" href="#top">
-            {t.backToTop} ↑
+            {t.backToTop}
           </a>
         </div>
       </div>

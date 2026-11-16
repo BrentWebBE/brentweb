@@ -6,7 +6,7 @@ import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
 import { contentLocale, type Locale } from '@/lib/locales'
 
-/** A card pinned to the page, with one or two links. */
+/** A tinted band: a sentence or two on the left, the action on the right. */
 export function CallToActionBlock({
   links,
   locale = contentLocale,
@@ -15,24 +15,22 @@ export function CallToActionBlock({
   return (
     <section className="section">
       <div className="container">
-        <div className="paper-card relative mx-auto flex max-w-4xl flex-col gap-8 p-8 md:flex-row md:items-center md:justify-between md:p-12">
-          <span aria-hidden="true" className="tape" />
-          <div className="max-w-xl">
-            {richText && (
-              <RichText
-                className="prose-h2:mt-0 prose-h3:mt-0"
-                data={richText}
-                enableGutter={false}
-                locale={locale}
-              />
-            )}
-          </div>
-          <div className="flex flex-col gap-3">
+        <div className="well grid gap-[var(--space-lg)] p-[var(--space-xl)] md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-[var(--space-2xl)] md:p-[var(--space-2xl)]">
+          {richText && (
+            <RichText
+              className="rich-cta max-w-[56ch]"
+              data={richText}
+              enableGutter={false}
+              enableProse={false}
+              locale={locale}
+            />
+          )}
+          <div className="flex flex-wrap items-center gap-[var(--space-md)]">
             {(links ?? []).map(({ id, link }, i) => (
               <CMSLink
                 key={id ?? i}
                 {...link}
-                appearance={i === 0 ? 'button' : 'arrow'}
+                appearance={i === 0 ? 'button' : 'link'}
                 locale={locale}
               />
             ))}

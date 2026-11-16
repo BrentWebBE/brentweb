@@ -109,6 +109,19 @@ export const Hero: Block = {
       admin: { description: l('Bv. "dat ben ik!"', 'E.g. "that\'s me!"') },
     },
     {
+      name: 'showcaseProject',
+      type: 'relationship',
+      relationTo: 'projects',
+      label: l('Live site van een project ernaast', 'Live site of a project beside it'),
+      admin: {
+        condition: (_, siblingData) => siblingData?.variant !== 'home',
+        description: l(
+          'Toont de automatisch bijgehouden screenshot van dit project rechts naast de titel.',
+          "Shows this project's automatically updated screenshot to the right of the title.",
+        ),
+      },
+    },
+    {
       name: 'priceScopes',
       type: 'select',
       hasMany: true,

@@ -1,0 +1,120 @@
+/* Hallmark · part of the system stamped in src/app/(frontend)/globals.css, imported from there */
+/*
+ * BrentWeb tokens. Every colour and face on the site comes from here.
+ *
+ * Paper: near-white, a breath warm toward the brand red so the greys aren't dead.
+ * Ink: near-black on the same hue. Field: the dark band the live client sites scroll in.
+ * Accent: the BrentWeb red from the wordmark, deepened for text and button contrast on
+ * paper; the true brand red (--color-brand) is kept for the wordmark and the dark field.
+ */
+:root {
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.375rem;
+  --text-display-s: clamp(2.25rem, 3.4vw + 0.75rem, 3.5rem);
+  --text-display: clamp(2.6rem, 4.6vw + 1rem, 4.75rem);
+  --text-section: clamp(1.875rem, 2.2vw + 1rem, 3rem);
+  --text-title: clamp(1.25rem, 0.6vw + 1rem, 1.5rem);
+  --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+
+  --container: 1240px;
+  --gutter: 48px;
+  --gap-columns: 32px;
+  --section-gap-s: 120px;
+  --section-gap: 144px;
+  --section-gap-l: 160px;
+  --nav-height: 72px;
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-sticky-nav: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+
+  /* Light */
+  --color-paper: oklch(98.4% 0.004 25);
+  --color-paper-2: oklch(96.2% 0.006 25);
+  --color-paper-3: oklch(93% 0.008 25);
+  --color-ink: oklch(19% 0.012 25);
+  --color-ink-2: oklch(33% 0.012 25);
+  --color-muted: oklch(46% 0.012 25);
+  --color-rule: oklch(88.5% 0.008 25);
+  --color-field-edge: oklch(56% 0.012 25);
+  --color-accent: oklch(51% 0.2 26);
+  --color-accent-hover: oklch(45% 0.19 26);
+  --color-accent-ink: oklch(98.6% 0.004 25);
+  --color-focus: oklch(53% 0.21 26);
+  --color-brand: oklch(63.5% 0.19 23);
+
+  /* The dark band (the work) and the footer. */
+  --color-field: oklch(18.5% 0.012 25);
+  --color-field-2: oklch(23% 0.012 25);
+  --color-field-ink: oklch(95.5% 0.005 25);
+  --color-field-muted: oklch(74% 0.01 25);
+  --color-field-rule: oklch(31% 0.012 25);
+  --color-field-accent: oklch(68% 0.17 24);
+
+  --color-error: oklch(51% 0.19 27);
+  --color-success: oklch(50% 0.11 152);
+  --color-warning: oklch(68% 0.14 75);
+  --color-frame-shadow: oklch(19% 0.012 25 / 0.08);
+
+  --font-display: var(--font-rethink), 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-rethink), 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: var(--font-body);
+
+  --radius-control: 10px;
+  /* The starter's modules (shop, blog) read --radius. */
+  --radius: var(--radius-card);
+  --radius-card: 14px;
+  --radius-frame: 12px;
+  --radius-pill: 999px;
+  --rule-hair: 1px;
+  --shadow-card: 0 1px 2px var(--color-frame-shadow);
+  --tracking-display: -0.03em;
+}
+
+/* Dark: derived from the same hue, not inverted. The field gets darker than the paper. */
+[data-theme='dark'] {
+  --color-paper: oklch(17.5% 0.01 25);
+  --color-paper-2: oklch(21% 0.011 25);
+  --color-paper-3: oklch(25% 0.012 25);
+  --color-ink: oklch(95% 0.005 25);
+  --color-ink-2: oklch(84% 0.008 25);
+  --color-muted: oklch(72% 0.01 25);
+  --color-rule: oklch(30% 0.012 25);
+  --color-field-edge: oklch(56% 0.012 25);
+  --color-accent: oklch(66% 0.18 24);
+  --color-accent-hover: oklch(71% 0.16 24);
+  --color-accent-ink: oklch(16% 0.012 25);
+  --color-focus: oklch(68% 0.18 24);
+  --color-field: oklch(13% 0.009 25);
+  --color-field-2: oklch(17% 0.01 25);
+  --color-field-rule: oklch(27% 0.011 25);
+  --color-frame-shadow: oklch(5% 0.01 25 / 0.4);
+}

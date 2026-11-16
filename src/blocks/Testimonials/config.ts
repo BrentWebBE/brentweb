@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 import { eyebrowField, headingField } from '@/fields/heading'
+import { link } from '@/fields/link'
 import { l } from '@/utilities/label'
 
 export const TestimonialsBlock: Block = {
@@ -26,5 +27,17 @@ export const TestimonialsBlock: Block = {
         ),
       },
     },
+    {
+      name: 'enableLink',
+      type: 'checkbox',
+      label: l(
+        'Link onder de reviews (bv. Google-reviews)',
+        'Link under the reviews (e.g. Google reviews)',
+      ),
+    },
+    link({
+      appearances: false,
+      overrides: { admin: { condition: (_, siblingData) => Boolean(siblingData?.enableLink) } },
+    }),
   ],
 }

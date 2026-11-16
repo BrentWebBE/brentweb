@@ -25,14 +25,14 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
     )
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
-      <div className="container flex h-16 items-center gap-6 md:h-[4.5rem]">
-        <Link aria-label="Brent Schoenmakers, home" className="shrink-0" href={homeHref(locale)}>
-          <Wordmark className="h-6 w-auto text-foreground md:h-7" />
+    <header className="sticky top-0 z-[var(--z-sticky-nav)] border-b border-[var(--color-rule)] bg-[var(--color-paper)]">
+      <div className="container relative flex h-[var(--nav-height)] items-center gap-[var(--space-md)]">
+        <Link aria-label="BrentWeb, home" className="shrink-0" href={homeHref(locale)}>
+          <Wordmark className="h-5 w-auto text-[var(--color-ink)] sm:h-6 md:h-7" />
         </Link>
 
-        <nav aria-label={t.mainNav} className="ml-auto hidden lg:block">
-          <ul className="flex items-center gap-1">
+        <nav aria-label={t.mainNav} className="ml-auto hidden xl:block">
+          <ul className="flex items-center gap-[var(--space-2xs)]">
             {items.map((item) => (
               <li key={item.id ?? item.href}>
                 <NavLink href={item.href}>{item.label}</NavLink>
@@ -41,14 +41,16 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
           </ul>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+        <div className="ml-auto flex min-w-0 items-center gap-[var(--space-2xs)] sm:gap-[var(--space-xs)] xl:ml-0">
           <LanguageSwitcher alternates={alternates} label={t.language} locale={locale} />
-          <ThemeToggle labels={{ dark: t.themeDark, light: t.themeLight }} />
+          <div className="hidden sm:block">
+            <ThemeToggle labels={{ dark: t.themeDark, light: t.themeLight }} />
+          </div>
           {header?.cta?.label && (
             <CMSLink
               {...header.cta}
               appearance="button"
-              className="hidden min-h-10 px-4 py-2 text-sm sm:inline-flex"
+              className="btn-sm hidden sm:inline-flex"
               locale={locale}
             />
           )}

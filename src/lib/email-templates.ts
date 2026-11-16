@@ -21,25 +21,25 @@ function escapeHtml(value: string): string {
 }
 
 /**
- * The site's paper palette, as hex: email clients don't read CSS variables or
- * oklch(). Kept close to src/client/theme.css by eye, not by build step.
+ * The site's palette as hex (email clients read neither CSS variables nor oklch()):
+ * src/client/tokens.css converted, paper-2, paper, ink, muted, rule and accent.
  */
 const MAIL = {
-  page: '#f4ede1',
-  paper: '#fefcf8',
-  ink: '#291f19',
-  muted: '#5b5048',
-  rule: '#d4c9b9',
-  red: '#c22826',
+  page: '#f6f1f0',
+  paper: '#fcf9f8',
+  ink: '#191211',
+  muted: '#5f5655',
+  rule: '#ded7d6',
+  red: '#be111e',
 } as const
 
 function wrapper(title: string, bodyHtml: string): string {
   return `<!doctype html>
 <html>
   <body style="margin:0;padding:32px 16px;background:${MAIL.page};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:${MAIL.ink};">
-    <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:${MAIL.paper};border:1.5px solid ${MAIL.ink};border-radius:14px 22px 16px 20px;padding:32px;box-shadow:3px 4px 0 ${MAIL.ink};">
+    <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:${MAIL.paper};border:1px solid ${MAIL.rule};border-radius:14px;padding:32px;">
       <tr><td>
-        <h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:22px;line-height:1.2;margin:0 0 16px;color:${MAIL.ink};">${escapeHtml(title)}</h1>
+        <h1 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;line-height:1.2;margin:0 0 16px;color:${MAIL.ink};">${escapeHtml(title)}</h1>
         ${bodyHtml}
       </td></tr>
     </table>

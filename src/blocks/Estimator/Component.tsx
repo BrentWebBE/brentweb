@@ -6,11 +6,14 @@ import { CostEstimator } from '@/components/calculator/CostEstimator'
 import { SectionHeading } from '@/components/handmade/SectionHeading'
 import type { Locale } from '@/lib/locales'
 
-export function EstimatorBlock({ eyebrow, heading, intro, locale }: Props & { locale: Locale }) {
+export function EstimatorBlock({ heading, intro, locale }: Props & { locale: Locale }) {
   return (
-    <section className="section scroll-mt-24" id="estimator">
+    <section
+      className="scroll-mt-[var(--nav-height)] pb-[calc(var(--section-gap-s)/2)]"
+      id="estimator"
+    >
       <div className="container">
-        <SectionHeading eyebrow={eyebrow} heading={heading} intro={intro} locale={locale} />
+        <SectionHeading heading={heading} intro={intro} locale={locale} />
         <CostEstimator />
       </div>
     </section>

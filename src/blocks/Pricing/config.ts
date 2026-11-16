@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 import { eyebrowField, headingField, PRICE_HELP } from '@/fields/heading'
 import { link } from '@/fields/link'
+import { SCOPE_OPTIONS } from '@/lib/scopes'
 import { l } from '@/utilities/label'
 
 /**
@@ -18,6 +19,39 @@ export const Pricing: Block = {
   fields: [
     eyebrowField(),
     headingField({ required: true }),
+    {
+      name: 'servicePages',
+      type: 'array',
+      label: l('Dienstpagina per soort project', 'Service page per kind of project'),
+      admin: {
+        initCollapsed: true,
+        description: l(
+          'Een rij in de prijslijst linkt naar de pagina die je hier kiest.',
+          'A row in the price list links to the page you pick here.',
+        ),
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'scope',
+              type: 'select',
+              options: SCOPE_OPTIONS,
+              required: true,
+              admin: { width: '40%' },
+            },
+            {
+              name: 'page',
+              type: 'relationship',
+              relationTo: 'pages',
+              required: true,
+              admin: { width: '60%' },
+            },
+          ],
+        },
+      ],
+    },
     {
       name: 'note',
       type: 'textarea',

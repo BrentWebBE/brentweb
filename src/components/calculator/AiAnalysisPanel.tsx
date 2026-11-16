@@ -105,9 +105,7 @@ export function AiAnalysisPanel({
         </div>
       ) : (
         <>
-          {ai && !isCurrent && (
-            <p className="hand mt-4 -rotate-1 text-xl text-primary">{t('calculator.ai.stale')}</p>
-          )}
+          {ai && !isCurrent && <p className="small mt-4">{t('calculator.ai.stale')}</p>}
 
           {(!ai || !isCurrent) && (
             <div className="mt-5 flex flex-wrap items-center gap-4">
@@ -146,7 +144,7 @@ export function AiAnalysisPanel({
           <div>
             <h4 className="flex flex-wrap items-center gap-3 font-heading text-xl">
               {t('calculator.ai.summaryTitle')}
-              <span className="rounded-full border-[1.5px] border-border px-2.5 py-0.5 font-sans text-xs font-semibold text-muted-foreground">
+              <span className="rounded-full bg-[var(--color-paper-2)] px-2.5 py-0.5 text-xs font-medium text-[var(--color-ink-2)]">
                 {t('calculator.ai.complexityLabel')}:{' '}
                 {t(`calculator.ai.complexity.${analysis.complexity}`)}
               </span>

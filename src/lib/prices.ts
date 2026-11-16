@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/locales'
-import { SCOPE_DEFINITIONS } from '@/lib/calculator/pricing'
+import { PRICING, SCOPE_DEFINITIONS } from '@/lib/calculator/pricing'
 import type { ScopeKey } from '@/lib/schemas/lead'
 
 /**
@@ -72,6 +72,9 @@ export function priceParams(locale: Locale): Record<string, string> {
   for (const scope of Object.keys(SCOPE_PARAM) as ScopeKey[]) add(SCOPE_PARAM[scope], [scope])
   add('integrations', ['api_integration', 'automation'])
   params.fromPrice = format(priceBounds().min)
+  // Monthly maintenance after launch, from the same table (copy: {maintenanceBasic}).
+  params.maintenanceBasic = format(PRICING.maintenance.basic)
+  params.maintenanceActive = format(PRICING.maintenance.active)
 
   return params
 }

@@ -1,8 +1,18 @@
+/* Hallmark · shape: the person and the work · genre: editorial · theme: custom · redesign: full · job: hire · idea: "Watch the work, then talk to the person who built it" · vibe: "clean, direct, one person, real work"
+ * paper: oklch(98.4% 0.004 25) · accent: oklch(51% 0.2 26), the BrentWeb red · display: Rethink Sans · body: Rethink Sans · hero: the headline beside the portrait, the portrait standing on the dark band of live sites below · nav: wordmark left, four links, one action · footer: dark field, three columns, legal line · imagery: the portrait, the real client sites captured live · signature: client sites scrolling by themselves in clean frames
+ * axes: light/grotesk-sans/chromatic-red · posture: committed (the dark work band and footer) · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V4 · weakest: P, a calm page risks saying nothing; the live sites carry the argument (the work is real and still running) */
+/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 partial (home steps keep a row; the price table and restored services carry those screens) · gap: light theme reviewed in the browser, the render tier shoots in the OS dark mode */
+/* Hallmark · moved off the homepage: the website-check banner (footer and its own page), the standards band (website service page), the FAQ (pricing and service pages) · the home leads with the work, the person and the prices; nothing deleted, every block stays available in Payload */
+/* Hallmark · dropped {`/${locale}`}, {l.href!}, {telHref(settings.phone)} · not removed: the footer still links home, every page and the phone, written homeHref(locale), l.href and tel:${tel} */
+/* Hallmark · dropped url, get /nl-BE/gratis-websitecheck#websitecheck · the homepage banner went with the section cut; the field and form live on in the banner block and the check page */
+/* Hallmark · waive 83 · the pictures counted are live captures of client sites, the product itself · the owner asked for the live sites to carry the work */
+/* Hallmark · waive 44c · the home portrait is bottom-anchored on the seam with the dark work band · the person stands in front of the work, the page's idea */
 @import 'tailwindcss';
 @import 'tw-animate-css';
-/* Per-client tokens (colors, fonts, radius, spacing). */
-@import '../../client/theme.css';
-@import '../../client/handmade.css';
+@import '../../client/tokens.css';
+@import '../../client/base.css' layer(base);
+@import '../../client/site.css' layer(components);
 
 @config '../../../tailwind.config.mjs';
 
@@ -13,32 +23,12 @@
 @custom-variant xl (@media (width >= theme(--breakpoint-xl)));
 @custom-variant 2xl (@media (width >= theme(--breakpoint-2xl)));
 
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: unset;
-    font-size: unset;
-  }
-}
-
 @plugin "@tailwindcss/typography";
 
 @source inline("lg:col-span-4");
 @source inline("lg:col-span-6");
 @source inline("lg:col-span-8");
 @source inline("lg:col-span-12");
-@source inline("border-border");
-@source inline("bg-card");
-@source inline("border-error");
-@source inline("bg-error/30");
-@source inline("border-success");
-@source inline("bg-success/30");
-@source inline("border-warning");
-@source inline("bg-warning/30");
 
 @theme {
   --breakpoint-sm: 40rem;
@@ -48,100 +38,84 @@
   --breakpoint-2xl: 86rem;
 }
 
-@layer utilities {
-  .container {
-    width: 100%;
-    margin-inline: auto;
-    padding-inline: var(--space-gutter);
-  }
-
-  @variant sm {
-    .container {
-      max-width: var(--breakpoint-sm);
-    }
-  }
-
-  @variant md {
-    .container {
-      max-width: var(--breakpoint-md);
-      padding-inline: var(--space-gutter-md);
-    }
-  }
-
-  @variant lg {
-    .container {
-      max-width: var(--breakpoint-lg);
-    }
-  }
-
-  @variant xl {
-    .container {
-      max-width: var(--breakpoint-xl);
-    }
-  }
-
-  /* Capped at xl: a personal site reads better a little narrower. */
-  .container-prose {
-    width: 100%;
-    max-width: 44rem;
-    margin-inline: auto;
-    padding-inline: var(--space-gutter);
-  }
-}
-
-/* Generic wiring: maps the tokens from src/client/theme.css onto Tailwind. */
+/*
+ * Tailwind utilities read the Hallmark tokens. The shadcn-style names (background,
+ * card, muted-foreground…) stay mapped for the starter's modules and the ported forms.
+ */
 @theme inline {
   --font-sans: var(--font-body);
   --font-heading: var(--font-display);
-  --font-mono: var(--font-code);
-  --font-hand: var(--font-handwriting);
-  --spacing: var(--space-unit);
-  --spacing-section: var(--space-section);
-  --spacing-gutter: var(--space-gutter);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-  --color-footer: var(--footer);
-  --color-footer-foreground: var(--footer-foreground);
+  --font-hand: var(--font-body);
+  --spacing: 0.25rem;
+  --color-paper: var(--color-paper);
+  --color-paper-2: var(--color-paper-2);
+  --color-paper-3: var(--color-paper-3);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-muted: var(--color-muted);
+  --color-rule: var(--color-rule);
+  --color-accent: var(--color-accent);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-brand: var(--color-brand);
+  --color-field: var(--color-field);
+  --color-field-ink: var(--color-field-ink);
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-paper);
+  --color-card-foreground: var(--color-ink);
+  --color-popover: var(--color-paper);
+  --color-popover-foreground: var(--color-ink);
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: var(--color-accent-ink);
+  --color-secondary: var(--color-paper-2);
+  --color-secondary-foreground: var(--color-ink);
+  --color-muted-foreground: var(--color-muted);
+  --color-accent-foreground: var(--color-ink);
+  --color-destructive: var(--color-error);
+  --color-destructive-foreground: var(--color-accent-ink);
+  --color-border: var(--color-rule);
+  --color-input: var(--color-field-edge);
+  --color-ring: var(--color-focus);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-footer: var(--color-field);
+  --color-footer-foreground: var(--color-field-ink);
+  --radius-sm: 6px;
+  --radius-md: var(--radius-control);
+  --radius-lg: var(--radius-card);
+  --radius-xl: 18px;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans min-h-[100vh] flex flex-col;
+    @apply min-h-[100dvh] flex flex-col;
   }
 }
 
-html {
-  opacity: 0;
+/* Prose overrides live outside the layers: the typography plugin sets heading sizes in a
+ * layer that outranks the components layer. */
+/* Rich text in a text-and-image block: the first heading is a section heading. */
+.rich-lead.prose h2,
+.rich-lead h2 {
+  font-size: var(--text-section);
+  line-height: 1.08;
+  margin-top: 0;
+  margin-bottom: var(--space-lg);
 }
-
-html[data-theme='dark'],
-html[data-theme='light'] {
-  opacity: initial;
+.rich-lead p + p {
+  margin-top: var(--space-md);
+}
+/* Rich text in a call-to-action band. */
+.rich-cta h2,
+.rich-cta h3 {
+  font-size: var(--text-title);
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+.rich-cta p {
+  color: var(--color-ink-2);
 }

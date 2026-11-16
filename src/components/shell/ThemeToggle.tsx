@@ -13,7 +13,7 @@ export function ThemeToggle({ labels }: { labels: { dark: string; light: string 
 
   return (
     <button
-      className="grid size-10 place-items-center rounded-full text-foreground/80 transition hover:rotate-12 hover:text-foreground"
+      className="grid size-11 place-items-center rounded-[var(--radius-control)] text-[var(--color-ink-2)] transition-colors duration-[var(--dur-short)] hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]"
       onClick={() => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
         setTheme(isDark ? 'light' : 'dark')
@@ -24,11 +24,11 @@ export function ThemeToggle({ labels }: { labels: { dark: string; light: string 
       <span className="sr-only hidden dark:inline">{labels.light}</span>
       <svg
         aria-hidden="true"
-        className="size-6"
+        className="size-5"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
-        strokeWidth="1.8"
+        strokeWidth="1.5"
         viewBox="0 0 24 24"
       >
         <g className="hidden dark:inline">

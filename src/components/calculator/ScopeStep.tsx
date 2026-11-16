@@ -68,7 +68,7 @@ export function ScopeStep({
 
       <div className={estimatorClasses.actions}>
         <button type="button" className="btn btn-primary" onClick={handleNext}>
-          {t('calculator.next')} →
+          {t('calculator.next')}
         </button>
       </div>
     </div>

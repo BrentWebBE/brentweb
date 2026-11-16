@@ -93,7 +93,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await requestLocale()
   const settings = await getSiteSettings(locale)
-  const siteName = settings?.personName || settings?.businessName || undefined
+  const siteName = settings?.businessName || settings?.personName || undefined
   const noIndex = Boolean(settings?.technical?.noIndex)
 
   return {

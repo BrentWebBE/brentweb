@@ -1,0 +1,34 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "the person and the work",
+  "theme": "custom",
+  "axes": "light/grotesk-sans/chromatic-red",
+  "hero": "headline beside the portrait, the portrait standing on the dark band of live client sites",
+  "nav": "wordmark left, four links, language, one action",
+  "footer": "dark field, three columns, legal line",
+  "imagery": "portrait photographs, live captures of client sites",
+  "photos": [],
+  "entry": "none",
+  "fingerprint": "paper oklch(98.4% 0.004 25), accent oklch(51% 0.2 26), Rethink Sans",
+  "sections": [
+   "hero",
+   "work showcase",
+   "quote",
+   "pain points",
+   "prices",
+   "process",
+   "about",
+   "contact"
+  ],
+  "signature": "client sites scrolling by themselves in clean frames, refreshed weekly by a capture job",
+  "waived": [
+   "83",
+   "44c"
+  ],
+  "prompt": "freelance web developer in Flanders who builds websites, internal tools and integrations for small businesses; professional and personal",
+  "date": "2026-11-16"
+ }
+]

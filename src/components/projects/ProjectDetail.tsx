@@ -6,15 +6,16 @@ import type { Project } from '@/payload-types'
 import { JsonLd } from '@/components/JsonLd'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
-import { Note } from '@/components/handmade/Note'
-import { Reveal } from '@/components/handmade/Reveal'
-import { StatusBadge } from '@/components/projects/ProjectCard'
 import { businessId, personId } from '@/components/seo/schema'
 import type { Locale } from '@/lib/locales'
 import { homeHref, projectHref, projectsHref } from '@/lib/routing'
 import { ui } from '@/lib/ui-strings'
 import { getServerSideURL } from '@/utilities/getURL'
 import { getProjects, getTestimonials } from '@/utilities/queries'
+
+import { LiveSite } from './LiveSite'
+import { statusLabel } from './ProjectCard'
+import { domainOf, projectVisual } from './visual'
 
 const hasContent = (state: Project['body']) =>
   Boolean(
@@ -25,8 +26,9 @@ const hasContent = (state: Project['body']) =>
   )
 
 /**
- * One case study. The story for the client comes first; the engineering side (what the
- * old /tech pages showed) folds open underneath, so both readers get one page.
+ * One case study. The live site first, then the story for the client; the engineering
+ * side (what the old /tech pages carried) folds open underneath, so both readers get
+ * one page.
  */
 export async function ProjectDetail({ locale, project }: { locale: Locale; project: Project }) {
   const t = ui(locale).projects
@@ -37,17 +39,20 @@ export async function ProjectDetail({ locale, project }: { locale: Locale; proje
     (q) =>
       (typeof q.project === 'object' ? q.project?.id : q.project) === project.id && q.quote?.trim(),
   )
-  const cover = typeof project.cover === 'object' ? project.cover : null
-  const phone = typeof project.coverMobile === 'object' ? project.coverMobile : null
+  const { cover, desktop, phone } = projectVisual(project)
   const tech = project.technical
   const hasTech = Boolean(
     tech?.summary || tech?.decisions?.length || hasContent(tech?.body) || tech?.tags?.length,
   )
   const origin = getServerSideURL()
   const url = `${origin}${projectHref(locale, project.slug)}`
+  const status = statusLabel(locale, project.status)
+  // The write-up may set the same figures in its own metric grid: show them once.
+  const bodyHasMetrics = JSON.stringify(project.body ?? {}).includes('"blockType":"metricGrid"')
+  const metrics = bodyHasMetrics ? [] : (project.metrics ?? [])
 
   return (
-    <article className="pb-12">
+    <article className="pb-[var(--section-gap-s)]">
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -88,98 +93,141 @@ export async function ProjectDetail({ locale, project }: { locale: Locale; proje
         }}
       />
 
-      <header className="container pb-10 pt-10 md:pt-16">
-        <Link className="link-hand text-sm text-muted-foreground" href={projectsHref(locale)}>
-          ← {t.back}
-        </Link>
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-end">
+      <header className="container pb-[var(--space-2xl)] pt-[var(--space-xl)] md:pt-[var(--space-2xl)]">
+        <nav
+          aria-label={locale === 'nl-BE' ? 'Kruimelpad' : 'Breadcrumb'}
+          className="small mb-[var(--space-xl)]"
+        >
+          <ol className="flex flex-wrap gap-x-[var(--space-xs)]">
+            <li>
+              <Link className="hover:text-[var(--color-ink)]" href={projectsHref(locale)}>
+                {t.all}
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">{project.title}</li>
+          </ol>
+        </nav>
+        <div className="grid gap-[var(--space-xl)] lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-[var(--space-3xl)]">
           <div>
-            <p className="eyebrow mb-3 -rotate-1">
-              {[project.sector, project.period].filter(Boolean).join(' · ')}
-            </p>
-            <h1 className="display-1 mb-6 !text-[clamp(2.3rem,5.5vw,4.25rem)]">{project.title}</h1>
+            <h1 className="display-s mb-[var(--space-lg)]">{project.title}</h1>
             {(project.summary || project.abstract) && (
               <p className="lede">{project.summary || project.abstract}</p>
             )}
           </div>
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
+          <dl className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-md)] border-t border-[var(--color-rule)] pt-[var(--space-md)]">
             {project.client && (
               <div>
-                <dt className="hand text-lg text-muted-foreground">{t.client}</dt>
+                <dt className="small">{t.client}</dt>
                 <dd>{project.client}</dd>
               </div>
             )}
-            <div>
-              <dt className="hand text-lg text-muted-foreground">Status</dt>
-              <dd>
-                <StatusBadge locale={locale} status={project.status} />
-              </dd>
-            </div>
-            <div className="col-span-2 flex flex-wrap gap-4 pt-2">
-              {project.liveUrl && (
-                <a
-                  className="link-arrow"
-                  href={project.liveUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {t.visit}
-                </a>
-              )}
-              {tech?.githubUrl && (
-                <a
-                  className="link-arrow"
-                  href={tech.githubUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {t.source}
-                </a>
-              )}
-            </div>
+            {project.period && (
+              <div>
+                <dt className="small">{t.period}</dt>
+                <dd>{project.period}</dd>
+              </div>
+            )}
+            {project.sector && (
+              <div>
+                <dt className="small">
+                  {locale === 'nl-BE' ? 'Soort project' : 'Kind of project'}
+                </dt>
+                <dd>{project.sector}</dd>
+              </div>
+            )}
+            {status && (
+              <div>
+                <dt className="small">{t.status_label}</dt>
+                <dd>{status}</dd>
+              </div>
+            )}
+            {(project.liveUrl || tech?.githubUrl) && (
+              <div className="col-span-2 flex flex-wrap gap-x-[var(--space-lg)] pt-[var(--space-xs)]">
+                {project.liveUrl && (
+                  <a
+                    className="link"
+                    href={project.liveUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {project.status === 'decommissioned' ? t.archive : t.visit}
+                  </a>
+                )}
+                {tech?.githubUrl && (
+                  <a
+                    className="link"
+                    href={tech.githubUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {t.source}
+                  </a>
+                )}
+              </div>
+            )}
           </dl>
         </div>
       </header>
 
-      {cover && (
-        <div className="container relative mb-16">
-          <div className="sketch-frame">
-            <div aria-hidden="true" className="sketch-frame__bar">
-              <span />
-              <span />
-              <span />
+      {(desktop || cover) && (
+        <div className="field py-[var(--space-3xl)]">
+          <div className="container">
+            <div className="grid items-start gap-[var(--space-xl)] md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)]">
+              {desktop ? (
+                <LiveSite
+                  domain={domainOf(project.liveUrl)}
+                  image={desktop}
+                  labels={{ pause: t.pause, play: t.play }}
+                  priority
+                  sizes="(min-width: 1240px) 860px, 70vw"
+                />
+              ) : (
+                cover && (
+                  <div className="site-frame">
+                    <Media
+                      imgClassName="w-full"
+                      priority
+                      resource={cover}
+                      size="(min-width: 1240px) 860px, 92vw"
+                    />
+                  </div>
+                )
+              )}
+              {phone && (
+                <LiveSite
+                  className="mx-auto hidden w-full max-w-[15rem] md:block"
+                  image={phone}
+                  labels={{ pause: t.pause, play: t.play }}
+                  sizes="240px"
+                  variant="phone"
+                />
+              )}
             </div>
-            <Media
-              imgClassName="w-full"
-              priority
-              resource={cover}
-              size="(min-width: 1280px) 76rem, 100vw"
-            />
+            {desktop && <p className="small mt-[var(--space-lg)]">{t.liveNote}</p>}
           </div>
-          {phone && (
-            <div className="absolute -bottom-10 right-8 hidden w-40 rotate-3 overflow-hidden rounded-[1.4rem] border-[5px] border-foreground shadow-[4px_5px_0_var(--shadow-ink)] md:block lg:w-48">
-              <Media imgClassName="w-full" resource={phone} size="12rem" />
-            </div>
-          )}
         </div>
       )}
 
-      {(project.metrics?.length || project.outcomes?.length) && (
-        <section className="container mb-16 grid gap-8 lg:grid-cols-[1fr_1.4fr]">
-          {project.metrics && project.metrics.length > 0 && (
-            <dl className="grid content-start gap-4 sm:grid-cols-2">
-              {project.metrics.map((m, i) => (
-                <div className="paper-card flex flex-col-reverse px-5 py-4" key={m.id ?? i}>
-                  <dt className="text-sm text-muted-foreground">{m.label}</dt>
-                  <dd className="font-heading text-3xl text-primary">{m.value}</dd>
+      {(metrics.length > 0 || Boolean(project.outcomes?.length)) && (
+        <section className="container grid gap-[var(--space-2xl)] py-[var(--space-3xl)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+          {metrics.length > 0 && (
+            <dl className="grid content-start gap-[var(--space-lg)] sm:grid-cols-2">
+              {metrics.map((m, i) => (
+                <div
+                  className="flex flex-col-reverse border-t border-[var(--color-rule)] pt-[var(--space-md)]"
+                  key={m.id ?? i}
+                >
+                  <dt className="small">{m.label}</dt>
+                  <dd className="figure text-[length:var(--text-2xl)] font-bold">{m.value}</dd>
                 </div>
               ))}
             </dl>
           )}
           {project.outcomes && project.outcomes.length > 0 && (
             <div>
-              <h2 className="hand mb-3 text-3xl text-primary">{t.outcomes}</h2>
-              <ul className="list-ticks text-lg">
+              <h2 className="h-title mb-[var(--space-md)]">{t.outcomes}</h2>
+              <ul className="list-ticks">
                 {project.outcomes.map((o) => (
                   <li key={o}>{o}</li>
                 ))}
@@ -193,64 +241,68 @@ export async function ProjectDetail({ locale, project }: { locale: Locale; proje
         {hasContent(project.body) ? (
           <RichText data={project.body!} enableGutter={false} locale={locale} />
         ) : (
-          <p className="paper-sheet p-6 text-muted-foreground">{t.noWriteUp}</p>
+          <p className="well p-[var(--space-lg)] text-[var(--color-ink-2)]">{t.noWriteUp}</p>
         )}
       </div>
 
       {quote && (
-        <Reveal className="container-prose mt-16" tilt={-1}>
-          <figure className="paper-sheet relative px-7 pb-7 pt-9">
-            <span aria-hidden="true" className="tape" />
-            <blockquote
-              className="font-heading text-2xl italic leading-relaxed"
-              lang={quote.lang || undefined}
-            >
-              “{quote.quote}”
-            </blockquote>
-            <figcaption className="hand mt-5 text-2xl">
-              — {[quote.name, quote.role].filter(Boolean).join(', ') || quote.business}
-            </figcaption>
-          </figure>
-        </Reveal>
+        <figure className="container-prose mt-[var(--space-3xl)]">
+          <blockquote
+            className="text-[length:var(--text-2xl)] font-medium leading-[1.3] tracking-[-0.015em]"
+            lang={quote.lang || undefined}
+          >
+            “{quote.quote}”
+          </blockquote>
+          <figcaption className="small mt-[var(--space-md)]">
+            {[quote.name, quote.role].filter(Boolean).join(', ') || quote.business}
+          </figcaption>
+        </figure>
       )}
 
       {hasTech && (
-        <section className="container-prose mt-16">
-          <details className="paper-card group p-6 md:p-8">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+        <section className="container-prose mt-[var(--space-3xl)]">
+          <details className="group border-y border-[var(--color-rule)]">
+            <summary className="flex min-h-[72px] cursor-pointer list-none items-center justify-between gap-[var(--space-md)] py-[var(--space-md)] [&::-webkit-details-marker]:hidden">
               <span>
-                <span className="block font-heading text-2xl">{t.technical}</span>
-                <span className="hand text-xl text-muted-foreground">{t.technicalHint}</span>
+                <span className="block text-[length:var(--text-xl)] font-bold tracking-[-0.015em]">
+                  {t.technical}
+                </span>
+                <span className="small">{t.technicalHint}</span>
               </span>
               <svg
                 aria-hidden="true"
-                className="size-7 flex-none text-primary transition-transform group-open:rotate-45"
+                className="size-5 flex-none text-[var(--color-muted)] transition-transform duration-[var(--dur-short)] group-open:rotate-45"
                 fill="none"
                 stroke="currentColor"
                 strokeLinecap="round"
-                strokeWidth="2.4"
-                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                viewBox="0 0 20 20"
               >
-                <path d="M12.3 4.5c-.2 5-.1 10 .1 15M4.6 11.8c5 .3 10 .2 14.8-.2" />
+                <path d="M10 4v12M4 10h12" />
               </svg>
             </summary>
-            <div className="mt-6 border-t border-dashed border-border pt-6">
+            <div className="pb-[var(--space-xl)]">
               {tech?.tags && tech.tags.length > 0 && (
-                <div className="mb-5">
-                  <h3 className="hand mb-2 text-xl text-muted-foreground">{t.stack}</h3>
-                  <ul className="flex flex-wrap gap-2">
+                <div className="mb-[var(--space-lg)]">
+                  <h3 className="small mb-[var(--space-xs)] font-medium">{t.stack}</h3>
+                  <ul className="flex flex-wrap gap-[var(--space-xs)]">
                     {tech.tags.map((tag) => (
-                      <li className="rounded-full border border-border px-3 py-1 text-sm" key={tag}>
+                      <li
+                        className="rounded-[var(--radius-pill)] bg-[var(--color-paper-2)] px-[var(--space-sm)] py-[var(--space-3xs)] text-[length:var(--text-sm)]"
+                        key={tag}
+                      >
                         {tag}
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
-              {tech?.summary && <p className="mb-5 text-lg">{tech.summary}</p>}
+              {tech?.summary && (
+                <p className="mb-[var(--space-lg)] text-[var(--color-ink-2)]">{tech.summary}</p>
+              )}
               {tech?.decisions && tech.decisions.length > 0 && (
-                <div className="mb-6">
-                  <h3 className="hand mb-2 text-xl text-muted-foreground">{t.decisions}</h3>
+                <div className="mb-[var(--space-lg)]">
+                  <h3 className="small mb-[var(--space-xs)] font-medium">{t.decisions}</h3>
                   <ul className="list-ticks">
                     {tech.decisions.map((d) => (
                       <li key={d}>{d}</li>
@@ -266,22 +318,23 @@ export async function ProjectDetail({ locale, project }: { locale: Locale; proje
         </section>
       )}
 
-      <nav className="container mt-20 flex flex-col items-start gap-6 border-t border-dashed border-border pt-10 md:flex-row md:items-center md:justify-between">
-        <Link className="btn btn-primary" href={`${homeHref(locale)}#contact`}>
-          {locale === 'nl-BE'
-            ? 'Ook zoiets nodig? Vertel het me'
-            : 'Need something like this? Tell me'}
-        </Link>
+      <nav
+        aria-label={locale === 'nl-BE' ? 'Verder' : 'Continue'}
+        className="container mt-[var(--section-gap-s)] grid gap-[var(--space-xl)] border-t border-[var(--color-rule)] pt-[var(--space-2xl)] md:grid-cols-2 md:items-end"
+      >
+        <div>
+          <Link className="btn btn-primary" href={`${homeHref(locale)}#contact`}>
+            {t.contact}
+          </Link>
+        </div>
         {next && next.id !== project.id && (
-          <div className="relative text-right">
-            <Note arrow="none" className="block text-lg" tilt={-2}>
-              {t.next}
-            </Note>
+          <div className="md:text-right">
+            <p className="small">{t.next}</p>
             <Link
-              className="font-heading text-2xl hover:text-primary"
+              className="text-[length:var(--text-xl)] font-bold tracking-[-0.015em] hover:text-[var(--color-accent)]"
               href={projectHref(locale, next.slug)}
             >
-              {next.title} →
+              {next.title}
             </Link>
           </div>
         )}
