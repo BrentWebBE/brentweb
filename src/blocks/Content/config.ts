@@ -8,27 +8,29 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { l } from '@/utilities/label'
 
 const columnFields: Field[] = [
   {
     name: 'size',
     type: 'select',
+    label: l('Breedte', 'Size'),
     defaultValue: 'oneThird',
     options: [
       {
-        label: 'One Third',
+        label: l('Een derde', 'One third'),
         value: 'oneThird',
       },
       {
-        label: 'Half',
+        label: l('Helft', 'Half'),
         value: 'half',
       },
       {
-        label: 'Two Thirds',
+        label: l('Twee derde', 'Two thirds'),
         value: 'twoThirds',
       },
       {
-        label: 'Full',
+        label: l('Volledig', 'Full'),
         value: 'full',
       },
     ],
@@ -46,11 +48,12 @@ const columnFields: Field[] = [
         ]
       },
     }),
-    label: false,
+    label: l('Tekst', 'Text'),
   },
   {
     name: 'enableLink',
     type: 'checkbox',
+    label: l('Link toevoegen', 'Add link'),
   },
   link({
     overrides: {
@@ -66,10 +69,15 @@ const columnFields: Field[] = [
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
+  labels: {
+    singular: l('Tekst (kolommen)', 'Content (columns)'),
+    plural: l('Tekst (kolommen)', 'Content (columns)'),
+  },
   fields: [
     {
       name: 'columns',
       type: 'array',
+      label: l('Kolommen', 'Columns'),
       admin: {
         initCollapsed: true,
       },

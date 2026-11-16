@@ -1,0 +1,93 @@
+import type { Metadata } from 'next/types'
+
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+import React from 'react'
+
+import { getSiteName } from '@/utilities/getSiteSettings'
+
+import { CardPostData } from '../components/Card'
+import { CollectionArchive } from '../components/CollectionArchive'
+import { Search } from '../search/Component'
+import PageClient from './PageClient'
+
+export type SearchRouteArgs = {
+  searchParams: Promise<{
+    q: string
+  }>
+}
+export async function SearchPage({ searchParams: searchParamsPromise }: SearchRouteArgs) {
+  const { q: query } = await searchParamsPromise
+  const payload = await getPayload({ config: configPromise })
+
+  const posts = await payload.find({
+    collection: 'search',
+    depth: 1,
+    limit: 12,
+    select: {
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+    },
+    // pagination: false reduces overhead if you don't need totalDocs
+    pagination: false,
+    ...(query
+      ? {
+          where: {
+            or: [
+              {
+                title: {
+                  like: query,
+                },
+              },
+              {
+                'meta.description': {
+                  like: query,
+                },
+              },
+              {
+                'meta.title': {
+                  like: query,
+                },
+              },
+              {
+                slug: {
+                  like: query,
+                },
+              },
+            ],
+          },
+        }
+      : {}),
+  })
+
+  return (
+    <div className="pt-24 pb-24">
+      <PageClient />
+      <div className="container mb-16">
+        <div className="prose dark:prose-invert max-w-none text-center">
+          <h1 className="mb-8 lg:mb-16">Zoeken</h1>
+
+          <div className="max-w-[50rem] mx-auto">
+            <Search />
+          </div>
+        </div>
+      </div>
+
+      {posts.totalDocs > 0 ? (
+        <CollectionArchive posts={posts.docs as CardPostData[]} />
+      ) : (
+        <div className="container">Geen resultaten gevonden.</div>
+      )}
+    </div>
+  )
+}
+
+export async function searchMetadata(): Promise<Metadata> {
+  const siteName = await getSiteName()
+  return {
+    title: ['Zoeken', siteName].filter(Boolean).join(' | '),
+    robots: { index: false },
+  }
+}

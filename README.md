@@ -1,3 +1,173 @@
+# brentweb-starter
+
+Payload 3 + Next.js starter for BrentWeb client sites (Flemish SMEs). Clients edit content;
+design, SEO internals and code stay with BrentWeb. Based on the official Payload website template
+(original README below).
+
+## Quick start
+
+```bash
+cp .env.example .env            # fill in PAYLOAD_SECRET / PREVIEW_SECRET / CRON_SECRET
+docker compose -f docker/compose.dev.yml up -d   # MongoDB 8, replica set rs0 on 127.0.0.1:27017
+pnpm install
+pnpm dev                        # http://localhost:3000/admin → create the first user (becomes admin)
+```
+
+## Where things live
+
+| What | Where |
+| --- | --- |
+| Feature flags (`FEATURE_BLOG`, `FEATURE_MENU`, `FEATURE_ECOMMERCE`) | `src/features.ts`, wired in `src/payload.config.ts` |
+| Blog (posts, categories, search, archive block, `/posts`, `/search`) | `src/modules/blog/` (route files in `src/app/(frontend)` only guard + delegate) |
+| Menu (MenuItems + Menu block) | `src/modules/menu/` |
+| Page blocks | `src/blocks/<Block>/{config.ts,Component.tsx}`, rendered by `src/blocks/RenderBlocks.tsx` |
+| Business data (NAP, hours, socials, JSON-LD type) | `SiteSettings` global, `src/SiteSettings/` |
+| Roles & access helpers | `src/access/` (`isAdmin`, `isAdminOrEditor`, `adminFieldOnly`, `adminOnlyTab`) |
+| **Everything client-specific (styling)** | `src/client/` → `theme.css` (tokens), `fonts.ts`, `branding/` (admin logo/icon) |
+| Docker image / CI | `docker/Dockerfile`, `.github/workflows/build.yml` |
+| Server: shared Mongo, per-site compose, Traefik middleware | `deploy/infra/`, `deploy/site/`, `deploy/traefik/` |
+| New client, backup, restore | `scripts/new-client.sh`, `scripts/backup.sh`, `scripts/restore.sh` |
+
+## Rules of thumb
+
+- Flags, URL and secrets are runtime env only: the build needs no database and bakes in nothing
+  client-specific (see "Build once, configure at runtime" below).
+- `pnpm generate:types` / `pnpm generate:importmap` always run with every flag on, so
+  `payload-types.ts` covers all modules. `pnpm dev` does not regenerate types (`autoGenerate: false`).
+- Admin-only fields: use `adminFieldOnly` (field) or `adminOnlyTab()` (named tab). Tab-level `access`
+  alone is not reflected in admin permissions in Payload 3, so the helper also hides the tab.
+- New page block: add `config.ts` + `Component.tsx`, register it in `src/collections/Pages/index.ts`,
+  add a `case` to `RenderBlocks.tsx` (the type check fails until you do), run `pnpm generate:types`.
+
+## Build once, configure at runtime
+
+One Docker image per client repo, built in GitHub Actions, configured entirely by the
+container's `.env`. The image contains no secrets, no domain and no feature flags.
+
+**Do `NEXT_PUBLIC_*` values need to be present at build time?** In a stock Next.js app:
+yes. Next replaces every `process.env.NEXT_PUBLIC_*` reference with a literal at build
+time, in the browser bundles **and** in server code (checked in
+`next/dist/build/define-env.js`). On top of that, the template prerendered pages at build
+time, which needs MongoDB (unreachable from CI) and froze feature flags into static HTML.
+
+What the starter does instead (runtime config, not build args):
+
+- **`NEXT_PUBLIC_SERVER_URL` is read at runtime.** Server code goes through
+  `src/utilities/runtimeEnv.ts`, which looks the variable up with a dynamic key; Next
+  documents that dynamic lookups are never inlined. In the browser,
+  `getClientSideURL()` uses `window.location`, so the browser never needs the value.
+  No other `NEXT_PUBLIC_*` variables exist; if you add one that the browser needs, pass
+  it from a server component as a prop rather than reading `process.env` in client code.
+- **The frontend renders on request** (`export const dynamic = 'force-dynamic'` in
+  `src/app/(frontend)/layout.tsx`), so `next build` never touches the database.
+  Published pages, posts and globals are cached in Next's data cache (`unstable_cache` +
+  tags) and the Payload `afterChange`/`afterDelete` hooks expire those tags, so most
+  requests don't query MongoDB. The cache starts cold after a container restart.
+- **robots.txt and the sitemap index are routes**, generated per request from the
+  runtime URL (they used to be written to `public/` by `next-sitemap` at build time).
+- **Feature flags are runtime env**: changing `FEATURE_*` in `.env` + `docker compose up -d`
+  is enough, no rebuild.
+
+Why not build args: they'd tie each image to one domain and flag set (so staging needs
+its own build), put client values in the CI config, and still wouldn't solve the build's
+database dependency.
+
+## Deploying a client site
+
+### Once per server
+
+1. **Traefik**: already running, with the external network `traefik`, entrypoint
+   `websecure` and certresolver `letsencrypt`. Nothing changes in its config except one
+   new file for the file provider: copy `deploy/traefik/admin-ratelimit.yml` into the
+   directory your file provider watches. Without it, the admin routers point to a missing
+   `admin-ratelimit@file` middleware and Traefik won't serve `/admin`.
+2. **MongoDB**: follow [`deploy/infra/README.md`](deploy/infra/README.md) (keyfile,
+   `docker compose up -d`, `rs.initiate()`).
+3. **Registry access**: GHCR packages are private by default. On the server, log in once
+   with a GitHub token that has `read:packages`:
+   `echo <token> | docker login ghcr.io -u <github-user> --password-stdin`.
+4. **Backups**: see [Backups](#backups) below.
+
+### Per client
+
+1. **Create the client repo** from this starter (GitHub → "Use this template") and push
+   to `main`. The *Build image* workflow pushes `ghcr.io/<owner>/<repo>:latest` and
+   `:sha-<short>`; tag `vX.Y.Z` for versioned images. For an ARM server (Hetzner CAX), set
+   the repo variable `IMAGE_PLATFORMS=linux/amd64,linux/arm64`.
+2. **Generate the deploy files** in the client repo (on your machine):
+   ```sh
+   scripts/new-client.sh bakkerij-jansen bakkerijjansen.be --menu
+   ```
+   This writes `out/bakkerij-jansen/compose.yml` and `.env` (random secrets, flags,
+   `DATABASE_URI`; `out/` is gitignored) and prints the next commands. The image name
+   comes from the git remote (`--image` to override). Re-running never overwrites an
+   existing `.env`; `--force` regenerates it, and `--dry-run` previews.
+3. **Create the database user** on the server with the printed `mongosh` commands. Paste
+   `MONGO_PASSWORD` from the site's `.env` at the `passwordPrompt()`. The user gets
+   `readWrite` on its own database only.
+4. **Copy and start**:
+   ```sh
+   ssh server 'mkdir -p /srv/sites/bakkerij-jansen && chmod 700 /srv/sites/bakkerij-jansen'
+   scp out/bakkerij-jansen/compose.yml out/bakkerij-jansen/.env server:/srv/sites/bakkerij-jansen/
+   ssh server 'cd /srv/sites/bakkerij-jansen && chmod 600 .env && docker compose pull && docker compose up -d'
+   ```
+5. **DNS**: A/AAAA records for `bakkerijjansen.be` and `www.bakkerijjansen.be` → the
+   server. Traefik requests the certificates on the first HTTPS request.
+6. **Check**:
+   ```sh
+   curl -sI https://www.bakkerijjansen.be | head -3   # 308 → https://bakkerijjansen.be/
+   curl -s  https://bakkerijjansen.be/next/health     # {"status":"ok"}
+   ssh server 'docker compose -f /srv/sites/bakkerij-jansen/compose.yml ps'   # healthy
+   ```
+7. **Hand over**: open `https://bakkerijjansen.be/admin`. The first account you create
+   becomes admin. Fill in *Bedrijfsgegevens*, create the contact form, then create
+   editor accounts for the client.
+
+### Updating a site
+
+```sh
+ssh server 'cd /srv/sites/<slug> && docker compose pull && docker compose up -d'
+```
+
+Pin a version by setting `IMAGE_TAG=1.2.0` (or `sha-abc1234`) in `.env`. Roll back the same
+way. Feature flags or SMTP settings: edit `.env`, then `docker compose up -d`.
+
+### Backups
+
+`scripts/backup.sh` dumps every site in `/srv/sites/*` (`mongodump --archive --gzip`
+with the site's own credentials + a tar.gz of its media volume). It uploads to a Hetzner
+Storage Box with rsync over SSH (port 23) and keeps 14 daily and 8 weekly sets.
+
+1. In the Hetzner console, enable SSH for the Storage Box. Then, on the server:
+   ```sh
+   ssh-keygen -t ed25519 -f /root/.ssh/storagebox_ed25519 -N ''
+   cat /root/.ssh/storagebox_ed25519.pub | ssh -p 23 uXXXXXX@uXXXXXX.your-storagebox.de install-ssh-key
+   ssh -p 23 -i /root/.ssh/storagebox_ed25519 uXXXXXX@uXXXXXX.your-storagebox.de mkdir -p backups/brentweb
+   ```
+2. Install the scripts and config:
+   ```sh
+   install -d -m 700 /opt/brentweb /etc/brentweb
+   install -m 700 scripts/backup.sh scripts/restore.sh /opt/brentweb/
+   install -m 600 deploy/backup/backup.conf.example /etc/brentweb/backup.conf   # then edit
+   /opt/brentweb/backup.sh --dry-run
+   /opt/brentweb/backup.sh            # first real run
+   ```
+3. Cron (`/etc/cron.d/brentweb-backup`). Output only reaches cron mail on failure; set
+   `KUMA_PUSH_URL` in the config for an Uptime Kuma push monitor (it reports down when
+   the run fails, and when no push arrives within the monitor's interval):
+   ```
+   MAILTO=you@example.com
+   15 3 * * * root /opt/brentweb/backup.sh >/dev/null 2>&1 || echo "brentweb backup failed, see /var/log/brentweb-backup.log"
+   ```
+4. Rotate `/var/log/brentweb-backup.log` with logrotate (weekly, rotate 8, compress).
+5. Test a restore regularly. It goes into a separate database and never the live one:
+   ```sh
+   /opt/brentweb/restore.sh bakkerij-jansen --target-db bakkerij-jansen_restoretest            # newest daily
+   /opt/brentweb/restore.sh bakkerij-jansen --target-db bakkerij-jansen_restoretest --date 2026-11-10 --drop
+   ```
+
+---
+
 # Payload Website Template
 
 This is the official [Payload Website Template](https://github.com/payloadcms/payload/blob/3.x/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.

@@ -1,16 +1,22 @@
 import type { Field, GroupField } from 'payload'
 
 import deepMerge from '@/utilities/deepMerge'
+import { l } from '@/utilities/label'
+
+import { linkableCollections } from './linkableCollections'
 
 export type LinkAppearances = 'default' | 'outline'
 
-export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
+export const appearanceOptions: Record<
+  LinkAppearances,
+  { label: Record<string, string>; value: string }
+> = {
   default: {
-    label: 'Default',
+    label: l('Standaard', 'Default'),
     value: 'default',
   },
   outline: {
-    label: 'Outline',
+    label: l('Omlijnd', 'Outline'),
     value: 'outline',
   },
 }
@@ -25,6 +31,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   const linkResult: GroupField = {
     name: 'link',
     type: 'group',
+    label: l('Link', 'Link'),
     admin: {
       hideGutter: true,
     },
@@ -35,6 +42,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           {
             name: 'type',
             type: 'radio',
+            label: l('Type link', 'Link type'),
             admin: {
               layout: 'horizontal',
               width: '50%',
@@ -42,11 +50,11 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             defaultValue: 'reference',
             options: [
               {
-                label: 'Internal link',
+                label: l('Interne link', 'Internal link'),
                 value: 'reference',
               },
               {
-                label: 'Custom URL',
+                label: l('Eigen URL', 'Custom URL'),
                 value: 'custom',
               },
             ],
@@ -60,7 +68,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               },
               width: '50%',
             },
-            label: 'Open in new tab',
+            label: l('Openen in nieuw tabblad', 'Open in new tab'),
           },
         ],
       },
@@ -74,8 +82,8 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
       },
-      label: 'Document to link to',
-      relationTo: ['pages', 'posts'],
+      label: l('Pagina om naar te linken', 'Document to link to'),
+      relationTo: linkableCollections,
       required: true,
     },
     {
@@ -84,7 +92,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
       },
-      label: 'Custom URL',
+      label: l('Eigen URL', 'Custom URL'),
       required: true,
     },
   ]
@@ -108,7 +116,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           admin: {
             width: '50%',
           },
-          label: 'Label',
+          label: l('Tekst', 'Label'),
           required: true,
         },
       ],
@@ -127,8 +135,12 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     linkResult.fields.push({
       name: 'appearance',
       type: 'select',
+      label: l('Weergave', 'Appearance'),
       admin: {
-        description: 'Choose how the link should be rendered.',
+        description: l(
+          'Kies hoe de link getoond wordt.',
+          'Choose how the link should be rendered.',
+        ),
       },
       defaultValue: 'default',
       options: appearanceOptionsToUse,

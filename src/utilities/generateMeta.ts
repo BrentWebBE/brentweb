@@ -4,6 +4,7 @@ import type { Media, Page, Post, Config } from '../payload-types'
 
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
+import { getSiteName } from './getSiteSettings'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
@@ -20,15 +21,18 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 }
 
 export const generateMeta = async (args: {
-  doc: Partial<Page> | Partial<Post> | null
+  /** Any document with SEO meta: pages, posts, products. */
+  doc: Partial<Pick<Page, 'meta' | 'slug' | 'title'>> | Partial<Post> | null
+  /** Public path of the document, used for og:url (e.g. `/`, `/over-ons`, `/posts/x`). */
+  path?: string
 }): Promise<Metadata> => {
-  const { doc } = args
+  const { doc, path } = args
 
   const ogImage = getImageURL(doc?.meta?.image)
+  const siteName = await getSiteName()
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+  // meta.title is the full <title> (the SEO plugin's generator already appends the site name).
+  const title = doc?.meta?.title || [doc?.title, siteName].filter(Boolean).join(' | ') || siteName
 
   return {
     description: doc?.meta?.description,
@@ -41,8 +45,9 @@ export const generateMeta = async (args: {
             },
           ]
         : undefined,
+      siteName: siteName || undefined,
       title,
-      url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
+      url: path ?? '/',
     }),
     title,
   }

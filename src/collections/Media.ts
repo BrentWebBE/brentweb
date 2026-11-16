@@ -6,32 +6,44 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import path from 'path'
-import { fileURLToPath } from 'url'
 
 import { anyone } from '../access/anyone'
-import { authenticated } from '../access/authenticated'
-
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+import { isAdminOrEditor } from '../access/isAdminOrEditor'
+import { l } from '../utilities/label'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: {
+    singular: l('Media', 'Media'),
+    plural: l('Media', 'Media'),
+  },
   folders: true,
   access: {
-    create: authenticated,
-    delete: authenticated,
+    create: isAdminOrEditor,
+    delete: isAdminOrEditor,
     read: anyone,
-    update: authenticated,
+    update: isAdminOrEditor,
+  },
+  admin: {
+    group: l('Inhoud', 'Content'),
   },
   fields: [
     {
       name: 'alt',
       type: 'text',
-      //required: true,
+      label: l('Alternatieve tekst', 'Alt text'),
+      required: true,
+      admin: {
+        description: l(
+          'Korte beschrijving van de afbeelding voor zoekmachines en schermlezers.',
+          'Short description of the image for search engines and screen readers.',
+        ),
+      },
     },
     {
       name: 'caption',
       type: 'richText',
+      label: l('Bijschrift', 'Caption'),
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
@@ -40,41 +52,32 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    staticDir: path.resolve(dirname, '../../public/media'),
+    // <cwd>/public/media: the project root in dev, /app/public/media in the Docker image
+    // (the standalone server chdirs to /app). In production this is a mounted volume.
+    // Not derived from import.meta.url: that points into .next/ once bundled.
+    staticDir: path.resolve(process.cwd(), 'public/media'),
     adminThumbnail: 'thumbnail',
     focalPoint: true,
+    // Crops use the focal point set by the editor.
     imageSizes: [
       {
         name: 'thumbnail',
         width: 300,
       },
       {
-        name: 'square',
-        width: 500,
-        height: 500,
+        name: 'card',
+        width: 800,
+        height: 600,
       },
       {
-        name: 'small',
-        width: 600,
-      },
-      {
-        name: 'medium',
-        width: 900,
-      },
-      {
-        name: 'large',
-        width: 1400,
-      },
-      {
-        name: 'xlarge',
+        name: 'hero',
         width: 1920,
+        withoutEnlargement: true,
       },
       {
         name: 'og',
         width: 1200,
         height: 630,
-        crop: 'center',
       },
     ],
   },

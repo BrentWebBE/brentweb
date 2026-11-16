@@ -9,6 +9,8 @@ import {
   type LinkFields,
 } from '@payloadcms/richtext-lexical'
 
+import { linkableCollections } from './linkableCollections'
+
 export const defaultLexical = lexicalEditor({
   features: [
     ParagraphFeature(),
@@ -16,7 +18,7 @@ export const defaultLexical = lexicalEditor({
     BoldFeature(),
     ItalicFeature(),
     LinkFeature({
-      enabledCollections: ['pages', 'posts'],
+      enabledCollections: linkableCollections,
       fields: ({ defaultFields }) => {
         const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
           if ('name' in field && field.name === 'url') return false

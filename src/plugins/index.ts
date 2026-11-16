@@ -1,20 +1,23 @@
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
-import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { searchPlugin } from '@payloadcms/plugin-search'
-import { Plugin } from 'payload'
-import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
-import { searchFields } from '@/search/fieldOverrides'
-import { beforeSyncWithSearch } from '@/search/beforeSync'
+import { Plugin } from 'payload'
 
+import { anyone } from '@/access/anyone'
+import { isAdmin } from '@/access/isAdmin'
+import { isAdminOrEditor } from '@/access/isAdminOrEditor'
+import { isAdminUser } from '@/access/roles'
+import { linkableCollections } from '@/fields/linkableCollections'
+import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { l } from '@/utilities/label'
 
-const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+const generateTitle: GenerateTitle<Post | Page> = async ({ doc, req }) => {
+  const settings = await req.payload.findGlobal({ slug: 'site-settings', depth: 0, req })
+  return [doc?.title, settings?.businessName].filter(Boolean).join(' | ')
 }
 
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
@@ -23,10 +26,23 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
   return doc?.slug ? `${url}/${doc.slug}` : url
 }
 
-export const plugins: Plugin[] = [
+/**
+ * Plugins that every site gets. Feature modules add their own plugins in payload.config.ts.
+ */
+export const basePlugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts'],
+    collections: linkableCollections,
     overrides: {
+      access: {
+        create: isAdmin,
+        delete: isAdmin,
+        read: anyone,
+        update: isAdmin,
+      },
+      admin: {
+        group: l('Beheer', 'Administration'),
+        hidden: ({ user }) => !isAdminUser(user),
+      },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -46,10 +62,6 @@ export const plugins: Plugin[] = [
       },
     },
   }),
-  nestedDocsPlugin({
-    collections: ['categories'],
-    generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
-  }),
   seoPlugin({
     generateTitle,
     generateURL,
@@ -58,7 +70,23 @@ export const plugins: Plugin[] = [
     fields: {
       payment: false,
     },
+    // Form definitions (fields, e-mail notifications) are technical: admins only.
+    // Read stays public so the frontend can render forms.
     formOverrides: {
+      access: {
+        create: isAdmin,
+        delete: isAdmin,
+        read: anyone,
+        update: isAdmin,
+      },
+      admin: {
+        group: l('Formulieren', 'Forms'),
+        hidden: ({ user }) => !isAdminUser(user),
+      },
+      labels: {
+        singular: l('Formulier', 'Form'),
+        plural: l('Formulieren', 'Forms'),
+      },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
@@ -79,13 +107,20 @@ export const plugins: Plugin[] = [
         })
       },
     },
-  }),
-  searchPlugin({
-    collections: ['posts'],
-    beforeSync: beforeSyncWithSearch,
-    searchOverrides: {
-      fields: ({ defaultFields }) => {
-        return [...defaultFields, ...searchFields]
+    // Submissions: anyone can submit, editors and admins can view and delete them.
+    // Updates stay disabled (plugin default) so submissions can't be altered.
+    formSubmissionOverrides: {
+      access: {
+        create: anyone,
+        delete: isAdminOrEditor,
+        read: isAdminOrEditor,
+      },
+      admin: {
+        group: l('Formulieren', 'Forms'),
+      },
+      labels: {
+        singular: l('Inzending', 'Submission'),
+        plural: l('Inzendingen', 'Submissions'),
       },
     },
   }),

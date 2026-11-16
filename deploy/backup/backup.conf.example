@@ -1,0 +1,32 @@
+# /etc/brentweb/backup.conf – config for scripts/backup.sh and scripts/restore.sh
+# chmod 600, owned by root. Sourced by bash: KEY=value, no spaces around '='.
+
+# Hetzner Storage Box (rsync over SSH, port 23). STORAGEBOX_PATH is relative to the
+# box's home directory and must exist (create it once: `mkdir backups` via sftp).
+STORAGEBOX_HOST=uXXXXXX.your-storagebox.de
+STORAGEBOX_USER=uXXXXXX
+STORAGEBOX_PORT=23
+STORAGEBOX_PATH=backups/brentweb
+# Private key whose public key is in the box's .ssh/authorized_keys
+SSH_KEY=/root/.ssh/storagebox_ed25519
+
+# Retention (number of sets kept on the Storage Box)
+KEEP_DAILY=14
+KEEP_WEEKLY=8
+# ISO weekday for the weekly set (1 = Monday … 7 = Sunday)
+WEEKLY_DAY=7
+
+# Local paths
+SITES_DIR=/srv/sites
+WORK_DIR=/var/backups/brentweb
+LOG_FILE=/var/log/brentweb-backup.log
+# Mongo root credentials (restore.sh only)
+INFRA_ENV=/srv/infra/.env
+
+# Docker
+MONGO_CONTAINER=mongo
+HELPER_IMAGE=alpine:3.20
+
+# Optional: Uptime Kuma push monitor URL (without query string), e.g.
+# https://status.example.be/api/push/AbCdEf123
+KUMA_PUSH_URL=

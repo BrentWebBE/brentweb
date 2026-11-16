@@ -4,16 +4,27 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types'
+import type { Header, Media } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
+  businessName?: string | null
   data: Header
+  logo?: Media | string | null
+  /** Webshop cart icon, rendered by the server only when FEATURE_ECOMMERCE=true. */
+  cart?: React.ReactNode
+  showSearch?: boolean
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({
+  businessName,
+  data,
+  logo,
+  cart,
+  showSearch,
+}) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
@@ -32,10 +43,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
       <div className="py-8 flex justify-between">
-        <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
+        <Link aria-label={businessName || 'Home'} className="flex items-center" href="/">
+          <Logo loading="eager" logo={logo} name={businessName} priority="high" />
         </Link>
-        <HeaderNav data={data} />
+        <HeaderNav cart={cart} data={data} showSearch={showSearch} />
       </div>
     </header>
   )

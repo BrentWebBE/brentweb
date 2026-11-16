@@ -22,9 +22,12 @@ export type FormBlockType = {
 export const FormBlock: React.FC<
   {
     id?: string
+    /** Replaces the default wrapper classes (`container lg:max-w-[48rem]`). */
+    className?: string
   } & FormBlockType
 > = (props) => {
   const {
+    className,
     enableIntro,
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
@@ -82,7 +85,7 @@ export const FormBlock: React.FC<
             setIsLoading(false)
 
             setError({
-              message: res.errors?.[0]?.message || 'Internal Server Error',
+              message: res.errors?.[0]?.message || 'Er ging iets mis bij het verzenden.',
               status: res.status,
             })
 
@@ -103,7 +106,7 @@ export const FormBlock: React.FC<
           console.warn(err)
           setIsLoading(false)
           setError({
-            message: 'Something went wrong.',
+            message: 'Er ging iets mis. Probeer het later opnieuw.',
           })
         }
       }
@@ -114,7 +117,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
+    <div className={className ?? 'container lg:max-w-[48rem]'}>
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
       )}
@@ -123,8 +126,12 @@ export const FormBlock: React.FC<
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
             <RichText data={confirmationMessage} />
           )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+          {isLoading && !hasSubmitted && <p>Even geduld…</p>}
+          {error && (
+            <div className="mb-4 text-destructive" role="alert">
+              {error.message}
+            </div>
+          )}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4 last:mb-0">

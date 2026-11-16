@@ -1,0 +1,20 @@
+# Example dynamic config for Traefik's file provider.
+# Copy into the directory your file provider watches (providers.file.directory).
+# Site routers reference it as `admin-ratelimit@file`.
+#
+# Applies to /admin and /api/users/login on every site. The Payload admin makes a
+# request for each form-state update while editing, so the limit is per client IP and
+# generous enough for an editor. Brute force is also stopped by Payload itself
+# (5 failed logins → account locked for 10 minutes).
+http:
+  middlewares:
+    admin-ratelimit:
+      rateLimit:
+        average: 120 # requests per period, per source IP
+        period: 1m
+        burst: 60
+        # Uses the client IP as Traefik sees it. If you put a CDN/proxy in front of
+        # Traefik, set ipStrategy.depth (or trusted forwardedHeaders) accordingly.
+        sourceCriterion:
+          ipStrategy:
+            depth: 0

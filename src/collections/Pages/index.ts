@@ -1,13 +1,22 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { hero } from '@/heros/config'
+import { adminOnlyTab } from '@/access/adminOnlyTab'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { isAdminOrEditor } from '@/access/isAdminOrEditor'
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { Contact } from '@/blocks/Contact/config'
+import { Content } from '@/blocks/Content/config'
+import { FAQ } from '@/blocks/FAQ/config'
+import { Gallery } from '@/blocks/Gallery/config'
+import { Hero } from '@/blocks/Hero/config'
+import { OpeningHours } from '@/blocks/OpeningHours/config'
+import { Services } from '@/blocks/Services/config'
+import { TextImage } from '@/blocks/TextImage/config'
+import { features } from '@/features'
+import { blogPageBlocks } from '@/modules/blog'
+import { ecommercePageBlocks } from '@/modules/ecommerce'
+import { menuPageBlocks } from '@/modules/menu'
+import { l } from '@/utilities/label'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -21,13 +30,32 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 
+const layoutBlocks = [
+  Hero,
+  TextImage,
+  Services,
+  Gallery,
+  FAQ,
+  CallToAction,
+  OpeningHours,
+  Contact,
+  Content,
+  ...(features.menu ? menuPageBlocks : []),
+  ...(features.blog ? blogPageBlocks : []),
+  ...(features.ecommerce ? ecommercePageBlocks : []),
+]
+
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  labels: {
+    singular: l('Pagina', 'Page'),
+    plural: l("Pagina's", 'Pages'),
+  },
   access: {
-    create: authenticated,
-    delete: authenticated,
+    create: isAdminOrEditor,
+    delete: isAdminOrEditor,
     read: authenticatedOrPublished,
-    update: authenticated,
+    update: isAdminOrEditor,
   },
   // This config controls what's populated by default when a page is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
@@ -38,6 +66,7 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: l('Inhoud', 'Content'),
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -58,30 +87,33 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'title',
       type: 'text',
+      label: l('Titel', 'Title'),
       required: true,
     },
     {
       type: 'tabs',
       tabs: [
         {
-          fields: [hero],
-          label: 'Hero',
-        },
-        {
           fields: [
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              label: l('Blokken', 'Blocks'),
+              labels: {
+                singular: l('Blok', 'Block'),
+                plural: l('Blokken', 'Blocks'),
+              },
+              blocks: layoutBlocks,
               required: true,
               admin: {
                 initCollapsed: true,
               },
             },
           ],
-          label: 'Content',
+          label: l('Inhoud', 'Content'),
         },
-        {
+        // SEO internals are admin-only; editors don't see this tab.
+        adminOnlyTab({
           name: 'meta',
           label: 'SEO',
           fields: [
@@ -107,12 +139,13 @@ export const Pages: CollectionConfig<'pages'> = {
               descriptionPath: 'meta.description',
             }),
           ],
-        },
+        }),
       ],
     },
     {
       name: 'publishedAt',
       type: 'date',
+      label: l('Publicatiedatum', 'Published at'),
       admin: {
         position: 'sidebar',
       },
@@ -131,6 +164,6 @@ export const Pages: CollectionConfig<'pages'> = {
       },
       schedulePublish: true,
     },
-    maxPerDoc: 50,
+    maxPerDoc: 20,
   },
 }

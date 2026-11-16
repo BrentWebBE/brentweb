@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '../../fields/linkGroup'
+import { l } from '../../utilities/label'
 
 export const CallToAction: Block = {
   slug: 'cta',
@@ -26,7 +27,7 @@ export const CallToAction: Block = {
           ]
         },
       }),
-      label: false,
+      label: l('Tekst', 'Text'),
     },
     linkGroup({
       appearances: ['default', 'outline'],
@@ -36,7 +37,7 @@ export const CallToAction: Block = {
     }),
   ],
   labels: {
-    plural: 'Calls to Action',
-    singular: 'Call to Action',
+    plural: l('Call-to-actions', 'Calls to Action'),
+    singular: l('Call-to-action', 'Call to Action'),
   },
 }

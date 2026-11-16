@@ -8,7 +8,11 @@ import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 
-export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
+export const HeaderNav: React.FC<{
+  cart?: React.ReactNode
+  data: HeaderType
+  showSearch?: boolean
+}> = ({ cart, data, showSearch }) => {
   const navItems = data?.navItems || []
 
   return (
@@ -16,10 +20,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
-      <Link href="/search">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-5 text-primary" />
-      </Link>
+      {showSearch && (
+        <Link href="/search">
+          <span className="sr-only">Zoeken</span>
+          <SearchIcon className="w-5 text-primary" />
+        </Link>
+      )}
+      {cart}
     </nav>
   )
 }

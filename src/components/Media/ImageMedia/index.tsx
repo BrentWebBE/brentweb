@@ -60,11 +60,19 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
   let width: number | undefined
   let height: number | undefined
+  let objectPosition: string | undefined
   let alt = altFromProps
   let src: StaticImageData | string = srcFromProps || ''
 
   if (!src && resource && typeof resource === 'object') {
-    const { alt: altFromResource, height: fullHeight, url, width: fullWidth } = resource
+    const {
+      alt: altFromResource,
+      focalX,
+      focalY,
+      height: fullHeight,
+      url,
+      width: fullWidth,
+    } = resource
 
     width = fullWidth!
     height = fullHeight!
@@ -73,6 +81,11 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     const cacheTag = resource.updatedAt
 
     src = getMediaUrl(url, cacheTag)
+
+    // Respect the editor's focal point when the image is cropped with object-cover.
+    if (typeof focalX === 'number' && typeof focalY === 'number') {
+      objectPosition = `${focalX}% ${focalY}%`
+    }
   }
 
   const loading = loadingFromProps || (!priority ? 'lazy' : undefined)
@@ -98,6 +111,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         loading={loading}
         sizes={sizes}
         src={src}
+        style={objectPosition ? { objectPosition } : undefined}
         width={!fill ? width : undefined}
       />
     </picture>

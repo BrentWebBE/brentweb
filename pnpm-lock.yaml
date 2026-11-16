@@ -14,12 +14,18 @@ importers:
       '@payloadcms/db-mongodb':
         specifier: 3.93.0
         version: 3.93.0(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))
+      '@payloadcms/email-nodemailer':
+        specifier: 3.93.0
+        version: 3.93.0(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))
       '@payloadcms/live-preview-react':
         specifier: 3.93.0
         version: 3.93.0(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@payloadcms/next':
         specifier: 3.93.0
         version: 3.93.0(@types/react@19.2.14)(graphql@16.15.0)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)
+      '@payloadcms/plugin-ecommerce':
+        specifier: 3.93.0
+        version: 3.93.0(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)
       '@payloadcms/plugin-form-builder':
         specifier: 3.93.0
         version: 3.93.0(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)
@@ -38,6 +44,9 @@ importers:
       '@payloadcms/richtext-lexical':
         specifier: 3.93.0
         version: 3.93.0(@faceless-ui/modal@3.0.0(react-dom@19.2.9(react@19.2.9))(react@19.2.9))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.9(react@19.2.9))(react@19.2.9))(@payloadcms/next@3.93.0(@types/react@19.2.14)(graphql@16.15.0)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3))(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)(yjs@13.6.33)
+      '@payloadcms/translations':
+        specifier: 3.93.0
+        version: 3.93.0
       '@payloadcms/ui':
         specifier: 3.93.0
         version: 3.93.0(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)
@@ -53,6 +62,12 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.5.0(@types/react@19.2.14)(react@19.2.9)
+      '@stripe/react-stripe-js':
+        specifier: 3.11.0
+        version: 3.11.0(@stripe/stripe-js@4.10.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
+      '@stripe/stripe-js':
+        specifier: 4.10.0
+        version: 4.10.0
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -98,6 +113,9 @@ importers:
       sharp:
         specifier: 0.35.4
         version: 0.35.4(@types/node@22.19.9)
+      stripe:
+        specifier: 18.5.0
+        version: 18.5.0(@types/node@22.19.9)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.7.0
@@ -1306,6 +1324,12 @@ packages:
     peerDependencies:
       payload: 3.93.0
 
+  '@payloadcms/email-nodemailer@3.93.0':
+    resolution: {integrity: sha512-WpC5lVAgsodI+2nNkybLSduou7nF8DvlPqnT7Zd9J2NZjJgrYDnJMN4iuhBUaRnjARYYCV6FQvF6hHKmEdnXcw==}
+    engines: {node: ^22.23.4 || >=24.22.1}
+    peerDependencies:
+      payload: 3.93.0
+
   '@payloadcms/graphql@3.93.0':
     resolution: {integrity: sha512-EZGLxnZqkHCml4GUqeyydMZ1VUzELB69Qsmh6+GnAEzYFxxPRw1sdMJcsqRhc5xgaIo86zph1uZC5NGBoH5TJw==}
     hasBin: true
@@ -1329,6 +1353,13 @@ packages:
       graphql: ^16.8.1
       next: '>=15.2.9 <15.3.0 || >=15.3.9 <15.4.0 || >=15.4.11 <15.5.0 || >=16.3.3 <17.0.0'
       payload: 3.93.0
+
+  '@payloadcms/plugin-ecommerce@3.93.0':
+    resolution: {integrity: sha512-I34ecTE4eJor4/bTtohSBDV37vNU3wiiwwPsVlV8ZwSPuGJzypWDrD+xLoTt+vSaARrFY+IeXpnw61T4asW44Q==}
+    peerDependencies:
+      payload: 3.93.0
+      react: ^19.0.1 || ^19.1.2 || ^19.2.1
+      react-dom: ^19.0.1 || ^19.1.2 || ^19.2.1
 
   '@payloadcms/plugin-form-builder@3.93.0':
     resolution: {integrity: sha512-ZC4m/ezriUNPpvQUZd8V5J/H4tQ7FRQoXJmomXn4/44O1lVgkzEMKotaGw5eeZnlToABNYGnvGGHGXU+MOD7iw==}
@@ -1819,6 +1850,17 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
+
+  '@stripe/react-stripe-js@3.11.0':
+    resolution: {integrity: sha512-5L2Qsg68ELyDGdiQb6mnT4fgyl6V6GN4nJzGdKmVJ3CfbQFv1H157/LJTjJVyQGLN2bZ20cFYFMn2YwZ2TJElw==}
+    peerDependencies:
+      '@stripe/stripe-js': '>=1.44.1 <8.0.0'
+      react: '>=16.8.0 <20.0.0'
+      react-dom: '>=16.8.0 <20.0.0'
+
+  '@stripe/stripe-js@4.10.0':
+    resolution: {integrity: sha512-KrMOL+sH69htCIXCaZ4JluJ35bchuCCznyPyrbN8JXSGQfwBI1SuIEMZNwvy8L8ykj29t6sa5BAAiL7fNoLZ8A==}
+    engines: {node: '>=12.16'}
 
   '@swc/helpers@0.5.23':
     resolution: {integrity: sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==}
@@ -3754,6 +3796,10 @@ packages:
     resolution: {integrity: sha512-zAPCKqMcnqs2nGy6nlkm7JduFseiBJy3EXHGLh+8pFR+TxGCBxxiEN21+UROU5CKwX/f4TlUcYjiM+vs/tsyxw==}
     engines: {node: '>=18'}
 
+  nodemailer@10.6.0:
+    resolution: {integrity: sha512-jWanL7D9GD3jvUDYKmoC5rWTiG8MnBgnN2yV68bgMKip1zUJhiSTyz7Eg+18y8sk5OvdVDzws5nZK5arSI4f5Q==}
+    engines: {node: '>=20.0.0'}
+
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
@@ -3958,6 +4004,10 @@ packages:
   qs-esm@8.0.1:
     resolution: {integrity: sha512-eZ7l+0ZVy3He9c85pEM9KEBR9DFA4jrmWvIjm9wpcHvScwc/vgZDl2TNOF0pm0JsWKw24XBUZOY0Wxn7/nvJnw==}
     engines: {node: '>=18'}
+
+  qs@6.17.1:
+    resolution: {integrity: sha512-jd3COkaKVgGUW+ZHyEHCG9bH7RoaaiWuMgzsIBjUMVjLAaWGWpoUAVwljVvBHxRu/2qEHnadLGZrkutYUBPQJA==}
+    engines: {node: '>=0.6'}
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -4298,6 +4348,15 @@ packages:
   strip-json-comments@5.1.0:
     resolution: {integrity: sha512-ErcwpJBYr8EfX/Br7JauOIGXoRE92w0hVtuS9j92UFgbATxA+WRSIZksSUDzEeItfWB/0QCEprTZT55RSINUHQ==}
     engines: {node: '>=22'}
+
+  stripe@18.5.0:
+    resolution: {integrity: sha512-Hp+wFiEQtCB0LlNgcFh5uVyKznpDjzyUZ+CNVEf+I3fhlYvh7rZruIg+jOwzJRCpy0ZTPMjlzm7J2/M2N6d+DA==}
+    engines: {node: '>=12.*'}
+    peerDependencies:
+      '@types/node': '>=12.x.x'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
 
   strtok3@10.8.0:
     resolution: {integrity: sha512-e6bW3fD6V01DPmcbLfNtn0cjsiHvTKS/hivgbzqYMfHb/nLes4QQ0H5QBxlkPQayF4xv08AvlSgptGwN86Eemw==}
@@ -5774,6 +5833,11 @@ snapshots:
       - socks
       - supports-color
 
+  '@payloadcms/email-nodemailer@3.93.0(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))':
+    dependencies:
+      nodemailer: 10.6.0
+      payload: 3.93.0(graphql@16.15.0)(typescript@5.7.3)
+
   '@payloadcms/graphql@3.93.0(graphql@16.15.0)(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(typescript@5.7.3)':
     dependencies:
       graphql: 16.15.0
@@ -5819,6 +5883,21 @@ snapshots:
       - monaco-editor
       - react
       - react-dom
+      - supports-color
+      - typescript
+
+  '@payloadcms/plugin-ecommerce@3.93.0(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)':
+    dependencies:
+      '@payloadcms/translations': 3.93.0
+      '@payloadcms/ui': 3.93.0(@types/react@19.2.14)(monaco-editor@0.57.0)(next@16.4.1(@babel/core@7.29.13)(@playwright/test@1.63.0)(@types/node@22.19.9)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(typescript@5.7.3))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(typescript@5.7.3)
+      payload: 3.93.0(graphql@16.15.0)(typescript@5.7.3)
+      qs-esm: 8.0.1
+      react: 19.2.9
+      react-dom: 19.2.9(react@19.2.9)
+    transitivePeerDependencies:
+      - '@types/react'
+      - monaco-editor
+      - next
       - supports-color
       - typescript
 
@@ -6292,6 +6371,15 @@ snapshots:
   '@rtsao/scc@1.1.0': {}
 
   '@standard-schema/spec@1.1.0': {}
+
+  '@stripe/react-stripe-js@3.11.0(@stripe/stripe-js@4.10.0)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)':
+    dependencies:
+      '@stripe/stripe-js': 4.10.0
+      prop-types: 15.8.1
+      react: 19.2.9
+      react-dom: 19.2.9(react@19.2.9)
+
+  '@stripe/stripe-js@4.10.0': {}
 
   '@swc/helpers@0.5.23':
     dependencies:
@@ -8501,6 +8589,8 @@ snapshots:
 
   node-releases@2.0.64: {}
 
+  nodemailer@10.6.0: {}
+
   normalize-path@3.0.0: {}
 
   object-assign@4.1.1: {}
@@ -8765,6 +8855,11 @@ snapshots:
   punycode@2.3.1: {}
 
   qs-esm@8.0.1: {}
+
+  qs@6.17.1:
+    dependencies:
+      es-define-property: 1.0.1
+      side-channel: 1.1.1
 
   queue-microtask@1.2.3: {}
 
@@ -9218,6 +9313,12 @@ snapshots:
   strip-json-comments@3.1.1: {}
 
   strip-json-comments@5.1.0: {}
+
+  stripe@18.5.0(@types/node@22.19.9):
+    dependencies:
+      qs: 6.17.1
+    optionalDependencies:
+      '@types/node': 22.19.9
 
   strtok3@10.8.0:
     dependencies:

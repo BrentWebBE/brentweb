@@ -1,0 +1,30 @@
+# Keep the build context small and free of secrets.
+.git
+.github
+.claude
+.vscode
+.idea
+node_modules
+.next
+out
+coverage
+test-results
+playwright-report
+blob-report
+
+# Secrets / local config: everything comes from the container env at runtime.
+.env
+.env.*
+!.env.example
+
+# Runtime data
+public/media
+
+# Not needed to build the app
+deploy
+scripts
+tests
+docker/compose.dev.yml
+*.md
+Dockerfile
+docker-compose.yml

@@ -1,0 +1,54 @@
+# Shared infrastructure, runs once per server (e.g. in /srv/infra).
+#
+# MongoDB 8 as a single-node replica set (rs0) with keyfile auth. Sites reach it as
+# `mongo:27017` over the internal Docker network "mongo"; no ports are published.
+# One-time setup: see README.md in this folder.
+name: brentweb-infra
+
+services:
+  mongo:
+    image: mongo:8
+    container_name: mongo
+    command:
+      - --replSet
+      - rs0
+      - --bind_ip_all
+      - --keyFile
+      - /etc/mongo/keyfile
+      - --wiredTigerCacheSizeGB
+      - '${MONGO_CACHE_GB:-1}'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:?set MONGO_ROOT_USERNAME in .env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?set MONGO_ROOT_PASSWORD in .env}
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+      # chmod 400, owned by 999:999 (the mongodb user in the image)
+      - ./mongo-keyfile:/etc/mongo/keyfile:ro
+    networks:
+      - mongo
+    healthcheck:
+      # ping needs no authentication
+      test: ['CMD', 'mongosh', '--quiet', '--eval', "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    restart: unless-stopped
+
+networks:
+  mongo:
+    name: mongo
+    # No route to the outside world; sites join it as an external network.
+    internal: true
+
+volumes:
+  mongo-data:
+    name: brentweb_mongo_data
+  mongo-config:
+    name: brentweb_mongo_config
