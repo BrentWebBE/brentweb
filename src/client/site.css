@@ -341,3 +341,164 @@ textarea.input {
 .site-frame__pause:hover {
   background: var(--color-paper-3);
 }
+
+/* ── Preloader ──────────────────────────────────────────────────────────────
+ * First visit per tab (src/components/shell/Preloader.tsx). A dark curtain, the
+ * field of the work band and footer: the wordmark draws itself glyph by glyph and
+ * inks in, a brand-red rule fills underneath, then the curtain lifts off the page.
+ *   0 → 1195 ms     glyphs draw, 45 ms apart ("Brent" → "web" → tagline)
+ *   430 → 1305 ms   each glyph fills behind its outline
+ *   0 → 1300 ms     the rule fills
+ *   1350 → 2000 ms  the curtain lifts
+ * The curtain's own animationend unmounts it, so it always carries an animation,
+ * also in the reduced-motion branch. */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-tooltip) + 100);
+  display: grid;
+  place-items: center;
+  background: var(--color-field);
+  color: var(--color-field-ink);
+  will-change: transform;
+  animation: preloader-lift 650ms var(--ease-in-out) 1350ms forwards;
+}
+html[data-preloaded] .preloader {
+  display: none;
+}
+html.preloader-active,
+html.preloader-active body {
+  overflow: hidden;
+}
+.preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  /* Leaves just ahead of the curtain, so the mark is gone before the edge crosses it. */
+  animation: preloader-exit 400ms var(--ease-out) 1300ms forwards;
+}
+.preloader__mark {
+  width: min(64vw, 26rem);
+  height: auto;
+}
+/* pathLength="1" on every glyph (Wordmark.tsx) lets one dasharray draw contours of
+ * very different lengths at the same pace. */
+.preloader__mark path {
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 0.9;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    preloader-draw 700ms var(--ease-out) calc(var(--i, 0) * 45ms) forwards,
+    preloader-ink 380ms var(--ease-out) calc(var(--i, 0) * 45ms + 430ms) forwards;
+}
+.preloader__mark path:nth-child(1) {
+  --i: 0;
+}
+.preloader__mark path:nth-child(2) {
+  --i: 1;
+}
+.preloader__mark path:nth-child(3) {
+  --i: 2;
+}
+.preloader__mark path:nth-child(4) {
+  --i: 3;
+}
+.preloader__mark path:nth-child(5) {
+  --i: 4;
+}
+.preloader__mark path:nth-child(6) {
+  --i: 5;
+}
+.preloader__mark path:nth-child(7) {
+  --i: 6;
+}
+.preloader__mark path:nth-child(8) {
+  --i: 7;
+}
+.preloader__mark path:nth-child(9) {
+  --i: 8;
+}
+.preloader__mark path:nth-child(10) {
+  --i: 9;
+}
+.preloader__mark path:nth-child(11) {
+  --i: 10;
+}
+.preloader__mark path[data-tone='accent'] {
+  stroke: var(--color-brand);
+}
+/* The tagline is a third of the cap height; the full stroke reads as a blob there. */
+.preloader__mark path[data-tone='slogan'] {
+  stroke-width: 0.5;
+}
+.preloader__bar {
+  position: relative;
+  overflow: hidden;
+  width: min(64vw, 26rem);
+  height: 2px;
+  background: var(--color-field-rule);
+}
+.preloader__bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  /* Nearly linear: an ease-out filled the rule while the glyphs were still drawing. */
+  animation: preloader-progress 1300ms cubic-bezier(0.5, 0, 0.2, 1) forwards;
+}
+@keyframes preloader-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes preloader-ink {
+  to {
+    fill-opacity: 1;
+    stroke-opacity: 0;
+  }
+}
+@keyframes preloader-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes preloader-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+}
+@keyframes preloader-lift {
+  to {
+    transform: translateY(-101%);
+  }
+}
+/* No drawing, no travel: the mark is simply there and the curtain fades. */
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    animation: preloader-fade 300ms linear 500ms forwards;
+  }
+  .preloader__inner {
+    animation: none;
+  }
+  .preloader__mark path {
+    fill-opacity: 1;
+    stroke: none;
+    animation: none;
+  }
+  .preloader__bar::after {
+    transform: scaleX(1);
+    animation: none;
+  }
+}
+@keyframes preloader-fade {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

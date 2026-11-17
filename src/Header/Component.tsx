@@ -26,12 +26,18 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
 
   return (
     <header className="sticky top-0 z-[var(--z-sticky-nav)] border-b border-[var(--color-rule)] bg-[var(--color-paper)]">
-      <div className="container relative flex h-[var(--nav-height)] items-center gap-[var(--space-md)]">
-        <Link aria-label="BrentWeb, home" className="shrink-0" href={homeHref(locale)}>
+      {/* Desktop: three columns, so the links sit in the middle of the page whatever the
+          widths of the wordmark and the actions. Smaller screens: wordmark left, the rest right. */}
+      <div className="container relative flex h-[var(--nav-height)] items-center gap-[var(--space-md)] xl:grid xl:grid-cols-[1fr_auto_1fr]">
+        <Link
+          aria-label="BrentWeb, home"
+          className="shrink-0 xl:justify-self-start"
+          href={homeHref(locale)}
+        >
           <Wordmark className="h-5 w-auto text-[var(--color-ink)] sm:h-6 md:h-7" />
         </Link>
 
-        <nav aria-label={t.mainNav} className="ml-auto hidden xl:block">
+        <nav aria-label={t.mainNav} className="hidden xl:block">
           <ul className="flex items-center gap-[var(--space-2xs)]">
             {items.map((item) => (
               <li key={item.id ?? item.href}>
@@ -41,7 +47,7 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
           </ul>
         </nav>
 
-        <div className="ml-auto flex min-w-0 items-center gap-[var(--space-2xs)] sm:gap-[var(--space-xs)] xl:ml-0">
+        <div className="ml-auto flex min-w-0 items-center gap-[var(--space-2xs)] sm:gap-[var(--space-xs)] xl:ml-0 xl:justify-self-end">
           <LanguageSwitcher alternates={alternates} label={t.language} locale={locale} />
           <div className="hidden sm:block">
             <ThemeToggle labels={{ dark: t.themeDark, light: t.themeLight }} />
@@ -60,6 +66,7 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
                 <CMSLink {...header.cta} appearance="button" className="w-full" locale={locale} />
               ) : null
             }
+            extras={<ThemeToggle labels={{ dark: t.themeDark, light: t.themeLight }} />}
             items={items}
             labels={{ close: t.menuClose, nav: t.mainNav, open: t.menuOpen }}
           />

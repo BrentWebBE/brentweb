@@ -100,12 +100,15 @@ function HomeHero({
         </div>
 
         {portrait && (
-          <figure className="mx-auto w-full max-w-[26rem] lg:mx-0 lg:ml-auto lg:self-end">
+          // Desktop: the portrait runs the full height of the text, its top level with the
+          // headline and its foot on the dark band; the crop keeps the face centred.
+          <figure className="mx-auto w-full max-w-[26rem] lg:mx-0 lg:ml-auto lg:flex lg:max-w-[34rem] lg:flex-col lg:self-stretch lg:pt-[var(--space-xl)]">
             <Media
-              imgClassName="aspect-[4/5] w-full rounded-[var(--radius-card)] object-cover"
+              className="lg:relative lg:min-h-[28rem] lg:flex-1"
+              imgClassName="aspect-[4/5] w-full rounded-[var(--radius-card)] object-cover object-[50%_25%] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
               priority
               resource={portrait}
-              size="(min-width: 1024px) 26rem, 80vw"
+              size="(min-width: 1024px) 34rem, 80vw"
             />
             {imageCaption && (
               <figcaption

@@ -10,6 +10,7 @@ import { LazyToaster } from '@/components/ui/LazyToaster'
 import { LocaleProvider } from '@/components/LocaleProvider'
 import { MobileActionBar } from '@/components/shell/MobileActionBar'
 import { SiteJsonLd } from '@/components/seo/SiteJsonLd'
+import { Preloader } from '@/components/shell/Preloader'
 import { features } from '@/features'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
@@ -79,6 +80,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/apple-icon.png" rel="apple-touch-icon" />
       </head>
       <body>
+        <Preloader />
         <SiteJsonLd locale={locale} settings={settings} />
         <Providers>
           <LocaleProvider locale={locale} messages={pickClientMessages(getMessages(locale))}>
