@@ -2,9 +2,16 @@ import type { Media, Project, Screenshot } from '@/payload-types'
 
 import type { LiveSiteImage } from './LiveSite'
 
+/**
+ * A recapture overwrites the same file name, so the URL carries the capture time: the
+ * browser and Next's image cache fetch the new picture instead of serving the old one.
+ */
+const versioned = (doc: Screenshot) =>
+  doc.updatedAt ? `${doc.url}?v=${new Date(doc.updatedAt).getTime()}` : doc.url!
+
 const asLive = (doc: Screenshot | string | null | undefined, alt: string): LiveSiteImage | null =>
   doc && typeof doc === 'object' && doc.url && doc.width && doc.height
-    ? { url: doc.url, width: doc.width, height: doc.height, alt: doc.alt || alt }
+    ? { url: versioned(doc), width: doc.width, height: doc.height, alt: doc.alt || alt }
     : null
 
 /** What a project shows: the live captures when there are any, else its uploaded cover. */

@@ -29,20 +29,24 @@ const SETTLE_CSS = `*, *::before, *::after {
 
 /**
  * Content still faded out after the walk (a reveal tied to scroll position that resets
- * off-screen) is shown: in-flow elements at opacity 0 with a transform or transition.
- * Fixed and absolute layers (menus, modals) are left alone.
+ * off-screen, or one whose script never fired) is shown: in-flow elements at opacity 0
+ * with a transform, a transition or a reveal class. Templates often hide those with
+ * `visibility: hidden` too (e.g. `.site-animate`); that counts only together with opacity
+ * 0 and a reveal marker. Fixed layers (menus, modals) are left alone.
  */
 function forceVisible() {
+  const REVEAL = /reveal|fade|animate|aos|appear|wow|scroll-?in|in-?view/i
   for (const el of Array.from(document.querySelectorAll<HTMLElement>('body *'))) {
     const style = getComputedStyle(el)
-    if (style.position === 'fixed' || style.display === 'none' || style.visibility === 'hidden')
-      continue
+    if (style.position === 'fixed' || style.display === 'none') continue
     if (Number(style.opacity) > 0.05) continue
-    const animated =
-      style.transform !== 'none' ||
-      style.transitionProperty !== 'all' ||
-      el.hasAttribute('data-aos')
-    if (!animated && !/reveal|fade|animate|aos|appear/i.test(el.className.toString())) continue
+    const marked =
+      REVEAL.test(el.className.toString()) ||
+      el.hasAttribute('data-aos') ||
+      Array.from(el.attributes).some((a) => /^data-(animate|reveal|sal|scroll)/.test(a.name))
+    if (style.visibility === 'hidden' && !marked) continue
+    const animated = style.transform !== 'none' || style.transitionProperty !== 'all'
+    if (!animated && !marked) continue
     el.style.setProperty('opacity', '1', 'important')
     el.style.setProperty('transform', 'none', 'important')
     el.style.setProperty('visibility', 'visible', 'important')
@@ -74,6 +78,9 @@ function hideOverlays() {
   }
   document.documentElement.style.setProperty('overflow', 'visible', 'important')
   document.body.style.setProperty('overflow', 'visible', 'important')
+  // Popup libraries lock scrolling while open (e.g. popup-js snaps the page back from
+  // window.onscroll). With the popup hidden, that lock would keep the page mid-way.
+  window.onscroll = null
 }
 
 export async function captureSite(rawUrl: string): Promise<Record<Device, Capture>> {
@@ -168,7 +175,20 @@ export async function captureSite(rawUrl: string): Promise<Record<Device, Captur
       await page.evaluate(forceVisible)
       await page.evaluate(hideOverlays)
       await new Promise((r) => setTimeout(r, 1200))
-      await page.evaluate(() => window.scrollTo(0, 0))
+      // Back to the top, and stay there: some sites scroll on their own (smooth-scroll
+      // or scrollspy scripts) and their sticky nav would land mid-page in the shot.
+      const scrollY = await page.evaluate(async () => {
+        let still = 0
+        for (let i = 0; i < 20 && still < 3; i++) {
+          window.scrollTo(0, 0)
+          document.documentElement.scrollTop = 0
+          document.body.scrollTop = 0
+          await new Promise((r) => setTimeout(r, 150))
+          still = window.scrollY === 0 ? still + 1 : 0
+        }
+        return window.scrollY
+      })
+      if (scrollY !== 0) console.warn(`[capture] ${url.hostname} stayed at scrollY ${scrollY}`)
       await page.evaluate(forceVisible)
       // Popups that open after a delay: one last pass right before the shot.
       await page.evaluate(hideOverlays)
