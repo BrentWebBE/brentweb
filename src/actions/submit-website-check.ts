@@ -6,6 +6,7 @@ import { consume, RATE_LIMITS } from '@/lib/rate-limit'
 import { crmPayloadFromWebsiteCheck, forwardLeadToCrm } from '@/lib/crm'
 import { clientIp } from '@/lib/client-ip'
 import { maskEmail } from '@/lib/mask-email'
+import { saveLead } from '@/lib/leads'
 import { leadFrom, leadTo, sendMail } from '@/lib/resend'
 import { renderWebsiteCheckNotificationEmail } from '@/lib/email-templates'
 
@@ -47,13 +48,17 @@ export async function submitWebsiteCheck(input: unknown): Promise<SubmitWebsiteC
 
   const pageUrl = headerList.get('referer')?.slice(0, 2000) || null
 
-  // Same rule as the lead forms: email and CRM are independent, and either
-  // one on its own means I will see the request.
+  // Same rule as the lead forms: email, CRM and the admin's Leads list are
+  // independent, and any one of them on its own means I will see the request.
+  const crmPayload = crmPayloadFromWebsiteCheck(check, pageUrl)
   const [emailDelivered, crmDelivered] = await Promise.all([
     sendNotification(check, pageUrl),
-    forwardLeadToCrm(crmPayloadFromWebsiteCheck(check, pageUrl)),
+    forwardLeadToCrm(crmPayload),
   ])
-  return emailDelivered || crmDelivered ? { ok: true } : { ok: false, error: 'delivery_failed' }
+  const saved = await saveLead(crmPayload, { email: emailDelivered, crm: crmDelivered })
+  return emailDelivered || crmDelivered || saved
+    ? { ok: true }
+    : { ok: false, error: 'delivery_failed' }
 }
 
 /** Notification to me. Never throws. */

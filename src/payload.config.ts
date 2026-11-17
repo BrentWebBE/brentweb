@@ -8,6 +8,7 @@ import path from 'path'
 import { buildConfig, type CollectionConfig, type Plugin, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
+import { Leads } from './collections/Leads'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Projects } from './collections/Projects'
@@ -41,6 +42,7 @@ const collections: CollectionConfig[] = [
   ...(features.menu ? menuCollections : []),
   ...(features.ecommerce ? ecommerceCollections() : []),
   ...(features.blog ? blogCollections : []),
+  Leads,
   Users,
 ]
 
