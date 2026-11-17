@@ -1,5 +1,6 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { en } from '@payloadcms/translations/languages/en'
 import { nl } from '@payloadcms/translations/languages/nl'
 import sharp from 'sharp'
@@ -49,21 +50,33 @@ const plugins: Plugin[] = [
   ...(features.ecommerce ? ecommercePlugins() : []),
 ]
 
-// Without SMTP settings Payload logs outgoing e-mails to the console (fine for local dev).
-const email = process.env.SMTP_HOST
-  ? nodemailerAdapter({
-      defaultFromAddress: process.env.SMTP_FROM_ADDRESS || 'noreply@example.com',
-      defaultFromName: process.env.SMTP_FROM_NAME || 'Website',
-      transportOptions: {
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: Number(process.env.SMTP_PORT) === 465,
-        auth: process.env.SMTP_USER
-          ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
-          : undefined,
-      },
-    })
-  : undefined
+/*
+ * Payload's own mail (password resets, admin invites, form-builder notifications).
+ * Resend when RESEND_API_KEY is set: the same account as the lead mails (src/lib/resend.ts),
+ * and it works next to Microsoft 365, which no longer allows SMTP basic auth. SMTP stays
+ * as a fallback for sites with a classic mail host. Neither: mails are logged to the
+ * console (fine for local dev).
+ */
+const mailFrom = {
+  defaultFromAddress:
+    process.env.MAIL_FROM_ADDRESS || process.env.SMTP_FROM_ADDRESS || 'noreply@example.com',
+  defaultFromName: process.env.MAIL_FROM_NAME || process.env.SMTP_FROM_NAME || 'Website',
+}
+const email = process.env.RESEND_API_KEY
+  ? resendAdapter({ ...mailFrom, apiKey: process.env.RESEND_API_KEY })
+  : process.env.SMTP_HOST
+    ? nodemailerAdapter({
+        ...mailFrom,
+        transportOptions: {
+          host: process.env.SMTP_HOST,
+          port: Number(process.env.SMTP_PORT || 587),
+          secure: Number(process.env.SMTP_PORT) === 465,
+          auth: process.env.SMTP_USER
+            ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+            : undefined,
+        },
+      })
+    : undefined
 
 export default buildConfig({
   admin: {
@@ -156,6 +169,7 @@ export default buildConfig({
     // Live project screenshots: picked up every ten minutes, scheduled weekly by the
     // task itself. Only where Chrome is available (CHROME_PATH) and never during a build.
     autoRun: [{ cron: '0 */10 * * * *', queue: SCREENSHOT_QUEUE }],
-    shouldAutoRun: () => Boolean(chromePath()) && process.env.NEXT_PHASE !== 'phase-production-build',
+    shouldAutoRun: () =>
+      Boolean(chromePath()) && process.env.NEXT_PHASE !== 'phase-production-build',
   },
 })

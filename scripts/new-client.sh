@@ -236,13 +236,16 @@ FEATURE_BLOG=${blog}
 FEATURE_MENU=${menu}
 FEATURE_ECOMMERCE=${ecommerce}
 
-${stripe_block}# ── E-mail (form notifications); leave SMTP_HOST empty to only log mails ──
+${stripe_block}# ── E-mail (password resets, form notifications) ──
+# Resend: set RESEND_API_KEY (sender domain verified in Resend). Otherwise SMTP_HOST;
+# with neither, mails are only logged.
+RESEND_API_KEY=
+MAIL_FROM_ADDRESS=noreply@${domain}
+MAIL_FROM_NAME=${slug}
 SMTP_HOST=
 SMTP_PORT=587
 SMTP_USER=
 SMTP_PASS=
-SMTP_FROM_ADDRESS=noreply@${domain}
-SMTP_FROM_NAME=${slug}
 
 # ── Runtime ──
 # Keep the V8 heap below the container's 512m memory limit.

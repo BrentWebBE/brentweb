@@ -130,7 +130,7 @@ ssh server 'cd /srv/sites/<slug> && docker compose pull && docker compose up -d'
 ```
 
 Pin a version by setting `IMAGE_TAG=1.2.0` (or `sha-abc1234`) in `.env`. Roll back the same
-way. Feature flags or SMTP settings: edit `.env`, then `docker compose up -d`.
+way. Feature flags or mail settings (`RESEND_API_KEY`, `MAIL_FROM_*`): edit `.env`, then `docker compose up -d`.
 
 ### Backups
 
