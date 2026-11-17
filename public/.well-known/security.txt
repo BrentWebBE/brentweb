@@ -1,0 +1,6 @@
+# Security contact for brentweb.be (RFC 9116).
+# Found a vulnerability? Please email me before disclosing it publicly.
+Contact: mailto:brent@brentweb.be
+Expires: 2027-10-14T00:00:00.000Z
+Preferred-Languages: nl, en
+Canonical: https://brentweb.be/.well-known/security.txt

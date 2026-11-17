@@ -1,14 +1,15 @@
 /**
- * Client fonts. Each font exposes a CSS variable that src/client/theme.css maps to
- * --font-body / --font-display / --font-code.
- *
- * To use a Google font instead:
- *   import { Inter } from 'next/font/google'
- *   const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
- *   export const fontVariables = [inter.variable].join(' ')
- * and set `--font-body: var(--font-inter), …` in theme.css.
+ * One family for the whole site: Rethink Sans, a clear grotesk with a little warmth in
+ * its curves. Professional without the default look; the BrentWeb wordmark (an SVG) is
+ * the only other letterform. Three weights at most: 400 body, 500 labels, 700 heads.
  */
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import { Rethink_Sans } from 'next/font/google'
 
-export const fontVariables = [GeistSans.variable, GeistMono.variable].join(' ')
+const rethinkSans = Rethink_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '700'],
+  variable: '--font-rethink',
+})
+
+export const fontVariables = rethinkSans.variable

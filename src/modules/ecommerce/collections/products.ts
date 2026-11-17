@@ -40,10 +40,7 @@ const withVatNote = (fields: Field[]): Field[] =>
           ...field,
           admin: {
             ...field.admin,
-            description: l(
-              'Alle prijzen zijn inclusief btw.',
-              'All prices include VAT.',
-            ),
+            description: l('Alle prijzen zijn inclusief btw.', 'All prices include VAT.'),
           },
         }
       : field,
@@ -105,7 +102,10 @@ export const productsCollectionOverride: CollectionOverride = ({ defaultCollecti
               relationTo: 'media',
               hasMany: true,
               admin: {
-                description: l('De eerste afbeelding is de hoofdfoto.', 'The first image is the main photo.'),
+                description: l(
+                  'De eerste afbeelding is de hoofdfoto.',
+                  'The first image is the main photo.',
+                ),
               },
             },
             {

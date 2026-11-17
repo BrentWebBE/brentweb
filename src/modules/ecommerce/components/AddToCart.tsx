@@ -95,7 +95,9 @@ export const AddToCart: React.FC<Props> = ({ inventory, priceCents, productID, v
             className="h-10 w-20 rounded-md border border-input bg-background px-3"
             max={maxQuantity}
             min={1}
-            onChange={(e) => setQuantity(Math.max(1, Math.min(maxQuantity, Number(e.target.value) || 1)))}
+            onChange={(e) =>
+              setQuantity(Math.max(1, Math.min(maxQuantity, Number(e.target.value) || 1)))
+            }
             type="number"
             value={quantity}
           />
@@ -109,13 +111,19 @@ export const AddToCart: React.FC<Props> = ({ inventory, priceCents, productID, v
         {status === 'added' && (
           <span>
             Toegevoegd aan je winkelmand.{' '}
-            <button className="underline" onClick={() => router.push(shopRoutes.cart)} type="button">
+            <button
+              className="underline"
+              onClick={() => router.push(shopRoutes.cart)}
+              type="button"
+            >
               Bekijk winkelmand
             </button>
           </span>
         )}
         {status === 'error' && (
-          <span className="text-destructive">Toevoegen lukte niet. Mogelijk is er onvoldoende voorraad.</span>
+          <span className="text-destructive">
+            Toevoegen lukte niet. Mogelijk is er onvoldoende voorraad.
+          </span>
         )}
       </div>
     </div>

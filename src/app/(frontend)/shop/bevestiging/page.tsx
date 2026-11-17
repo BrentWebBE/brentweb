@@ -3,7 +3,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { features } from '@/features'
-import { ConfirmationPage, type ConfirmationArgs } from '@/modules/ecommerce/routes/ConfirmationPage'
+import {
+  ConfirmationPage,
+  type ConfirmationArgs,
+} from '@/modules/ecommerce/routes/ConfirmationPage'
 
 export const metadata: Metadata = { title: 'Bestelling', robots: { index: false } }
 

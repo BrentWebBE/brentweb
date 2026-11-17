@@ -1,0 +1,1841 @@
+{
+  "nav": {
+    "about": "Over mij",
+    "experience": "Ervaring",
+    "services": "Diensten",
+    "projects": "Projecten",
+    "work": "Werk",
+    "blog": "Blog",
+    "contact": "Contact",
+    "business": "Business",
+    "tech": "Voor ontwikkelaars",
+    "backToGateway": "Terug naar de homepage",
+    "lab": "Lab",
+    "process": "Werkwijze",
+    "toggleMenu": "Menu openen of sluiten",
+    "mainNav": "Hoofdnavigatie",
+    "pricing": "Prijzen",
+    "bookCall": "Plan een gesprek",
+    "websiteCheck": "Gratis websitecheck"
+  },
+  "hero": {
+    "title": "Website laten maken of maatwerksoftware voor kmo's",
+    "tagline": "Websites, interne tools en koppelingen voor zelfstandigen en kmo's in de Kempen, aan de kust en in heel Vlaanderen. Vaste prijs vooraf, rechtstreeks contact met de ontwikkelaar.",
+    "location": "Blankenberge & Geel, België",
+    "featuredProject": "Carrosserie Kris, Grobbendonk",
+    "featured": "Recent werk",
+    "business": {
+      "badge": "WEBONTWIKKELAAR UIT GEEL · STUDENT CYBERSECURITY IN BRUGGE",
+      "title": "Software die het handwerk uit uw zaak haalt.",
+      "tagline": "Websites, interne tools en koppelingen voor zelfstandigen en kmo's.",
+      "getInTouch": "Wat kost het?",
+      "imageAlt": "De website van Carrosserie Kris, met de werkplaats en de herstellingsdiensten",
+      "phoneImageAlt": "De website van Carrosserie Kris op een gsm",
+      "metaTitle": "Website laten maken en maatwerksoftware in Geel | BrentWeb",
+      "metaDescription": "Webontwikkelaar uit Geel en Blankenberge: websites, webapplicaties en koppelingen voor kmo's. Vaste prijs vooraf, een website kost {websiteRange}.",
+      "bookCall": "Plan een gratis gesprek van 30 minuten",
+      "trust": {
+        "price": "Vaste prijs vooraf",
+        "direct": "Rechtstreeks met de ontwikkelaar",
+        "secure": "Veilig gebouwd"
+      }
+    },
+    "tech": {
+      "badge": "FULL-STACK ENGINEER",
+      "title": "Ik bouw met wat ik zelf kan onderhouden",
+      "tagline": "TypeScript en Next.js voor het web, Rust waar snelheid telt, op een server die ik zelf beheer.",
+      "getInTouch": "Technische vragen?",
+      "viewProjects": "Open de case studies",
+      "spec": {
+        "stackLabel": "Stack",
+        "stackValue": "TypeScript, Node, Rust, C#, Docker, Linux",
+        "frameworksLabel": "Frameworks",
+        "frameworksValue": "React, Next.js, Angular, Tailwind, ASP.NET, Actix Web",
+        "focusLabel": "Momenteel",
+        "focusValue": "Ontwikkeling van systemen, applicaties en API's",
+        "locationLabel": "Gevestigd in",
+        "statusLabel": "Status",
+        "statusValue": "Open voor nieuw werk",
+        "statusValueLimited": "Beperkt beschikbaar voor nieuw werk",
+        "statusValueUnavailable": "Niet beschikbaar voor nieuw werk"
+      },
+      "metaTitle": "Techniek: full-stack webontwikkeling",
+      "metaDescription": "Hoe ik bouw: TypeScript, Next.js, Rust en Docker, infrastructuur die ik zelf draai, en uitgewerkte projecten met de afwegingen erachter."
+    },
+    "_comment": "hero.title and hero.tagline are the site-wide <title> and meta description (app/[locale]/layout.tsx) plus the noscript gateway fallback. Per-path hero copy lives under hero.business / hero.tech."
+  },
+  "about": {
+    "badge": "OVER MIJ",
+    "techTitle": "Technische expertise",
+    "techDescription": "Ik kies technologie die ik ken en zelf kan onderhouden: TypeScript, React en Next.js voor het web, Rust en C# waar het moet, Docker en Linux voor wat eronder draait. Minder bewegende delen betekent minder dat kan breken.",
+    "getInTouch": "Neem contact op",
+    "annotation": "← Dit ben ik",
+    "experience": "Programmeert sinds 2019, klantwerk sinds 2021",
+    "business": {
+      "description1": "Ik ben Brent Schoenmakers. Ik programmeer sinds mijn elfde, en mijn eerste echte website bouwde ik in 2021 voor Carrosserie Kris in Grobbendonk, de zaak van mijn ouders. Die site onderhoud ik nog altijd.",
+      "description2": "Voor mijn eindwerk aan ProvilION bouwde ik een netwerkbeveiligingssysteem voor scholen. In 2026 kreeg ik van de burgemeester van Lommel de prijs \"Meest verdienstelijke leerling\" van ProvilION. Nu studeer ik cybersecurity aan Howest in Brugge, daarom woon ik in Blankenberge. U mailt of belt met mij, en ik schrijf ook de code. Ik bouw met wat ik ken en zelf kan onderhouden, want minder bewegende delen betekent minder dat kan breken.",
+      "title": "De persoon die het ook echt bouwt"
+    },
+    "tech": {
+      "titleMorning": "Goedemorgen, ik ben Brent",
+      "titleNoon": "Goedemiddag, ik ben Brent",
+      "titleEvening": "Goedenavond, ik ben Brent",
+      "description1": "Belgisch ontwikkelaar: programmeert sinds 2019, klantwerk sinds 2021, geregistreerd als student-zelfstandige. Ik geef om wat onder de UI zit: datamodellering en faalscenario's.",
+      "description2": "Momenteel verdiep ik me in gedistribueerde systemen en netwerkbeveiliging. De case studies documenteren de afwegingen.",
+      "titleDefault": "Hallo, ik ben Brent"
+    }
+  },
+  "experience": {
+    "badge": "ERVARING",
+    "title": "Professionele ervaring",
+    "work": "Werk",
+    "education": "Opleiding",
+    "hackathons": "Hackathons",
+    "current": "● Huidig",
+    "upcoming": "◐ Binnenkort",
+    "stats": {
+      "codingSince": "Programmeert sinds",
+      "clientWorkSince": "Klantwerk sinds",
+      "hackathons": "Hackathons"
+    },
+    "items": {
+      "work": [
+        {
+          "year": "2021 - Heden",
+          "title": "IT Ontwikkelaar & Beheerder",
+          "company": "Carrosserie Kris",
+          "description": "Onderhoud van systemen, klantinteractie en prestatieoptimalisatie.",
+          "personalNote": "Mijn eerste echte klant.",
+          "tags": [
+            "Webontwikkeling",
+            "IT Beheer",
+            "Boekhouding"
+          ],
+          "status": "current"
+        },
+        {
+          "year": "2023 - 2024",
+          "title": "Full-Stack Ontwikkelaar",
+          "company": "Axxit",
+          "description": "Bouwen van full-stack applicaties, code reviews en samenwerking in teamverband.",
+          "personalNote": "Hier leerde ik de waarde van code reviews en teamwerk.",
+          "tags": [
+            "Angular",
+            "ASP.NET",
+            "Docker",
+            "Teamwerk"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "year": "2026",
+          "title": "Stagiair Ontwikkelaar",
+          "company": "WimNet",
+          "description": "Stage gericht op netwerken & infrastructuur.",
+          "tags": [
+            "Stage",
+            "Leren",
+            "Netwerken"
+          ]
+        },
+        {
+          "year": "2025",
+          "title": "Stagiair Ontwikkelaar",
+          "company": "Nitor",
+          "description": "Twee weken gewerkt aan React Native componenten. Mobiele ontwikkeling en componentarchitectuur.",
+          "personalNote": "Intensieve leerervaring in mobiele ontwikkeling.",
+          "tags": [
+            "React Native",
+            "Mobiele Ontwikkeling"
+          ]
+        }
+      ],
+      "hackathons": [
+        {
+          "year": "2025",
+          "title": "Hack The Future",
+          "company": "3de keer - 5de plaats van de 19 (Solo)",
+          "description": "Opnieuw solo. 5de plaats. Bouwen onder tijdsdruk zorgt voor een steile leercurve.",
+          "personalNote": "Solo project. Snelkookpan-leeromgeving.",
+          "tags": [
+            "Probleemoplossing",
+            "Solo werk",
+            "Tijdsbeheer"
+          ]
+        },
+        {
+          "year": "2024",
+          "title": "Hack The Future - Among The Stars",
+          "company": "2de keer - 12de plaats van de 12",
+          "description": "Laatste plaats. Meer geleerd van dit verlies dan van overwinningen.",
+          "personalNote": "Waardevolle leerervaring door uitdagingen.",
+          "tags": [
+            "Leerervaring",
+            "Angular"
+          ]
+        },
+        {
+          "year": "2023",
+          "title": "Hack The Future - Jungle Expedition",
+          "company": "1ste keer - 4de plaats van de 10 (Solo)",
+          "description": "Eerste hackathon, solo met Angular. 4de plaats. Overweldigend maar geslaagd.",
+          "personalNote": "Eerste hackathonervaring. Uitdagend maar belonend.",
+          "tags": [
+            "Eerste Hackathon",
+            "Angular",
+            "Leren"
+          ]
+        }
+      ]
+    }
+  },
+  "proof": {
+    "badge": "WERK",
+    "title": "Recent werk",
+    "readCaseStudy": "Lees het project"
+  },
+  "projects": {
+    "badge": "SYSTEMEN",
+    "title": "Wat ik bouwde, en wat het oplost",
+    "subtitle": "Open een project om te zien hoe het in elkaar zit en welke afwegingen ik maakte.",
+    "viewProject": "Bekijk hoe het werkt",
+    "items": [
+      {
+        "title": "Carrosserie Kris",
+        "image": "carrosserieKris",
+        "tags": [
+          "React",
+          "Node.js",
+          "Tailwind"
+        ],
+        "type": "website",
+        "liveUrl": "https://carrosseriekris.be",
+        "githubUrl": "",
+        "slug": "carrosserie-kris",
+        "status": "maintained",
+        "sector": "Klantwebsite",
+        "period": "2021 - HEDEN",
+        "abstract": "Website voor een carrosseriebedrijf in Grobbendonk, die ik sinds 2021 bouw en beheer: snelheid, vindbaarheid in Google en een contactformulier dat geen aanvragen verliest.",
+        "business": {
+          "summary": "Sinds 2021 bouw en onderhoud ik de website van deze carrosserie in Grobbendonk. De site is een van de belangrijkste kanalen van de zaak: snel, vindbaar in Google, en met een contactformulier dat aanvragen rechtstreeks bij de zaak brengt.",
+          "metrics": [
+            {
+              "value": "Sinds 2021",
+              "label": "Doorlopende samenwerking"
+            },
+            {
+              "value": "Plaats 2",
+              "label": "In Google voor \"carrosserie Grobbendonk\", november 2026"
+            }
+          ],
+          "highlights": [
+            "Eén vast aanspreekpunt",
+            "Ontworpen voor de gsm"
+          ],
+          "outcomes": [
+            "Offerteaanvragen komen rechtstreeks via de website binnen",
+            "Sinds 2021 doorlopend werk aan de vindbaarheid in Google",
+            "Eén vast aanspreekpunt voor updates en onderhoud"
+          ]
+        },
+        "engineering": {
+          "summary": "React-frontend met een Node.js-backend, gestyled met Tailwind. De codebase is geoptimaliseerd voor Core Web Vitals en blijft actueel via regelmatige updates van dependencies en content.",
+          "decisions": [
+            "Mobile-first lay-out, animaties buiten het kritieke pad gehouden",
+            "Beeld- en assetpipeline afgestemd op Largest Contentful Paint",
+            "Formulieren beveiligd zonder gesprekken te verliezen",
+            "Bewust kleine, eenvoudige stack voor onderhoudbaarheid op lange termijn"
+          ]
+        },
+        "client": "Carrosserie Kris"
+      },
+      {
+        "title": "Banden Leusch",
+        "image": "bandenLeusch",
+        "tags": [
+          "Next.js",
+          "Tailwind",
+          "Umami"
+        ],
+        "type": "website",
+        "liveUrl": "https://leusch.be",
+        "githubUrl": "",
+        "slug": "banden-leusch",
+        "status": "maintained",
+        "sector": "Klantwebsite",
+        "period": "2026 - HEDEN",
+        "abstract": "Logo, website en sociale media voor een full-service garage en bandencentrale in Grobbendonk: onderhoud, uitlijning en ADAS-kalibratie, banden en sleutelservice op één snelle pagina. Ik host en onderhoud de site.",
+        "business": {
+          "summary": "Een nieuw logo, een nieuwe website en sociale media in dezelfde stijl. Op de site staan alle diensten van de garage, van banden en velgen tot ADAS-kalibratie en sleutelservice, overzichtelijk op één pagina, met een contactformulier dat meteen de gegevens van de wagen meestuurt. Ik host en onderhoud de site sinds de lancering in 2026.",
+          "metrics": [
+            {
+              "value": "2026",
+              "label": "Nieuwe site, door mij beheerd"
+            }
+          ],
+          "highlights": [
+            "Ontworpen voor de gsm",
+            "Bellen met één tik"
+          ],
+          "outcomes": [
+            "Alle diensten op één overzichtelijke pagina",
+            "Contactformulier met merk, model, bouwjaar en chassisnummer",
+            "Gehost en onderhouden door de ontwikkelaar"
+          ]
+        },
+        "engineering": {
+          "summary": "Next.js, statisch voorgerenderd, met Tailwind voor de styling en cookieloze statistieken via een zelf gehoste Umami. Eén pagina, met een anker per dienst in de navigatie.",
+          "decisions": [
+            "Statisch voorgerenderd: de pagina komt kant-en-klaar uit de cache",
+            "Cookieloze statistieken via een zelf gehoste Umami",
+            "Voertuiggegevens als aparte formuliervelden, zodat een aanvraag meteen bruikbaar is"
+          ]
+        },
+        "client": "Banden Leusch"
+      },
+      {
+        "title": "Distributed Intrusion Detection and Prevention System",
+        "image": "idps",
+        "tags": [
+          "Rust",
+          "Angular",
+          "Docker",
+          "Suricata",
+          "Shell",
+          "Linux"
+        ],
+        "type": "solution",
+        "liveUrl": "",
+        "githubUrl": "https://github.com/Brentweb-Labs/netsentry-sensor",
+        "slug": "idps",
+        "status": "finished",
+        "sector": "Netwerkbeveiliging",
+        "period": "OKT 2025 - MEI 2026",
+        "abstract": "Gedistribueerde intrusion detection en prevention voor educatieve netwerken. Een inline edge-toestel capteert het verkeer, een externe server analyseert het, en blokkeerregels worden lokaal afgedwongen zonder het netwerk te vertragen.",
+        "business": {
+          "summary": "Scholen krijgen netwerkbeveiliging op bedrijfsniveau met goedkope hardware. Bedreigingen worden in realtime gedetecteerd en geblokkeerd, terwijl het personeel alles volgt op één live dashboard - zonder securityteam ter plaatse.",
+          "metrics": [
+            {
+              "value": "<1ms",
+              "label": "Extra inline latency"
+            },
+            {
+              "value": "24/7",
+              "label": "Autonome monitoring"
+            },
+            {
+              "value": "€0",
+              "label": "Licentiekost per gebruiker"
+            }
+          ],
+          "highlights": [],
+          "outcomes": [
+            "Realtime detectie en automatische blokkering van bedreigingen",
+            "Eén dashboard voor het hele netwerk - geen specialist nodig",
+            "Draait op een Raspberry Pi: minimale hardware-investering"
+          ]
+        },
+        "engineering": {
+          "summary": "Een Rust capture-agent draait inline op een Raspberry Pi, streamt pakketdata naar een VPS voor analyse met Suricata, en past verdicts lokaal toe zodat het hot path nooit wacht op de netwerk-roundtrip.",
+          "decisions": [
+            "Rust aan de edge: memory-safe pakketverwerking, geen GC-pauzes inline",
+            "Capture en enforcement losgekoppeld van analyse - fail-open by design",
+            "Serverpipeline gecontaineriseerd met Docker voor reproduceerbare deploys",
+            "Suricata-regelengine stuurt detectie; eigen laag verzorgt preventie"
+          ]
+        }
+      },
+      {
+        "title": "Provilion Broodjes",
+        "image": "provilion",
+        "tags": [
+          "TypeScript",
+          "MySQL",
+          "Stripe",
+          "NextJS"
+        ],
+        "type": "website",
+        "liveUrl": "https://provilion-maandmenu.vercel.app/",
+        "githubUrl": "",
+        "slug": "provilion-broodjes",
+        "status": "finished",
+        "sector": "Bestelplatform",
+        "period": "2024 - 2026",
+        "abstract": "Full-stack bestelplatform voor broodjes op school, volledig gebouwd maar nooit in gebruik genomen: leerlingen bestellen, ouders beheren tegoeden, beheerders runnen de dagelijkse werking, met geïntegreerde betaalverwerking.",
+        "business": {
+          "summary": "Een selfservice-bestelsysteem dat de cash en Excel-lijsten van de broodjesverkoop op een school moest vervangen: bestellen en betalen in de woensdagpauze, afhalen op vrijdag. Ouders laden online tegoed op, Stripe verrekent de bestellingen en de keuken werkt vanuit één live dashboard. Het platform is volledig gebouwd, maar nooit in gebruik genomen.",
+          "metrics": [
+            {
+              "value": "3",
+              "label": "Gebruikersrollen, één platform"
+            }
+          ],
+          "highlights": [
+            "Bestelstatus live bijgewerkt"
+          ],
+          "outcomes": [
+            "Bestellen en betalen volledig online, zonder cash in de pauze",
+            "Ouders beheren uitgaven via een prepaid tegoedsysteem",
+            "Admin-dashboard bundelt dagbestellingen tot één bereidingslijst"
+          ]
+        },
+        "engineering": {
+          "summary": "Next.js en TypeScript van begin tot einde, MySQL voor persistentie, en Stripe-webhooks voor de betaalverwerking. Role-based access control scheidt de mogelijkheden van leerling, ouder en beheerder.",
+          "decisions": [
+            "Webhook-gedreven betaalflow: tegoeden wijzigen enkel na bevestigde events",
+            "RBAC afgedwongen op API-niveau, niet enkel verborgen in de UI",
+            "Transactionele order-writes houden tegoedgrootboek en bestellingen consistent",
+            "E-mailnotificaties losgekoppeld van het request-pad"
+          ]
+        },
+        "client": "Provilion Broodjes"
+      },
+      {
+        "title": "Het Smaakpand (Gesloten)",
+        "image": "hetsmaakpand",
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "type": "website",
+        "liveUrl": "https://precious-mooncake-1d00a4.netlify.app/",
+        "githubUrl": "",
+        "slug": "het-smaakpand",
+        "status": "decommissioned",
+        "sector": "Horecawebsite",
+        "period": "2022 - 2024",
+        "abstract": "Strakke, minimale website voor een broodjeszaak in Olen: menuweergave, openingsuren, mobile-first. Uit dienst genomen toen de zaak de deuren sloot.",
+        "business": {
+          "summary": "Een kleine zaak stond snel en betaalbaar online. De site deed één ding - het menu tonen en mensen naar de winkel brengen - zonder lopende complexiteit of kosten.",
+          "metrics": [],
+          "highlights": [
+            "Online binnen enkele dagen",
+            "Geen onderhoudsincidenten zolang de site draaide"
+          ],
+          "outcomes": [
+            "Menu en openingsuren meteen vindbaar op elke smartphone",
+            "Geen CMS-overhead voor een zaak met een stabiel menu",
+            "Netjes uit dienst genomen toen de zaak sloot"
+          ]
+        },
+        "engineering": {
+          "summary": "Static-first met een bewust minimale footprint. Geen frameworks waar ze niet nodig waren - snelle laadtijden, triviale hosting en niets om te patchen.",
+          "decisions": [
+            "Statische delivery: geen serverruntime, vrijwel geen aanvalsoppervlak",
+            "Handgeschreven CSS in plaats van een framework voor één pagina",
+            "Laadtijd onder de seconde op mobiele netwerken als hoofddoel",
+            "Gearchiveerd met een propere teardown - geen verweesde infrastructuur"
+          ]
+        },
+        "client": "Het Smaakpand"
+      }
+    ],
+    "map": {
+      "close": "Sluiten",
+      "liveLink": "Bekijk live site",
+      "archiveLink": "Bekijk de archiefversie",
+      "readCaseStudy": "Lees het hele project",
+      "sourceLink": "Bekijk code",
+      "status": {
+        "active": "Online",
+        "maintained": "Actief onderhouden",
+        "decommissioned": "Gearchiveerd",
+        "finished": "Afgerond"
+      },
+      "impactTitle": "Impact",
+      "decisionsTitle": "Belangrijkste keuzes",
+      "stackTitle": "Stack"
+    },
+    "writeUpsLabel": "Technische uitwerkingen"
+  },
+  "process": {
+    "title": "Hoe een project meestal verloopt",
+    "steps": {
+      "1": {
+        "title": "Een eerste gesprek",
+        "body": "Een half uur, gratis en vrijblijvend."
+      },
+      "2": {
+        "title": "Een prijs op papier",
+        "body": "Wat ik bouw, wat het kost en wanneer."
+      },
+      "3": {
+        "title": "Bouwen",
+        "body": "Elke week iets werkends om te bekijken."
+      },
+      "4": {
+        "title": "Livegang",
+        "body": "Installatie, migratie, en ik kom langs om alles uit te leggen en te tonen."
+      },
+      "5": {
+        "title": "Daarna",
+        "body": "Ik blijf bereikbaar voor aanpassingen."
+      }
+    },
+    "bookStep": "Plan dit gesprek"
+  },
+  "contact": {
+    "business": {
+      "badge": "CONTACT",
+      "title": "Vertel me over uw project",
+      "subtitle": "Vertel wat u vertraagt. Ik zeg eerlijk of ik kan helpen en wat het ongeveer kost.",
+      "messagePlaceholder": "Welk proces kost u tijd, en hoe ziet een goed resultaat eruit?",
+      "formNote": "Hoe meer u vertelt, hoe bruikbaarder mijn eerste antwoord is.",
+      "prefill": "Ik herken dit: \"{problem}\". Dit wil ik graag oplossen.\n\n"
+    },
+    "tech": {
+      "badge": "CONTACT",
+      "title": "Een technische vraag?",
+      "subtitle": "Over systeemontwerp, een samenwerking of iets wat je op deze site zag: ik antwoord graag.",
+      "annotation": "← Mail of WhatsApp me",
+      "messagePlaceholder": "Wat bouw je, en welke afweging speelt er?",
+      "formNote": "Architectuurvragen en samenwerkingen zijn welkom."
+    },
+    "form": {
+      "name": "Naam",
+      "email": "E-mail",
+      "message": "Bericht",
+      "send": "Verstuur bericht",
+      "sending": "Verzenden...",
+      "error": "Verzenden mislukt. Probeer het opnieuw.",
+      "gdprConsent": "Ik stem in met de verwerking van mijn naam, e-mail en bericht om te reageren op mijn vraag.",
+      "gdprConsentLink": "Privacybeleid",
+      "gdprConsentSuffix": "Gegevens worden maximaal 12 maanden bewaard.",
+      "gdprRequired": "Accepteer onze gegevensverwerkingsvoorwaarden om dit formulier in te dienen.",
+      "rateLimited": "U verstuurt iets te snel. Wacht een paar minuten en probeer opnieuw.",
+      "budget": "Ruw budget",
+      "timeline": "Tijdlijn",
+      "selectPlaceholder": "Maak een keuze",
+      "budgetOptions": {
+        "not-sure": "Nog geen idee"
+      },
+      "website": "Website van uw zaak (optioneel)",
+      "websitePlaceholder": "www.uwzaak.be",
+      "loading": "Het formulier laadt…",
+      "loadingAlt": "Lukt het niet? Bel of mail me rechtstreeks, de gegevens staan hiernaast."
+    },
+    "location": "Locatie",
+    "phone": "Telefoon",
+    "whatsapp": "WhatsApp",
+    "whatsappValue": "Stuur een bericht",
+    "phoneNote": "Bellen kan meestal tussen 13 en 19 uur. Ik studeer ernaast, dus daarbuiten lukt het niet altijd; een bericht via WhatsApp of het formulier komt altijd aan, en ik antwoord binnen een dag of twee.",
+    "locationValue": "Blankenberge & Geel, België",
+    "visitNote": "Ik kom ook bij u langs, voor persoonlijke uitleg en een demo.",
+    "status": "Statuut",
+    "statusValue": "Student-zelfstandige",
+    "kbo": "Ondernemingsnummer (KBO)",
+    "availability": {
+      "open": "Beschikbaar voor nieuwe projecten",
+      "limited": "Beperkt beschikbaar voor nieuwe projecten",
+      "unavailable": "Momenteel geen nieuwe projecten"
+    },
+    "socialsLabel": "Elders",
+    "map": {
+      "showGoogle": "Kaart tonen",
+      "showOsm": "Kaart tonen",
+      "title": "Kaart van {place}",
+      "error": "Google Maps laadde niet, dit is OpenStreetMap",
+      "places": "Mijn twee vestigingen",
+      "loadsGoogle": "Laadt Google Maps, pas als u klikt.",
+      "loadsOsm": "Laadt OpenStreetMap, pas als u klikt."
+    }
+  },
+  "cta": {
+    "mid": {
+      "eyebrow": "KOSTEN",
+      "title": "Benieuwd wat het zou kosten?",
+      "body": "Een paar vragen en u krijgt een realistische prijsofferte en tijdlijn, plus een PDF die u kunt bijhouden.",
+      "primary": "Bekijk wat het kost",
+      "secondary": "Bekijk mijn werk"
+    },
+    "tech": {
+      "eyebrow": "CASES",
+      "title": "Liever de lange versie?",
+      "body": "Elke case loopt door de afwegingen: wat ik koos, wat ik wegliet, en wat ik nu anders zou doen.",
+      "primary": "Lees de cases",
+      "secondary": "Mail me rechtstreeks"
+    }
+  },
+  "footer": {
+    "nodesDiscovered": "Nodes ontdekt:",
+    "annotation": "← Bedankt voor het scrollen!",
+    "copyright": "© {year} BrentWeb, Brent Schoenmakers.",
+    "backToTop": "Terug naar boven",
+    "privacy": "Privacybeleid",
+    "legalKbo": "Ondernemingsnummer",
+    "legalVat": "Btw {vat}",
+    "legalVatExempt": "Kleine onderneming vrijgesteld van btw (art. 56bis WBTW)",
+    "phone": "Tel."
+  },
+  "common": {
+    "skipToContent": "Ga naar inhoud"
+  },
+  "calculator": {
+    "metaTitle": "Wat kost een website laten maken?",
+    "metaDescription": "Een website kost meestal {websiteRange}, een webapplicatie {webAppRange}. Bereken uw prijs met een paar vragen, met opbouw, tijdlijn en pdf.",
+    "badge": "KOSTENRAMING",
+    "title": "Wat zou uw project kosten?",
+    "subtitle": "Een paar vragen, en u krijgt een prijsvork met opbouw, een tijdlijn en een pdf. Geen e-mailadres nodig.",
+    "stepOf": "Stap {current} van {total}",
+    "back": "Terug",
+    "next": "Volgende",
+    "scope": {
+      "title": "Wat heeft uw project nodig?",
+      "description": "Selecteer alles wat van toepassing is.",
+      "options": {
+        "website": {
+          "label": "Website",
+          "description": "Een nieuwe site voor uw zaak, met de hand gebouwd.",
+          "includes": [
+            "Een site die met de hand gebouwd is in React en Next.js, geen template",
+            "Werkt goed op gsm en is snel genoeg om te scoren in Google",
+            "Hosting, domeinnaam en SSL worden voor u geregeld",
+            "Zelf teksten, foto's en openingsuren aanpassen met Payload"
+          ]
+        },
+        "web_app": {
+          "label": "Webapp",
+          "description": "Iets met logins, gegevens en een beheerderskant.",
+          "includes": [
+            "Een toepassing met accounts en rechten",
+            "Een beheerdersgedeelte zodat u het zelf kunt onderhouden",
+            "Een database opgebouwd rond de vragen die u stelt"
+          ]
+        },
+        "api_integration": {
+          "label": "API-koppeling",
+          "description": "Koppel betalingen, een CRM, of een andere dienst.",
+          "includes": [
+            "Koppeling met een externe API (betalingen, CRM, enzovoort)",
+            "Foutafhandeling en automatische nieuwe pogingen",
+            "Integratietests tegen de echte API"
+          ]
+        },
+        "automation": {
+          "label": "Automatisering",
+          "description": "Automatiseer een manueel proces of taak.",
+          "includes": [
+            "Script of dienst die een workflow automatiseert",
+            "Geplande taken of webhook-triggers",
+            "Monitoring en meldingen bij fouten"
+          ]
+        }
+      },
+      "error": "Kies minstens één optie om verder te gaan."
+    },
+    "timeline": {
+      "title": "Wat is uw tijdlijn?",
+      "options": {
+        "asap": "Zo snel mogelijk",
+        "1-3m": "1-3 maanden",
+        "3-6m": "3-6 maanden",
+        "6m-plus": "6+ maanden",
+        "not-sure": "Nog niet zeker"
+      }
+    },
+    "result": {
+      "title": "Hier is uw inschatting",
+      "budgetLabel": "Geschat budget",
+      "timelineLabel": "Geschatte tijdlijn",
+      "weeksLabel": "{min}-{max} weken",
+      "includedTitle": "Wat er doorgaans bij inbegrepen is",
+      "downloadPdf": "Download PDF-samenvatting",
+      "downloadingPdf": "PDF wordt voorbereid...",
+      "disclaimer": "Dit is een ruwe richtlijn, geen offerte. Het echte bedrag hangt af van details die we samen doornemen.",
+      "rushNote": "U koos 'zo snel mogelijk'. Ik studeer hiernaast, dus een krappe deadline betekent meestal scope schrappen in plaats van meer uren maken. Dat zeg ik liever vooraf, en een spoedtoeslag reken ik sowieso niet aan.",
+      "breakdownTitle": "Hoe dit is opgebouwd",
+      "itemHeader": "Onderdeel",
+      "hoursHeader": "Uren",
+      "costHeader": "Prijs",
+      "totalLabel": "Totaal",
+      "hoursLabel": "Geschat werk",
+      "maintenanceLabel": "Onderhoud",
+      "rateNote": "Berekend aan {rate} per uur. Als vork, omdat de details bepalen waar in die vork het uitkomt.",
+      "aiBadge": "AI",
+      "edit": "Antwoorden aanpassen"
+    },
+    "lead": {
+      "title": "Ontvang uw inschatting per e-mail",
+      "subtitle": "Ik mail u de samenvatting en volg persoonlijk op binnen een dag of twee.",
+      "name": "Naam",
+      "email": "E-mail",
+      "company": "Bedrijf (optioneel)",
+      "notes": "Nog iets dat ik moet weten? (optioneel)",
+      "submit": "Stuur me de inschatting",
+      "sending": "Verzenden...",
+      "error": "Er ging iets mis. Probeer het opnieuw.",
+      "rateLimited": "U verstuurt iets te snel. Wacht een paar minuten en probeer opnieuw."
+    },
+    "pdf": {
+      "title": "Samenvatting projectraming",
+      "preparedFor": "Opgemaakt voor {name} op {date}",
+      "budgetLabel": "Geraamd budget",
+      "timelineLabel": "Geraamde doorlooptijd",
+      "weeks": "{min}-{max} weken",
+      "scopeLabel": "Gekozen scope",
+      "timelinePreferenceLabel": "Voorkeur qua timing",
+      "includedLabel": "Wat er inbegrepen is",
+      "footer": "Dit is een ruwe raming, geen vaste offerte. Neem contact op via brent@brentweb.be om de details door te nemen.",
+      "breakdownLabel": "Opbouw",
+      "hoursLabel": "Geschat werk",
+      "hoursValue": "{hours} uur",
+      "maintenanceLabel": "Onderhoud",
+      "featuresLabel": "Functies",
+      "descriptionLabel": "Uw beschrijving",
+      "aiLabel": "AI-analyse",
+      "aiNote": "Regels gemarkeerd met AI zijn toegevoegd door een AI-analyse van uw beschrijving.",
+      "assumptionsLabel": "Aannames",
+      "risksLabel": "Wat de prijs kan veranderen",
+      "questionsLabel": "Te bespreken",
+      "defaultName": "u"
+    },
+    "steps": {
+      "type": "Project",
+      "details": "Omvang",
+      "design": "Ontwerp",
+      "features": "Functies",
+      "extras": "Details",
+      "result": "Raming"
+    },
+    "details": {
+      "title": "Hoe groot is het?",
+      "description": "Ruwe aantallen volstaan. U kunt ze later altijd aanpassen.",
+      "startingPoint": {
+        "label": "Waar vertrekken we van?",
+        "options": {
+          "new": {
+            "label": "Van nul",
+            "description": "Er bestaat nog niets."
+          },
+          "redesign": {
+            "label": "Een bestaande site vervangen",
+            "description": "Er is een oude site waarvan de inhoud mee moet."
+          },
+          "extend": {
+            "label": "Iets bestaands uitbreiden",
+            "description": "Toevoegen aan een site of app die al draait."
+          }
+        }
+      },
+      "pages": {
+        "label": "Aantal pagina's",
+        "help": "Home, over ons, diensten, contact... Elke aparte pagina telt één keer; blogberichten of producten niet."
+      },
+      "screens": {
+        "label": "Schermen of modules in de app",
+        "help": "Bijvoorbeeld: dashboard, klantenlijst, bestelformulier, instellingen."
+      },
+      "roles": {
+        "label": "Wie gebruikt de app?",
+        "options": {
+          "single": {
+            "label": "Eén soort gebruiker",
+            "description": "Iedereen ziet en kan hetzelfde."
+          },
+          "few": {
+            "label": "Enkele rollen",
+            "description": "Bijvoorbeeld beheerder en personeel, met andere rechten."
+          },
+          "many": {
+            "label": "Veel rollen of organisaties",
+            "description": "Gedetailleerde rechten, of meerdere bedrijven in één app."
+          }
+        }
+      },
+      "integrations": {
+        "label": "Aantal externe diensten om te koppelen",
+        "help": "Betaalprovider, CRM, boekhoudpakket, de API van een leverancier..."
+      },
+      "workflows": {
+        "label": "Aantal taken om te automatiseren",
+        "help": "Elk apart proces telt één keer, bv. 'facturen versturen' en 'voorraad synchroniseren'."
+      },
+      "automationLevel": {
+        "label": "Hoe complex zijn ze?",
+        "options": {
+          "simple": {
+            "label": "Eenvoudig",
+            "description": "Gegevens op vaste tijden van A naar B brengen."
+          },
+          "moderate": {
+            "label": "Gemiddeld",
+            "description": "Wat logica, voorwaarden of meerdere stappen."
+          },
+          "complex": {
+            "label": "Complex",
+            "description": "Veel systemen, uitzonderingen of manuele controlestappen."
+          }
+        }
+      }
+    },
+    "design": {
+      "title": "Ontwerp en inhoud",
+      "description": "Hoe het eruit moet zien, en wie de teksten schrijft.",
+      "level": {
+        "label": "Ontwerp",
+        "options": {
+          "basic": {
+            "label": "Strak en eenvoudig",
+            "description": "Een verzorgde, consistente stijl op basis van beproefde patronen."
+          },
+          "custom": {
+            "label": "Ontwerp op maat",
+            "description": "Ontworpen rond uw huisstijl, pagina per pagina."
+          },
+          "premium": {
+            "label": "Opvallend",
+            "description": "Gedetailleerd ontwerp met animaties en eigen illustraties of lay-outs."
+          }
+        }
+      },
+      "content": {
+        "label": "Teksten",
+        "options": {
+          "ready": {
+            "label": "Ik lever de teksten aan",
+            "description": "U bezorgt afgewerkte teksten en foto's."
+          },
+          "polish": {
+            "label": "Help me ze bijschaven",
+            "description": "U levert een ruwe versie, ik werk ze bij voor het web."
+          },
+          "write": {
+            "label": "Schrijf ze voor mij",
+            "description": "Ik schrijf de teksten, na een gesprek met u."
+          }
+        }
+      },
+      "languages": {
+        "label": "Talen",
+        "help": "De vertalingen levert u aan; de prijs dekt het inbouwen van elke taal."
+      }
+    },
+    "features": {
+      "title": "Wat moet het kunnen?",
+      "description": "Selecteer alles wat u nodig hebt. Bij elke functie ziet u wat ze toevoegt.",
+      "groups": {
+        "content": "Inhoud",
+        "commerce": "Verkopen en boekingen",
+        "users": "Gebruikers en gegevens",
+        "marketing": "Marketing en zichtbaarheid",
+        "technical": "Technisch"
+      },
+      "options": {
+        "contact_form": {
+          "label": "Contactformulier",
+          "description": "Een formulier dat in uw inbox belandt, met spambeveiliging."
+        },
+        "cms": {
+          "label": "Zelf inhoud aanpassen",
+          "description": "Teksten en foto's wijzigen zonder mij te moeten bellen."
+        },
+        "blog": {
+          "label": "Blog of nieuws",
+          "description": "Berichten met categorieën en een overzichtspagina."
+        },
+        "gallery": {
+          "label": "Galerij of portfolio",
+          "description": "Foto's of projecten in een filterbaar raster."
+        },
+        "search": {
+          "label": "Zoekfunctie",
+          "description": "Zoeken in pagina's, producten of gegevens."
+        },
+        "webshop": {
+          "label": "Webshop",
+          "description": "Producten, winkelmandje, afrekenen en bestelbeheer."
+        },
+        "payments": {
+          "label": "Online betalen",
+          "description": "Bancontact, kaarten en meer via Mollie of Stripe."
+        },
+        "booking": {
+          "label": "Afspraken of reservaties",
+          "description": "Klanten kiezen zelf een vrij moment."
+        },
+        "invoicing": {
+          "label": "Facturen of pdf-documenten",
+          "description": "Facturen, offertes of rapporten automatisch aanmaken."
+        },
+        "user_accounts": {
+          "label": "Klantaccounts",
+          "description": "Bezoekers registreren zich en loggen in."
+        },
+        "admin_dashboard": {
+          "label": "Dashboard met cijfers",
+          "description": "Overzichten, grafieken en exports van uw gegevens."
+        },
+        "file_uploads": {
+          "label": "Bestanden uploaden",
+          "description": "Gebruikers laden documenten of foto's op."
+        },
+        "notifications": {
+          "label": "E-mailmeldingen",
+          "description": "Automatische mails wanneer er iets gebeurt."
+        },
+        "realtime": {
+          "label": "Live updates of chat",
+          "description": "Schermen werken meteen bij zonder te herladen."
+        },
+        "newsletter": {
+          "label": "Inschrijving nieuwsbrief",
+          "description": "Gekoppeld aan Mailchimp, Brevo of iets gelijkaardigs."
+        },
+        "seo": {
+          "label": "Instellingen voor zoekmachines",
+          "description": "Gestructureerde gegevens, sitemap en Google Search Console."
+        },
+        "analytics": {
+          "label": "Bezoekersstatistieken",
+          "description": "Analytics met een GDPR-conforme cookiebanner."
+        },
+        "maps": {
+          "label": "Kaart en locatie",
+          "description": "Een interactieve kaart met uw vestiging(en)."
+        },
+        "branding": {
+          "label": "Logo en huisstijl",
+          "description": "Een logo, kleuren en lettertypes als u die nog niet hebt."
+        },
+        "accessibility": {
+          "label": "Toegankelijkheidscontrole",
+          "description": "Getest volgens WCAG 2.1 AA, bruikbaar met toetsenbord en schermlezer."
+        },
+        "data_migration": {
+          "label": "Bestaande gegevens importeren",
+          "description": "Klanten, producten of gegevens overzetten uit een oud systeem."
+        },
+        "public_api": {
+          "label": "API voor andere systemen",
+          "description": "Andere software laten lezen of schrijven in uw app."
+        },
+        "pwa": {
+          "label": "Installeerbare app (PWA)",
+          "description": "Werkt als een app op een gsm, ook offline."
+        }
+      },
+      "none": "Geen extra functies voor dit soort project. U kunt meteen verder."
+    },
+    "extras": {
+      "title": "Timing en de rest",
+      "timelineLabel": "Wanneer moet het klaar zijn?",
+      "maintenance": {
+        "label": "Onderhoud achteraf",
+        "perMonth": "{amount} per maand",
+        "options": {
+          "none": {
+            "label": "Geen onderhoud",
+            "description": "U neemt over na de lancering, of vraagt hulp wanneer nodig."
+          },
+          "basic": {
+            "label": "Hosting en updates",
+            "description": "Hosting, beveiligingsupdates, back-ups en monitoring."
+          },
+          "active": {
+            "label": "Hosting en kleine aanpassingen",
+            "description": "Alles uit het basispakket, plus tot twee uur aanpassingen per maand."
+          }
+        }
+      },
+      "description": {
+        "label": "Beschrijf uw project in uw eigen woorden (optioneel)",
+        "help": "Hoe concreter, hoe beter de raming. In de volgende stap kunt u het laten nakijken door AI.",
+        "placeholder": "Bijvoorbeeld: een site voor mijn bakkerij waar klanten online taarten bestellen en ze in de winkel afhalen..."
+      }
+    },
+    "ticker": {
+      "label": "Raming tot nu toe",
+      "hours": "{hours} uur"
+    },
+    "ai": {
+      "title": "Laat mijn beschrijving nakijken door AI",
+      "intro": "Claude, een AI-model, leest uw beschrijving en voegt werk toe dat de vragen hierboven niet dekken. Het stelt alleen uren voor; de prijs wordt berekend met hetzelfde uurtarief als de rest.",
+      "privacy": "Uw beschrijving en antwoorden worden daarvoor naar Anthropic gestuurd. Uw naam en e-mailadres niet.",
+      "run": "Analyseer mijn beschrijving",
+      "running": "Bezig met analyseren... dit kan tot een minuut duren",
+      "rerun": "Opnieuw analyseren",
+      "needDescription": "Voeg in de vorige stap een beschrijving van minstens 20 tekens toe om dit te gebruiken.",
+      "error": "De analyse is deze keer niet gelukt. Uw raming hierboven blijft geldig.",
+      "rateLimited": "U hebt de analyse al enkele keren gebruikt. Probeer het over een paar minuten opnieuw.",
+      "stale": "U hebt uw antwoorden aangepast, dus de vorige analyse geldt niet meer. Voer ze opnieuw uit om bij te werken.",
+      "summaryTitle": "Wat ik begrepen heb",
+      "complexityLabel": "Complexiteit",
+      "complexity": {
+        "low": "Laag",
+        "medium": "Gemiddeld",
+        "high": "Hoog"
+      },
+      "extraTitle": "Toegevoegd aan uw raming",
+      "noExtra": "Uw antwoorden dekken alles uit de beschrijving al. Er is niets toegevoegd.",
+      "suggestedTitle": "Misschien hebt u ook nodig",
+      "addSuggested": "Voeg toe aan mijn raming",
+      "assumptionsTitle": "Aannames",
+      "risksTitle": "Wat de prijs kan veranderen",
+      "questionsTitle": "Wat we eerst zouden bespreken"
+    },
+    "lines": {
+      "websiteBase": "Opzet website, hosting en lancering",
+      "pages": "Pagina's bouwen ({count})",
+      "appBase": "Basis van de app: database, logins, hosting",
+      "screens": "Schermen en modules ({count})",
+      "roles_few": "Rollen en rechten",
+      "roles_many": "Uitgebreide rollen en rechten",
+      "designSystem_basic": "Huisstijl: strak en eenvoudig",
+      "designSystem_custom": "Huisstijl: ontwerp op maat",
+      "designSystem_premium": "Huisstijl: opvallend ontwerp",
+      "designPages_basic": "Pagina-indelingen ({count})",
+      "designPages_custom": "Paginaontwerpen op maat ({count})",
+      "designPages_premium": "Gedetailleerde paginaontwerpen ({count})",
+      "content_polish": "Uw teksten bijschaven ({count} pagina's)",
+      "content_write": "Teksten schrijven ({count} pagina's)",
+      "languages": "Meertalig: {count} talen",
+      "redesign": "Inhoud overzetten van de oude site ({count} pagina's)",
+      "existingCode": "Inwerken in de bestaande code",
+      "integrations": "Externe diensten koppelen ({count})",
+      "workflows_simple": "Automatiseringen, eenvoudig ({count})",
+      "workflows_moderate": "Automatiseringen, gemiddeld ({count})",
+      "workflows_complex": "Automatiseringen, complex ({count})",
+      "overhead": "Testen, bijsturen en overleg ({percent}%)"
+    }
+  },
+  "work": {
+    "metaTitleList": "Projecten voor echte klanten",
+    "metaDescriptionList": "Uitgewerkte projecten voor echte klanten en eigen projecten: het probleem, wat er gebouwd is, en wat het de zaak echt opleverde.",
+    "metaTitleListTech": "Technische case studies",
+    "metaDescriptionListTech": "De technische kant van mijn projecten: architectuur, afwegingen en wat ik nu anders zou doen.",
+    "techSuffix": "Techniek",
+    "listBadge": "PROJECTEN",
+    "listTitle": "Het werk, opengelegd",
+    "listSubtitle": "Elk project hieronder heeft een volledige uitwerking: het probleem, wat er gebouwd is, en wat het echt veranderde.",
+    "readMore": "Lees het hele project",
+    "comingSoon": "De volledige uitwerking komt eraan. Hier is voorlopig de korte versie.",
+    "backToList": "← Terug naar projecten",
+    "nextCase": "Volgende case",
+    "techVersion": "De technische uitwerking van dit project",
+    "businessVersion": "Wat dit project de klant opleverde"
+  },
+  "lab": {
+    "metaTitle": "Ontwikkelaarslab: systemen zichtbaar gemaakt",
+    "metaDescription": "Interactieve widgets die echte systeemconcepten tonen: rate limiting, auth-flows en state machines, dezelfde ideeën die in productie draaien.",
+    "badge": "DEVELOPER LAB",
+    "title": "Systemen, zichtbaar gemaakt",
+    "subtitle": "Dezelfde concepten die in productie draaien op deze site - rate limiting, auth-flows, request-levenscycli - als iets waar je écht mee kan spelen.",
+    "rateLimit": {
+      "title": "Rate Limit Simulator",
+      "description": "Het exacte token-bucket-algoritme dat het contactformulier en de calculator van deze site beschermt, geanimeerd. Capaciteit {capacity} aanvragen, ongeveer één token elke {refillSeconds}s bijgevuld.",
+      "sendRequest": "Verstuur aanvraag",
+      "allowed": "Toegelaten",
+      "blocked": "Geblokkeerd. Probeer opnieuw over {seconds}s",
+      "tokensLabel": "Beschikbare tokens"
+    },
+    "authFlow": {
+      "title": "Auth Flow Visualizer",
+      "description": "Een stap-voor-stap doorloop van een typische login-sequentie. Enkel illustratief - geen echte backend, geen echte tokens.",
+      "steps": {
+        "idle": "Wachten op login",
+        "credentials": "Inloggegevens verzonden",
+        "verify": "Server verifieert inloggegevens",
+        "issueToken": "Sessietoken uitgegeven",
+        "authenticated": "Geauthenticeerd"
+      },
+      "start": "Start login",
+      "restart": "Herstart"
+    },
+    "stateMachine": {
+      "title": "Request Lifecycle Visualizer",
+      "description": "Een kleine finite-state machine die toont hoe een enkele aanvraag door validatie en verwerking beweegt - of op elke stap kan falen.",
+      "states": {
+        "idle": "Inactief",
+        "validating": "Valideren",
+        "processing": "Verwerken",
+        "success": "Succes",
+        "failed": "Gefaald"
+      },
+      "trigger": "Vuur aanvraag af",
+      "triggerFailure": "Vuur falende aanvraag af"
+    }
+  },
+  "email": {
+    "confirmationSubject": "Bedankt voor uw bericht, {name}",
+    "confirmationBodyContact": "Ik heb uw bericht ontvangen en antwoord binnen een dag of twee.",
+    "confirmationBodyCalculator": "Ik heb uw aanvraag voor een projectinschatting ontvangen. Uw overzicht zit als pdf in bijlage. Ik neem binnen een dag of twee persoonlijk contact op om de details te bespreken.",
+    "confirmationSignature": "Brent"
+  },
+  "privacy": {
+    "title": "Privacybeleid",
+    "metaDescription": "Welke gegevens brentweb.be verwerkt, waarom en hoe lang: cookieloze statistieken, formulieren, telefoon en WhatsApp, en de kaart die pas na een klik laadt.",
+    "lastUpdated": "Laatst bijgewerkt: {date}",
+    "backHome": "← Terug naar Home",
+    "sections": [
+      {
+        "title": "Inleiding",
+        "paragraphs": [
+          "Dit privacybeleid legt uit hoe Brent Schoenmakers, handelend onder de naam BrentWeb (\"ik\", \"me\" of \"mijn\") uw persoonsgegevens verzamelt, gebruikt en beschermt wanneer u deze website (brentweb.be) bezoekt. Ik ben de verwerkingsverantwoordelijke voor deze gegevens en ben bereikbaar via brent@brentweb.be."
+        ],
+        "list": []
+      },
+      {
+        "title": "Analysegegevens",
+        "paragraphs": [
+          "Ik gebruik Umami, een cookieloze analysetool die ik zelf host op mijn eigen server in Duitsland (Hetzner, Neurenberg). Er wordt niets in uw browser opgeslagen: geen cookies, geen lokale opslag, geen bezoekers-ID. Uw IP-adres wordt enkel gebruikt om een benaderend land en een dagelijks wisselende, niet-omkeerbare hash af te leiden, en wordt nooit bewaard. Ik zie enkel geaggregeerde cijfers:"
+        ],
+        "list": [
+          {
+            "text": "Bezochte pagina's en hoe lang een bezoek duurt"
+          },
+          {
+            "text": "Browser, besturingssysteem en type toestel"
+          },
+          {
+            "text": "Verwijzingsbron (hoe u deze website vond)"
+          },
+          {
+            "text": "Benaderend land"
+          }
+        ],
+        "afterList": [
+          "De gegevens worden niet gedeeld met of verkocht aan derden en nooit op de publieke website getoond. Als uw browser een Do Not Track-signaal stuurt, wordt er niets geregistreerd."
+        ]
+      },
+      {
+        "title": "Formulieren, kostencalculator en websitecheck",
+        "paragraphs": [
+          "Wanneer u het contactformulier, de kostencalculator of de gratis websitecheck gebruikt, verzamel ik:"
+        ],
+        "list": [
+          {
+            "text": "Uw naam en e-mailadres"
+          },
+          {
+            "text": "Uw bericht en de projectdetails die u opgeeft: budget, tijdlijn en eventueel de website van uw zaak op het contactformulier, of uw antwoorden, een optionele projectbeschrijving, bedrijfsnaam en notities in de kostencalculator"
+          },
+          {
+            "text": "Bij de gratis websitecheck: het adres van uw website, om het rapport op te maken en naar u te sturen"
+          }
+        ],
+        "afterList": [
+          "Ik gebruik deze gegevens uitsluitend om op uw aanvraag te reageren. Ze worden via Resend (een e-maildienst) naar mijn inbox gestuurd en als bevestiging naar de uwe, en bewaard in mijn klantenbeheersysteem (CRM), dat ik zelf host. Ze worden met geen enkele andere partij gedeeld. Om misbruik te voorkomen wordt het aantal inzendingen per IP-adres beperkt; die teller staat enkel in het werkgeheugen van de server, wordt nooit naar schijf geschreven en verdwijnt automatisch na een korte periode van inactiviteit. Een verborgen veld op elk formulier helpt spam te herkennen en bevat geen persoonsgegevens."
+        ]
+      },
+      {
+        "title": "Telefoon en WhatsApp",
+        "paragraphs": [
+          "Als u mij belt of een WhatsApp-bericht stuurt, zie ik uw telefoonnummer, en bij WhatsApp ook uw profielnaam en wat u schrijft. Ik gebruik die gegevens enkel om op uw vraag te antwoorden en bewaar ze niet langer dan nodig, maximaal 12 maanden, tenzij er een samenwerking uit voortkomt.",
+          "De telefoon- en WhatsApp-knoppen op deze site zijn gewone links: er wordt niets geladen van WhatsApp of Meta tot u er zelf op klikt. Het zelf gehoste analysesysteem telt enkel dat er op zo een link geklikt is, zonder uw nummer."
+        ],
+        "list": []
+      },
+      {
+        "title": "Rechtsgronden",
+        "paragraphs": [
+          "Ik verwerk uw gegevens enkel wanneer de AVG (GDPR) daarvoor een grond biedt:"
+        ],
+        "list": [
+          {
+            "label": "Toestemming (art. 6.1.a):",
+            "text": "voor analysegegevens en voor het verwerken van wat u via een formulier verstuurt"
+          },
+          {
+            "label": "Precontractuele maatregelen (art. 6.1.b):",
+            "text": "om uw vraag te beantwoorden en een offerte op te maken"
+          },
+          {
+            "label": "Gerechtvaardigd belang (art. 6.1.f):",
+            "text": "voor de beveiliging van de site, zoals rate limiting en spamdetectie, en voor de functionele voorkeurscookies"
+          }
+        ]
+      },
+      {
+        "title": "Bewaartermijnen",
+        "list": [
+          {
+            "text": "Berichten en aanvragen via de formulieren: maximaal 12 maanden, tenzij er een samenwerking uit voortkomt en de wettelijke bewaarplicht voor boekhouding van toepassing wordt"
+          },
+          {
+            "text": "Analysegegevens: maximaal 14 maanden"
+          },
+          {
+            "text": "Voorkeurscookies (bw-locale en bw-path): één jaar"
+          }
+        ]
+      },
+      {
+        "title": "Cookies en lokale opslag",
+        "paragraphs": [
+          "Deze website gebruikt:"
+        ],
+        "list": [
+          {
+            "label": "Essentiële opslag:",
+            "text": "nodig voor de werking van de site, zoals het onthouden van uw themavoorkeur"
+          },
+          {
+            "label": "Voorkeurscookies:",
+            "text": "twee first-party cookies onthouden hoe u de site gebruikt. bw-locale bewaart de taal die u koos en bw-path of u via het zakelijke of het technische gedeelte binnenkwam, zodat u bij een volgend bezoek meteen op de juiste pagina terechtkomt. Geen van beide bevat persoonsgegevens en geen van beide wordt gedeeld."
+          }
+        ],
+        "afterList": [
+          "U kunt cookies ook beheren via de instellingen van uw browser. Als u cookies uitschakelt, werken sommige onderdelen van de site mogelijk minder goed."
+        ]
+      },
+      {
+        "title": "Gegevensbeveiliging",
+        "paragraphs": [
+          "Ik neem onder meer deze maatregelen om uw gegevens te beschermen:"
+        ],
+        "list": [
+          {
+            "text": "HTTPS-versleuteling voor alle verkeer"
+          },
+          {
+            "text": "Strict Transport Security (HSTS)"
+          },
+          {
+            "text": "Rate limiting op elk formulier, om misbruik te beperken"
+          },
+          {
+            "text": "Regelmatige beveiligingsupdates en monitoring"
+          }
+        ],
+        "afterList": [
+          "Geen enkele overdracht via het internet is volledig veilig, dus absolute veiligheid kan ik niet garanderen."
+        ]
+      },
+      {
+        "title": "Diensten van derden",
+        "paragraphs": [
+          "Deze website gebruikt de volgende diensten van derden:"
+        ],
+        "list": [
+          {
+            "label": "Resend:",
+            "text": "levert de e-mails van het contactformulier en de kostencalculator af, inclusief de pdf-samenvatting die u aanvraagt"
+          },
+          {
+            "label": "Anthropic (Claude):",
+            "text": "alleen als u in de kostenraming op 'Analyseer mijn beschrijving' klikt: uw projectbeschrijving en antwoorden worden naar de API van Anthropic gestuurd om ze te analyseren. Uw naam en e-mailadres niet. Anthropic kan deze gegevens in de Verenigde Staten verwerken."
+          },
+          {
+            "label": "WhatsApp (Meta):",
+            "text": "alleen als u mij zelf via WhatsApp contacteert. Op die berichten is ook het privacybeleid van WhatsApp van toepassing."
+          },
+          {
+            "label": "Google Maps en OpenStreetMap:",
+            "text": "de kaart onderaan de contactsectie wordt enkel geladen nadat u zelf op \"Toon kaart\" klikt. Voor die klik maakt de site geen enkele verbinding met Google of OpenStreetMap. Daarna ontvangt die dienst, zoals bij elk bezoek aan een website, onder meer uw IP-adres, en geldt ook zijn eigen privacybeleid."
+          },
+          {
+            "label": "Cloudflare:",
+            "text": "al het verkeer naar brentweb.be loopt via het netwerk van Cloudflare, dat de site beschermt tegen aanvallen en misbruik. Daarvoor verwerkt Cloudflare bij elk bezoek technische gegevens, zoals uw IP-adres. Cloudflare is een Amerikaans bedrijf en kan die gegevens ook buiten de EU verwerken; zijn eigen privacybeleid is van toepassing."
+          },
+          {
+            "label": "Afsprakenpagina (Nextcloud):",
+            "text": "als u via \"Plan een gesprek\" een moment kiest, gebeurt dat in mijn eigen Nextcloud-agenda op cloud.brentweb.be. Ik ontvang dan uw naam, uw e-mailadres, het gekozen moment en wat u eventueel als toelichting invult, en gebruik die enkel om het gesprek te plannen en te voeren."
+          }
+        ]
+      },
+      {
+        "title": "Uw rechten",
+        "paragraphs": [
+          "U hebt het recht om:"
+        ],
+        "list": [
+          {
+            "text": "inzage te vragen in de persoonsgegevens die ik over u bewaar"
+          },
+          {
+            "text": "onjuiste gegevens te laten corrigeren"
+          },
+          {
+            "text": "uw gegevens te laten wissen"
+          },
+          {
+            "text": "de verwerking te laten beperken"
+          },
+          {
+            "text": "bezwaar te maken tegen verwerking op basis van gerechtvaardigd belang"
+          },
+          {
+            "text": "uw gegevens in een gangbaar formaat te ontvangen (overdraagbaarheid)"
+          },
+          {
+            "text": "uw toestemming op elk moment in te trekken, zonder dat dit afbreuk doet aan de verwerking die daarvoor plaatsvond"
+          }
+        ],
+        "afterList": [
+          "Om deze rechten uit te oefenen, mailt u naar brent@brentweb.be. Ik antwoord binnen één maand.",
+          "Bent u niet tevreden over hoe ik met uw gegevens omga, dan kunt u een klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel (www.gegevensbeschermingsautoriteit.be)."
+        ]
+      },
+      {
+        "title": "Privacy van kinderen",
+        "paragraphs": [
+          "Deze website is niet bedoeld voor kinderen jonger dan 13 jaar. Ik verzamel niet bewust persoonsgegevens van kinderen."
+        ],
+        "list": []
+      },
+      {
+        "title": "Wijzigingen aan dit beleid",
+        "paragraphs": [
+          "Ik kan dit privacybeleid af en toe bijwerken. De datum bovenaan deze pagina toont wanneer de tekst voor het laatst gewijzigd is."
+        ],
+        "list": []
+      },
+      {
+        "title": "Contact",
+        "paragraphs": [
+          "Hebt u vragen over dit privacybeleid, mail dan naar brent@brentweb.be."
+        ],
+        "list": []
+      }
+    ],
+    "lastUpdatedDate": "2026-11-03"
+  },
+  "errors": {
+    "title": "Er ging iets mis.",
+    "description": "Dat ligt aan mij, niet aan u. De fout is gelogd. Probeer opnieuw, of ga terug naar het begin.",
+    "retry": "Probeer opnieuw",
+    "backHome": "Terug naar start",
+    "notFound": {
+      "metaTitle": "Pagina niet gevonden | BrentWeb",
+      "title": "Deze pagina bestaat niet (meer).",
+      "description": "De link is mogelijk verouderd, of het adres bevat een typfout.",
+      "oldDomain": "Komt u via een oude link naar brentweb.eu? De site is verhuisd naar brentweb.be en niet elke oude pagina bestaat nog. Wat u zocht, vindt u waarschijnlijk hieronder.",
+      "linksTitle": "Misschien zocht u",
+      "home": "De homepage",
+      "projects": "Projecten",
+      "contact": "Contact opnemen",
+      "services": {
+        "website": "Website laten maken",
+        "webApp": "Webapplicatie op maat",
+        "integrations": "Koppelingen en automatisering"
+      }
+    }
+  },
+  "pain": {
+    "title": "Klinkt dit bekend?",
+    "items": {
+      "1": {
+        "problem": "Dezelfde bestelling wordt twee keer ingetypt",
+        "fix": "Een systeem waar het maar één keer ingevoerd wordt en automatisch verwerkt wordt."
+      },
+      "2": {
+        "problem": "We hebben een website, maar niemand neemt contact op",
+        "fix": "Een snelle website met duidelijke knoppen om u te contacteren."
+      },
+      "3": {
+        "problem": "Alles staat in één Excel-bestand",
+        "fix": "Een webapplicatie waarin iedereen tegelijk werkt, zonder dubbele of foute gegevens."
+      }
+    },
+    "solveLink": "Dit wil ik oplossen",
+    "caseLink": "Zo pakte ik dat aan bij {client}",
+    "servicesTitle": "Of kies meteen een dienst"
+  },
+  "pricing": {
+    "title": "Wat het kost",
+    "rangeLabel": "Gebruikelijke offerte",
+    "durationLabel": "Duurt meestal",
+    "weeks": "{min}-{max} weken",
+    "ctaTitle": "Niet zeker wat u nodig hebt?",
+    "ctaBody": "Een paar vragen, en u krijgt een prijsvork en timing, ook als pdf.",
+    "cta": "Schat mijn project in",
+    "note": "Zodra we een prijs afspreken, verandert die niet meer.",
+    "maintenance": "Onderhoud na de oplevering komt er apart bij: {basic} per maand voor hosting, beveiligingsupdates, back-ups en monitoring, of {active} per maand met tot twee uur aanpassingen erbij.",
+    "vatExempt": "Eindprijzen: als kleine onderneming ben ik vrijgesteld van btw (art. 56bis WBTW).",
+    "vatExcluded": "Prijzen zijn exclusief 21% btw."
+  },
+  "faq": {
+    "title": "Voor u mij mailt",
+    "items": {
+      "1": {
+        "q": "Wat als ik niet weet wat ik nodig heb?",
+        "a": "Zo beginnen de meeste projecten, dus dat is geen probleem. Vertel me in gewone taal wat u vertraagt en ik zeg u wat ervoor nodig is. Soms is het eerlijke antwoord dat u mij niet nodig hebt, en dat zeg ik er ook bij."
+      },
+      "2": {
+        "q": "Wat als het project onderweg groter wordt?",
+        "a": "Dan hoort u eerst wat het extra kost, voor ik het bouw. Ik werk per project, niet per uur, dus u krijgt nooit een onverwachte factuur voor extra uren."
+      },
+      "3": {
+        "q": "Ben ik eigenaar van wat u bouwt?",
+        "a": "Ja. De code en de domeinnaam zijn van u: de domeinnaam staat op uw naam, ik beheer ze samen met de hosting en de DNS. Wilt u ooit naar een andere ontwikkelaar of hostingpartij, dan krijgt u de code, uw gegevens en de transfercode van uw domein mee, zonder meerkost en zonder iets terug te kopen."
+      },
+      "4": {
+        "q": "Wat als er na de livegang iets stukgaat?",
+        "a": "Gaat er iets stuk dat ik gebouwd heb, dan herstel ik het. Dat is geen nieuw project en ik factureer het ook niet zo."
+      },
+      "5": {
+        "q": "Waarom is dit goedkoper dan een bureau?",
+        "a": "Er is geen verkoopteam, geen projectmanager en geen kantoor om te betalen. U betaalt voor het werk zelf, niet voor de overhead eromheen."
+      }
+    }
+  },
+  "servicePages": {
+    "breadcrumbHome": "Home",
+    "servicesLabel": "Diensten",
+    "priceLabel": "Gebruikelijke prijs",
+    "durationLabel": "Duurt meestal",
+    "weeks": "{min}-{max} weken",
+    "includedTitle": "Wat er inbegrepen is",
+    "forWhoTitle": "Voor wie is dit?",
+    "approachTitle": "Hoe ik het aanpak",
+    "faqTitle": "Veelgestelde vragen",
+    "caseTitle": "Een voorbeeld uit de praktijk",
+    "caseLink": "Lees de case",
+    "ctaPrimary": "Bereken uw prijs",
+    "ctaSecondary": "Stuur me een bericht",
+    "otherTitle": "Andere diensten",
+    "moreLabel": "Meer over:",
+    "areaNote": "Gevestigd in Blankenberge en Geel, voor klanten aan de kust, in de Kempen en op afstand in heel Vlaanderen.",
+    "items": {
+      "website": {
+        "navLabel": "Website laten maken",
+        "metaTitle": "Website laten maken vanaf {websiteMin}",
+        "metaDescription": "Een snelle, handgebouwde website voor uw zaak, {websiteRange} aan een vaste prijs. Webontwikkelaar uit Blankenberge en Geel, actief in heel Vlaanderen.",
+        "eyebrow": "WEBSITE LATEN MAKEN",
+        "title": "Een website laten maken die klanten oplevert",
+        "intro": "Snelle, met de hand gebouwde websites voor zelfstandigen en kmo's, vindbaar in Google. U spreekt rechtstreeks met de ontwikkelaar en kent de prijs voor ik begin.",
+        "forWho": [
+          "U hebt nog geen website, of een die u zelf niet meer durft aan te passen.",
+          "Uw site staat online, maar levert geen telefoontjes of aanvragen op.",
+          "U wilt geen abonnement op een sitebouwer, maar een site die van u is."
+        ],
+        "approach": [
+          "We beginnen met een gesprek over wat de site moet opleveren: telefoontjes, offerteaanvragen of bezoekers in de winkel. Daarop baseer ik elke pagina.",
+          "Geen template of paginabouwer, dus de site laadt snel, ook op een trage verbinding. Domeinnaam, hosting en SSL regel ik voor u; de domeinnaam staat op uw naam."
+        ],
+        "faq": [
+          {
+            "q": "Wat kost een website laten maken?",
+            "a": "De meeste websites kosten tussen {websiteMin} en {websiteMax}, afhankelijk van het aantal pagina's en wat de site moet kunnen. U krijgt een vaste prijs op papier voor ik begin, en die verandert niet meer zodra we het eens zijn. Als kleine onderneming ben ik vrijgesteld van btw, dus er komt niets bij."
+          },
+          {
+            "q": "Hoe lang duurt het om een website te laten maken?",
+            "a": "Meestal {websiteWeeksMin} tot {websiteWeeksMax} weken, afhankelijk van het aantal pagina's en of de teksten al klaar zijn. U ziet elke week iets werkends, zodat we bijsturen voor de site af is in plaats van erna."
+          },
+          {
+            "q": "Kan ik de website daarna zelf aanpassen?",
+            "a": "Teksten en foto's die vaak wijzigen kan ik zo opzetten dat u ze zelf aanpast. Voor de rest mailt u mij, en ik antwoord binnen een dag of twee."
+          },
+          {
+            "q": "Wat zit er in een website?",
+            "a": "Een site die met de hand gebouwd is, goed werkt op een gsm en snel genoeg is voor Google, met hosting, domeinnaam en SSL geregeld. Extra's zoals een contactformulier, een blog, een fotogalerij, online boeken of een webshop kiest u er zelf bij; in de kostenraming ziet u per onderdeel wat het kost."
+          },
+          {
+            "q": "Ik heb al een website. Kunt u die vernieuwen?",
+            "a": "Ja. Ik verhuis de inhoud van uw oude site naar de nieuwe en stuur de oude adressen door naar de nieuwe pagina's, zodat bezoekers en Google ze blijven vinden."
+          },
+          {
+            "q": "Kan mijn website in meerdere talen?",
+            "a": "Ja. Een tweede taal, zoals Frans, Engels of Duits, kan erbij. De vertalingen levert u aan; ik bouw de taalversies en zorg dat Google elke taal apart toont."
+          },
+          {
+            "q": "Wordt mijn website gevonden in Google?",
+            "a": "De basis zit er standaard in: snelle pagina's, één duidelijke pagina per dienst, correcte titels en beschrijvingen, en gestructureerde gegevens zodat Google weet wie u bent en waar. Een plaats bovenaan kan niemand beloven, maar een site die daarop gebouwd is, maakt de kans het grootst."
+          }
+        ],
+        "needs": [
+          "Uw teksten en foto's, of een ruwe versie ervan. Hebt u die niet, dan kan ik de teksten bijwerken of schrijven; dat staat dan apart in de offerte.",
+          "Wat u verkoopt of doet, en voor wie. Daar bouw ik de pagina's rond, één per dienst.",
+          "Hebt u al een site of een domeinnaam, dan de toegang ertoe. Ik verhuis de inhoud en zorg dat uw domein meegaat.",
+          "Iemand die binnen een paar dagen reageert op wat ik elke week laat zien."
+        ]
+      },
+      "webApp": {
+        "navLabel": "Webapplicatie op maat",
+        "metaTitle": "Webapplicatie op maat laten maken",
+        "metaDescription": "Vervang Excel-lijsten en dubbel typwerk door één webapplicatie op maat. Van {webAppMin} tot {webAppMax}, vaste prijs vooraf, voor kmo's in heel Vlaanderen.",
+        "eyebrow": "MAATWERKSOFTWARE",
+        "title": "Een webapplicatie op maat in plaats van nog een Excel-bestand",
+        "intro": "Draait uw zaak op gedeelde Excel-bestanden en overgetypte bestellingen? Ik bouw één webapplicatie waarin iedereen inlogt, en wat ingevoerd is, klopt.",
+        "forWho": [
+          "Meerdere mensen werken in hetzelfde Excel-bestand en overschrijven elkaars werk.",
+          "Bestellingen of aanvragen worden twee keer ingetypt, in twee verschillende systemen.",
+          "Een standaardpakket doet het meeste van wat u nodig hebt, maar net niet het belangrijkste deel."
+        ],
+        "approach": [
+          "Eerst breng ik in kaart hoe het werk vandaag loopt: wie voert wat in, en waar gaat het mis. Daarrond bouw ik de databank.",
+          "U krijgt accounts met rechten per rol, een beheerdersgedeelte en controles tegen dubbele of foute invoer."
+        ],
+        "faq": [
+          {
+            "q": "Wat kost een webapplicatie op maat?",
+            "a": "Meestal tussen {webAppMin} en {webAppMax}, afhankelijk van het aantal gebruikersrollen, schermen en koppelingen. U krijgt vooraf een vaste prijs. Groeit de scope onderweg, dan hoort u eerst wat het kost voor ik het bouw."
+          },
+          {
+            "q": "Ben ik eigenaar van de software?",
+            "a": "Ja. De code en de domeinnaam zijn van u; ik beheer de hosting en de DNS. Wilt u later met een andere ontwikkelaar verder, dan krijgt u alles mee en zit niets vast."
+          },
+          {
+            "q": "Kan de applicatie koppelen met wat ik al gebruik?",
+            "a": "Meestal wel. De meeste boekhoudpakketten, webshops, CRM's en betaaldiensten hebben een API waarmee ik gegevens automatisch laat uitwisselen."
+          },
+          {
+            "q": "Hoe lang duurt het om een webapplicatie te bouwen?",
+            "a": "Meestal {webAppWeeksMin} tot {webAppWeeksMax} weken. U krijgt elke week iets werkends om te testen, zodat een verkeerde aanpak vroeg bovenkomt en niet pas bij de oplevering."
+          },
+          {
+            "q": "Waarom geen standaardpakket?",
+            "a": "Als een standaardpakket doet wat u nodig hebt, is dat bijna altijd goedkoper, en dan zeg ik dat ook. Maatwerk loont pas als het belangrijkste deel van uw werk er niet in past, of als u voor tien functies betaalt om er één te gebruiken."
+          },
+          {
+            "q": "Wat als er na de oplevering iets misloopt?",
+            "a": "Gaat er iets stuk dat ik gebouwd heb, dan herstel ik het, zonder dat als nieuw project te factureren. Een nieuwe functie is wel een nieuw stuk werk, met een eigen prijs vooraf."
+          }
+        ],
+        "needs": [
+          "Een rondleiding door hoe het werk vandaag loopt, met de Excel-bestanden, formulieren of mails die u nu gebruikt.",
+          "Wie welke rechten moet hebben: wie mag invoeren, wie alleen lezen, wie beheren.",
+          "Voorbeeldgegevens, zodat ik bouw en test met echte gevallen in plaats van verzonnen.",
+          "Eén persoon bij u die beslist als er een keuze gemaakt moet worden."
+        ]
+      },
+      "integrations": {
+        "navLabel": "Koppelingen en automatisering",
+        "metaTitle": "Koppelingen en automatisering voor kmo's",
+        "metaDescription": "Laat uw webshop, boekhouding, CRM en betalingen met elkaar praten en automatiseer repetitief werk. Vanaf {integrationsMin}, vaste prijs vooraf.",
+        "eyebrow": "KOPPELINGEN EN AUTOMATISERING",
+        "title": "Uw systemen laten samenwerken, zonder overtypen",
+        "intro": "Veel handwerk zit tussen twee systemen, zoals een bestelling die van de webshop naar de boekhouding moet. Ik bouw de koppeling die dat automatisch doet.",
+        "forWho": [
+          "U typt gegevens over van het ene programma naar het andere.",
+          "U doet elke dag of week dezelfde handelingen in dezelfde volgorde.",
+          "Een betaaldienst, CRM of ander pakket moet gegevens uitwisselen met uw website."
+        ],
+        "approach": [
+          "Ik koppel via de API van de diensten die u al gebruikt, en test tegen de echte dienst, niet tegen een nabootsing.",
+          "Lukt een stap niet, dan probeert het systeem opnieuw en krijgt u een melding. Geplande taken, zoals een dagelijks overzicht, lopen vanzelf."
+        ],
+        "faq": [
+          {
+            "q": "Wat kost een koppeling of automatisering?",
+            "a": "Een koppeling met een externe dienst kost meestal {apiMin} tot {apiMax}, een automatisering van een vast proces {automationMin} tot {automationMax}. U krijgt vooraf een vaste prijs."
+          },
+          {
+            "q": "Wat als de andere dienst iets verandert?",
+            "a": "Dan ziet de foutafhandeling dat meteen, en krijgt u een melding in plaats van verkeerde gegevens. Ik pas de koppeling aan, en wat dat kost hoort u vooraf."
+          },
+          {
+            "q": "Welke programma's kunt u koppelen?",
+            "a": "Alles met een API, en dat zijn de meeste: boekhoudpakketten zoals Exact Online, Yuki of Billit, CRM's zoals Teamleader of HubSpot, webshops zoals Shopify of WooCommerce, en betaaldiensten zoals Mollie of Stripe. Heeft uw pakket geen API, dan zeg ik u eerlijk of er een andere weg is."
+          },
+          {
+            "q": "Hoe lang duurt een koppeling?",
+            "a": "Een koppeling met een externe dienst duurt meestal {apiWeeksMin} tot {apiWeeksMax} weken, een automatisering {automationWeeksMin} tot {automationWeeksMax} weken. Het meeste werk zit in het testen tegen de echte dienst."
+          },
+          {
+            "q": "Zijn mijn gegevens veilig?",
+            "a": "De koppeling krijgt enkel toegang tot wat ze nodig heeft, en wachtwoorden of API-sleutels staan niet in de code. Gaat er iets mis, dan wordt dat gelogd en krijgt u een melding."
+          },
+          {
+            "q": "Kan dit ook met AI?",
+            "a": "Soms. Een taalmodel kan helpen bij het lezen of samenvatten van tekst, zoals binnenkomende mails. Voor vaste stappen met vaste regels is een gewone automatisering betrouwbaarder en goedkoper, en dan raad ik die aan."
+          }
+        ],
+        "needs": [
+          "Toegang tot de diensten die gekoppeld moeten worden, liefst een apart account met enkel de rechten die de koppeling nodig heeft.",
+          "De stappen die u nu met de hand doet, in de volgorde waarin u ze doet.",
+          "Wie een melding moet krijgen als er iets misloopt."
+        ]
+      }
+    },
+    "needsTitle": "Wat ik van u nodig heb"
+  },
+  "bookCta": {
+    "body": "Twijfelt u nog? In een gratis gesprek van 30 minuten bekijken we samen wat u nodig hebt.",
+    "button": "Plan een gesprek",
+    "mail": "of mail me"
+  },
+  "thanks": {
+    "metaTitle": "Bedankt",
+    "eyebrow": "BEDANKT",
+    "faster": {
+      "title": "Wilt u sneller? Plan meteen een gesprek",
+      "body": "Kies zelf een moment voor een gratis gesprek van 30 minuten. Dan hoeft u niet op mijn antwoord te wachten.",
+      "button": "Plan een gesprek"
+    },
+    "nextTitle": "Wat gebeurt er nu?",
+    "backHome": "Terug naar de homepage",
+    "lead": {
+      "title": "Bedankt, ik antwoord binnen een dag of twee.",
+      "steps": {
+        "1": {
+          "title": "U krijgt een bevestiging",
+          "body": "Er staat een bevestiging in uw mailbox. Vroeg u een richtprijs aan, dan zit de PDF erbij. Niets ontvangen? Kijk even in uw spam."
+        },
+        "2": {
+          "title": "Ik lees uw aanvraag zelf",
+          "body": "Ik bekijk wat u nodig hebt en zeg eerlijk of ik de juiste persoon ben, met een eerste inschatting of de vragen die ik nog heb."
+        },
+        "3": {
+          "title": "We spreken af",
+          "body": "Klinkt het goed, dan plannen we een gratis gesprek van een half uur. Daarna krijgt u een vaste prijs op papier."
+        }
+      }
+    },
+    "websitecheck": {
+      "title": "Bedankt, uw websitecheck is aangevraagd.",
+      "steps": {
+        "1": {
+          "title": "Ik bekijk uw website",
+          "body": "De snelheid, hoe ze werkt op een gsm en hoe ze beveiligd is."
+        },
+        "2": {
+          "title": "U krijgt het rapport per e-mail",
+          "body": "Met de scores en wat ze in gewone taal betekenen. Niets ontvangen? Kijk even in uw spam."
+        },
+        "3": {
+          "title": "Samen overlopen, als u wilt",
+          "body": "In een gratis gesprek van 30 minuten bekijken we wat u het best eerst aanpakt. Vrijblijvend."
+        }
+      }
+    }
+  },
+  "websiteCheck": {
+    "metaTitle": "Gratis websitecheck: snelheid, mobiel en beveiliging",
+    "metaDescription": "Laat uw website gratis nakijken. U krijgt per e-mail een rapport met scores voor snelheid, mobielvriendelijkheid en beveiliging, in gewone taal.",
+    "eyebrow": "GRATIS WEBSITECHECK",
+    "title": "Is uw website snel, mobielvriendelijk en veilig?",
+    "intro": "Vul het adres van uw website in. U krijgt per e-mail een rapport met drie scores en wat ze betekenen, zonder vaktaal. Gratis en vrijblijvend.",
+    "receiveTitle": "Wat u ontvangt",
+    "items": {
+      "speed": {
+        "title": "Snelheid",
+        "body": "Hoe snel uw pagina's laden. Een trage site verliest bezoekers en scoort slechter in Google."
+      },
+      "mobile": {
+        "title": "Mobiel",
+        "body": "Of uw site vlot werkt op een gsm, het toestel waarmee de meeste bezoekers binnenkomen."
+      },
+      "security": {
+        "title": "Beveiliging",
+        "body": "Of uw site een geldig HTTPS-certificaat heeft en de gebruikelijke beveiligingsinstellingen gebruikt."
+      }
+    },
+    "form": {
+      "title": "Vraag uw rapport aan",
+      "url": "Adres van uw website",
+      "urlPlaceholder": "www.uwzaak.be",
+      "name": "Naam",
+      "email": "E-mail",
+      "consent": "Ik stem in met de verwerking van mijn naam, e-mail en website-adres om het rapport te ontvangen.",
+      "submit": "Stuur mij het rapport",
+      "sending": "Verzenden...",
+      "error": "Aanvragen mislukt. Probeer het opnieuw."
+    },
+    "errors": {
+      "url_invalid": "Vul een geldig website-adres in, bijvoorbeeld www.uwzaak.be.",
+      "name_short": "Vul uw naam in.",
+      "email_invalid": "Vul een geldig e-mailadres in.",
+      "consent_required": "Uw toestemming is nodig om het rapport te kunnen sturen."
+    }
+  },
+  "websiteCheckBanner": {
+    "text": "Heeft u al een website? Ontvang gratis een rapport over snelheid, mobiel en beveiliging.",
+    "label": "Adres van uw website",
+    "button": "Gratis rapport"
+  },
+  "testimonials": {
+    "title": "Wat klanten zeggen",
+    "caseLink": "Lees de case",
+    "googleLink": "Lees of schrijf een review op Google",
+    "items": {
+      "carrosserieKris": {
+        "context": "Klant sinds 2021, het familiebedrijf van mijn ouders"
+      },
+      "provilionBroodjes": {
+        "context": ""
+      },
+      "leusch": {
+        "context": "Klant sinds 2026, review op Google"
+      }
+    }
+  },
+  "security": {
+    "eyebrow": "BEVEILIGING",
+    "title": "Zo beveilig ik uw site",
+    "lede": "Standaard inbegrepen, zonder dat u er iets voor hoeft te doen.",
+    "compactTitle": "Standaard in elke site die ik bouw en beheer",
+    "techLink": "Hoe ik dat technisch aanpak",
+    "items": {
+      "updates": {
+        "title": "Updates elke week of maand",
+        "body": "Ik werk de software elke week of maand bij, en meteen wanneer er een bekend beveiligingslek opduikt."
+      },
+      "backups": {
+        "title": "Dagelijkse back-ups",
+        "body": "Elke dag een back-up. Gaat er iets mis, dan zet ik een werkende versie terug."
+      },
+      "https": {
+        "title": "HTTPS",
+        "body": "Altijd een versleutelde verbinding, nooit de melding \"niet veilig\"."
+      },
+      "monitoring": {
+        "title": "24/7 bewaking",
+        "body": "Een systeem houdt uw site dag en nacht in de gaten. Ligt ze plat, dan weet ik het binnen de dag."
+      }
+    }
+  },
+  "localPages": {
+    "_todo": "TODO (Brent): conceptteksten, nog na te lezen voor publicatie. Verwijder deze regel na review.",
+    "priceTitle": "Wat het kost",
+    "priceNote": "Een vaste prijs, afgesproken voor ik begin.",
+    "serviceLink": "Alles over een website laten maken",
+    "caseTitle": "Een voorbeeld uit de praktijk",
+    "caseLink": "Lees de case",
+    "items": {
+      "geelKempen": {
+        "metaTitle": "Website laten maken in Geel en de Kempen",
+        "metaDescription": "Webontwikkelaar uit Geel. Een snelle, handgebouwde website voor uw zaak in de Kempen, rechtstreeks met de ontwikkelaar en met een vaste prijs vooraf.",
+        "eyebrow": "WEBDESIGNER IN GEEL · DE KEMPEN",
+        "title": "Een website laten maken in Geel en de Kempen",
+        "intro": [
+          "Ik ben Brent, webontwikkelaar uit Geel. Hebt u een zaak in de Kempen, dan bouw ik een website die met de hand geschreven is, snel laadt op een gsm en gevonden wordt door mensen uit de buurt die zoeken naar wat u doet.",
+          "U praat niet met een bureau of een verkoper, maar rechtstreeks met de persoon die uw site bouwt. We beginnen met een gratis gesprek van een half uur. Daarna krijgt u een vaste prijs op papier, zonder uurtje-factuurtje of verrassingen achteraf.",
+          "Lokaal gevonden worden begint bij de basis: een duidelijke pagina per dienst, een adres en openingsuren die kloppen, en een site die snel genoeg is voor Google. Daar let ik vanaf de eerste pagina op."
+        ],
+        "navLabel": "Website laten maken in Geel en de Kempen",
+        "sections": [
+          {
+            "title": "Webdesigner in de Kempen, niet alleen in Geel",
+            "paragraphs": [
+              "Ik werk vanuit Geel voor zaken in heel de Kempen: Mol, Herentals, Westerlo, Kasterlee, Olen, Turnhout, Grobbendonk en de dorpen ertussen. Wie in de regio zoekt naar een vakman, een winkel of een dienst, doet dat meestal op een gsm en vaak met de naam van de gemeente erbij.",
+              "Daarom krijgt elke dienst die u aanbiedt een eigen pagina, met de gemeenten waar u werkt erin. Zo wordt u gevonden op de zoekopdrachten die uw klanten echt typen, en niet alleen op uw eigen naam."
+            ]
+          },
+          {
+            "title": "Wat kost een website laten maken in Geel?",
+            "paragraphs": [
+              "Een website kost bij mij meestal {websiteRange}, afhankelijk van het aantal pagina's en wat de site moet kunnen. Dat is een vaste prijs, op papier voor ik begin. Als kleine onderneming ben ik vrijgesteld van btw (art. 56bis WBTW), dus er komt niets bij. Een site is meestal klaar in {websiteWeeksMin} tot {websiteWeeksMax} weken.",
+              "Wilt u het voor uw eigen project weten, dan geeft de kostenraming op deze site in een paar vragen een prijsvork met opbouw, zonder dat u een e-mailadres moet achterlaten."
+            ]
+          },
+          {
+            "title": "Wat een lokale zaak online nodig heeft",
+            "paragraphs": [
+              "Een adres, telefoonnummer en openingsuren die overal hetzelfde zijn: op uw site, in Google Maps en in de gidsen waar u in staat. Wijken ze van elkaar af, dan weet Google niet welke klopt.",
+              "Een site die snel laadt op een gsm, ook met weinig bereik. Wie in de auto of op de werf zoekt, wacht geen tien seconden.",
+              "Echte foto's van uw zaak en uw werk in plaats van stockbeelden, en teksten die zeggen wat u doet in de woorden die uw klanten gebruiken."
+            ]
+          }
+        ],
+        "cases": [
+          {
+            "slug": "carrosserie-kris",
+            "note": "Carrosserie Kris in Grobbendonk, in de Kempen: sinds 2021 bouw en beheer ik hun website. Het is een van de belangrijkste kanalen van de zaak, met aanvragen die rechtstreeks via de site binnenkomen."
+          },
+          {
+            "slug": "banden-leusch",
+            "note": "Banden Leusch, ook in Grobbendonk: een full-service garage en bandencentrale. In 2026 maakte ik hun nieuwe logo, hun nieuwe website en hun sociale media in dezelfde stijl. De site host en onderhoud ik sindsdien."
+          }
+        ]
+      },
+      "kust": {
+        "metaTitle": "Website laten maken in Blankenberge en Brugge",
+        "metaDescription": "Een snelle website voor uw zaak aan de kust, ook voor toeristen op hun gsm. Webontwikkelaar in Blankenberge, Brugge en omgeving, met een vaste prijs vooraf.",
+        "eyebrow": "WEBSITE LATEN MAKEN · DE KUST",
+        "title": "Een website laten maken aan de kust, van Blankenberge tot Brugge",
+        "intro": [
+          "Aan de kust draait veel op het seizoen. Toeristen zoeken op hun gsm naar een plek om te eten, te slapen of iets te huren, vaak pas als ze er al zijn. Een site die traag laadt of slecht leest op een klein scherm, kost u dan meteen klanten.",
+          "Ik bouw websites voor zaken in Blankenberge, Brugge en omgeving die daarop voorbereid zijn: snel, duidelijk op een klein scherm, en met uw openingsuren, menukaart of tarieven waar bezoekers ze verwachten. Een Franse of Duitse versie voor bezoekers van over de grens kan er ook bij.",
+          "Ik werk zelfstandig, zonder tussenpersonen. U kent de prijs voor ik begin, en na de livegang blijf ik bereikbaar voor de aanpassingen die een nieuw seizoen vraagt."
+        ],
+        "navLabel": "Website laten maken aan de kust",
+        "sections": [
+          {
+            "title": "Voor zaken in Blankenberge, Brugge en omgeving",
+            "paragraphs": [
+              "Ik woon in Blankenberge en neem graag mijn eerste projecten aan de kust aan, met dezelfde vaste prijs als in de Kempen. Ik werk voor zaken langs dit stuk kust en in het achterland: Blankenberge, Zeebrugge, Wenduine, De Haan, Knokke-Heist en Brugge. Horeca, logies, verhuur en winkels die het van bezoekers moeten hebben, maar ook vakmensen en dienstverleners die het hele jaar door werken."
+            ]
+          },
+          {
+            "title": "Wat een kustzaak online nodig heeft",
+            "paragraphs": [
+              "Openingsuren die meeveranderen met het seizoen, en die op uw site en in Google Maps hetzelfde zijn. Een gesloten deur waar Google 'open' zegt, kost meer dan één klant.",
+              "Een menukaart, prijslijst of tarieven als gewone tekst op de pagina, niet als pdf of foto. Dat leest vlot op een gsm, en zoekmachines kunnen het lezen.",
+              "Een duidelijke knop om te reserveren, te bellen of de route te plannen, bovenaan op het scherm. Spreken veel van uw bezoekers Frans of Duits, dan een versie in hun taal: de vertalingen levert u aan, ik bouw de taalversies."
+            ]
+          },
+          {
+            "title": "Wat kost een website laten maken aan de kust?",
+            "paragraphs": [
+              "Meestal {websiteRange}, als vaste prijs die vastligt voor ik begin. Een extra taal of een reservatiemodule komt erbij als apart onderdeel, en in de offerte ziet u wat elk onderdeel kost. Er komt geen btw bij, omdat ik als kleine onderneming vrijgesteld ben (art. 56bis WBTW).",
+              "Plant u een nieuwe site voor het seizoen, begin dan op tijd: de meeste sites zijn klaar in {websiteWeeksMin} tot {websiteWeeksMax} weken, en u wilt ze online hebben voor de eerste drukke weekends."
+            ]
+          }
+        ],
+        "cases": []
+      }
+    }
+  },
+  "mobileBar": {
+    "label": "Snel contact",
+    "call": "Bel mij op {phone}"
+  },
+  "pricingGuide": {
+    "tableTitle": "Wat een website of webapplicatie kost, per type project",
+    "tableIntro": "Dit zijn de prijsvorken die de kostenraming hierboven gebruikt. Waar uw project in die vork valt, hangt af van de punten hieronder; de raming rekent het voor u uit.",
+    "columns": {
+      "type": "Type project",
+      "price": "Prijs",
+      "duration": "Duurt meestal"
+    },
+    "driversTitle": "Wat de prijs bepaalt",
+    "drivers": [
+      {
+        "title": "Het aantal pagina's of schermen",
+        "body": "Elke pagina moet ontworpen, gebouwd en getest worden. Een site met vijf pagina's kost minder dan een met twintig; bij een webapplicatie geldt hetzelfde voor schermen."
+      },
+      {
+        "title": "Het ontwerp",
+        "body": "Een eenvoudig, strak ontwerp op basis van uw logo en kleuren, een ontwerp op maat, of een uitgesproken ontwerp met meer eigen elementen. Hoe meer op maat, hoe meer uren."
+      },
+      {
+        "title": "De teksten",
+        "body": "Levert u de teksten klaar aan, dan kost dat niets extra. Laat u ze bijwerken of volledig schrijven, dan komt dat per pagina bij."
+      },
+      {
+        "title": "Wat de site moet kunnen",
+        "body": "Een contactformulier, blog, fotogalerij, online boeken, een webshop of klantenaccounts: elke functie heeft een eigen prijs, en u kiest zelf wat erin komt."
+      },
+      {
+        "title": "Talen",
+        "body": "Een tweede taal vraagt een eenmalige opzet en wat werk per pagina. De vertalingen zelf levert u aan."
+      },
+      {
+        "title": "Nieuw, vernieuwen of uitbreiden",
+        "body": "Een nieuwe site begint van nul. Bij een vernieuwing verhuis ik de inhoud van uw oude site; bij een bestaande toepassing lees ik eerst de code voor ik iets verander. Dat staat telkens apart in de raming."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Een vaste prijs, geen uurtje-factuurtje",
+        "paragraphs": [
+          "U krijgt een prijs op papier voor ik begin, en die verandert niet meer zodra we het eens zijn. Wilt u onderweg iets toevoegen, dan hoort u eerst wat het kost, voor ik het bouw. U krijgt dus nooit een factuur voor uren die u niet zag aankomen."
+        ],
+        "list": []
+      },
+      {
+        "title": "Van wie is wat ik bouw?",
+        "paragraphs": [
+          "Van u. De code en de domeinnaam zijn van u, en de domeinnaam staat op uw naam. Wilt u later met een andere ontwikkelaar of hostingpartij verder, dan krijgt u alles mee, zonder meerkost en zonder iets terug te kopen."
+        ],
+        "list": []
+      },
+      {
+        "title": "Offertes vergelijken",
+        "paragraphs": [
+          "Vergelijkt u meerdere offertes, stel dan elke aanbieder dezelfde vragen:"
+        ],
+        "list": [
+          "Is de prijs vast, of een schatting op basis van uren?",
+          "Van wie zijn de code en de domeinnaam na de oplevering?",
+          "Wie bouwt de site echt: de persoon met wie u praat, of iemand anders?",
+          "Is het een eigen ontwerp, of een template of paginabouwer met uw logo erop?",
+          "Hoe snel laadt de site op een gsm, en kunt u een voorbeeld zien dat al online staat?"
+        ]
+      }
+    ]
+  }
+}

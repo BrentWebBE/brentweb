@@ -55,6 +55,48 @@ export const SiteSettings: GlobalConfig = {
                 placeholder: 'BE0123.456.789',
               },
             },
+            {
+              name: 'kboNumber',
+              type: 'text',
+              label: l('Ondernemingsnummer (KBO)', 'Enterprise number (KBO)'),
+              admin: { placeholder: '1039.059.149' },
+            },
+            {
+              name: 'vatExempt',
+              type: 'checkbox',
+              label: l(
+                'Kleine onderneming, vrijgesteld van btw (art. 56bis WBTW)',
+                'Small business, VAT exempt (art. 56bis WBTW)',
+              ),
+            },
+            {
+              name: 'availability',
+              type: 'select',
+              label: l('Beschikbaarheid', 'Availability'),
+              defaultValue: 'open',
+              options: [
+                { label: l('Open voor nieuw werk', 'Open for new work'), value: 'open' },
+                { label: l('Beperkt beschikbaar', 'Limited availability'), value: 'limited' },
+                {
+                  label: l('Geen nieuwe projecten', 'Not taking new projects'),
+                  value: 'unavailable',
+                },
+              ],
+            },
+            {
+              name: 'personName',
+              type: 'text',
+              label: l(
+                'Naam van de persoon achter de zaak',
+                'Name of the person behind the business',
+              ),
+            },
+            {
+              name: 'portrait',
+              type: 'upload',
+              relationTo: 'media',
+              label: l('Portretfoto', 'Portrait'),
+            },
           ],
         },
         {
@@ -105,6 +147,45 @@ export const SiteSettings: GlobalConfig = {
                   admin: { width: '50%' },
                 },
               ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'whatsapp',
+                  type: 'text',
+                  label: l('WhatsApp-link', 'WhatsApp link'),
+                  admin: { width: '50%', placeholder: 'https://wa.me/32465921862' },
+                },
+                {
+                  name: 'bookingUrl',
+                  type: 'text',
+                  label: l('Link om een gesprek te plannen', 'Booking link'),
+                  admin: { width: '50%' },
+                },
+              ],
+            },
+            {
+              name: 'locations',
+              type: 'array',
+              label: l('Plaatsen waar ik werk (kaart)', 'Places I work from (map)'),
+              admin: { initCollapsed: true },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'name', type: 'text', label: l('Plaats', 'Place'), required: true },
+                    { name: 'lat', type: 'number', label: 'Lat', required: true },
+                    { name: 'lng', type: 'number', label: 'Lng', required: true },
+                  ],
+                },
+              ],
+            },
+            {
+              name: 'replyNote',
+              type: 'textarea',
+              label: l('Hoe snel ik antwoord', 'How fast I reply'),
+              localized: true,
             },
           ],
         },

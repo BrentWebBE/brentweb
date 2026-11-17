@@ -1,12 +1,12 @@
 import type { SiteSetting } from '@/payload-types'
 
+import { contentLocale, type Locale } from '@/lib/locales'
+
 import { getCachedGlobal } from './getGlobals'
 
-/**
- * Cached SiteSettings (depth 1, so the logo is populated).
- * Always go through this helper: `getCachedGlobal` keys its cache on the slug only.
- */
-export const getSiteSettings = (): Promise<SiteSetting> => getCachedGlobal('site-settings', 1)()
+/** Cached SiteSettings (depth 1, so logo and portrait are populated). */
+export const getSiteSettings = (locale: Locale = contentLocale): Promise<SiteSetting> =>
+  getCachedGlobal('site-settings', 1, locale)()
 
 export const getSiteName = async (): Promise<string> => {
   const settings = await getSiteSettings()

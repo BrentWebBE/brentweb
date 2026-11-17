@@ -1,66 +1,77 @@
-import { Button, type ButtonProps } from '@/components/ui/button'
-import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Page, Post } from '@/payload-types'
+import type { Locale } from '@/lib/locales'
+import { docHref } from '@/lib/routing'
+import { cn } from '@/utilities/ui'
 
-type CMSLinkType = {
-  appearance?: 'inline' | ButtonProps['variant']
+type Reference = {
+  relationTo: string
+  value: { slug?: string | null } | string | number
+} | null
+
+export type CMSLinkProps = {
+  /** `button` = ink-shadow primary button, `ghost` = outlined, `arrow` = text with →, `inline` = plain. */
+  appearance?: 'inline' | 'button' | 'ghost' | 'arrow' | 'default' | 'outline' | 'link'
   children?: React.ReactNode
   className?: string
   label?: string | null
+  locale: Locale
   newTab?: boolean | null
-  reference?: {
-    relationTo: 'pages' | 'posts'
-    value: Page | Post | string | number
-  } | null
-  size?: ButtonProps['size'] | null
+  reference?: Reference
   type?: 'custom' | 'reference' | null
   url?: string | null
 }
 
-export const CMSLink: React.FC<CMSLinkType> = (props) => {
-  const {
-    type,
-    appearance = 'inline',
-    children,
-    className,
-    label,
-    newTab,
-    reference,
-    size: sizeFromProps,
-    url,
-  } = props
+/** Resolves a Payload link field (internal reference or custom URL) to an href. */
+export function linkHref({
+  locale,
+  reference,
+  type,
+  url,
+}: Pick<CMSLinkProps, 'locale' | 'reference' | 'type' | 'url'>): string | null {
+  if (type === 'reference' && reference) {
+    return docHref(locale, reference.relationTo, reference.value as never)
+  }
+  return url || null
+}
 
-  const href =
-    type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-      ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
-          reference.value.slug
-        }`
-      : url
+const APPEARANCE: Record<NonNullable<CMSLinkProps['appearance']>, string> = {
+  inline: '',
+  link: 'link-hand',
+  button: 'btn btn-primary',
+  default: 'btn btn-primary',
+  ghost: 'btn btn-ghost',
+  outline: 'btn btn-ghost',
+  arrow: 'link-arrow',
+}
 
+export const CMSLink: React.FC<CMSLinkProps> = (props) => {
+  const { appearance = 'inline', children, className, label, newTab } = props
+  const href = linkHref(props)
   if (!href) return null
 
-  const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
+  const isExternal = /^(https?:|mailto:|tel:)/.test(href)
 
-  /* Ensure we don't break any styles set by richText */
-  if (appearance === 'inline') {
+  const content = (
+    <>
+      {label}
+      {children}
+    </>
+  )
+
+  if (isExternal) {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
-        {label && label}
-        {children && children}
-      </Link>
+      <a className={cn(APPEARANCE[appearance], className)} href={href} {...newTabProps}>
+        {content}
+      </a>
     )
   }
 
   return (
-    <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
-        {label && label}
-        {children && children}
-      </Link>
-    </Button>
+    <Link className={cn(APPEARANCE[appearance], className)} href={href} {...newTabProps}>
+      {content}
+    </Link>
   )
 }

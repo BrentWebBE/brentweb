@@ -48,6 +48,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     document.documentElement.setAttribute('data-theme', themeToSet)
+    // The stored theme exists only in the browser, so it is read after hydration;
+    // setting it during render would mismatch the server HTML.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setThemeState(themeToSet)
   }, [])
 

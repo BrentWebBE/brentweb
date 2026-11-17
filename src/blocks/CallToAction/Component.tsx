@@ -1,23 +1,42 @@
 import React from 'react'
 
-import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
+import type { CallToActionBlock as Props } from '@/payload-types'
 
-import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import RichText from '@/components/RichText'
+import { contentLocale, type Locale } from '@/lib/locales'
 
-export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
+/** A tinted band: a sentence or two on the left, the action on the right. */
+export function CallToActionBlock({
+  links,
+  locale = contentLocale,
+  richText,
+}: Props & { locale?: Locale }) {
   return (
-    <div className="container">
-      <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-        <div className="max-w-[48rem] flex items-center">
-          {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
-        </div>
-        <div className="flex flex-col gap-8">
-          {(links || []).map(({ link }, i) => {
-            return <CMSLink key={i} size="lg" {...link} />
-          })}
+    <section className="section">
+      <div className="container">
+        <div className="well grid gap-[var(--space-lg)] p-[var(--space-xl)] md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-[var(--space-2xl)] md:p-[var(--space-2xl)]">
+          {richText && (
+            <RichText
+              className="rich-cta max-w-[56ch]"
+              data={richText}
+              enableGutter={false}
+              enableProse={false}
+              locale={locale}
+            />
+          )}
+          <div className="flex flex-wrap items-center gap-[var(--space-md)]">
+            {(links ?? []).map(({ id, link }, i) => (
+              <CMSLink
+                key={id ?? i}
+                {...link}
+                appearance={i === 0 ? 'button' : 'link'}
+                locale={locale}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

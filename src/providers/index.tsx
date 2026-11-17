@@ -8,6 +8,7 @@ export const Providers: React.FC<{
 }> = ({ children }) => {
   return (
     <ThemeProvider>
+      {/* Only the blog module still reads the header theme. */}
       <HeaderThemeProvider>{children}</HeaderThemeProvider>
     </ThemeProvider>
   )

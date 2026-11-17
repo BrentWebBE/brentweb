@@ -6,7 +6,6 @@ import { loadStripe, type Stripe } from '@stripe/stripe-js'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
 
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -102,7 +101,11 @@ const PaymentStep: React.FC<{ total: string; onBack: () => void }> = ({ onBack, 
         <Button disabled={!stripe || submitting} size="lg" type="submit">
           {submitting ? 'Bezig met betalen…' : `Betalen ${total}`}
         </Button>
-        <button className="text-sm underline-offset-4 hover:underline" onClick={onBack} type="button">
+        <button
+          className="text-sm underline-offset-4 hover:underline"
+          onClick={onBack}
+          type="button"
+        >
           Gegevens wijzigen
         </button>
       </div>
@@ -188,18 +191,62 @@ export const CheckoutView: React.FC<{ legalLinks: LegalLinks; publishableKey: st
         ) : (
           <form className="flex flex-col gap-6" onSubmit={onContinue}>
             <h2 className="font-heading text-2xl">Je gegevens</h2>
-            <Field autoComplete="email" id="email" label="E-mailadres" onChange={set('email')} type="email" value={details.email} />
+            <Field
+              autoComplete="email"
+              id="email"
+              label="E-mailadres"
+              onChange={set('email')}
+              type="email"
+              value={details.email}
+            />
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field autoComplete="given-name" id="firstName" label="Voornaam" onChange={set('firstName')} value={details.firstName} />
-              <Field autoComplete="family-name" id="lastName" label="Achternaam" onChange={set('lastName')} value={details.lastName} />
+              <Field
+                autoComplete="given-name"
+                id="firstName"
+                label="Voornaam"
+                onChange={set('firstName')}
+                value={details.firstName}
+              />
+              <Field
+                autoComplete="family-name"
+                id="lastName"
+                label="Achternaam"
+                onChange={set('lastName')}
+                value={details.lastName}
+              />
             </div>
-            <Field autoComplete="tel" id="phone" label="Telefoon" onChange={set('phone')} type="tel" value={details.phone} />
+            <Field
+              autoComplete="tel"
+              id="phone"
+              label="Telefoon"
+              onChange={set('phone')}
+              type="tel"
+              value={details.phone}
+            />
 
             <h2 className="font-heading mt-4 text-2xl">Leveradres</h2>
-            <Field autoComplete="street-address" id="addressLine1" label="Straat en nummer" onChange={set('addressLine1')} value={details.addressLine1} />
+            <Field
+              autoComplete="street-address"
+              id="addressLine1"
+              label="Straat en nummer"
+              onChange={set('addressLine1')}
+              value={details.addressLine1}
+            />
             <div className="grid gap-4 sm:grid-cols-[1fr_2fr]">
-              <Field autoComplete="postal-code" id="postalCode" label="Postcode" onChange={set('postalCode')} value={details.postalCode} />
-              <Field autoComplete="address-level2" id="city" label="Gemeente" onChange={set('city')} value={details.city} />
+              <Field
+                autoComplete="postal-code"
+                id="postalCode"
+                label="Postcode"
+                onChange={set('postalCode')}
+                value={details.postalCode}
+              />
+              <Field
+                autoComplete="address-level2"
+                id="city"
+                label="Gemeente"
+                onChange={set('city')}
+                value={details.city}
+              />
             </div>
             <div>
               <Label className="mb-1 block" htmlFor="country">
@@ -279,7 +326,9 @@ export const CheckoutView: React.FC<{ legalLinks: LegalLinks; publishableKey: st
           <span className="font-medium">Totaal (incl. btw)</span>
           <span className="text-xl font-medium tabular-nums">{total}</span>
         </div>
-        <p className="text-xs text-muted-foreground">Betalen kan met Bancontact of kaart (Visa, Mastercard).</p>
+        <p className="text-xs text-muted-foreground">
+          Betalen kan met Bancontact of kaart (Visa, Mastercard).
+        </p>
       </aside>
     </div>
   )

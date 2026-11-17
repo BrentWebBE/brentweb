@@ -1,0 +1,1841 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "services": "Services",
+    "projects": "Projects",
+    "work": "Work",
+    "blog": "Blog",
+    "contact": "Contact",
+    "business": "Business",
+    "tech": "For developers",
+    "backToGateway": "Back to the homepage",
+    "lab": "Lab",
+    "process": "Process",
+    "toggleMenu": "Toggle menu",
+    "mainNav": "Main navigation",
+    "pricing": "Pricing",
+    "bookCall": "Book a call",
+    "websiteCheck": "Free website check"
+  },
+  "hero": {
+    "title": "Full-stack development for growing businesses",
+    "tagline": "Websites, internal tools and small integrations, built by one person in Belgium.",
+    "location": "Blankenberge & Geel, Belgium",
+    "featuredProject": "Carrosserie Kris, Grobbendonk",
+    "featured": "Recent work",
+    "business": {
+      "badge": "WEB DEVELOPER FROM GEEL · CYBERSECURITY STUDENT IN BRUGES",
+      "title": "Software that ends the manual work.",
+      "tagline": "Websites, internal tools and integrations for freelancers and small businesses.",
+      "getInTouch": "What does it cost?",
+      "imageAlt": "The Carrosserie Kris website, showing the workshop and repair services",
+      "phoneImageAlt": "The Carrosserie Kris website on a phone",
+      "metaTitle": "Websites and custom software in Belgium | BrentWeb",
+      "metaDescription": "Freelance web developer in Geel and Blankenberge, Belgium: websites, web apps and integrations for small businesses. Fixed price; a website costs {websiteRange}.",
+      "bookCall": "Book a free 30-minute call",
+      "trust": {
+        "price": "Fixed price up front",
+        "direct": "Straight to the developer",
+        "secure": "Built secure"
+      }
+    },
+    "tech": {
+      "badge": "FULL-STACK ENGINEER",
+      "title": "Built for the failure path, not just the happy one.",
+      "tagline": "TypeScript across the stack, infrastructure I run in production.",
+      "getInTouch": "Discuss architecture",
+      "viewProjects": "Open the case studies",
+      "spec": {
+        "stackLabel": "Stack",
+        "stackValue": "TypeScript, Node, Rust, Docker, Linux",
+        "frameworksLabel": "Frameworks",
+        "frameworksValue": "React, Next.js, Angular, Tailwind, ASP.NET, Actix Web",
+        "focusLabel": "Currently",
+        "focusValue": "Distributed systems and network security",
+        "locationLabel": "Based in",
+        "statusLabel": "Status",
+        "statusValue": "Open to new work",
+        "statusValueLimited": "Limited availability for new work",
+        "statusValueUnavailable": "Not available for new work"
+      },
+      "metaTitle": "Engineering: full-stack web development",
+      "metaDescription": "How I build: TypeScript, Next.js, Rust and Docker, infrastructure I run myself, and project write-ups with the trade-offs behind each one."
+    },
+    "_comment": "hero.title and hero.tagline are the site-wide <title> and meta description (app/[locale]/layout.tsx) plus the noscript gateway fallback. Per-path hero copy lives under hero.business / hero.tech."
+  },
+  "about": {
+    "badge": "ABOUT",
+    "techTitle": "Technical expertise",
+    "techDescription": "I work across the full stack using modern technologies including React, Angular, Next.js, TypeScript, Node.js, NestJS, React Native, Python, .NET, C#, MySQL, and Docker",
+    "getInTouch": "Get in touch",
+    "annotation": "← This is me",
+    "experience": "Coding since 2019, client work since 2021",
+    "business": {
+      "description1": "I'm Brent Schoenmakers. I've been programming since I was eleven, and I built my first real website in 2021 for Carrosserie Kris in Grobbendonk, my parents' business. I still maintain it.",
+      "description2": "For my final-year project at ProvilION I built a network security system for schools. In 2026 the mayor of Lommel gave me ProvilION's \"Meest verdienstelijke leerling\" (most meritorious student) award. I now study cybersecurity at Howest in Bruges, which is why I live in Blankenberge. You email or call me, and I write the code. I build with what I know and can maintain myself, because fewer moving parts means less that can break.",
+      "title": "The person who will actually build it"
+    },
+    "tech": {
+      "titleMorning": "Good morning, I'm Brent",
+      "titleNoon": "Good afternoon, I'm Brent",
+      "titleEvening": "Good evening, I'm Brent",
+      "description1": "Belgian developer: coding since 2019, client work since 2021, registered as a student-zelfstandige. I care about what sits under the UI: data modelling and failure modes.",
+      "description2": "Currently going deep on distributed systems and network security. The case studies document the trade-offs I made.",
+      "titleDefault": "Hi, I'm Brent"
+    }
+  },
+  "experience": {
+    "badge": "EXPERIENCE",
+    "title": "Professional experience",
+    "work": "Work",
+    "education": "Education",
+    "hackathons": "Hackathons",
+    "current": "● Current",
+    "upcoming": "◐ Upcoming",
+    "stats": {
+      "codingSince": "Coding since",
+      "clientWorkSince": "Client work since",
+      "hackathons": "Hackathons"
+    },
+    "items": {
+      "work": [
+        {
+          "year": "2021 - Present",
+          "title": "IT Developer & Administrator",
+          "company": "Carrosserie Kris",
+          "description": "Maintained real systems, client collaboration, performance optimization.",
+          "personalNote": "First real client.",
+          "tags": [
+            "Web Development",
+            "IT Management",
+            "Accountancy"
+          ],
+          "status": "current"
+        },
+        {
+          "year": "2023",
+          "title": "Full-Stack Developer",
+          "company": "Axxit",
+          "description": "Built full-stack applications, code reviews, team collaboration.",
+          "personalNote": "Learned the value of code reviews and team collaboration.",
+          "tags": [
+            "Angular",
+            "ASP.NET",
+            "Docker",
+            "Team Work"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "year": "2026",
+          "title": "Developer Intern",
+          "company": "WimNet",
+          "description": "Upcoming internship. Networking & Infrastructure",
+          "tags": [
+            "Internship",
+            "Learning",
+            "Networking"
+          ]
+        },
+        {
+          "year": "2025",
+          "title": "Developer Intern",
+          "company": "Nitor",
+          "description": "Two weeks building React Native components. Mobile development, component architecture.",
+          "personalNote": "Intensive learning experience in mobile development.",
+          "tags": [
+            "React Native",
+            "Mobile Development"
+          ]
+        }
+      ],
+      "hackathons": [
+        {
+          "year": "2025",
+          "title": "Hack The Future",
+          "company": "3rd Time - Ranked 5/19 (Solo)",
+          "description": "Solo again. 5th place. Building under pressure = fast learning.",
+          "personalNote": "Solo project. Fast-paced learning environment.",
+          "tags": [
+            "Problem Solving",
+            "Solo Work",
+            "Time Management"
+          ]
+        },
+        {
+          "year": "2024",
+          "title": "Hack The Future - Among The Stars",
+          "company": "2nd Time - Ranked 12/12",
+          "description": "Last place. Learned more from failure than wins.",
+          "personalNote": "Valuable learning experience from challenges.",
+          "tags": [
+            "Learning Experience",
+            "Angular"
+          ]
+        },
+        {
+          "year": "2023",
+          "title": "Hack The Future - Jungle Expedition",
+          "company": "1st Time - Ranked 4/10 (Solo)",
+          "description": "First hackathon, solo with Angular. 4th place. Overwhelmed but worked.",
+          "personalNote": "First hackathon experience. Challenging but rewarding.",
+          "tags": [
+            "First Hackathon",
+            "Angular",
+            "Learning"
+          ]
+        }
+      ]
+    }
+  },
+  "proof": {
+    "badge": "WORK",
+    "title": "Recent work",
+    "readCaseStudy": "Read the case study"
+  },
+  "projects": {
+    "badge": "SYSTEMS",
+    "title": "Four systems I built that are still running",
+    "subtitle": "Open one to see how it's put together and which trade-offs I made.",
+    "viewProject": "See how it works",
+    "items": [
+      {
+        "title": "Carrosserie Kris",
+        "image": "carrosserieKris",
+        "tags": [
+          "React",
+          "Node.js",
+          "Tailwind"
+        ],
+        "type": "website",
+        "liveUrl": "https://carrosseriekris.be",
+        "githubUrl": "",
+        "slug": "carrosserie-kris",
+        "status": "maintained",
+        "sector": "Client Web Presence",
+        "period": "2021 - PRESENT",
+        "abstract": "Website for a body shop in Grobbendonk that I have built and run since 2021: speed, findability on Google and a contact form that no longer loses requests.",
+        "business": {
+          "summary": "Since 2021 I have built and maintained the website of this body shop in Grobbendonk. The site is one of the business's main channels: fast, findable on Google, and with a contact form that brings requests straight to the shop.",
+          "metrics": [
+            {
+              "value": "Since 2021",
+              "label": "Ongoing partnership"
+            },
+            {
+              "value": "#2",
+              "label": "On Google for \"carrosserie Grobbendonk\", November 2026"
+            }
+          ],
+          "highlights": [
+            "One point of contact",
+            "Designed for the phone first"
+          ],
+          "outcomes": [
+            "Quote requests come in directly through the website",
+            "Ongoing work on Google findability since 2021",
+            "Client trusts one partner for updates and maintenance"
+          ]
+        },
+        "engineering": {
+          "summary": "React frontend with a Node.js backend, styled with Tailwind. The codebase is optimized for Core Web Vitals and kept evergreen through regular dependency and content updates.",
+          "decisions": [
+            "Mobile-first layout system; animations kept off the critical path",
+            "Image and asset pipeline tuned for Largest Contentful Paint",
+            "Form handling hardened against spam without hurting conversion",
+            "Small, boring stack chosen deliberately for long-term maintainability"
+          ]
+        },
+        "client": "Carrosserie Kris"
+      },
+      {
+        "title": "Banden Leusch",
+        "image": "bandenLeusch",
+        "tags": [
+          "Next.js",
+          "Tailwind",
+          "Umami"
+        ],
+        "type": "website",
+        "liveUrl": "https://leusch.be",
+        "githubUrl": "",
+        "slug": "banden-leusch",
+        "status": "maintained",
+        "sector": "Client Web Presence",
+        "period": "2026 - PRESENT",
+        "abstract": "Logo, website and social media for a full-service garage and tyre centre in Grobbendonk: maintenance, wheel alignment and ADAS calibration, tyres and key service on one fast page. I host and maintain the site.",
+        "business": {
+          "summary": "A new logo, a new website and social media in the same style. The site shows every service the garage offers, from tyres and rims to ADAS calibration and key service, laid out clearly on one page, with a contact form that sends the car's details straight away. I have hosted and maintained the site since it launched in 2026.",
+          "metrics": [
+            {
+              "value": "2026",
+              "label": "New site, run by me"
+            }
+          ],
+          "highlights": [
+            "Designed for phones",
+            "One tap to call"
+          ],
+          "outcomes": [
+            "Every service on one clear page",
+            "Contact form with make, model, year and VIN",
+            "Hosted and maintained by the developer"
+          ]
+        },
+        "engineering": {
+          "summary": "Next.js, statically prerendered, with Tailwind for styling and cookieless analytics through a self-hosted Umami. One page, with an anchor per service in the navigation.",
+          "decisions": [
+            "Statically prerendered: the page is served ready-made from the cache",
+            "Cookieless analytics through a self-hosted Umami",
+            "Vehicle details as separate form fields, so an enquiry is usable straight away"
+          ]
+        },
+        "client": "Banden Leusch"
+      },
+      {
+        "title": "Distributed Intrusion Detection and Prevention System",
+        "image": "idps",
+        "tags": [
+          "Rust",
+          "Angular",
+          "Docker",
+          "Suricata",
+          "Shell",
+          "Linux"
+        ],
+        "type": "solution",
+        "liveUrl": "",
+        "githubUrl": "https://github.com/BrentWebBE/distributed-idps-solution",
+        "slug": "idps",
+        "status": "finished",
+        "sector": "Network Security",
+        "period": "OCT 2025 - MAY 2026",
+        "abstract": "Distributed intrusion detection and prevention for educational networks. An inline edge device captures traffic, a remote server analyzes it, and block rules are enforced locally without slowing the network.",
+        "business": {
+          "summary": "Schools get enterprise-grade network protection on commodity hardware. Threats are detected and blocked in real time, while staff see everything on a single live dashboard - no security team required on site.",
+          "metrics": [
+            {
+              "value": "<1ms",
+              "label": "Added inline latency"
+            },
+            {
+              "value": "24/7",
+              "label": "Autonomous monitoring"
+            },
+            {
+              "value": "€0",
+              "label": "Per-seat licensing cost"
+            }
+          ],
+          "highlights": [],
+          "outcomes": [
+            "Real-time threat detection and automatic blocking",
+            "One dashboard for the whole network - no specialist needed",
+            "Runs on a Raspberry Pi: minimal hardware investment"
+          ]
+        },
+        "engineering": {
+          "summary": "A Rust capture agent runs inline on a Raspberry Pi, streams packet data to a VPS for Suricata-based analysis, and applies verdicts locally so the hot path never blocks on the network round-trip.",
+          "decisions": [
+            "Rust on the edge: memory-safe packet handling, zero GC pauses inline",
+            "Capture and enforcement decoupled from analysis - fail-open by design",
+            "Server-side pipeline containerized with Docker for reproducible deploys",
+            "Suricata rule engine drives detection; custom layer handles prevention"
+          ]
+        }
+      },
+      {
+        "title": "Provilion Broodjes",
+        "image": "provilion",
+        "tags": [
+          "TypeScript",
+          "MySQL",
+          "Stripe",
+          "NextJS"
+        ],
+        "type": "website",
+        "liveUrl": "https://provilion-maandmenu.vercel.app/",
+        "githubUrl": "",
+        "slug": "provilion-broodjes",
+        "status": "finished",
+        "sector": "Commerce Platform",
+        "period": "2024 - 2026",
+        "abstract": "Full-stack lunch ordering platform for a school, fully built but never put into use: students order, parents manage credits, administrators run daily operations, with integrated payment processing.",
+        "business": {
+          "summary": "A self-service ordering system meant to replace the cash and Excel behind a school's sandwich sales: ordering and paying in the Wednesday break, collecting on Friday. Parents top up credits online, Stripe settles the orders and the kitchen works from one live dashboard. The platform was fully built, but never put into use.",
+          "metrics": [
+            {
+              "value": "3",
+              "label": "User roles, one platform"
+            }
+          ],
+          "highlights": [
+            "Order status updated live"
+          ],
+          "outcomes": [
+            "Ordering and paying fully online, with no cash changing hands at break time",
+            "Parents control spending through a prepaid credit system",
+            "Admin dashboard turns daily orders into a single prep list"
+          ]
+        },
+        "engineering": {
+          "summary": "Next.js and TypeScript end to end, MySQL for persistence, and Stripe webhooks driving payment reconciliation. Role-based access control separates student, parent, and administrator capabilities.",
+          "decisions": [
+            "Webhook-driven payment flow: credit balances only mutate on confirmed events",
+            "RBAC enforced at the API layer, not just hidden in the UI",
+            "Transactional order writes keep credit ledger and orders consistent",
+            "Email notifications decoupled from the request path"
+          ]
+        },
+        "client": "Provilion Broodjes"
+      },
+      {
+        "title": "Het Smaakpand (Closed)",
+        "image": "hetsmaakpand",
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "type": "website",
+        "liveUrl": "https://precious-mooncake-1d00a4.netlify.app/",
+        "githubUrl": "",
+        "slug": "het-smaakpand",
+        "status": "decommissioned",
+        "sector": "Hospitality Web",
+        "period": "2022 - 2024",
+        "abstract": "Clean, minimal website for a sandwich shop in Olen: menu display, opening hours, mobile-first. Retired when the business closed its doors.",
+        "business": {
+          "summary": "A small business got online fast and affordably. The site did one job - show the menu and get people through the door - and did it without ongoing complexity or cost.",
+          "metrics": [],
+          "highlights": [
+            "Online within a few days",
+            "No maintenance incidents while the site ran"
+          ],
+          "outcomes": [
+            "Menu and hours instantly findable from any phone",
+            "No CMS overhead for a shop with a stable menu",
+            "Cleanly decommissioned when the business closed"
+          ]
+        },
+        "engineering": {
+          "summary": "Static-first delivery with a deliberately minimal footprint. No frameworks where none were needed - fast loads, trivial hosting, and nothing to patch.",
+          "decisions": [
+            "Static delivery: no server runtime, near-zero attack surface",
+            "Hand-tuned CSS instead of a framework for a single-page footprint",
+            "Sub-second loads on mobile networks as the primary target",
+            "Archived with a clean teardown - no orphaned infrastructure"
+          ]
+        },
+        "client": "Het Smaakpand"
+      }
+    ],
+    "map": {
+      "close": "Close",
+      "liveLink": "View live site",
+      "archiveLink": "View the archived version",
+      "readCaseStudy": "Read the full case study",
+      "sourceLink": "View code",
+      "status": {
+        "active": "Live",
+        "maintained": "Actively maintained",
+        "decommissioned": "Retired",
+        "finished": "Finished"
+      },
+      "impactTitle": "Impact",
+      "decisionsTitle": "Key decisions",
+      "stackTitle": "Stack"
+    },
+    "writeUpsLabel": "Write-ups"
+  },
+  "process": {
+    "title": "How a project usually goes",
+    "steps": {
+      "1": {
+        "title": "A first chat",
+        "body": "Half an hour, free and with no obligation."
+      },
+      "2": {
+        "title": "A written price",
+        "body": "What I'll build, what it costs and when."
+      },
+      "3": {
+        "title": "Building",
+        "body": "Something working to look at every week."
+      },
+      "4": {
+        "title": "Going live",
+        "body": "Setup, migration, and I come by to explain and show you everything."
+      },
+      "5": {
+        "title": "After",
+        "body": "I stay reachable for changes."
+      }
+    },
+    "bookStep": "Book this call"
+  },
+  "contact": {
+    "business": {
+      "badge": "GET IN TOUCH",
+      "title": "Tell me about your project",
+      "subtitle": "Tell me what's slowing you down. I'll say honestly whether I can help and roughly what it costs.",
+      "messagePlaceholder": "What process is costing you time, and what would a good outcome look like?",
+      "formNote": "The more you tell me, the more useful my first reply will be.",
+      "prefill": "This sounds familiar: \"{problem}\". I'd like to get it fixed.\n\n"
+    },
+    "tech": {
+      "badge": "CONTACT",
+      "title": "Let's talk architecture",
+      "subtitle": "Open to interesting technical problems, collaborations, or a good discussion about systems design.",
+      "annotation": "← Don't be shy!",
+      "messagePlaceholder": "What are you building, and which trade-off are you weighing?",
+      "formNote": "Architecture questions and collaborations welcome."
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending...",
+      "error": "Failed to send message. Please try again.",
+      "gdprConsent": "I consent to my name, email, and message being processed to respond to my inquiry.",
+      "gdprConsentLink": "Privacy Policy",
+      "gdprConsentSuffix": "Data retained for up to 12 months.",
+      "gdprRequired": "Please accept our data processing terms to submit this form.",
+      "rateLimited": "You're sending messages a bit fast. Please wait a few minutes and try again.",
+      "budget": "Rough budget",
+      "timeline": "Timeline",
+      "selectPlaceholder": "Select an option",
+      "budgetOptions": {
+        "not-sure": "No idea yet"
+      },
+      "website": "Your business website (optional)",
+      "websitePlaceholder": "www.yourbusiness.be",
+      "loading": "Loading the form…",
+      "loadingAlt": "Not loading? Call or email me directly; the details are right beside this."
+    },
+    "location": "Location",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "whatsappValue": "Send a message",
+    "phoneNote": "Calls usually work between 1 pm and 7 pm. I study alongside the business, so outside those hours I can't always pick up; a WhatsApp message or the form always reaches me, and I reply within a day or two.",
+    "locationValue": "Blankenberge & Geel, Belgium",
+    "visitNote": "I also come to you, to explain things in person and give a demo.",
+    "status": "Legal status",
+    "statusValue": "Self-employed student (student-zelfstandige)",
+    "kbo": "Enterprise number (KBO)",
+    "availability": {
+      "open": "Available for new projects",
+      "limited": "Limited availability for new projects",
+      "unavailable": "Not taking on new projects right now"
+    },
+    "socialsLabel": "Elsewhere",
+    "map": {
+      "showGoogle": "Show the map",
+      "showOsm": "Show the map",
+      "title": "Map of {place}",
+      "error": "Google Maps didn't load, this is OpenStreetMap",
+      "places": "My two locations",
+      "loadsGoogle": "Loads Google Maps, only once you click.",
+      "loadsOsm": "Loads OpenStreetMap, only once you click."
+    }
+  },
+  "cta": {
+    "mid": {
+      "eyebrow": "COSTS",
+      "title": "Curious what it would cost?",
+      "body": "A few questions and you get a realistic price range and timeline, plus a PDF you can keep.",
+      "primary": "See what it would cost",
+      "secondary": "View my work"
+    },
+    "tech": {
+      "eyebrow": "CASE STUDIES",
+      "title": "Want the long version?",
+      "body": "Each case study walks through the trade-offs: what I picked, what I left out, and what I'd do differently now.",
+      "primary": "Read the case studies",
+      "secondary": "Email me directly"
+    }
+  },
+  "footer": {
+    "nodesDiscovered": "Nodes discovered:",
+    "annotation": "← Thanks for scrolling!",
+    "copyright": "© {year} BrentWeb, Brent Schoenmakers.",
+    "backToTop": "Back to top",
+    "privacy": "Privacy Policy",
+    "legalKbo": "Company no. (KBO)",
+    "legalVat": "VAT {vat}",
+    "legalVatExempt": "VAT-exempt small business (art. 56bis Belgian VAT Code)",
+    "phone": "Phone"
+  },
+  "common": {
+    "skipToContent": "Skip to content"
+  },
+  "calculator": {
+    "metaTitle": "How much does a website cost?",
+    "metaDescription": "A website usually costs {websiteRange}, a custom web application {webAppRange}. Answer a few questions for a price range with a breakdown, a timeline and a PDF.",
+    "badge": "COST ESTIMATE",
+    "title": "What would your project cost?",
+    "subtitle": "A few questions, and you get a price range with a breakdown, a timeline and a PDF. No email address needed.",
+    "stepOf": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "scope": {
+      "title": "What does your project need?",
+      "description": "Select everything that applies.",
+      "options": {
+        "website": {
+          "label": "Website",
+          "description": "A new site for your business, hand-coded.",
+          "includes": [
+            "A site built by hand in React and Next.js, not a template",
+            "Works properly on phones, and fast enough to rank",
+            "Hosting, domain and SSL set up for you",
+            "Edit text, photos and opening hours yourself, with Payload"
+          ]
+        },
+        "web_app": {
+          "label": "Web app",
+          "description": "Something with logins, data and an admin side.",
+          "includes": [
+            "An application with accounts and permissions",
+            "An admin area so you can manage it yourself",
+            "A database designed around the questions you ask"
+          ]
+        },
+        "api_integration": {
+          "label": "API integration",
+          "description": "Connect payments, a CRM, or another service.",
+          "includes": [
+            "Third-party API integration (payments, CRM, etc.)",
+            "Error handling and retry logic",
+            "Integration tests against the real API"
+          ]
+        },
+        "automation": {
+          "label": "Automation",
+          "description": "Automate a manual workflow or task.",
+          "includes": [
+            "Workflow automation script or service",
+            "Scheduled jobs or webhook triggers",
+            "Monitoring and alerting on failures"
+          ]
+        }
+      },
+      "error": "Pick at least one option to continue."
+    },
+    "timeline": {
+      "title": "What's your timeline?",
+      "options": {
+        "asap": "As soon as possible",
+        "1-3m": "1-3 months",
+        "3-6m": "3-6 months",
+        "6m-plus": "6+ months",
+        "not-sure": "Not sure yet"
+      }
+    },
+    "result": {
+      "title": "Here's your estimate",
+      "budgetLabel": "Estimated budget",
+      "timelineLabel": "Estimated timeline",
+      "weeksLabel": "{min}-{max} weeks",
+      "includedTitle": "What's typically included",
+      "downloadPdf": "Download PDF summary",
+      "downloadingPdf": "Preparing PDF...",
+      "disclaimer": "This is a rough guide, not a quote. The real number depends on details we'd go through together.",
+      "rushNote": "You picked 'as soon as possible'. I study alongside this, so a tight deadline usually means cutting scope rather than working more hours. Worth saying up front, and there's no rush fee either way.",
+      "breakdownTitle": "How this adds up",
+      "itemHeader": "Item",
+      "hoursHeader": "Hours",
+      "costHeader": "Price",
+      "totalLabel": "Total",
+      "hoursLabel": "Estimated work",
+      "maintenanceLabel": "Maintenance",
+      "rateNote": "Calculated at {rate} per hour. Ranges, because the details decide where in the range it lands.",
+      "aiBadge": "AI",
+      "edit": "Change answers"
+    },
+    "lead": {
+      "title": "Get your estimate by email",
+      "subtitle": "I'll email you the summary and follow up personally within a day or two.",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company (optional)",
+      "notes": "Anything else I should know? (optional)",
+      "submit": "Send me the estimate",
+      "sending": "Sending...",
+      "error": "Something went wrong. Please try again.",
+      "rateLimited": "You're submitting a bit fast. Please wait a few minutes and try again."
+    },
+    "pdf": {
+      "title": "Project estimate summary",
+      "preparedFor": "Prepared for {name} on {date}",
+      "budgetLabel": "Estimated budget",
+      "timelineLabel": "Estimated timeline",
+      "weeks": "{min}-{max} weeks",
+      "scopeLabel": "Scope selected",
+      "timelinePreferenceLabel": "Timeline preference",
+      "includedLabel": "What's included",
+      "footer": "This is a rough estimate, not a fixed quote. Get in touch at brent@brentweb.be to talk through the details.",
+      "breakdownLabel": "Breakdown",
+      "hoursLabel": "Estimated work",
+      "hoursValue": "{hours} hours",
+      "maintenanceLabel": "Maintenance",
+      "featuresLabel": "Features",
+      "descriptionLabel": "Your description",
+      "aiLabel": "AI analysis",
+      "aiNote": "Lines marked AI were added by an AI analysis of your description.",
+      "assumptionsLabel": "Assumptions",
+      "risksLabel": "What could change the price",
+      "questionsLabel": "To discuss",
+      "defaultName": "you"
+    },
+    "steps": {
+      "type": "Project",
+      "details": "Size",
+      "design": "Design",
+      "features": "Features",
+      "extras": "Details",
+      "result": "Estimate"
+    },
+    "details": {
+      "title": "How big is it?",
+      "description": "Rough numbers are fine. You can always adjust them later.",
+      "startingPoint": {
+        "label": "Where are we starting from?",
+        "options": {
+          "new": {
+            "label": "From scratch",
+            "description": "Nothing exists yet."
+          },
+          "redesign": {
+            "label": "Replace an existing site",
+            "description": "There's an old site whose content moves over."
+          },
+          "extend": {
+            "label": "Extend something existing",
+            "description": "Add to a site or app that's already running."
+          }
+        }
+      },
+      "pages": {
+        "label": "Number of pages",
+        "help": "Home, about, services, contact... Each distinct page counts once; blog posts or products don't."
+      },
+      "screens": {
+        "label": "Screens or modules in the app",
+        "help": "For example: dashboard, customer list, order form, settings."
+      },
+      "roles": {
+        "label": "Who uses the app?",
+        "options": {
+          "single": {
+            "label": "One type of user",
+            "description": "Everyone sees and can do the same."
+          },
+          "few": {
+            "label": "A few roles",
+            "description": "For example admin and staff, with different rights."
+          },
+          "many": {
+            "label": "Many roles or organisations",
+            "description": "Detailed permissions, or several companies in one app."
+          }
+        }
+      },
+      "integrations": {
+        "label": "Number of external services to connect",
+        "help": "Payment provider, CRM, accounting software, a supplier's API..."
+      },
+      "workflows": {
+        "label": "Number of tasks to automate",
+        "help": "Each separate process counts once, e.g. 'send invoices' and 'sync stock'."
+      },
+      "automationLevel": {
+        "label": "How complex are they?",
+        "options": {
+          "simple": {
+            "label": "Simple",
+            "description": "Move data from A to B on a schedule."
+          },
+          "moderate": {
+            "label": "Moderate",
+            "description": "Some logic, conditions or several steps."
+          },
+          "complex": {
+            "label": "Complex",
+            "description": "Many systems, exceptions or manual review steps."
+          }
+        }
+      }
+    },
+    "design": {
+      "title": "Design and content",
+      "description": "How it should look, and who writes the text.",
+      "level": {
+        "label": "Design",
+        "options": {
+          "basic": {
+            "label": "Clean and simple",
+            "description": "A tidy, consistent look built on proven patterns."
+          },
+          "custom": {
+            "label": "Custom design",
+            "description": "Designed around your brand, page by page."
+          },
+          "premium": {
+            "label": "Distinctive",
+            "description": "Detailed design with animation and custom illustrations or layouts."
+          }
+        }
+      },
+      "content": {
+        "label": "Text",
+        "options": {
+          "ready": {
+            "label": "I'll supply the text",
+            "description": "You deliver finished text and photos."
+          },
+          "polish": {
+            "label": "Help me polish it",
+            "description": "You supply drafts, I edit them for the web."
+          },
+          "write": {
+            "label": "Write it for me",
+            "description": "I write the text, based on a conversation with you."
+          }
+        }
+      },
+      "languages": {
+        "label": "Languages",
+        "help": "Translations are supplied by you; the price covers building every language in."
+      }
+    },
+    "features": {
+      "title": "What should it be able to do?",
+      "description": "Select everything you need. Each feature shows what it adds.",
+      "groups": {
+        "content": "Content",
+        "commerce": "Selling and bookings",
+        "users": "Users and data",
+        "marketing": "Marketing and visibility",
+        "technical": "Technical"
+      },
+      "options": {
+        "contact_form": {
+          "label": "Contact form",
+          "description": "A form that lands in your inbox, with spam protection."
+        },
+        "cms": {
+          "label": "Edit content yourself",
+          "description": "Change text and images without calling me."
+        },
+        "blog": {
+          "label": "Blog or news",
+          "description": "Posts with categories and an overview page."
+        },
+        "gallery": {
+          "label": "Gallery or portfolio",
+          "description": "Photos or projects in a filterable grid."
+        },
+        "search": {
+          "label": "Search",
+          "description": "Search through pages, products or records."
+        },
+        "webshop": {
+          "label": "Webshop",
+          "description": "Products, cart, checkout and order management."
+        },
+        "payments": {
+          "label": "Online payments",
+          "description": "Bancontact, cards and more through Mollie or Stripe."
+        },
+        "booking": {
+          "label": "Appointments or reservations",
+          "description": "Customers pick a free slot themselves."
+        },
+        "invoicing": {
+          "label": "Invoices or PDF documents",
+          "description": "Generate invoices, quotes or reports automatically."
+        },
+        "user_accounts": {
+          "label": "Customer accounts",
+          "description": "Visitors register and log in."
+        },
+        "admin_dashboard": {
+          "label": "Dashboard with figures",
+          "description": "Overviews, charts and exports of your data."
+        },
+        "file_uploads": {
+          "label": "File uploads",
+          "description": "Users upload documents or photos."
+        },
+        "notifications": {
+          "label": "Email notifications",
+          "description": "Automatic emails when something happens."
+        },
+        "realtime": {
+          "label": "Live updates or chat",
+          "description": "Screens update instantly without refreshing."
+        },
+        "newsletter": {
+          "label": "Newsletter sign-up",
+          "description": "Connected to Mailchimp, Brevo or similar."
+        },
+        "seo": {
+          "label": "Search engine setup",
+          "description": "Structured data, sitemap and Google Search Console."
+        },
+        "analytics": {
+          "label": "Visitor statistics",
+          "description": "Analytics with a GDPR-compliant cookie banner."
+        },
+        "maps": {
+          "label": "Map and location",
+          "description": "An interactive map with your location or locations."
+        },
+        "branding": {
+          "label": "Logo and house style",
+          "description": "A logo, colours and fonts if you don't have them yet."
+        },
+        "accessibility": {
+          "label": "Accessibility check",
+          "description": "Tested against WCAG 2.1 AA, usable with a keyboard and screen reader."
+        },
+        "data_migration": {
+          "label": "Import existing data",
+          "description": "Move customers, products or records over from an old system."
+        },
+        "public_api": {
+          "label": "API for other systems",
+          "description": "Let other software read or write data in your app."
+        },
+        "pwa": {
+          "label": "Installable app (PWA)",
+          "description": "Works like an app on a phone, also offline."
+        }
+      },
+      "none": "No extra features for this project type. You can go straight on."
+    },
+    "extras": {
+      "title": "Timing and anything else",
+      "timelineLabel": "When should it be ready?",
+      "maintenance": {
+        "label": "Maintenance afterwards",
+        "perMonth": "{amount} per month",
+        "options": {
+          "none": {
+            "label": "No maintenance",
+            "description": "You take over after launch, or ask for help when needed."
+          },
+          "basic": {
+            "label": "Hosting and updates",
+            "description": "Hosting, security updates, backups and monitoring."
+          },
+          "active": {
+            "label": "Hosting and small changes",
+            "description": "Everything in the basic plan, plus up to two hours of changes a month."
+          }
+        }
+      },
+      "description": {
+        "label": "Describe your project in your own words (optional)",
+        "help": "The more specific, the better the estimate. You can have it checked by AI on the next step.",
+        "placeholder": "For example: a site for my bakery where customers can order cakes online and pick them up in the shop..."
+      }
+    },
+    "ticker": {
+      "label": "Estimate so far",
+      "hours": "{hours} hours"
+    },
+    "ai": {
+      "title": "Check my description with AI",
+      "intro": "Claude, an AI model, reads your description and adds work the questions above don't cover. It only suggests hours; the price is calculated with the same rate as everything else.",
+      "privacy": "Your description and answers are sent to Anthropic to do this. Your name and email are not.",
+      "run": "Analyse my description",
+      "running": "Analysing... this can take up to a minute",
+      "rerun": "Analyse again",
+      "needDescription": "Add a description of at least 20 characters on the previous step to use this.",
+      "error": "The analysis didn't work this time. Your estimate above is still valid.",
+      "rateLimited": "You've used the analysis a few times already. Please try again in a few minutes.",
+      "stale": "You changed your answers, so the previous analysis no longer applies. Run it again to update.",
+      "summaryTitle": "What I understood",
+      "complexityLabel": "Complexity",
+      "complexity": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "extraTitle": "Added to your estimate",
+      "noExtra": "Your answers already cover everything in the description. Nothing was added.",
+      "suggestedTitle": "You may also need",
+      "addSuggested": "Add to my estimate",
+      "assumptionsTitle": "Assumptions",
+      "risksTitle": "What could change the price",
+      "questionsTitle": "What we'd discuss first"
+    },
+    "lines": {
+      "websiteBase": "Website setup, hosting and launch",
+      "pages": "Building the pages ({count})",
+      "appBase": "App foundation: database, logins, hosting",
+      "screens": "Screens and modules ({count})",
+      "roles_few": "Roles and permissions",
+      "roles_many": "Extensive roles and permissions",
+      "designSystem_basic": "Visual style: clean and simple",
+      "designSystem_custom": "Visual style: custom design",
+      "designSystem_premium": "Visual style: distinctive design",
+      "designPages_basic": "Page layouts ({count})",
+      "designPages_custom": "Custom page designs ({count})",
+      "designPages_premium": "Detailed page designs ({count})",
+      "content_polish": "Editing your text ({count} pages)",
+      "content_write": "Writing the text ({count} pages)",
+      "languages": "Multilingual: {count} languages",
+      "redesign": "Moving content from the old site ({count} pages)",
+      "existingCode": "Getting to know the existing code",
+      "integrations": "Connecting external services ({count})",
+      "workflows_simple": "Automations, simple ({count})",
+      "workflows_moderate": "Automations, moderate ({count})",
+      "workflows_complex": "Automations, complex ({count})",
+      "overhead": "Testing, revisions and communication ({percent}%)"
+    }
+  },
+  "work": {
+    "metaTitleList": "Case studies",
+    "metaDescriptionList": "In-depth case studies on real client and personal projects: the problem, the build, and what shipped.",
+    "metaTitleListTech": "Engineering case studies",
+    "metaDescriptionListTech": "The engineering side of my projects: architecture, trade-offs and what I would do differently now.",
+    "techSuffix": "Engineering",
+    "listBadge": "CASE STUDIES",
+    "listTitle": "The work, opened up",
+    "listSubtitle": "Every project below has a full write-up: the problem, what was built, and what it actually changed.",
+    "readMore": "Read the full case study",
+    "comingSoon": "Full write-up coming soon. Here's the short version for now.",
+    "backToList": "← Back to case studies",
+    "nextCase": "Next case study",
+    "techVersion": "The engineering write-up of this project",
+    "businessVersion": "What this project did for the client"
+  },
+  "lab": {
+    "metaTitle": "Developer lab: systems made visible",
+    "metaDescription": "Interactive widgets showing real systems concepts: rate limiting, auth flows and state machines, the same ideas running in production.",
+    "badge": "DEVELOPER LAB",
+    "title": "Systems, made visible",
+    "subtitle": "Rate limiting, auth flows and request lifecycles. The same ones running on this site, but as something you can click on.",
+    "rateLimit": {
+      "title": "Rate Limit Simulator",
+      "description": "The exact token-bucket algorithm protecting this site's contact form and calculator, animated. Capacity {capacity} requests, refilling one token roughly every {refillSeconds}s.",
+      "sendRequest": "Send request",
+      "allowed": "Allowed",
+      "blocked": "Blocked. Try again in {seconds}s",
+      "tokensLabel": "Tokens available"
+    },
+    "authFlow": {
+      "title": "Auth Flow Visualizer",
+      "description": "A step-through of a typical login sequence. Illustrative only, with no real backend and no real tokens.",
+      "steps": {
+        "idle": "Waiting for login",
+        "credentials": "Credentials submitted",
+        "verify": "Server verifies credentials",
+        "issueToken": "Session token issued",
+        "authenticated": "Authenticated"
+      },
+      "start": "Start login",
+      "restart": "Restart"
+    },
+    "stateMachine": {
+      "title": "Request Lifecycle Visualizer",
+      "description": "A small finite-state machine showing how a single request moves through validation and processing, or fails at any step along the way.",
+      "states": {
+        "idle": "Idle",
+        "validating": "Validating",
+        "processing": "Processing",
+        "success": "Success",
+        "failed": "Failed"
+      },
+      "trigger": "Fire request",
+      "triggerFailure": "Fire failing request"
+    }
+  },
+  "email": {
+    "confirmationSubject": "Thanks for reaching out, {name}",
+    "confirmationBodyContact": "I've received your message and will reply within a day or two.",
+    "confirmationBodyCalculator": "I've received your project estimate request. Your estimate summary is attached as a PDF, and I'll follow up personally within a day or two to talk through the details.",
+    "confirmationSignature": "Brent"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "metaDescription": "What data brentweb.be processes, why and for how long: cookieless analytics, forms, phone and WhatsApp, and the map that only loads after a click.",
+    "lastUpdated": "Last updated: {date}",
+    "backHome": "← Back to Home",
+    "sections": [
+      {
+        "title": "Introduction",
+        "paragraphs": [
+          "This Privacy Policy explains how Brent Schoenmakers, trading as BrentWeb (\"I\", \"me\" or \"my\") collects, uses and protects your personal data when you visit this website (brentweb.be). I am the controller of this data and can be reached at brent@brentweb.be."
+        ],
+        "list": []
+      },
+      {
+        "title": "Analytics Data",
+        "paragraphs": [
+          "I use Umami, a cookieless analytics tool that I host myself on my own server in Germany (Hetzner, Nuremberg). It stores nothing in your browser: no cookies, no local storage, no visitor ID. Your IP address is used only to derive an approximate country and a daily-rotating, non-reversible hash, and is never stored. I see only aggregated figures:"
+        ],
+        "list": [
+          {
+            "text": "Pages visited and how long visits last"
+          },
+          {
+            "text": "Browser, operating system and device type"
+          },
+          {
+            "text": "Referral source (how you found this website)"
+          },
+          {
+            "text": "Approximate country"
+          }
+        ],
+        "afterList": [
+          "No data is shared with or sold to third parties, and it is never shown on the public website. If your browser sends a Do Not Track signal, nothing is recorded."
+        ]
+      },
+      {
+        "title": "Forms, Cost Estimator & Website Check",
+        "paragraphs": [
+          "When you use the contact form, the cost estimator or the free website check, I collect:"
+        ],
+        "list": [
+          {
+            "text": "Your name and email address"
+          },
+          {
+            "text": "Your message and the project details you provide: budget, timeline and optionally your business website on the contact form, or your answers, an optional project description, company name and notes in the cost estimator"
+          },
+          {
+            "text": "For the free website check: your website address, to prepare the report and send it to you"
+          }
+        ],
+        "afterList": [
+          "I use this information solely to respond to your inquiry. It is sent via Resend (an email delivery service) to my inbox and to yours as a confirmation, and stored in my customer relationship system (CRM), which I host myself. It is not shared with any other party. Submissions are rate-limited by IP address to prevent abuse; that counter is held only in server memory, is never written to disk, and is discarded automatically after a short period of inactivity. A hidden field on every form helps detect spam and contains no personal data."
+        ]
+      },
+      {
+        "title": "Phone and WhatsApp",
+        "paragraphs": [
+          "If you call me or send a WhatsApp message, I see your phone number, and with WhatsApp also your profile name and what you write. I only use that to answer your question and keep it no longer than needed, at most 12 months, unless it leads to a project.",
+          "The phone and WhatsApp buttons on this site are plain links: nothing is loaded from WhatsApp or Meta until you click one yourself. The self-hosted analytics only counts that such a link was clicked, without your number."
+        ],
+        "list": []
+      },
+      {
+        "title": "Legal Bases",
+        "paragraphs": [
+          "I only process your data where the GDPR provides a basis for it:"
+        ],
+        "list": [
+          {
+            "label": "Consent (Art. 6(1)(a)):",
+            "text": "for analytics, and for processing what you send through a form"
+          },
+          {
+            "label": "Pre-contractual steps (Art. 6(1)(b)):",
+            "text": "to answer your inquiry and prepare a quote"
+          },
+          {
+            "label": "Legitimate interest (Art. 6(1)(f)):",
+            "text": "for site security, such as rate limiting and spam detection, and for the functional preference cookies"
+          }
+        ]
+      },
+      {
+        "title": "Retention",
+        "list": [
+          {
+            "text": "Form messages and inquiries: up to 12 months, unless they lead to a project and statutory accounting retention applies"
+          },
+          {
+            "text": "Analytics data: up to 14 months"
+          },
+          {
+            "text": "Preference cookies (bw-locale and bw-path): one year"
+          }
+        ]
+      },
+      {
+        "title": "Cookies and Local Storage",
+        "paragraphs": [
+          "This website uses:"
+        ],
+        "list": [
+          {
+            "label": "Essential storage:",
+            "text": "required for the site to work, such as remembering your theme preference"
+          },
+          {
+            "label": "Preference cookies:",
+            "text": "two first-party cookies remember how you browse. bw-locale stores your chosen language and bw-path stores whether you entered through the business or the engineering section, so returning visits land on the right page. Neither contains personal data and neither is shared."
+          }
+        ],
+        "afterList": [
+          "You can also control cookies through your browser settings. Disabling them may affect how parts of the site work."
+        ]
+      },
+      {
+        "title": "Data Security",
+        "paragraphs": [
+          "Measures I take to protect your information include:"
+        ],
+        "list": [
+          {
+            "text": "HTTPS encryption for all traffic"
+          },
+          {
+            "text": "Strict Transport Security (HSTS)"
+          },
+          {
+            "text": "Rate limiting on every form, to reduce abuse"
+          },
+          {
+            "text": "Regular security updates and monitoring"
+          }
+        ],
+        "afterList": [
+          "No transmission over the internet is completely secure, so I cannot guarantee absolute security."
+        ]
+      },
+      {
+        "title": "Third-Party Services",
+        "paragraphs": [
+          "This website uses the following third-party services:"
+        ],
+        "list": [
+          {
+            "label": "Resend:",
+            "text": "delivers contact form and cost estimator emails, including the PDF estimate summary you request"
+          },
+          {
+            "label": "Anthropic (Claude):",
+            "text": "only if you click 'Analyse my description' in the cost estimator: your project description and answers are sent to Anthropic's API to analyse them. Your name and email address are not. Anthropic may process this data in the United States."
+          },
+          {
+            "label": "WhatsApp (Meta):",
+            "text": "only if you contact me through WhatsApp yourself. WhatsApp's own privacy policy also applies to those messages."
+          },
+          {
+            "label": "Google Maps and OpenStreetMap:",
+            "text": "the map at the bottom of the contact section only loads after you click \"Show map\" yourself. Before that click the site makes no connection to Google or OpenStreetMap at all. After it, that service receives your IP address among other things, as with any website visit, and its own privacy policy applies."
+          },
+          {
+            "label": "Cloudflare:",
+            "text": "all traffic to brentweb.be passes through Cloudflare's network, which protects the site against attacks and abuse. To do that, Cloudflare processes technical data on every visit, such as your IP address. Cloudflare is an American company and may also process that data outside the EU; its own privacy policy applies."
+          },
+          {
+            "label": "Booking page (Nextcloud):",
+            "text": "if you pick a time through \"Book a call\", that happens in my own Nextcloud calendar at cloud.brentweb.be. I then receive your name, your email address, the time you chose and any note you add, and use them only to plan and hold the call."
+          }
+        ]
+      },
+      {
+        "title": "Your Rights",
+        "paragraphs": [
+          "You have the right to:"
+        ],
+        "list": [
+          {
+            "text": "access the personal data I hold about you"
+          },
+          {
+            "text": "have inaccurate data corrected"
+          },
+          {
+            "text": "have your data erased"
+          },
+          {
+            "text": "restrict processing"
+          },
+          {
+            "text": "object to processing based on legitimate interest"
+          },
+          {
+            "text": "receive your data in a common format (portability)"
+          },
+          {
+            "text": "withdraw consent at any time, without affecting processing that took place before"
+          }
+        ],
+        "afterList": [
+          "To exercise these rights, email brent@brentweb.be. I will respond within one month.",
+          "If you are unhappy with how I handle your data, you can lodge a complaint with the Belgian Data Protection Authority, Rue de la Presse 35, 1000 Brussels (www.dataprotectionauthority.be)."
+        ]
+      },
+      {
+        "title": "Children's Privacy",
+        "paragraphs": [
+          "This website is not intended for children under 13. I do not knowingly collect personal data from children."
+        ],
+        "list": []
+      },
+      {
+        "title": "Changes to This Policy",
+        "paragraphs": [
+          "I may update this Privacy Policy from time to time. The date at the top of this page shows when the text last changed."
+        ],
+        "list": []
+      },
+      {
+        "title": "Contact",
+        "paragraphs": [
+          "If you have questions about this Privacy Policy, email brent@brentweb.be."
+        ],
+        "list": []
+      }
+    ],
+    "lastUpdatedDate": "2026-11-03"
+  },
+  "errors": {
+    "title": "Something broke.",
+    "description": "That one's on me, not you. The error has been logged. Try again, or head back to the start.",
+    "retry": "Try again",
+    "backHome": "Back to start",
+    "notFound": {
+      "metaTitle": "Page not found | BrentWeb",
+      "title": "This page doesn't exist (any more).",
+      "description": "The link may be out of date, or the address may have a typo.",
+      "oldDomain": "Did an old brentweb.eu link bring you here? The site moved to brentweb.be and not every old page still exists. What you were looking for is probably below.",
+      "linksTitle": "You may be looking for",
+      "home": "The homepage",
+      "projects": "Projects",
+      "contact": "Get in touch",
+      "services": {
+        "website": "Website development",
+        "webApp": "Custom web applications",
+        "integrations": "Integrations and automation"
+      }
+    }
+  },
+  "pain": {
+    "title": "Sound familiar?",
+    "items": {
+      "1": {
+        "problem": "The same order gets typed in twice",
+        "fix": "One system where it only gets entered once."
+      },
+      "2": {
+        "problem": "The site looks fine, but nobody calls",
+        "fix": "A site people can actually find, judged on how many of them get in touch."
+      },
+      "3": {
+        "problem": "A spreadsheet is running the business",
+        "fix": "A proper application with one login for everyone."
+      }
+    },
+    "solveLink": "I want to fix this",
+    "caseLink": "How I handled that for {client}",
+    "servicesTitle": "Or go straight to a service"
+  },
+  "pricing": {
+    "title": "What things cost",
+    "rangeLabel": "Typical range",
+    "durationLabel": "Usually takes",
+    "weeks": "{min}-{max} weeks",
+    "ctaTitle": "Not sure which one you need?",
+    "ctaBody": "A few questions, and you get a price range and timeline, as a PDF too.",
+    "cta": "Estimate my project",
+    "note": "Once we agree on a price, it doesn't move.",
+    "maintenance": "Maintenance after launch is separate: {basic} a month for hosting, security updates, backups and monitoring, or {active} a month including up to two hours of changes.",
+    "vatExempt": "Final prices: as a small business I'm exempt from VAT (art. 56bis Belgian VAT Code).",
+    "vatExcluded": "Prices exclude 21% VAT."
+  },
+  "faq": {
+    "title": "Before you email me",
+    "items": {
+      "1": {
+        "q": "What if I don't know what I need?",
+        "a": "That's how most projects start, so it's not a problem. Tell me what's slowing you down in normal language and I'll tell you what it would take. Sometimes the honest answer is that you don't need me, and I'll say that too."
+      },
+      "2": {
+        "q": "What if the project grows along the way?",
+        "a": "Then you hear what the extra costs before I build it. I quote per project, not per hour, so you never get a surprise bill for extra hours."
+      },
+      "3": {
+        "q": "Do I own what you build?",
+        "a": "Yes. The code and the domain are yours: the domain is registered in your name, and I manage it along with the hosting and DNS. If you ever move to another developer or host, you get the code, your data and your domain's transfer code, at no extra cost and with nothing to buy back."
+      },
+      "4": {
+        "q": "What if something breaks after launch?",
+        "a": "If something I built breaks, I fix it. That's not a new project and I don't bill it as one."
+      },
+      "5": {
+        "q": "Why is this cheaper than an agency?",
+        "a": "There's no sales team, no project manager and no office to pay for. You're paying for the work itself instead of the overhead around it."
+      }
+    }
+  },
+  "servicePages": {
+    "breadcrumbHome": "Home",
+    "servicesLabel": "Services",
+    "priceLabel": "Typical price",
+    "durationLabel": "Usually takes",
+    "weeks": "{min}-{max} weeks",
+    "includedTitle": "What's included",
+    "forWhoTitle": "Who is this for?",
+    "approachTitle": "How I approach it",
+    "faqTitle": "Frequently asked questions",
+    "caseTitle": "An example from practice",
+    "caseLink": "Read the case study",
+    "ctaPrimary": "Estimate your price",
+    "ctaSecondary": "Send me a message",
+    "otherTitle": "Other services",
+    "moreLabel": "More about:",
+    "areaNote": "Based in Blankenberge and Geel, working with clients on the coast, in the Kempen and remotely across Flanders.",
+    "items": {
+      "website": {
+        "navLabel": "Website development",
+        "metaTitle": "Website development from {websiteMin}",
+        "metaDescription": "A fast, hand-built website for your business, {websiteRange} at a fixed price. Web developer based in Blankenberge and Geel, working across Flanders.",
+        "eyebrow": "WEBSITE DEVELOPMENT",
+        "title": "A website that actually brings in customers",
+        "intro": "Fast, hand-built websites for freelancers and small businesses, findable on Google. You deal directly with the developer and know the price before I start.",
+        "forWho": [
+          "You don't have a website yet, or have one you no longer dare to touch.",
+          "Your site is online, but it doesn't bring in calls or enquiries.",
+          "You don't want a website-builder subscription, but a site you own."
+        ],
+        "approach": [
+          "We start with a conversation about what the site needs to achieve: calls, quote requests or visitors to your shop. Every page is built around that.",
+          "No template or page builder, so the site loads fast, even on a slow connection. I arrange the domain, hosting and SSL for you; the domain is registered in your name."
+        ],
+        "faq": [
+          {
+            "q": "How much does a website cost?",
+            "a": "Most websites cost between {websiteMin} and {websiteMax}, depending on the number of pages and what the site needs to do. You get a fixed price in writing before I start, and it doesn't change once we agree. As a small business I'm VAT-exempt, so nothing is added."
+          },
+          {
+            "q": "How long does it take?",
+            "a": "Usually {websiteWeeksMin} to {websiteWeeksMax} weeks, depending on the number of pages and whether the text is ready. You see something working every week, so we adjust before the site is finished rather than after."
+          },
+          {
+            "q": "Can I update the website myself?",
+            "a": "Text and photos that change often can be set up so you edit them yourself. For anything else you email me, and I reply within a day or two."
+          },
+          {
+            "q": "What does a website include?",
+            "a": "A hand-built site that works well on a phone and is fast enough for Google, with hosting, the domain and SSL taken care of. Extras such as a contact form, a blog, a photo gallery, online booking or a web shop are your choice; the cost estimate shows what each one costs."
+          },
+          {
+            "q": "I already have a website. Can you rebuild it?",
+            "a": "Yes. I move the content of your old site to the new one and redirect the old addresses to the new pages, so visitors and Google keep finding them."
+          },
+          {
+            "q": "Can my website be in more than one language?",
+            "a": "Yes. A second language, such as French, Dutch or German, can be added. You supply the translations; I build the language versions and make sure Google shows each one separately."
+          },
+          {
+            "q": "Will my website be found on Google?",
+            "a": "The basics are standard: fast pages, one clear page per service, correct titles and descriptions, and structured data so Google knows who you are and where. Nobody can promise the top spot, but a site built on that gives you the best chance."
+          }
+        ],
+        "needs": [
+          "Your text and photos, or a rough version of them. If you don't have them, I can edit or write the text; that is then listed separately in the quote.",
+          "What you sell or do, and for whom. I build the pages around that, one per service.",
+          "If you already have a site or a domain, access to it. I move the content over and make sure your domain comes along.",
+          "Someone who responds within a few days to what I show you each week."
+        ]
+      },
+      "webApp": {
+        "navLabel": "Custom web applications",
+        "metaTitle": "Custom web application development",
+        "metaDescription": "Replace shared spreadsheets and double data entry with one custom web application. From {webAppMin} to {webAppMax}, at a fixed price agreed up front.",
+        "eyebrow": "CUSTOM SOFTWARE",
+        "title": "A custom web application instead of another spreadsheet",
+        "intro": "Does your business run on shared spreadsheets and retyped orders? I build one web application everyone logs into, where what's entered is right.",
+        "forWho": [
+          "Several people work in the same Excel file and overwrite each other's work.",
+          "Orders or requests get typed in twice, in two different systems.",
+          "An off-the-shelf package does most of what you need, but not the part that matters most."
+        ],
+        "approach": [
+          "First I map how the work runs today: who enters what, and where it goes wrong. The database is built around that.",
+          "You get accounts with per-role permissions, an admin area and checks that stop duplicate or wrong entries."
+        ],
+        "faq": [
+          {
+            "q": "How much does a custom web application cost?",
+            "a": "Usually between {webAppMin} and {webAppMax}, depending on the number of user roles, screens and integrations. You get a fixed price up front. If the scope grows along the way, you hear what it costs before I build it."
+          },
+          {
+            "q": "Do I own the software?",
+            "a": "Yes. The code and the domain are yours; I manage the hosting and DNS. If you ever want to continue with another developer, you take everything with you and nothing is locked in."
+          },
+          {
+            "q": "Can it connect to the tools I already use?",
+            "a": "Usually, yes. Most accounting packages, web shops, CRMs and payment providers have an API I can use to exchange data automatically."
+          },
+          {
+            "q": "How long does a custom web application take?",
+            "a": "Usually {webAppWeeksMin} to {webAppWeeksMax} weeks. You get something working to test every week, so a wrong approach shows up early rather than at handover."
+          },
+          {
+            "q": "Why not an off-the-shelf package?",
+            "a": "If an off-the-shelf package does what you need, it is almost always cheaper, and I'll say so. Custom software only pays off when the most important part of your work doesn't fit in one, or when you pay for ten features to use one."
+          },
+          {
+            "q": "What if something goes wrong after handover?",
+            "a": "If something I built breaks, I fix it, and I don't bill it as a new project. A new feature is new work, with its own price up front."
+          }
+        ],
+        "needs": [
+          "A walk through how the work runs today, with the spreadsheets, forms or emails you use now.",
+          "Who needs which rights: who enters data, who only reads, who manages.",
+          "Sample data, so I build and test against real cases instead of made-up ones.",
+          "One person on your side who decides when a choice has to be made."
+        ]
+      },
+      "integrations": {
+        "navLabel": "Integrations and automation",
+        "metaTitle": "Integrations and automation for SMEs",
+        "metaDescription": "Get your web shop, accounting, CRM and payments talking to each other, and automate repetitive work. From {integrationsMin}, fixed price up front.",
+        "eyebrow": "INTEGRATIONS AND AUTOMATION",
+        "title": "Make your systems work together, without retyping",
+        "intro": "A lot of manual work sits between two systems, like an order that has to go from the web shop to the accounts. I build the integration that does it automatically.",
+        "forWho": [
+          "You copy data from one program into another by hand.",
+          "You do the same steps in the same order every day or week.",
+          "A payment provider, CRM or other package needs to exchange data with your website."
+        ],
+        "approach": [
+          "I connect through the APIs of the services you already use, and test against the real service, not a mock.",
+          "If a step fails, the system retries and you get an alert. Scheduled jobs, such as a daily summary, run on their own."
+        ],
+        "faq": [
+          {
+            "q": "How much does an integration or automation cost?",
+            "a": "An integration with an external service usually costs {apiMin} to {apiMax}, automating a fixed process {automationMin} to {automationMax}. You get a fixed price up front."
+          },
+          {
+            "q": "What if the other service changes something?",
+            "a": "The error handling catches it straight away, and you get an alert instead of wrong data. I adapt the integration, and you hear what that costs up front."
+          },
+          {
+            "q": "Which programs can you connect?",
+            "a": "Anything with an API, which is most of them: accounting packages such as Exact Online, Yuki or Billit, CRMs such as Teamleader or HubSpot, web shops such as Shopify or WooCommerce, and payment providers such as Mollie or Stripe. If your package has no API, I'll tell you honestly whether there's another way."
+          },
+          {
+            "q": "How long does an integration take?",
+            "a": "An integration with an external service usually takes {apiWeeksMin} to {apiWeeksMax} weeks, an automation {automationWeeksMin} to {automationWeeksMax} weeks. Most of the work is testing against the real service."
+          },
+          {
+            "q": "Is my data safe?",
+            "a": "The integration only gets access to what it needs, and passwords or API keys are never in the code. If something goes wrong, it's logged and you get an alert."
+          },
+          {
+            "q": "Can this use AI?",
+            "a": "Sometimes. A language model can help with reading or summarising text, such as incoming email. For fixed steps with fixed rules, an ordinary automation is more reliable and cheaper, and that's what I'd recommend."
+          }
+        ],
+        "needs": [
+          "Access to the services that need connecting, ideally a separate account with only the rights the integration needs.",
+          "The steps you now do by hand, in the order you do them.",
+          "Who should get an alert when something goes wrong."
+        ]
+      }
+    },
+    "needsTitle": "What I need from you"
+  },
+  "bookCta": {
+    "body": "Not sure yet? In a free 30-minute call we'll work out together what you need.",
+    "button": "Book a call",
+    "mail": "or email me"
+  },
+  "thanks": {
+    "metaTitle": "Thank you",
+    "eyebrow": "THANK YOU",
+    "faster": {
+      "title": "Want it sooner? Book a call right away",
+      "body": "Pick a time for a free 30-minute call yourself, so you don't have to wait for my reply.",
+      "button": "Book a call"
+    },
+    "nextTitle": "What happens next?",
+    "backHome": "Back to the homepage",
+    "lead": {
+      "title": "Thanks, I'll get back to you within a day or two.",
+      "steps": {
+        "1": {
+          "title": "You get a confirmation",
+          "body": "There's a confirmation in your inbox. If you asked for an estimate, the PDF is attached. Nothing there? Check your spam folder."
+        },
+        "2": {
+          "title": "I read your request myself",
+          "body": "I look at what you need and tell you honestly whether I'm the right person, with a first estimate or the questions I still have."
+        },
+        "3": {
+          "title": "We set up a call",
+          "body": "If it sounds right, we plan a free half-hour call. After that you get a fixed price in writing."
+        }
+      }
+    },
+    "websitecheck": {
+      "title": "Thanks, your website check has been requested.",
+      "steps": {
+        "1": {
+          "title": "I look at your website",
+          "body": "Its speed, how it works on a phone and how it is secured."
+        },
+        "2": {
+          "title": "You get the report by email",
+          "body": "With the scores and what they mean in plain language. Nothing there? Check your spam folder."
+        },
+        "3": {
+          "title": "Go through it together, if you like",
+          "body": "In a free 30-minute call we look at what to tackle first. No obligation."
+        }
+      }
+    }
+  },
+  "websiteCheck": {
+    "metaTitle": "Free website check: speed, mobile and security",
+    "metaDescription": "Get your website checked for free. You receive a report by email with scores for speed, mobile-friendliness and security, in plain language.",
+    "eyebrow": "FREE WEBSITE CHECK",
+    "title": "Is your website fast, mobile-friendly and secure?",
+    "intro": "Enter your website's address. You get a report by email with three scores and what they mean, without the jargon. Free, no strings attached.",
+    "receiveTitle": "What you receive",
+    "items": {
+      "speed": {
+        "title": "Speed",
+        "body": "How quickly your pages load. A slow site loses visitors and ranks lower in Google."
+      },
+      "mobile": {
+        "title": "Mobile",
+        "body": "Whether your site works smoothly on a phone, the device most visitors arrive on."
+      },
+      "security": {
+        "title": "Security",
+        "body": "Whether your site has a valid HTTPS certificate and uses the usual security settings."
+      }
+    },
+    "form": {
+      "title": "Request your report",
+      "url": "Your website address",
+      "urlPlaceholder": "www.yourbusiness.be",
+      "name": "Name",
+      "email": "Email",
+      "consent": "I consent to my name, email and website address being processed to receive the report.",
+      "submit": "Send me the report",
+      "sending": "Sending...",
+      "error": "The request failed. Please try again."
+    },
+    "errors": {
+      "url_invalid": "Enter a valid website address, for example www.yourbusiness.be.",
+      "name_short": "Enter your name.",
+      "email_invalid": "Enter a valid email address.",
+      "consent_required": "Your consent is needed to send you the report."
+    }
+  },
+  "websiteCheckBanner": {
+    "text": "Already have a website? Get a free report on its speed, mobile use and security.",
+    "label": "Your website address",
+    "button": "Free report"
+  },
+  "testimonials": {
+    "title": "What clients say",
+    "caseLink": "Read the case study",
+    "googleLink": "Read or write a review on Google",
+    "items": {
+      "carrosserieKris": {
+        "context": "Client since 2021, my parents' family business"
+      },
+      "provilionBroodjes": {
+        "context": ""
+      },
+      "leusch": {
+        "context": "Client since 2026, review on Google"
+      }
+    }
+  },
+  "security": {
+    "eyebrow": "SECURITY",
+    "title": "How I keep your site secure",
+    "lede": "Included as standard, with nothing for you to do.",
+    "compactTitle": "Standard in every site I build and manage",
+    "techLink": "How I handle that technically",
+    "items": {
+      "updates": {
+        "title": "Updates every week or month",
+        "body": "I update the software every week or month, and straight away when a known security hole comes up."
+      },
+      "backups": {
+        "title": "Daily backups",
+        "body": "A backup every day. If something goes wrong, I restore a working version."
+      },
+      "https": {
+        "title": "HTTPS",
+        "body": "Always an encrypted connection, never a \"not secure\" warning."
+      },
+      "monitoring": {
+        "title": "24/7 monitoring",
+        "body": "A system watches your site day and night. If it goes down, I know within the day."
+      }
+    }
+  },
+  "localPages": {
+    "_todo": "TODO (Brent): draft copy, review before publishing. Remove this line after review.",
+    "priceTitle": "What it costs",
+    "priceNote": "A fixed price, agreed before I start.",
+    "serviceLink": "All about having a website built",
+    "caseTitle": "An example from practice",
+    "caseLink": "Read the case study",
+    "items": {
+      "geelKempen": {
+        "metaTitle": "Website development in Geel and the Kempen",
+        "metaDescription": "Web developer based in Geel. A fast, hand-built website for your business in the Kempen, straight from the developer and at a fixed price agreed up front.",
+        "eyebrow": "WEB DESIGNER IN GEEL · THE KEMPEN",
+        "title": "Having a website built in Geel and the Kempen",
+        "intro": [
+          "I'm Brent, a web developer based in Geel. If you run a business in the Kempen, I build you a website that's written by hand, loads quickly on a phone, and gets found by people nearby who are looking for what you do.",
+          "You don't deal with an agency or a salesperson, but directly with the person building your site. We start with a free half-hour call. After that you get a fixed price in writing: no hourly billing and no surprises afterwards.",
+          "Getting found locally starts with the basics: a clear page for each service, an address and opening hours that are correct, and a site fast enough for Google. I pay attention to that from the very first page."
+        ],
+        "navLabel": "Websites in Geel and the Kempen",
+        "sections": [
+          {
+            "title": "A web designer for the whole Kempen, not just Geel",
+            "paragraphs": [
+              "I work from Geel for businesses across the Kempen: Mol, Herentals, Westerlo, Kasterlee, Olen, Turnhout, Grobbendonk and the villages in between. People in the region looking for a tradesperson, a shop or a service mostly search on a phone, and often add the name of their town.",
+              "That is why every service you offer gets a page of its own, with the towns you work in on it. That way you are found for the searches your customers actually type, not only for your own name."
+            ]
+          },
+          {
+            "title": "How much does a website cost in Geel?",
+            "paragraphs": [
+              "A website from me usually costs {websiteRange}, depending on the number of pages and what the site needs to do. That is a fixed price, in writing before I start. As a small business I'm VAT-exempt (art. 56bis WBTW), so nothing is added. A site is usually ready in {websiteWeeksMin} to {websiteWeeksMax} weeks.",
+              "If you want to know for your own project, the cost estimate on this site gives you a price range with a breakdown in a few questions, without leaving an email address."
+            ]
+          },
+          {
+            "title": "What a local business needs online",
+            "paragraphs": [
+              "An address, phone number and opening hours that are the same everywhere: on your site, in Google Maps and in the directories you're listed in. If they differ, Google can't tell which one is right.",
+              "A site that loads quickly on a phone, even with a weak signal. Someone searching from the car or a building site won't wait ten seconds.",
+              "Real photos of your business and your work instead of stock images, and text that says what you do in the words your customers use."
+            ]
+          }
+        ],
+        "cases": [
+          {
+            "slug": "carrosserie-kris",
+            "note": "Carrosserie Kris in Grobbendonk, in the Kempen: I have built and run their website since 2021. It is one of the business's main channels, with enquiries coming in straight through the site."
+          },
+          {
+            "slug": "banden-leusch",
+            "note": "Banden Leusch, also in Grobbendonk: a full-service garage and tyre centre. In 2026 I made their new logo, their new website and their social media in the same style. I have hosted and maintained the site since."
+          }
+        ]
+      },
+      "kust": {
+        "metaTitle": "Website development in Blankenberge and Bruges",
+        "metaDescription": "A fast website for your business on the Belgian coast, built for tourists on their phones. Web developer in Blankenberge and Bruges, at a fixed price.",
+        "eyebrow": "WEBSITE DEVELOPMENT · THE COAST",
+        "title": "Having a website built on the coast, from Blankenberge to Bruges",
+        "intro": [
+          "A lot on the coast depends on the season. Tourists search on their phones for somewhere to eat, stay or rent something, often only once they have arrived. A site that loads slowly or reads badly on a small screen costs you customers right there.",
+          "I build websites for businesses in Blankenberge, Bruges and the surrounding area that are ready for that: fast, clear on a small screen, and with your opening hours, menu or rates where visitors expect them. A French or German version for visitors from across the border can be added too.",
+          "I work independently, without middlemen. You know the price before I start, and after launch I'm still around for the changes a new season brings."
+        ],
+        "navLabel": "Websites on the coast",
+        "sections": [
+          {
+            "title": "For businesses in Blankenberge, Bruges and the area around them",
+            "paragraphs": [
+              "I live in Blankenberge and would like to take on my first projects on the coast, at the same fixed price as in the Kempen. I work for businesses along this stretch of coast and just inland: Blankenberge, Zeebrugge, Wenduine, De Haan, Knokke-Heist and Bruges. Restaurants, accommodation, rentals and shops that depend on visitors, but also tradespeople and service businesses that work all year round."
+            ]
+          },
+          {
+            "title": "What a coastal business needs online",
+            "paragraphs": [
+              "Opening hours that change with the season, and that match on your site and in Google Maps. A closed door where Google says 'open' costs you more than one customer.",
+              "A menu, price list or rates as plain text on the page, not as a PDF or a photo. That reads easily on a phone, and search engines can read it.",
+              "A clear button to book, call or get directions, at the top of the screen. If many of your visitors speak French or German, a version in their language: you supply the translations, I build the language versions."
+            ]
+          },
+          {
+            "title": "How much does a website cost on the coast?",
+            "paragraphs": [
+              "Usually {websiteRange}, as a fixed price agreed before I start. An extra language or a booking module comes as a separate item, and the quote shows what each item costs. No VAT is added, because I'm VAT-exempt as a small business (art. 56bis WBTW).",
+              "If you are planning a new site for the season, start in time: most sites are ready in {websiteWeeksMin} to {websiteWeeksMax} weeks, and you want yours online before the first busy weekends."
+            ]
+          }
+        ],
+        "cases": []
+      }
+    }
+  },
+  "mobileBar": {
+    "label": "Quick contact",
+    "call": "Call me on {phone}"
+  },
+  "pricingGuide": {
+    "tableTitle": "What a website or web application costs, by type of project",
+    "tableIntro": "These are the price ranges the cost estimate above works with. Where your project falls within a range depends on the points below; the estimate works it out for you.",
+    "columns": {
+      "type": "Project type",
+      "price": "Price",
+      "duration": "Usually takes"
+    },
+    "driversTitle": "What drives the price",
+    "drivers": [
+      {
+        "title": "The number of pages or screens",
+        "body": "Every page has to be designed, built and tested. A five-page site costs less than a twenty-page one; for a web application the same goes for screens."
+      },
+      {
+        "title": "The design",
+        "body": "A simple, clean design based on your logo and colours, a custom design, or a distinctive design with more elements of its own. The more custom, the more hours."
+      },
+      {
+        "title": "The text",
+        "body": "If you supply finished text, it costs nothing extra. If you want it edited or written from scratch, that is added per page."
+      },
+      {
+        "title": "What the site needs to do",
+        "body": "A contact form, blog, photo gallery, online booking, a web shop or customer accounts: each feature has its own price, and you choose what goes in."
+      },
+      {
+        "title": "Languages",
+        "body": "A second language needs a one-off setup and some work per page. You supply the translations themselves."
+      },
+      {
+        "title": "New, rebuild or extension",
+        "body": "A new site starts from scratch. For a rebuild I move the content from your old site; for an existing application I read the code before I change anything. Each is listed separately in the estimate."
+      }
+    ],
+    "sections": [
+      {
+        "title": "A fixed price, not hourly billing",
+        "paragraphs": [
+          "You get a price in writing before I start, and it does not change once we agree. If you want to add something along the way, you hear what it costs before I build it. So you never get an invoice for hours you did not see coming."
+        ],
+        "list": []
+      },
+      {
+        "title": "Who owns what I build?",
+        "paragraphs": [
+          "You do. The code and the domain are yours, and the domain is registered in your name. If you later want to continue with another developer or hosting company, you take everything with you, at no extra cost and without buying anything back."
+        ],
+        "list": []
+      },
+      {
+        "title": "Comparing quotes",
+        "paragraphs": [
+          "If you are comparing several quotes, ask every provider the same questions:"
+        ],
+        "list": [
+          "Is the price fixed, or an estimate based on hours?",
+          "Who owns the code and the domain after handover?",
+          "Who actually builds the site: the person you talk to, or someone else?",
+          "Is it an original design, or a template or page builder with your logo on it?",
+          "How fast does the site load on a phone, and can you see an example that is already live?"
+        ]
+      }
+    ]
+  }
+}

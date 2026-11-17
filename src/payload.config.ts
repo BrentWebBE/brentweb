@@ -9,6 +9,9 @@ import { fileURLToPath } from 'url'
 
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { Projects } from './collections/Projects'
+import { Screenshots } from './collections/Screenshots'
+import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
 import { features } from './features'
 import { Footer } from './Footer/config'
@@ -20,6 +23,9 @@ import { basePlugins } from './plugins'
 import { SiteSettings } from './SiteSettings/config'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { contentLocale, localeLabels, locales } from './lib/locales'
+import { captureScreenshotsTask, SCREENSHOT_QUEUE } from './jobs/captureScreenshots'
+import { chromePath } from './lib/screenshots/capture'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,7 +33,10 @@ const dirname = path.dirname(filename)
 // Feature modules are only registered when their flag is on (see src/features.ts).
 const collections: CollectionConfig[] = [
   Pages,
+  Projects,
+  Testimonials,
   Media,
+  Screenshots,
   ...(features.menu ? menuCollections : []),
   ...(features.ecommerce ? ecommerceCollections() : []),
   ...(features.blog ? blogCollections : []),
@@ -72,7 +81,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: ' – BrentWeb CMS',
+      titleSuffix: ' – BrentWeb',
     },
     user: Users.slug,
     livePreview: {
@@ -97,6 +106,13 @@ export default buildConfig({
         },
       ],
     },
+  },
+  // Content languages. The codes double as URL prefixes (/nl-BE, /en). Dutch is written
+  // first; an untranslated field falls back to it.
+  localization: {
+    locales: locales.map((code) => ({ code, label: localeLabels[code] })),
+    defaultLocale: contentLocale,
+    fallback: true,
   },
   i18n: {
     fallbackLanguage: 'nl',
@@ -136,6 +152,10 @@ export default buildConfig({
         return authHeader === `Bearer ${secret}`
       },
     },
-    tasks: [],
+    tasks: [captureScreenshotsTask],
+    // Live project screenshots: picked up every ten minutes, scheduled weekly by the
+    // task itself. Only where Chrome is available (CHROME_PATH) and never during a build.
+    autoRun: [{ cron: '0 */10 * * * *', queue: SCREENSHOT_QUEUE }],
+    shouldAutoRun: () => Boolean(chromePath()) && process.env.NEXT_PHASE !== 'phase-production-build',
   },
 })

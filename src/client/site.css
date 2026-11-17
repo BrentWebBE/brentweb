@@ -1,0 +1,504 @@
+/* Hallmark · part of the system stamped in src/app/(frontend)/globals.css, imported from there */
+/*
+ * BrentWeb components: the few shapes the whole site is built from. Values come from
+ * tokens.css only. Surface ladder: whitespace, a hairline, a tinted well, a card.
+ */
+
+/* ── Type roles ──────────────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+}
+.display {
+  font-size: var(--text-display);
+  line-height: 1.02;
+  max-width: 18ch;
+}
+.display-s {
+  font-size: var(--text-display-s);
+  line-height: 1.05;
+  max-width: 20ch;
+}
+.h-section {
+  font-size: var(--text-section);
+  line-height: 1.08;
+  max-width: 24ch;
+}
+.h-title,
+.display-3 {
+  font-size: var(--text-title);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.lede {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-ink-2);
+  max-width: 52ch;
+}
+.small {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+.figure {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.container-prose {
+  width: 100%;
+  max-width: calc(68ch + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section {
+  padding-block: calc(var(--section-gap-s) / 2);
+}
+.section-l {
+  padding-block: calc(var(--section-gap) / 2);
+}
+.section-head {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+@media (min-width: 64rem) {
+  .section-head--split {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--gap-columns);
+  }
+}
+
+/* The dark band: the work, and the footer. Every rule that paints it swaps the ink. */
+.field {
+  background: var(--color-field);
+  color: var(--color-field-ink);
+  --color-ink: var(--color-field-ink);
+  --color-ink-2: var(--color-field-muted);
+  --color-muted: var(--color-field-muted);
+  --color-rule: var(--color-field-rule);
+  --color-accent: var(--color-field-accent);
+  --color-accent-ink: var(--color-field);
+  --color-paper-2: var(--color-field-2);
+}
+
+.well {
+  background: var(--color-paper-2);
+  border-radius: var(--radius-card);
+}
+
+.card,
+.paper-card,
+.paper-sheet {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-card);
+}
+
+/* ── Controls ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 48px;
+  padding: var(--space-sm) var(--space-lg);
+  border: var(--rule-hair) solid transparent;
+  border-radius: var(--radius-control);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    border-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+.btn-ghost,
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-field-edge);
+}
+.btn-ghost:hover:not(:disabled),
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--color-ink);
+}
+.btn-sm {
+  min-height: 40px;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-sm);
+}
+
+/* A text link that says where it goes; the underline arrives on hover. */
+.link,
+.link-arrow,
+.link-hand {
+  color: var(--color-ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color var(--dur-short) var(--ease-out);
+}
+.link:hover,
+.link-arrow:hover,
+.link-hand:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* Form fields: a 3:1 edge, an inset ring on focus, never a border-width change. */
+.field-hand,
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border: var(--rule-hair) solid var(--color-field-edge);
+  border-radius: var(--radius-control);
+  font-size: max(16px, var(--text-md));
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.field-hand::placeholder,
+.input::placeholder {
+  color: var(--color-muted);
+}
+.field-hand:hover,
+.input:hover {
+  border-color: var(--color-ink-2);
+}
+.field-hand:focus-visible,
+.input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -1px;
+}
+.field-hand[aria-invalid='true'],
+.input[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+textarea.field-hand,
+textarea.input {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+/* ── Lists ───────────────────────────────────────────────────── */
+.list-ticks {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+.list-ticks > li {
+  position: relative;
+  padding-left: var(--space-xl);
+}
+.list-ticks > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(0.775em - 9px);
+  width: 18px;
+  height: 18px;
+  background: var(--color-accent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M3.5 9.5 7.5 13 14.5 5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* Kept for the ported estimator: plain, quiet labels. */
+.hand,
+.eyebrow,
+.note {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+.step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  border: var(--rule-hair) solid var(--color-rule);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+.highlight {
+  background: none;
+}
+
+/* ── The live site frame (see components/projects/LiveSite.tsx) ── */
+.site-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  background: var(--color-paper);
+  border: var(--rule-hair) solid var(--color-rule);
+  box-shadow: var(--shadow-card);
+}
+.field .site-frame {
+  border-color: var(--color-field-rule);
+}
+.site-frame__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  min-height: 40px;
+  padding: 0 var(--space-sm) 0 var(--space-md);
+  background: var(--color-paper-2);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}
+.site-frame__url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.site-frame__viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--color-paper-2);
+}
+.site-frame--phone {
+  border-radius: 28px;
+  border-width: 6px;
+  border-color: var(--color-ink);
+}
+.field .site-frame--phone {
+  border-color: var(--color-field-2);
+}
+.site-frame--phone .site-frame__viewport {
+  aspect-ratio: 9 / 19;
+}
+.site-frame__page {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: auto;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-frame[data-scroll='on'] .site-frame__page {
+    animation: site-scroll var(--scroll-duration, 30s) var(--ease-in-out) 1.2s infinite alternate;
+  }
+  .site-frame[data-scroll='on'][data-paused='true'] .site-frame__page,
+  .site-frame[data-scroll='on']:hover .site-frame__page,
+  .site-frame[data-scroll='on']:focus-within .site-frame__page,
+  .site-frame[data-scroll='on'][data-visible='false'] .site-frame__page {
+    animation-play-state: paused;
+  }
+}
+@keyframes site-scroll {
+  0%,
+  6% {
+    transform: translateY(0);
+  }
+  94%,
+  100% {
+    transform: translateY(var(--scroll-distance, 0px));
+  }
+}
+.site-frame__pause {
+  position: relative;
+  z-index: var(--z-raised);
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink-2);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.site-frame__pause:hover {
+  background: var(--color-paper-3);
+}
+
+/* ── Preloader ──────────────────────────────────────────────────────────────
+ * First visit per tab (src/components/shell/Preloader.tsx). A dark curtain, the
+ * field of the work band and footer: the wordmark draws itself glyph by glyph and
+ * inks in, a brand-red rule fills underneath, then the curtain lifts off the page.
+ *   0 → 1195 ms     glyphs draw, 45 ms apart ("Brent" → "web" → tagline)
+ *   430 → 1305 ms   each glyph fills behind its outline
+ *   0 → 1300 ms     the rule fills
+ *   1350 → 2000 ms  the curtain lifts
+ * The curtain's own animationend unmounts it, so it always carries an animation,
+ * also in the reduced-motion branch. */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-tooltip) + 100);
+  display: grid;
+  place-items: center;
+  background: var(--color-field);
+  color: var(--color-field-ink);
+  will-change: transform;
+  animation: preloader-lift 650ms var(--ease-in-out) 1350ms forwards;
+}
+html[data-preloaded] .preloader {
+  display: none;
+}
+html.preloader-active,
+html.preloader-active body {
+  overflow: hidden;
+}
+.preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  /* Leaves just ahead of the curtain, so the mark is gone before the edge crosses it. */
+  animation: preloader-exit 400ms var(--ease-out) 1300ms forwards;
+}
+.preloader__mark {
+  width: min(64vw, 26rem);
+  height: auto;
+}
+/* pathLength="1" on every glyph (Wordmark.tsx) lets one dasharray draw contours of
+ * very different lengths at the same pace. */
+.preloader__mark path {
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 0.9;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    preloader-draw 700ms var(--ease-out) calc(var(--i, 0) * 45ms) forwards,
+    preloader-ink 380ms var(--ease-out) calc(var(--i, 0) * 45ms + 430ms) forwards;
+}
+.preloader__mark path:nth-child(1) {
+  --i: 0;
+}
+.preloader__mark path:nth-child(2) {
+  --i: 1;
+}
+.preloader__mark path:nth-child(3) {
+  --i: 2;
+}
+.preloader__mark path:nth-child(4) {
+  --i: 3;
+}
+.preloader__mark path:nth-child(5) {
+  --i: 4;
+}
+.preloader__mark path:nth-child(6) {
+  --i: 5;
+}
+.preloader__mark path:nth-child(7) {
+  --i: 6;
+}
+.preloader__mark path:nth-child(8) {
+  --i: 7;
+}
+.preloader__mark path:nth-child(9) {
+  --i: 8;
+}
+.preloader__mark path:nth-child(10) {
+  --i: 9;
+}
+.preloader__mark path:nth-child(11) {
+  --i: 10;
+}
+.preloader__mark path[data-tone='accent'] {
+  stroke: var(--color-brand);
+}
+/* The tagline is a third of the cap height; the full stroke reads as a blob there. */
+.preloader__mark path[data-tone='slogan'] {
+  stroke-width: 0.5;
+}
+.preloader__bar {
+  position: relative;
+  overflow: hidden;
+  width: min(64vw, 26rem);
+  height: 2px;
+  background: var(--color-field-rule);
+}
+.preloader__bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  /* Nearly linear: an ease-out filled the rule while the glyphs were still drawing. */
+  animation: preloader-progress 1300ms cubic-bezier(0.5, 0, 0.2, 1) forwards;
+}
+@keyframes preloader-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes preloader-ink {
+  to {
+    fill-opacity: 1;
+    stroke-opacity: 0;
+  }
+}
+@keyframes preloader-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes preloader-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+}
+@keyframes preloader-lift {
+  to {
+    transform: translateY(-101%);
+  }
+}
+/* No drawing, no travel: the mark is simply there and the curtain fades. */
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    animation: preloader-fade 300ms linear 500ms forwards;
+  }
+  .preloader__inner {
+    animation: none;
+  }
+  .preloader__mark path {
+    fill-opacity: 1;
+    stroke: none;
+    animation: none;
+  }
+  .preloader__bar::after {
+    transform: scaleX(1);
+    animation: none;
+  }
+}
+@keyframes preloader-fade {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

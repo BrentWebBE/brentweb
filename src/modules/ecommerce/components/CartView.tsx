@@ -55,18 +55,27 @@ export const CartView: React.FC = () => {
             <li className="flex gap-4 py-4" key={itemID}>
               <div className="w-20 shrink-0">
                 {info.image && (
-                  <MediaComponent imgClassName="aspect-square w-20 rounded-[var(--radius)] object-cover" resource={info.image} size="80px" />
+                  <MediaComponent
+                    imgClassName="aspect-square w-20 rounded-[var(--radius)] object-cover"
+                    resource={info.image}
+                    size="80px"
+                  />
                 )}
               </div>
               <div className="flex flex-1 flex-col gap-1">
                 {info.product?.slug ? (
-                  <Link className="font-medium hover:underline" href={shopRoutes.product(info.product.slug)}>
+                  <Link
+                    className="font-medium hover:underline"
+                    href={shopRoutes.product(info.product.slug)}
+                  >
                     {info.title}
                   </Link>
                 ) : (
                   <span className="font-medium">{info.title}</span>
                 )}
-                {info.variantTitle && <span className="text-sm text-muted-foreground">{info.variantTitle}</span>}
+                {info.variantTitle && (
+                  <span className="text-sm text-muted-foreground">{info.variantTitle}</span>
+                )}
                 <div className="mt-2 flex items-center gap-2">
                   <Button
                     aria-label={`Eén ${info.title} minder`}
@@ -118,7 +127,10 @@ export const CartView: React.FC = () => {
         <Button asChild size="lg">
           <Link href={shopRoutes.checkout}>Afrekenen</Link>
         </Button>
-        <Link className="text-center text-sm underline-offset-4 hover:underline" href={shopRoutes.listing}>
+        <Link
+          className="text-center text-sm underline-offset-4 hover:underline"
+          href={shopRoutes.listing}
+        >
           Verder winkelen
         </Link>
       </aside>

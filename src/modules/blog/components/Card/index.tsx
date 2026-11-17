@@ -18,7 +18,10 @@ export const Card: React.FC<{
   showCategories?: boolean
   title?: string
 }> = (props) => {
-  const { card, link } = useClickableCard({})
+  const {
+    card: { ref: cardRef },
+    link: { ref: linkRef },
+  } = useClickableCard({})
   const { className, doc, relationTo, showCategories, title: titleFromProps } = props
 
   const { slug, categories, meta, title } = doc || {}
@@ -35,7 +38,7 @@ export const Card: React.FC<{
         'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
         className,
       )}
-      ref={card.ref}
+      ref={cardRef}
     >
       <div className="relative w-full ">
         {!metaImage && <div className="">No image</div>}
@@ -43,7 +46,7 @@ export const Card: React.FC<{
       </div>
       <div className="p-4">
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
+          <div className="text-sm mb-4">
             {categories?.map((category, index) => {
               if (typeof category === 'object') {
                 const { title: titleFromCategory } = category
@@ -67,7 +70,7 @@ export const Card: React.FC<{
         {titleToUse && (
           <div className="prose">
             <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
+              <Link className="not-prose" href={href} ref={linkRef}>
                 {titleToUse}
               </Link>
             </h3>
