@@ -28,9 +28,7 @@ export function StepsBlock({
               <span className="figure mb-[var(--space-sm)] block text-[length:var(--text-sm)] font-bold text-[var(--color-accent)]">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 className="mb-[var(--space-2xs)] text-[length:var(--text-lg)] font-bold tracking-[-0.01em]">
-                {step.title}
-              </h3>
+              <h3 className="h4 mb-[var(--space-2xs)]">{step.title}</h3>
               {step.body && <p className="text-[var(--color-ink-2)]">{step.body}</p>}
             </li>
           ))}

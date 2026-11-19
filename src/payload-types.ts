@@ -688,6 +688,10 @@ export interface PainPointsBlock {
     problem: string;
     fix: string;
     /**
+     * E.g. "Automate orders". Empty = the general link label below.
+     */
+    linkLabel?: string | null;
+    /**
      * Only work that actually ran. A link appears under the problem.
      */
     project?: (string | null) | Project;
@@ -2345,6 +2349,7 @@ export interface PainPointsBlockSelect<T extends boolean = true> {
     | {
         problem?: T;
         fix?: T;
+        linkLabel?: T;
         project?: T;
         id?: T;
       };

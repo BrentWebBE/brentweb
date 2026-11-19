@@ -42,7 +42,7 @@ export async function Footer({ locale }: { locale: Locale }) {
       <div className="container grid gap-[var(--space-2xl)] py-[var(--space-3xl)] md:grid-cols-2 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <div className="flex flex-col gap-[var(--space-lg)]">
           <Link aria-label="BrentWeb, home" className="w-fit" href={homeHref(locale)}>
-            <Wordmark className="h-7 w-auto text-[var(--color-field-ink)]" />
+            <Wordmark className="h-6 w-auto text-[var(--color-field-ink)]" weight="heavy" />
           </Link>
           {footer?.blurb && (
             <p className="max-w-[40ch] text-[var(--color-ink-2)]">{footer.blurb}</p>
@@ -54,9 +54,9 @@ export async function Footer({ locale }: { locale: Locale }) {
 
         {links.length > 0 && (
           <nav aria-labelledby="footer-pages">
-            <h2 className="small mb-[var(--space-md)] font-medium" id="footer-pages">
+            <p className="eyebrow mb-[var(--space-md)]" id="footer-pages">
               {t.pagesTitle}
-            </h2>
+            </p>
             <ul className="grid gap-[var(--space-xs)]">
               {links.map((l) => (
                 <li key={l.id ?? l.href}>
@@ -70,7 +70,7 @@ export async function Footer({ locale }: { locale: Locale }) {
         )}
 
         <div>
-          <h2 className="small mb-[var(--space-md)] font-medium">{t.contactTitle}</h2>
+          <p className="eyebrow mb-[var(--space-md)]">{t.contactTitle}</p>
           <ul className="grid gap-[var(--space-xs)]">
             {settings?.phone && (
               <li>
@@ -104,7 +104,7 @@ export async function Footer({ locale }: { locale: Locale }) {
               {settings.socialLinks.map(({ id, platform, url }) => (
                 <li key={id ?? url}>
                   <a
-                    className="hover:underline"
+                    className="inline-flex min-h-11 items-center hover:underline"
                     href={url}
                     rel="noopener noreferrer me"
                     target="_blank"

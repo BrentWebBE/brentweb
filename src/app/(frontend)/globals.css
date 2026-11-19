@@ -7,7 +7,7 @@
 /* Hallmark · dropped {`/${locale}`}, {l.href!}, {telHref(settings.phone)} · not removed: the footer still links home, every page and the phone, written homeHref(locale), l.href and tel:${tel} */
 /* Hallmark · dropped url, get /nl-BE/gratis-websitecheck#websitecheck · the homepage banner went with the section cut; the field and form live on in the banner block and the check page */
 /* Hallmark · waive 83 · the pictures counted are live captures of client sites, the product itself · the owner asked for the live sites to carry the work */
-/* Hallmark · waive 44c · the home portrait is bottom-anchored on the seam with the dark work band · the person stands in front of the work, the page's idea */
+/* Hallmark · waive 44c withdrawn 2026-11-19 · the home portrait no longer crosses the seam: it is capped at min(70vh, 560px) and ends, with its caption, inside the paper section */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import '../../client/tokens.css';

@@ -4,14 +4,17 @@ import React from 'react'
 import type { Testimonial, TestimonialsBlock as Props } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import { plainText } from '@/components/handmade/Marked'
+import { SectionHeading } from '@/components/handmade/SectionHeading'
 import type { Locale } from '@/lib/locales'
 import { projectHref } from '@/lib/routing'
 import { ui } from '@/lib/ui-strings'
 import { cn } from '@/utilities/ui'
 import { getTestimonials } from '@/utilities/queries'
 
-/** Real quotes, in the client's own words, set as type. One quote gets the whole width. */
+/**
+ * Real quotes, in the client's own words, set as type: 24px, max 52ch. Each figure is
+ * a two-row grid (quote, attribution) so attributions share one baseline across columns.
+ */
 export async function TestimonialsBlock({
   enableLink,
   heading,
@@ -31,20 +34,20 @@ export async function TestimonialsBlock({
   return (
     <section className="section-l">
       <div className="container">
-        {heading && <h2 className="visually-hidden">{plainText(heading)}</h2>}
-        <ul className={cn('grid gap-[var(--space-3xl)]', !single && 'md:grid-cols-2')}>
+        <SectionHeading heading={heading} locale={locale} />
+        <ul
+          className={cn(
+            'grid gap-y-[var(--space-2xl)]',
+            !single && 'md:grid-cols-2 md:gap-x-[var(--space-lg)]',
+          )}
+        >
           {quotes.map((q) => {
             const project = q.project && typeof q.project === 'object' ? q.project : null
             return (
               <li key={q.id}>
-                <figure className={cn(single && 'max-w-[60rem]')}>
+                <figure className="grid h-full grid-rows-[1fr_auto]">
                   <blockquote
-                    className={cn(
-                      'font-heading font-medium tracking-[-0.02em] text-[var(--color-ink)]',
-                      single
-                        ? 'text-[length:var(--text-3xl)] leading-[1.22]'
-                        : 'text-[length:var(--text-2xl)] leading-[1.25]',
-                    )}
+                    className="max-w-[52ch] font-heading text-[length:var(--text-xl)] font-medium leading-[1.45] tracking-[-0.01em] text-[var(--color-ink)]"
                     lang={q.lang || undefined}
                     style={{ hangingPunctuation: 'first' }}
                   >

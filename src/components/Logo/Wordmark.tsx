@@ -87,7 +87,55 @@ const FILL: Record<Tone, string> = {
   slogan: 'currentColor',
 }
 
-export function Wordmark({ className }: { className?: string }) {
+/**
+ * Heavy: for header/footer sizes (16-24px tall), where the source's ~4-unit outlines
+ * render near 1px. A 1.25px non-scaling stroke in the glyph's own colour brings every
+ * line to 2px or more at those heights. The ".be" tagline is dropped (illegible that
+ * small) and the viewBox shrinks to the word plus room for the stroke. "web" takes the
+ * accent token, which passes 4.5:1 on paper and on the dark field.
+ */
+const HEAVY_VIEW_BOX = '233 322 561 72'
+const HEAVY_STROKE = '1.25px'
+const HEAVY_FILL: Record<Exclude<Tone, 'slogan'>, string> = {
+  mark: 'currentColor',
+  accent: 'var(--color-accent)',
+}
+
+export function Wordmark({
+  className,
+  weight = 'thin',
+}: {
+  className?: string
+  /** `thin`: the drawn source, for large sizes (preloader). `heavy`: header and footer. */
+  weight?: 'thin' | 'heavy'
+}) {
+  if (weight === 'heavy') {
+    return (
+      <svg
+        viewBox={HEAVY_VIEW_BOX}
+        className={className}
+        role="img"
+        aria-label="BrentWeb"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {PATHS.map(({ d, tone }) =>
+          tone === 'slogan' ? null : (
+            <path
+              key={d.slice(0, 24)}
+              d={d}
+              data-tone={tone}
+              fill={HEAVY_FILL[tone]}
+              stroke={HEAVY_FILL[tone]}
+              strokeLinejoin="round"
+              strokeWidth={HEAVY_STROKE}
+              vectorEffect="non-scaling-stroke"
+            />
+          ),
+        )}
+      </svg>
+    )
+  }
+
   return (
     <svg
       viewBox={VIEW_BOX}

@@ -38,7 +38,8 @@ export function linkHref({
 
 const APPEARANCE: Record<NonNullable<CMSLinkProps['appearance']>, string> = {
   inline: '',
-  link: 'link-hand',
+  // Standalone text link: .link-tap gives it a 44px tap target.
+  link: 'link-hand link-tap',
   button: 'btn btn-primary',
   default: 'btn btn-primary',
   ghost: 'btn btn-ghost',

@@ -31,6 +31,17 @@ export const PainPoints: Block = {
         },
         { name: 'fix', type: 'textarea', label: l('Oplossing', 'Fix'), required: true },
         {
+          name: 'linkLabel',
+          type: 'text',
+          label: l('Linktekst (het resultaat)', 'Link label (the outcome)'),
+          admin: {
+            description: l(
+              'Bv. "Bestellingen automatiseren". Leeg = de algemene linktekst hieronder.',
+              'E.g. "Automate orders". Empty = the general link label below.',
+            ),
+          },
+        },
+        {
           name: 'project',
           type: 'relationship',
           relationTo: 'projects',
@@ -58,7 +69,10 @@ export const PainPoints: Block = {
     {
       name: 'linkLabel',
       type: 'text',
-      label: l('Linktekst naar het contactformulier', 'Link label to the contact form'),
+      label: l(
+        'Linktekst naar het contactformulier (standaard)',
+        'Link label to the contact form (default)',
+      ),
       admin: {
         description: l(
           'Klikt iemand hierop, dan staat het probleem al ingevuld in het contactformulier.',
