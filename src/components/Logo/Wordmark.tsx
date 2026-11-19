@@ -1,38 +1,24 @@
 /**
- * Inlined from public/logo.svg.
+ * The BrentWeb wordmark: "BRENT" in the ink colour, "WEB" in the accent. One version
+ * everywhere (header, footer, preloader, and the static logo files generated from it by
+ * scripts/render-logos.mjs); the old thin drawing with the ".be" tagline is retired.
  *
- * The file version hardcodes `fill: #ffffff` on the primary marks, which was
- * invisible the moment the site stopped defaulting to a dark theme. Loaded
- * through next/image it renders as an <img>, so no page CSS — variables or
- * otherwise — can reach inside it to fix that.
- *
- * Inlining lets the mark inherit `currentColor`, so it is correct on any
- * background in either theme. Only the accent stays a fixed brand red.
+ * The source glyphs (public/logo.svg in the old site) are outlines whose lines are ~4
+ * units thick: at header size that renders near 1px. Each glyph is also stroked in its
+ * own colour, STROKE units wide, so every line is >= 2px at the smallest header size
+ * (16px tall) and the proportions are the same at every size.
  */
-/**
- * Tightened from the source file's "0 0 1024 768". The artwork actually
- * occupies x 237.4–858 / y 326.4–441.7 — roughly 8% of that canvas — so at a
- * 2rem nav height the wordmark rendered near-illegible, both as an <img> and
- * inline. Measured with getBBox(), plus ~2 units of breathing room. The right
- * edge came in from 879.5 when the tagline tracking was evened out.
- */
-const VIEW_BOX = '235 324 625 120'
 
-/** Brand red, as authored in public/logo.svg. */
-const ACCENT = 'var(--color-brand)'
+/** The word plus room for the stroke. */
+export const VIEW_BOX = '233 322 561 72'
+/** In viewBox units, so the weight scales with the logo. */
+export const STROKE = 5
 
-type Tone = 'mark' | 'accent' | 'slogan'
+type Tone = 'mark' | 'accent'
 
 /**
- * The wordmark as data rather than markup, so consumers can address individual
- * glyphs from CSS — `[data-tone]` for colour, `:nth-child` for stagger order.
- * The preloader (styles/components/preloader.css) draws them one at a time in
- * that order; nothing else depends on the order, so it is authored as read order:
- * "Brent" → "web" → tagline.
- *
- * Painting order is irrelevant here because no two glyphs overlap, which is
- * why flattening the source file's <g id="slogan"> / <g id="title"> grouping
- * costs nothing.
+ * The glyphs as data, so consumers can address them from CSS: `[data-tone]` for colour,
+ * `:nth-child` for the preloader's stagger, which draws them in read order.
  */
 const PATHS: { d: string; tone: Tone }[] = [
   // "Brent"
@@ -66,76 +52,14 @@ const PATHS: { d: string; tone: Tone }[] = [
     tone: 'accent',
     d: 'M782.9,362.2c-2.3-2.7-5.8-4.4-10.3-5.3,3.2-1,5.8-2.8,7.6-5.3,1.9-2.4,2.9-5.4,2.9-9.1s-2-9.1-5.8-11.9-9.1-4.2-15.9-4.2h-26.3v4h26.1c5.5,0,9.7,1.1,12.7,3.2,3,2.2,4.5,5.2,4.5,9.3s-1.5,7.3-4.5,9.4c-3,2.2-7.2,3.2-12.7,3.2h-26.1v4h28.1c6,0,10.7,1.1,13.9,3.2,3.2,2.2,4.8,5.4,4.8,9.8s-1.6,7.7-4.8,9.9c-3.2,2.2-7.7,3.1-13.9,3.1h-28.1v4h28.1c7.6,0,13.4-1.4,17.4-4.3,3.9-2.9,5.8-6.9,5.8-12.3s-1.3-7.7-3.6-10.5Z',
   },
-  // tagline glyphs
-  {
-    tone: 'slogan',
-    d: 'M738.2,440.9c.4.4,1,.7,1.7.7s1.2-.2,1.6-.7c.4-.4.7-1.1.7-1.7s-.3-1.2-.7-1.7c-.4-.4-1-.7-1.6-.7s-1.2.2-1.7.7c-.4.4-.7,1-.7,1.7s.2,1.3.7,1.7Z',
-  },
-  {
-    tone: 'slogan',
-    d: 'M772.2,400H775V441.4H772.2ZM800.1,426.8a13.95,14.9 0 1,1 -27.9,0a13.95,14.9 0 1,1 27.9,0ZM797.3,426.8a11.15,12.5 0 1,0 -22.3,0a11.15,12.5 0 1,0 22.3,0Z',
-  },
-  {
-    tone: 'slogan',
-    d: 'M850.6,438.1c-1.6.7-3.4,1-5.3,1-3,0-5.5-.8-7.7-2.4-2.1-1.6-3.6-3.7-4.3-6.4l24.7-4.8c-.2-2.6-.8-4.9-2-6.9s-2.9-3.7-4.9-4.9-4.3-1.8-6.8-1.8-5.2.7-7.3,1.9c-2.2,1.3-3.9,3-5.1,5.3-1.2,2.2-1.8,4.8-1.8,7.7s.6,5.4,1.9,7.7c1.3,2.2,3.1,4,5.4,5.3,2.3,1.3,4.9,1.9,7.8,1.9s4.3-.4,6.3-1.2c1.8-.8,3.5-2,4.8-3.6l-1.6-1.8c-1.1,1.4-2.5,2.4-4.1,3.1h0ZM838.5,415.9c1.7-1,3.7-1.6,5.9-1.6s3.7.4,5.3,1.3c1.6.8,2.8,2,3.8,3.4,1,1.5,1.6,3.1,1.8,4.8l-22.3,4.4c-.1-.7-.1-1.3-.1-1.7,0-2.3.4-4.4,1.5-6.3,1-1.8,2.3-3.3,4.1-4.3Z',
-  },
 ]
 
 const FILL: Record<Tone, string> = {
   mark: 'currentColor',
-  accent: ACCENT,
-  slogan: 'currentColor',
-}
-
-/**
- * Heavy: for header/footer sizes (16-24px tall), where the source's ~4-unit outlines
- * render near 1px. A 1.25px non-scaling stroke in the glyph's own colour brings every
- * line to 2px or more at those heights. The ".be" tagline is dropped (illegible that
- * small) and the viewBox shrinks to the word plus room for the stroke. "web" takes the
- * accent token, which passes 4.5:1 on paper and on the dark field.
- */
-const HEAVY_VIEW_BOX = '233 322 561 72'
-const HEAVY_STROKE = '1.25px'
-const HEAVY_FILL: Record<Exclude<Tone, 'slogan'>, string> = {
-  mark: 'currentColor',
   accent: 'var(--color-accent)',
 }
 
-export function Wordmark({
-  className,
-  weight = 'thin',
-}: {
-  className?: string
-  /** `thin`: the drawn source, for large sizes (preloader). `heavy`: header and footer. */
-  weight?: 'thin' | 'heavy'
-}) {
-  if (weight === 'heavy') {
-    return (
-      <svg
-        viewBox={HEAVY_VIEW_BOX}
-        className={className}
-        role="img"
-        aria-label="BrentWeb"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {PATHS.map(({ d, tone }) =>
-          tone === 'slogan' ? null : (
-            <path
-              key={d.slice(0, 24)}
-              d={d}
-              data-tone={tone}
-              fill={HEAVY_FILL[tone]}
-              stroke={HEAVY_FILL[tone]}
-              strokeLinejoin="round"
-              strokeWidth={HEAVY_STROKE}
-              vectorEffect="non-scaling-stroke"
-            />
-          ),
-        )}
-      </svg>
-    )
-  }
-
+export function Wordmark({ className }: { className?: string }) {
   return (
     <svg
       viewBox={VIEW_BOX}
@@ -150,12 +74,12 @@ export function Wordmark({
           d={d}
           data-tone={tone}
           fill={FILL[tone]}
-          /* Normalises every contour to a length of 1 so a single
-           * stroke-dasharray value draws them all at the same rate,
-           * regardless of how long the real outline is. Inert unless
-           * something applies a stroke. */
+          stroke={FILL[tone]}
+          strokeLinejoin="round"
+          strokeWidth={STROKE}
+          /* Every contour gets length 1, so the preloader's single dasharray draws
+           * them all at the same pace whatever their real length. */
           pathLength={1}
-          opacity={tone === 'slogan' ? 0.92 : undefined}
         />
       ))}
     </svg>

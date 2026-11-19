@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="48" viewBox="0 0 240 48" role="img" aria-label="BrentWeb">
-  <!-- Placeholder: replace with the BrentWeb logo (keep the file name). -->
-  <rect x="0" y="4" width="40" height="40" rx="10" fill="#111827"/>
-  <text x="20" y="31" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">B</text>
-  <text x="52" y="33" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="currentColor">BrentWeb</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="233 322 561 72" width="240" height="31" role="img" aria-label="BrentWeb">
+  <style>@media (prefers-color-scheme: dark){.mark{fill:#F2EDED;stroke:#F2EDED}.accent{fill:#EC5B59;stroke:#EC5B59}}</style>
+  <path class="mark" d="M285.2,362.2c-2.3-2.7-5.8-4.4-10.3-5.3,3.1-1,5.8-2.8,7.6-5.3,1.9-2.4,2.9-5.4,2.9-9.1s-2-9.1-5.8-11.9-9.1-4.2-15.9-4.2h-26.3v4h26.1c5.5,0,9.7,1.1,12.7,3.2s4.5,5.2,4.5,9.3-1.5,7.3-4.5,9.4c-3,2.2-7.2,3.2-12.7,3.2h-26.1v4h28.1c6,0,10.7,1.1,13.9,3.2,3.1,2.2,4.8,5.4,4.8,9.8s-1.6,7.7-4.8,9.9c-3.1,2.2-7.7,3.1-13.9,3.1h-28.1v4h28.1c7.6,0,13.4-1.4,17.4-4.3,3.9-2.9,5.8-6.9,5.8-12.3s-1.3-7.7-3.6-10.5h0Z" fill="#191211" stroke="#191211" stroke-width="5" stroke-linejoin="round"/>
+  <path class="mark" d="M338.4,367.4c4.7-1.3,8.4-3.7,10.9-7.1s3.9-7.6,3.9-12.6-2.2-11.8-6.8-15.6c-4.5-3.8-10.7-5.7-18.6-5.7h-22.6v4.1h22.6c6.7,0,11.8,1.5,15.4,4.5,3.5,3,5.3,7.2,5.3,12.6s-1.8,9.7-5.3,12.7c-3.6,3-8.7,4.4-15.4,4.4h-22.6v24.7h4.6v-20.6h18c1.8,0,3.9,0,6.1-.5l15,21.1h5.2l-15.8-22Z" fill="#191211" stroke="#191211" stroke-width="5" stroke-linejoin="round"/>
+  <path class="mark" d="M410.8,355.4h-40.8v4h40.8v-4ZM410.8,326.4h-40.8v4.1h40.8v-4.1ZM370.1,385.3v4.1h40.8v-4.1h-40.8Z" fill="#191211" stroke="#191211" stroke-width="5" stroke-linejoin="round"/>
+  <path class="mark" d="M481.7,326.4h-4.6v54.7l-42.8-54.7h-3.9v63h4.6v-54.7l42.9,54.7h3.8v-63Z" fill="#191211" stroke="#191211" stroke-width="5" stroke-linejoin="round"/>
+  <path class="mark" d="M515.7,330.6v58.9h4.6v-58.9h22.7v-4.1h-49.9v4.1h22.7Z" fill="#191211" stroke="#191211" stroke-width="5" stroke-linejoin="round"/>
+  <path class="accent" d="M661.7,326.4h-4.5l-19.3,56.8-19.6-56.8h-4.4l-19.7,56.7-19.2-56.7h-4.9l21.4,63h4.9l19.6-56.5,19.5,56.5h4.9l21.3-63Z" fill="#BE111E" stroke="#BE111E" stroke-width="5" stroke-linejoin="round"/>
+  <path class="accent" d="M715.6,355.4h-40.8v4h40.8v-4ZM715.6,326.4h-40.8v4.1h40.8v-4.1ZM674.9,385.3v4.1h40.8v-4.1h-40.8Z" fill="#BE111E" stroke="#BE111E" stroke-width="5" stroke-linejoin="round"/>
+  <path class="accent" d="M782.9,362.2c-2.3-2.7-5.8-4.4-10.3-5.3,3.2-1,5.8-2.8,7.6-5.3,1.9-2.4,2.9-5.4,2.9-9.1s-2-9.1-5.8-11.9-9.1-4.2-15.9-4.2h-26.3v4h26.1c5.5,0,9.7,1.1,12.7,3.2,3,2.2,4.5,5.2,4.5,9.3s-1.5,7.3-4.5,9.4c-3,2.2-7.2,3.2-12.7,3.2h-26.1v4h28.1c6,0,10.7,1.1,13.9,3.2,3.2,2.2,4.8,5.4,4.8,9.8s-1.6,7.7-4.8,9.9c-3.2,2.2-7.7,3.1-13.9,3.1h-28.1v4h28.1c7.6,0,13.4-1.4,17.4-4.3,3.9-2.9,5.8-6.9,5.8-12.3s-1.3-7.7-3.6-10.5Z" fill="#BE111E" stroke="#BE111E" stroke-width="5" stroke-linejoin="round"/>
 </svg>
