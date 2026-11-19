@@ -376,8 +376,10 @@ textarea.input {
  * First visit per tab (src/components/shell/Preloader.tsx). A dark curtain, the
  * field of the work band and footer: the wordmark draws itself glyph by glyph and
  * inks in, a brand-red rule fills underneath, then the curtain lifts off the page.
- *   0 → 1195 ms     glyphs draw, 45 ms apart ("Brent" → "web" → tagline)
- *   430 → 1305 ms   each glyph fills behind its outline
+ * It is the same wordmark as the header (Wordmark.tsx, stroke included), so the
+ * drawing ends exactly on the logo used everywhere else.
+ *   0 → 1015 ms     glyphs draw, 45 ms apart ("BRENT" → "WEB")
+ *   430 → 1125 ms   each glyph fills behind its outline
  *   0 → 1300 ms     the rule fills
  *   1350 → 2000 ms  the curtain lifts
  * The curtain's own animationend unmounts it, so it always carries an animation,
@@ -413,11 +415,10 @@ html.preloader-active body {
   height: auto;
 }
 /* pathLength="1" on every glyph (Wordmark.tsx) lets one dasharray draw contours of
- * very different lengths at the same pace. */
+ * very different lengths at the same pace. Stroke colour and width come from the
+ * Wordmark itself; the stroke stays once the fill is in. */
 .preloader__mark path {
   fill-opacity: 0;
-  stroke: currentColor;
-  stroke-width: 0.9;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation:
@@ -448,21 +449,9 @@ html.preloader-active body {
 .preloader__mark path:nth-child(8) {
   --i: 7;
 }
-.preloader__mark path:nth-child(9) {
-  --i: 8;
-}
-.preloader__mark path:nth-child(10) {
-  --i: 9;
-}
-.preloader__mark path:nth-child(11) {
-  --i: 10;
-}
 .preloader__mark path[data-tone='accent'] {
+  fill: var(--color-brand);
   stroke: var(--color-brand);
-}
-/* The tagline is a third of the cap height; the full stroke reads as a blob there. */
-.preloader__mark path[data-tone='slogan'] {
-  stroke-width: 0.5;
 }
 .preloader__bar {
   position: relative;
@@ -489,7 +478,6 @@ html.preloader-active body {
 @keyframes preloader-ink {
   to {
     fill-opacity: 1;
-    stroke-opacity: 0;
   }
 }
 @keyframes preloader-progress {
@@ -518,7 +506,7 @@ html.preloader-active body {
   }
   .preloader__mark path {
     fill-opacity: 1;
-    stroke: none;
+    stroke-dashoffset: 0;
     animation: none;
   }
   .preloader__bar::after {

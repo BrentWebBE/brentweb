@@ -42,7 +42,7 @@ export async function Footer({ locale }: { locale: Locale }) {
       <div className="container grid gap-[var(--space-2xl)] py-[var(--space-3xl)] md:grid-cols-2 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <div className="flex flex-col gap-[var(--space-lg)]">
           <Link aria-label="BrentWeb, home" className="w-fit" href={homeHref(locale)}>
-            <Wordmark className="h-6 w-auto text-[var(--color-field-ink)]" weight="heavy" />
+            <Wordmark className="h-6 w-auto text-[var(--color-field-ink)]" />
           </Link>
           {footer?.blurb && (
             <p className="max-w-[40ch] text-[var(--color-ink-2)]">{footer.blurb}</p>

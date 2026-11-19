@@ -34,10 +34,7 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
           className="shrink-0 xl:justify-self-start"
           href={homeHref(locale)}
         >
-          <Wordmark
-            className="h-4 w-auto text-[var(--color-ink)] sm:h-[18px] md:h-5"
-            weight="heavy"
-          />
+          <Wordmark className="h-4 w-auto text-[var(--color-ink)] sm:h-[18px] md:h-5" />
         </Link>
 
         <nav aria-label={t.mainNav} className="hidden xl:block">
