@@ -376,10 +376,12 @@ textarea.input {
  * First visit per tab (src/components/shell/Preloader.tsx). A dark curtain, the
  * field of the work band and footer: the wordmark draws itself glyph by glyph and
  * inks in, a brand-red rule fills underneath, then the curtain lifts off the page.
- * It is the same wordmark as the header (Wordmark.tsx, stroke included), so the
- * drawing ends exactly on the logo used everywhere else.
- *   0 → 1015 ms     glyphs draw, 45 ms apart ("BRENT" → "WEB")
- *   430 → 1125 ms   each glyph fills behind its outline
+ * It is the same wordmark as the header (Wordmark.tsx), so it ends exactly on the
+ * logo used everywhere else.
+ *   0 → 1015 ms     glyphs draw as a thin outline, 45 ms apart ("BRENT" → "WEB")
+ *   560 → 1255 ms   each glyph, once drawn, fills in and its stroke grows to the
+ *                   logo's full weight; the dash pattern is dropped halfway, so no
+ *                   seam is left where each outline's dash meets its start
  *   0 → 1300 ms     the rule fills
  *   1350 → 2000 ms  the curtain lifts
  * The curtain's own animationend unmounts it, so it always carries an animation,
@@ -415,15 +417,17 @@ html.preloader-active body {
   height: auto;
 }
 /* pathLength="1" on every glyph (Wordmark.tsx) lets one dasharray draw contours of
- * very different lengths at the same pace. Stroke colour and width come from the
- * Wordmark itself; the stroke stays once the fill is in. */
+ * very different lengths at the same pace. The outline is drawn thin: at the logo's
+ * full stroke the square dash ends turn the glyphs blocky mid-draw. The ink step
+ * brings it to 5, the Wordmark's STROKE (viewBox units). */
 .preloader__mark path {
   fill-opacity: 0;
+  stroke-width: 0.9;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation:
     preloader-draw 700ms var(--ease-out) calc(var(--i, 0) * 45ms) forwards,
-    preloader-ink 380ms var(--ease-out) calc(var(--i, 0) * 45ms + 430ms) forwards;
+    preloader-ink 380ms var(--ease-out) calc(var(--i, 0) * 45ms + 560ms) forwards;
 }
 .preloader__mark path:nth-child(1) {
   --i: 0;
@@ -478,6 +482,9 @@ html.preloader-active body {
 @keyframes preloader-ink {
   to {
     fill-opacity: 1;
+    stroke-width: 5;
+    /* Discrete: switches at 50%, after the draw has finished. */
+    stroke-dasharray: none;
   }
 }
 @keyframes preloader-progress {
@@ -506,7 +513,8 @@ html.preloader-active body {
   }
   .preloader__mark path {
     fill-opacity: 1;
-    stroke-dashoffset: 0;
+    stroke-width: 5;
+    stroke-dasharray: none;
     animation: none;
   }
   .preloader__bar::after {
