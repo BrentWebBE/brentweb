@@ -81,6 +81,7 @@ export interface Config {
     'product-categories': ProductCategory;
     posts: Post;
     categories: Category;
+    leads: Lead;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -122,6 +123,7 @@ export interface Config {
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -685,6 +687,10 @@ export interface PainPointsBlock {
   items: {
     problem: string;
     fix: string;
+    /**
+     * E.g. "Automate orders". Empty = the general link label below.
+     */
+    linkLabel?: string | null;
     /**
      * Only work that actually ran. A link appears under the problem.
      */
@@ -1563,6 +1569,39 @@ export interface MenuItem {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads".
+ */
+export interface Lead {
+  id: string;
+  name: string;
+  email: string;
+  source: 'contactformulier' | 'schatter' | 'websitecheck';
+  companyWebsite?: string | null;
+  budget?: string | null;
+  timeline?: string | null;
+  message?: string | null;
+  estimator?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  status: 'new' | 'contacted' | 'quoted' | 'won' | 'lost' | 'spam';
+  notes?: string | null;
+  delivery?: {
+    email?: boolean | null;
+    crm?: boolean | null;
+  };
+  locale?: string | null;
+  pageUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -2090,6 +2129,10 @@ export interface PayloadLockedDocument {
         value: string | Category;
       } | null)
     | ({
+        relationTo: 'leads';
+        value: string | Lead;
+      } | null)
+    | ({
         relationTo: 'users';
         value: string | User;
       } | null)
@@ -2306,6 +2349,7 @@ export interface PainPointsBlockSelect<T extends boolean = true> {
     | {
         problem?: T;
         fix?: T;
+        linkLabel?: T;
         project?: T;
         id?: T;
       };
@@ -2941,6 +2985,32 @@ export interface CategoriesSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  source?: T;
+  companyWebsite?: T;
+  budget?: T;
+  timeline?: T;
+  message?: T;
+  estimator?: T;
+  status?: T;
+  notes?: T;
+  delivery?:
+    | T
+    | {
+        email?: T;
+        crm?: T;
+      };
+  locale?: T;
+  pageUrl?: T;
   updatedAt?: T;
   createdAt?: T;
 }

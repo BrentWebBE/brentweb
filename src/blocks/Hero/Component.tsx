@@ -18,8 +18,6 @@ import { cn } from '@/utilities/ui'
 
 type HeroProps = Props & {
   locale: Locale
-  /** The home hero stands on the dark work band when that comes next. */
-  nextIsShowcase?: boolean
 }
 
 export function HeroBlock(props: HeroProps) {
@@ -54,8 +52,8 @@ function Reassurances({ items }: { items: HeroProps['trustItems'] }) {
 }
 
 /**
- * The homepage: who, what, and the person, in one screen. The portrait stands across
- * the seam onto the dark band where the client sites scroll.
+ * The homepage: who, what, and the person, in one screen. The portrait and its caption
+ * end inside the paper section, above the dark band where the client sites scroll.
  */
 function HomeHero({
   greeting,
@@ -65,26 +63,14 @@ function HomeHero({
   intro,
   links,
   locale,
-  nextIsShowcase,
   title,
   trustItems,
 }: HeroProps) {
   const portrait = image && typeof image === 'object' ? (image as MediaDoc) : null
   return (
-    <section
-      className={cn(
-        'relative pt-[var(--space-2xl)] md:pt-[var(--space-3xl)]',
-        nextIsShowcase ? 'pb-[var(--space-3xl)] lg:pb-0' : 'pb-[var(--section-gap-s)]',
-      )}
-    >
-      {nextIsShowcase && (
-        <div
-          aria-hidden="true"
-          className="field absolute inset-x-0 bottom-0 hidden h-[calc(var(--space-4xl)-var(--space-lg))] lg:block"
-        />
-      )}
-      <div className="container relative grid gap-[var(--space-2xl)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-start lg:gap-[var(--space-3xl)]">
-        <div className="lg:pb-[var(--space-4xl)] lg:pt-[var(--space-xl)]">
+    <section className="py-[var(--space-2xl)] md:py-[var(--space-3xl)]">
+      <div className="container grid gap-[var(--space-2xl)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-start lg:gap-[var(--space-3xl)]">
+        <div className="lg:pt-[var(--space-xl)]">
           <h1 className="display mb-[var(--space-lg)]">{plainText(title)}</h1>
           <p className="lede mb-[var(--space-xl)] whitespace-pre-line">
             {greeting && (
@@ -100,25 +86,18 @@ function HomeHero({
         </div>
 
         {portrait && (
-          // Desktop: the portrait runs the full height of the text, its top level with the
-          // headline and its foot on the dark band; the crop keeps the face centred.
-          <figure className="mx-auto w-full max-w-[26rem] lg:mx-0 lg:ml-auto lg:flex lg:max-w-[34rem] lg:flex-col lg:self-stretch lg:pt-[var(--space-xl)]">
+          // Capped at min(70vh, 560px) so the portrait and caption end in this section.
+          // The crop is pinned at 50% 20% (keeps the face in frame); `!` beats the
+          // focal-point inline style Media sets from the upload.
+          <figure className="mx-auto w-full max-w-[26rem] lg:mx-0 lg:ml-auto lg:max-w-[34rem] lg:pt-[var(--space-xl)]">
             <Media
-              className="lg:relative lg:min-h-[28rem] lg:flex-1"
-              imgClassName="aspect-[4/5] w-full rounded-[var(--radius-card)] object-cover object-[50%_25%] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
+              imgClassName="aspect-[4/5] max-h-[min(70vh,560px)] w-full rounded-[var(--radius-card)] object-cover !object-[50%_20%]"
               priority
               resource={portrait}
               size="(min-width: 1024px) 34rem, 80vw"
             />
             {imageCaption && (
-              <figcaption
-                className={cn(
-                  'small mt-[var(--space-sm)]',
-                  nextIsShowcase && 'lg:text-[var(--color-field-muted)]',
-                )}
-              >
-                {imageCaption}
-              </figcaption>
+              <figcaption className="small mt-[var(--space-sm)]">{imageCaption}</figcaption>
             )}
           </figure>
         )}

@@ -34,7 +34,10 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
           className="shrink-0 xl:justify-self-start"
           href={homeHref(locale)}
         >
-          <Wordmark className="h-5 w-auto text-[var(--color-ink)] sm:h-6 md:h-7" />
+          <Wordmark
+            className="h-4 w-auto text-[var(--color-ink)] sm:h-[18px] md:h-5"
+            weight="heavy"
+          />
         </Link>
 
         <nav aria-label={t.mainNav} className="hidden xl:block">
@@ -56,7 +59,7 @@ export async function Header({ alternates, locale }: { alternates: Alternates; l
             <CMSLink
               {...header.cta}
               appearance="button"
-              className="btn-sm hidden sm:inline-flex"
+              className="btn-sm hidden min-h-11 sm:inline-flex"
               locale={locale}
             />
           )}

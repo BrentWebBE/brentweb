@@ -18,6 +18,22 @@
     }
   }
 
+  &__leads {
+    margin: base(1) 0;
+    padding: base(0.75) base(1);
+    border: 1px solid var(--theme-elevation-150);
+    border-radius: var(--style-radius-m);
+
+    & h4 {
+      margin: 0 0 base(0.5);
+    }
+
+    & ul {
+      margin: 0 0 base(0.5);
+      padding-left: base(1);
+    }
+  }
+
   & a:hover {
     opacity: 0.85;
   }

@@ -1,16 +1,20 @@
 import { Banner } from '@payloadcms/ui/elements/Banner'
+import type { ServerProps } from 'payload'
 import React from 'react'
+
+import { RecentLeads } from './RecentLeads'
 
 import './index.scss'
 
 const baseClass = 'before-dashboard'
 
-const BeforeDashboard: React.FC = () => {
+const BeforeDashboard = ({ payload, user }: ServerProps) => {
   return (
     <div className={baseClass}>
       <Banner className={`${baseClass}__banner`} type="success">
         <h4>Welkom in je dashboard</h4>
       </Banner>
+      <RecentLeads payload={payload} user={user} />
       <ul className={`${baseClass}__instructions`}>
         <li>
           {"Bewerk je pagina's onder "}

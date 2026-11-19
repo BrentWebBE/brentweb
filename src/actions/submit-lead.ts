@@ -11,6 +11,7 @@ import { crmPayloadFromLead, forwardLeadToCrm } from '@/lib/crm'
 import { verifiedAnalysis } from '@/lib/calculator/signature'
 import { clientIp } from '@/lib/client-ip'
 import { maskEmail } from '@/lib/mask-email'
+import { saveLead } from '@/lib/leads'
 
 export type SubmitLeadResult =
   | { ok: true }
@@ -55,15 +56,17 @@ export async function submitLead(input: unknown): Promise<SubmitLeadResult> {
   // under a strict-origin-when-cross-origin referrer policy.
   const pageUrl = headerList.get('referer')?.slice(0, 2000) || null
 
-  // Email and CRM are independent: either one on its own means the lead is
-  // safe somewhere I will see it, so a hiccup in one must not lose the other
-  // or turn a captured lead into an error for the visitor.
+  // Email, CRM and the admin's Leads list are independent: any one of them on its
+  // own means the lead is safe somewhere I will see it, so a hiccup in one must not
+  // lose the others or turn a captured lead into an error for the visitor.
+  const crmPayload = crmPayloadFromLead(lead, estimateResult, pageUrl)
   const [emailDelivered, crmDelivered] = await Promise.all([
     sendLeadEmails(lead, estimateResult, ai),
-    forwardLeadToCrm(crmPayloadFromLead(lead, estimateResult, pageUrl)),
+    forwardLeadToCrm(crmPayload),
   ])
+  const saved = await saveLead(crmPayload, { email: emailDelivered, crm: crmDelivered })
 
-  if (!emailDelivered && !crmDelivered) {
+  if (!emailDelivered && !crmDelivered && !saved) {
     return { ok: false, error: 'delivery_failed' }
   }
   return { ok: true }

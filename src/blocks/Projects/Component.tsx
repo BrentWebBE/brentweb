@@ -141,7 +141,7 @@ function Showcase({
                     {project.sector && <span>{project.sector}</span>}
                     {project.period && <span>{project.period}</span>}
                   </p>
-                  <h3 className="display-s !text-[length:var(--text-2xl)]">{project.title}</h3>
+                  <h3 className="h-title">{project.title}</h3>
                   <p className="text-[var(--color-ink-2)]">{note || project.abstract}</p>
                   {statusLabel(locale, project.status) && (
                     <p className="small">{statusLabel(locale, project.status)}</p>

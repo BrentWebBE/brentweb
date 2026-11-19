@@ -10,7 +10,7 @@ import { CONTACT_PREFILL_PARAM, projectHref } from '@/lib/routing'
 
 /**
  * "Klinkt dit bekend?": each problem in the visitor's words, set large, with what fixes
- * it underneath. The link carries the problem into the contact form.
+ * it underneath. The link (named for the outcome) carries the problem into the contact form.
  */
 export function PainPointsBlock({
   caseLinkLabel,
@@ -29,7 +29,7 @@ export function PainPointsBlock({
               className="flex flex-col border-t-2 border-[var(--color-ink)] pt-[var(--space-lg)]"
               key={item.id ?? i}
             >
-              <p className="h-title mb-[var(--space-md)]">“{item.problem}”</p>
+              <p className="h-title mb-[var(--space-md)] font-medium">“{item.problem}”</p>
               <p className="text-[var(--color-ink-2)]">{item.fix}</p>
               {typeof item.project === 'object' && item.project && caseLinkLabel && (
                 <Link
@@ -42,12 +42,14 @@ export function PainPointsBlock({
                   )}
                 </Link>
               )}
-              {linkLabel && (
+              {(item.linkLabel || linkLabel) && (
+                // mt-auto pushes every item's link to the bottom of its column, so the
+                // links share one baseline whatever the length of the text above.
                 <a
                   className="link mt-auto w-fit pt-[var(--space-lg)]"
                   href={`?${CONTACT_PREFILL_PARAM}=${encodeURIComponent(item.problem)}#contact`}
                 >
-                  {linkLabel}
+                  {item.linkLabel || linkLabel}
                 </a>
               )}
             </li>
