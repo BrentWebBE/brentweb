@@ -854,6 +854,14 @@ export interface Testimonial {
    * E.g. "Client since 2021".
    */
   context?: string | null;
+  /**
+   * Google: shows a Google badge with the quote.
+   */
+  source?: ('direct' | 'google') | null;
+  /**
+   * Only as the client actually gave it. Empty = no stars.
+   */
+  rating?: number | null;
   project?: (string | null) | Project;
   visible?: boolean | null;
   updatedAt: string;
@@ -2823,6 +2831,8 @@ export interface TestimonialsSelect<T extends boolean = true> {
   business?: T;
   website?: T;
   context?: T;
+  source?: T;
+  rating?: T;
   project?: T;
   visible?: T;
   updatedAt?: T;

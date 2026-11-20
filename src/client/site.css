@@ -46,9 +46,11 @@ h3 {
   color: var(--color-ink-2);
   max-width: 52ch;
 }
+/* Captions and fine print: what an owner checks (place, VAT, upkeep), so readable. */
 .small {
   font-size: var(--text-sm);
-  color: var(--color-muted);
+  line-height: 1.5;
+  color: var(--color-ink-2);
 }
 .figure {
   font-variant-numeric: tabular-nums;
@@ -70,7 +72,7 @@ h3 {
 .section-head {
   display: grid;
   gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--section-head-gap);
 }
 @media (min-width: 64rem) {
   .section-head--split {

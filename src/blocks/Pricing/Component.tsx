@@ -84,7 +84,9 @@ export function PricingBlock({
             </tbody>
           </table>
           {note && (
-            <p className="small mt-[var(--space-lg)] max-w-[60ch]">{fillPrices(note, locale)}</p>
+            <p className="mt-[var(--space-lg)] max-w-[68ch] text-[length:var(--text-md)] leading-[1.6] text-[var(--color-ink-2)]">
+              {fillPrices(note, locale)}
+            </p>
           )}
         </div>
 

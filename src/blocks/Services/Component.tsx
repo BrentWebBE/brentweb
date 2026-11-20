@@ -18,7 +18,7 @@ export function ServicesBlock({ heading, intro, items, locale }: Props & { local
             const href = item.enableLink && item.link ? linkHref({ locale, ...item.link }) : null
             return (
               <li className="group relative border-b border-[var(--color-rule)]" key={item.id ?? i}>
-                <div className="grid gap-[var(--space-xs)] py-[var(--space-xl)] md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_auto] md:items-baseline md:gap-[var(--gap-columns)]">
+                <div className="grid gap-[var(--space-xs)] py-[var(--space-xl)] md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_12rem] md:items-baseline md:gap-[var(--gap-columns)]">
                   <h3 className="h-title transition-colors group-hover:text-[var(--color-accent)]">
                     {item.title}
                   </h3>
@@ -31,9 +31,16 @@ export function ServicesBlock({ heading, intro, items, locale }: Props & { local
                     <CMSLink
                       {...item.link}
                       appearance="link"
-                      className="w-fit after:absolute after:inset-0 after:content-['']"
+                      className="w-fit whitespace-nowrap md:justify-self-end after:absolute after:inset-0 after:content-['']"
                       locale={locale}
-                    />
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="ml-[var(--space-xs)] inline-block transition-transform group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </CMSLink>
                   )}
                 </div>
               </li>

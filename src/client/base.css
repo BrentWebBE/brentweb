@@ -113,17 +113,19 @@ td.num {
 @media (max-width: 60rem) {
   :root {
     --gutter: 24px;
-    --section-gap-s: 80px;
-    --section-gap: 96px;
-    --section-gap-l: 120px;
+    --section-gap-s: 72px;
+    --section-gap: 88px;
+    --section-gap-l: 112px;
+    --section-head-gap: 40px;
   }
 }
 @media (max-width: 40rem) {
   :root {
     --gutter: 16px;
     --section-gap-s: 56px;
-    --section-gap: 72px;
-    --section-gap-l: 96px;
+    --section-gap: 64px;
+    --section-gap-l: 88px;
+    --section-head-gap: 32px;
     --gap-columns: 16px;
   }
 }
