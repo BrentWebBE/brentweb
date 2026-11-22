@@ -6,7 +6,7 @@ import { docHref } from '@/lib/routing'
 
 import { getCachedDocument } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
-import { notFound, redirect } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 
 interface Props {
   disableNotFound?: boolean
@@ -14,7 +14,8 @@ interface Props {
   url: string
 }
 
-/* This component helps us with SSR based dynamic redirects */
+/* SSR redirects managed in Payload (Redirects collection). Permanent (308): they replace
+   moved URLs, so search engines should move their ranking to the new address. */
 export const PayloadRedirects: React.FC<Props> = async ({
   disableNotFound,
   locale = contentLocale,
@@ -26,7 +27,7 @@ export const PayloadRedirects: React.FC<Props> = async ({
 
   if (redirectItem) {
     if (redirectItem.to?.url) {
-      redirect(redirectItem.to.url)
+      permanentRedirect(redirectItem.to.url)
     }
 
     const ref = redirectItem.to?.reference
@@ -36,7 +37,7 @@ export const PayloadRedirects: React.FC<Props> = async ({
         : ref?.value
     const redirectUrl = ref ? docHref(locale, ref.relationTo, doc as never) : null
 
-    if (redirectUrl) redirect(redirectUrl)
+    if (redirectUrl) permanentRedirect(redirectUrl)
   }
 
   if (disableNotFound) return null

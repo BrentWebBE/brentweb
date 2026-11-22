@@ -14,6 +14,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { isAdminOrEditor } from '@/access/isAdminOrEditor'
 import { caseStudyLexical } from '@/fields/caseStudyLexical'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { redirectOnSlugChange } from '@/hooks/redirectOnSlugChange'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { l } from '@/utilities/label'
 
@@ -312,7 +313,7 @@ export const Projects: CollectionConfig<'projects'> = {
     slugField({ position: 'sidebar' }),
   ],
   hooks: {
-    afterChange: [revalidateProject, queueScreenshot],
+    afterChange: [revalidateProject, queueScreenshot, redirectOnSlugChange('projects')],
     beforeChange: [populatePublishedAt],
     afterDelete: [revalidateProjectDelete],
   },

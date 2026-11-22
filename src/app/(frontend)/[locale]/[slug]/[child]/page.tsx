@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { ProjectDetail } from '@/components/projects/ProjectDetail'
 import { isProjectsSegment, projectHref } from '@/lib/routing'
 import { pageMetadata } from '@/utilities/pageMeta'
@@ -20,11 +21,13 @@ export default async function ProjectPage({ params }: Args) {
   const locale = resolveLocale(rawLocale)
   if (!isProjectsSegment(locale, slug)) notFound()
 
+  const decoded = decodeURIComponent(child)
   const [project, { isEnabled: draft }] = await Promise.all([
-    getProject(locale, decodeURIComponent(child)),
+    getProject(locale, decoded),
     draftMode(),
   ])
-  if (!project) notFound()
+  // A renamed project's old URL redirects (see redirectOnSlugChange); otherwise 404.
+  if (!project) return <PayloadRedirects locale={locale} url={projectHref(locale, decoded)} />
 
   return (
     <>

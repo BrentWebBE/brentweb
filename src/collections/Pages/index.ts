@@ -30,6 +30,7 @@ import { menuPageBlocks } from '@/modules/menu'
 import { l } from '@/utilities/label'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
+import { redirectOnSlugChange } from '../../hooks/redirectOnSlugChange'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
@@ -251,7 +252,7 @@ export const Pages: CollectionConfig<'pages'> = {
     slugField({ localized: true }),
   ],
   hooks: {
-    afterChange: [revalidatePage],
+    afterChange: [revalidatePage, redirectOnSlugChange('pages')],
     beforeChange: [populatePublishedAt],
     afterDelete: [revalidateDelete],
   },
