@@ -20,6 +20,9 @@ blob-report
 # Runtime data
 public/media
 
+# Local backups (DB dumps, media, copies of .env) - never in an image
+backups
+
 # Not needed to build the app
 deploy
 scripts
