@@ -271,6 +271,17 @@ export const Projects: CollectionConfig<'projects'> = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+            {
+              name: 'noIndex',
+              type: 'checkbox',
+              label: l('Niet indexeren (noindex)', "Don't index (noindex)"),
+              admin: {
+                description: l(
+                  'Haalt dit project in deze taal uit Google en uit de sitemap.',
+                  'Keeps this project, in this language, out of search and the sitemap.',
+                ),
+              },
+            },
           ],
         }),
       ],

@@ -435,6 +435,10 @@ export interface Project {
      */
     image?: (string | null) | Media;
     description?: string | null;
+    /**
+     * Keeps this project, in this language, out of search and the sitemap.
+     */
+    noIndex?: boolean | null;
   };
   status?: ('active' | 'maintained' | 'finished' | 'decommissioned') | null;
   liveUrl?: string | null;
