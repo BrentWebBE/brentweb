@@ -336,6 +336,31 @@ export const SiteSettings: GlobalConfig = {
               admin: { placeholder: '€€' },
             },
             {
+              name: 'defaultMetaDescription',
+              type: 'textarea',
+              localized: true,
+              label: l('Standaard meta-omschrijving', 'Default meta description'),
+              maxLength: 160,
+              admin: {
+                description: l(
+                  "Voor pagina's zonder eigen omschrijving in hun SEO-tab. Max. 160 tekens.",
+                  'For pages without their own description in the SEO tab. Max 160 characters.',
+                ),
+              },
+            },
+            {
+              name: 'defaultOgImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: l('Standaard deelafbeelding (1200×630)', 'Default share image (1200×630)'),
+              admin: {
+                description: l(
+                  "Voor pagina's zonder eigen SEO-afbeelding. Leeg = het logo.",
+                  'For pages without their own SEO image. Empty = the logo.',
+                ),
+              },
+            },
+            {
               name: 'areaServed',
               type: 'array',
               label: l('Gebied voor zoekmachines', 'Area served (search engines)'),

@@ -98,10 +98,23 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteName = settings?.businessName || settings?.personName || undefined
   const noIndex = Boolean(settings?.technical?.noIndex)
 
+  const ogImage = settings?.technical?.defaultOgImage
+  const ogImageUrl =
+    ogImage && typeof ogImage === 'object' ? ogImage.sizes?.og?.url || ogImage.url : undefined
+  // Optional: the domain property is DNS-verified; this is for an extra URL-prefix property.
+  const googleVerification = runtimeEnv('GOOGLE_SITE_VERIFICATION')
+
   return {
     metadataBase: new URL(getServerSideURL()),
-    openGraph: mergeOpenGraph({ siteName, locale: locale === 'nl-BE' ? 'nl_BE' : 'en_GB' }),
+    // Pages set their own; this covers routes without metadata of their own.
+    description: settings?.technical?.defaultMetaDescription || undefined,
+    openGraph: mergeOpenGraph({
+      siteName,
+      locale: locale === 'nl-BE' ? 'nl_BE' : 'en_GB',
+      images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,
+    }),
     robots: noIndex ? { index: false, follow: false } : undefined,
     twitter: { card: 'summary_large_image' },
+    verification: googleVerification ? { google: googleVerification } : undefined,
   }
 }

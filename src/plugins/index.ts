@@ -1,7 +1,12 @@
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
+import {
+  GenerateDescription,
+  GenerateImage,
+  GenerateTitle,
+  GenerateURL,
+} from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Plugin } from 'payload'
 
@@ -21,6 +26,41 @@ import { l } from '@/utilities/label'
 const generateTitle: GenerateTitle<Post | Page | Project> = async ({ doc, req }) => {
   const settings = await req.payload.findGlobal({ slug: 'site-settings', depth: 0, req })
   return [doc?.title, settings?.businessName].filter(Boolean).join(' | ')
+}
+
+const settingsFor = (req: Parameters<GenerateTitle>[0]['req'], locale?: string) =>
+  req.payload.findGlobal({
+    slug: 'site-settings',
+    depth: 0,
+    locale: isLocale(locale) ? locale : contentLocale,
+    req,
+  })
+
+const relationId = (value: unknown): string | undefined =>
+  typeof value === 'string'
+    ? value
+    : value && typeof value === 'object' && 'id' in value
+      ? String((value as { id: unknown }).id)
+      : undefined
+
+/** "Generate" button for the meta description: a project's summary, else the site default. */
+const generateDescription: GenerateDescription<Post | Page | Project> = async ({
+  doc,
+  locale,
+  req,
+}) => {
+  const abstract = (doc as Partial<Project>)?.abstract?.trim()
+  if (abstract) return abstract.length > 160 ? `${abstract.slice(0, 157).trimEnd()}…` : abstract
+  const settings = await settingsFor(req, locale)
+  return settings?.technical?.defaultMetaDescription || ''
+}
+
+/** "Generate" button for the meta image: a project's screenshot, else the default share image. */
+const generateImage: GenerateImage<Post | Page | Project> = async ({ doc, locale, req }) => {
+  const cover = relationId((doc as Partial<Project>)?.cover)
+  if (cover) return cover
+  const settings = await settingsFor(req, locale)
+  return relationId(settings?.technical?.defaultOgImage) ?? ''
 }
 
 const generateURL: GenerateURL<Post | Page | Project> = ({ collectionConfig, doc, locale }) => {
@@ -71,6 +111,8 @@ export const basePlugins: Plugin[] = [
   }),
   seoPlugin({
     generateTitle,
+    generateDescription,
+    generateImage,
     generateURL,
   }),
   formBuilderPlugin({

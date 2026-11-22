@@ -39,8 +39,13 @@ export async function pageMetadata({
   const siteName = settings?.businessName || settings?.personName || ''
   const rawTitle = doc.meta?.title || [plainText(doc.title), siteName].filter(Boolean).join(' | ')
   const title = fillPrices(rawTitle, locale)
-  const desc = fillPrices(doc.meta?.description || description || '', locale) || undefined
-  const image = imageUrl(doc.meta?.image as Media | undefined)
+  const fallbackDescription = settings?.technical?.defaultMetaDescription
+  const desc =
+    fillPrices(doc.meta?.description || description || fallbackDescription || '', locale) ||
+    undefined
+  const image =
+    imageUrl(doc.meta?.image as Media | undefined) ??
+    imageUrl(settings?.technical?.defaultOgImage as Media | undefined)
   const noIndex = Boolean((doc.meta as { noIndex?: boolean | null } | undefined)?.noIndex)
 
   const languages: Record<string, string> = { ...alternates } as Record<string, string>

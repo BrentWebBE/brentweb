@@ -264,8 +264,8 @@ export const Projects: CollectionConfig<'projects'> = {
               imagePath: 'meta.image',
             }),
             MetaTitleField({ hasGenerateFn: true }),
-            MetaImageField({ relationTo: 'media' }),
-            MetaDescriptionField({}),
+            MetaImageField({ hasGenerateFn: true, relationTo: 'media' }),
+            MetaDescriptionField({ hasGenerateFn: true }),
             PreviewField({
               hasGenerateFn: true,
               titlePath: 'meta.title',

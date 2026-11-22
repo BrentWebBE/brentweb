@@ -2808,6 +2808,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        noIndex?: T;
       };
   status?: T;
   liveUrl?: T;
@@ -3702,6 +3703,14 @@ export interface SiteSetting {
       | 'LodgingBusiness';
     priceRange?: string | null;
     /**
+     * For pages without their own description in the SEO tab. Max 160 characters.
+     */
+    defaultMetaDescription?: string | null;
+    /**
+     * For pages without their own SEO image. Empty = the logo.
+     */
+    defaultOgImage?: (string | null) | Media;
+    /**
      * Towns and regions in the business JSON-LD (areaServed). "België" is always added. Empty = Kempen, Geel, Blankenberge.
      */
     areaServed?:
@@ -3856,6 +3865,8 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         schemaType?: T;
         priceRange?: T;
+        defaultMetaDescription?: T;
+        defaultOgImage?: T;
         areaServed?:
           | T
           | {
