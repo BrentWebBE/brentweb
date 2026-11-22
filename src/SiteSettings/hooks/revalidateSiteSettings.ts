@@ -1,8 +1,6 @@
 import type { GlobalAfterChangeHook } from 'payload'
 
-import { revalidateTag } from 'next/cache'
-
-import { EXPIRE_NOW } from '@/utilities/cacheTags'
+import { expireTag } from '@/utilities/expireTag'
 
 export const revalidateSiteSettings: GlobalAfterChangeHook = ({
   doc,
@@ -11,7 +9,7 @@ export const revalidateSiteSettings: GlobalAfterChangeHook = ({
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating site settings`)
 
-    revalidateTag('global_site-settings', EXPIRE_NOW)
+    expireTag('global_site-settings')
   }
 
   return doc

@@ -12,7 +12,7 @@ type Localized<T> = Partial<Record<Locale, T>>
 
 /**
  * Every published page and project, once per language, each with hreflang links to its
- * translations. Pages marked noindex (thank-you pages) are left out.
+ * translations. Pages and projects marked noindex (thank-you pages) are left out.
  */
 const getPagesSitemap = unstable_cache(
   async (): Promise<ISitemapField[]> => {
@@ -41,16 +41,26 @@ const getPagesSitemap = unstable_cache(
         limit: 1000,
         pagination: false,
         where: published,
-        select: { slug: true, updatedAt: true },
+        select: { slug: true, updatedAt: true, meta: true },
       }),
     ])
 
     const entries = (hrefs: Localized<string>, lastmod: string): ISitemapField[] => {
-      const alternateRefs = (Object.entries(hrefs) as [Locale, string][]).map(([l, href]) => ({
+      const alternateRefs: { href: string; hreflang: string; hrefIsAbsolute: boolean }[] = (
+        Object.entries(hrefs) as [Locale, string][]
+      ).map(([l, href]) => ({
         href: `${SITE_URL}${href}`,
         hreflang: l,
         hrefIsAbsolute: true,
       }))
+      // Same as the <link rel="alternate"> tags in the HTML: Dutch is the default.
+      if (hrefs['nl-BE']) {
+        alternateRefs.push({
+          href: `${SITE_URL}${hrefs['nl-BE']}`,
+          hreflang: 'x-default',
+          hrefIsAbsolute: true,
+        })
+      }
       return (Object.values(hrefs) as string[]).map((href) => ({
         loc: `${SITE_URL}${href}`,
         lastmod,
@@ -69,8 +79,11 @@ const getPagesSitemap = unstable_cache(
     })
 
     const projectEntries = projects.docs.flatMap((project) => {
+      const meta = (project.meta ?? {}) as unknown as Localized<{ noIndex?: boolean | null }>
       const hrefs: Localized<string> = {}
-      for (const l of locales) hrefs[l] = projectHref(l, project.slug)
+      for (const l of locales) {
+        if (!meta[l]?.noIndex) hrefs[l] = projectHref(l, project.slug)
+      }
       return entries(hrefs, project.updatedAt)
     })
 

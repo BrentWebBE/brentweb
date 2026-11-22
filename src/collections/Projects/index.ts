@@ -14,6 +14,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { isAdminOrEditor } from '@/access/isAdminOrEditor'
 import { caseStudyLexical } from '@/fields/caseStudyLexical'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { redirectOnSlugChange } from '@/hooks/redirectOnSlugChange'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { l } from '@/utilities/label'
 
@@ -263,13 +264,24 @@ export const Projects: CollectionConfig<'projects'> = {
               imagePath: 'meta.image',
             }),
             MetaTitleField({ hasGenerateFn: true }),
-            MetaImageField({ relationTo: 'media' }),
-            MetaDescriptionField({}),
+            MetaImageField({ hasGenerateFn: true, relationTo: 'media' }),
+            MetaDescriptionField({ hasGenerateFn: true }),
             PreviewField({
               hasGenerateFn: true,
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+            {
+              name: 'noIndex',
+              type: 'checkbox',
+              label: l('Niet indexeren (noindex)', "Don't index (noindex)"),
+              admin: {
+                description: l(
+                  'Haalt dit project in deze taal uit Google en uit de sitemap.',
+                  'Keeps this project, in this language, out of search and the sitemap.',
+                ),
+              },
+            },
           ],
         }),
       ],
@@ -312,7 +324,7 @@ export const Projects: CollectionConfig<'projects'> = {
     slugField({ position: 'sidebar' }),
   ],
   hooks: {
-    afterChange: [revalidateProject, queueScreenshot],
+    afterChange: [revalidateProject, queueScreenshot, redirectOnSlugChange('projects')],
     beforeChange: [populatePublishedAt],
     afterDelete: [revalidateProjectDelete],
   },

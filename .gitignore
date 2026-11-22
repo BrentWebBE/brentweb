@@ -26,3 +26,6 @@ node_modules/
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# local backups (DB dumps, media, .env copies) - never commit
+backups/

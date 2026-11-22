@@ -1,13 +1,15 @@
 import type { CollectionAfterChangeHook } from 'payload'
 
-import { revalidateTag } from 'next/cache'
+import { expireTag } from '@/utilities/expireTag'
 
-import { EXPIRE_NOW } from '@/utilities/cacheTags'
-
-export const revalidateRedirects: CollectionAfterChangeHook = ({ doc, req: { payload } }) => {
-  payload.logger.info(`Revalidating redirects`)
-
-  revalidateTag('redirects', EXPIRE_NOW)
-
+/**
+ * Redirects are cached together under one tag. expireTag (not revalidateTag) because
+ * redirects are also written outside a Next request (the slug-change hook in scripts
+ * and jobs), where revalidateTag throws and would roll back the whole write.
+ */
+export const revalidateRedirects: CollectionAfterChangeHook = ({ doc, req }) => {
+  if (req.context.disableRevalidate) return doc
+  req.payload.logger.info(`Revalidating redirects`)
+  expireTag('redirects')
   return doc
 }

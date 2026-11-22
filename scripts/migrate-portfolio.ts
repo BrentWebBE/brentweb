@@ -360,6 +360,12 @@ const SERVICES = {
   integrations: { scopes: ['api_integration', 'automation'], cases: [] as string[] },
 } as const
 type ServiceKey = keyof typeof SERVICES
+/** Each service row says where its link goes, not three times "more about this". */
+const SERVICE_LINK_LABELS: Record<ServiceKey, { en: string; nl: string }> = {
+  website: { nl: 'Bekijk websites', en: 'See websites' },
+  webApp: { nl: 'Bekijk webapps', en: 'See web apps' },
+  integrations: { nl: 'Bekijk koppelingen', en: 'See integrations' },
+}
 
 const LOCAL = {
   localGeelKempen: {
@@ -640,7 +646,7 @@ async function run() {
       title: sp.items[key].navLabel,
       description: sp.items[key].intro,
       enableLink: true,
-      link: toPage(ids[key], nl(locale) ? 'Meer hierover' : 'More about this'),
+      link: toPage(ids[key], SERVICE_LINK_LABELS[key][nl(locale) ? 'nl' : 'en']),
     })
     const bookCta = (): Layout[number] => ({
       blockType: 'cta',

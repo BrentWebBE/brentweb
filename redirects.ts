@@ -43,19 +43,6 @@ const portfolioRedirects: Redirect[] = [
 ]
 
 export const redirects: NextConfig['redirects'] = async () => {
-  const internetExplorerRedirect = {
-    destination: '/ie-incompatible.html',
-    has: [
-      {
-        type: 'header' as const,
-        key: 'user-agent',
-        value: '(.*Trident.*)', // all ie browsers
-      },
-    ],
-    permanent: false,
-    source: '/:path((?!ie-incompatible.html$).*)', // all pages except the incompatibility page
-  }
-
   // The website-check thank-you used to be /bedankt?bron=websitecheck.
   const websiteCheckThankYou = [
     { locale: 'nl-BE', from: 'bedankt', to: 'bedankt-websitecheck' },
@@ -67,5 +54,5 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: true,
   }))
 
-  return [internetExplorerRedirect, ...websiteCheckThankYou, ...portfolioRedirects]
+  return [...websiteCheckThankYou, ...portfolioRedirects]
 }

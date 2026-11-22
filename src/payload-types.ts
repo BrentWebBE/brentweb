@@ -435,6 +435,10 @@ export interface Project {
      */
     image?: (string | null) | Media;
     description?: string | null;
+    /**
+     * Keeps this project, in this language, out of search and the sitemap.
+     */
+    noIndex?: boolean | null;
   };
   status?: ('active' | 'maintained' | 'finished' | 'decommissioned') | null;
   liveUrl?: string | null;
@@ -854,6 +858,14 @@ export interface Testimonial {
    * E.g. "Client since 2021".
    */
   context?: string | null;
+  /**
+   * Google: shows a Google badge with the quote.
+   */
+  source?: ('direct' | 'google') | null;
+  /**
+   * Only as the client actually gave it. Empty = no stars.
+   */
+  rating?: number | null;
   project?: (string | null) | Project;
   visible?: boolean | null;
   updatedAt: string;
@@ -2800,6 +2812,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+        noIndex?: T;
       };
   status?: T;
   liveUrl?: T;
@@ -2823,6 +2836,8 @@ export interface TestimonialsSelect<T extends boolean = true> {
   business?: T;
   website?: T;
   context?: T;
+  source?: T;
+  rating?: T;
   project?: T;
   visible?: T;
   updatedAt?: T;
@@ -3692,6 +3707,24 @@ export interface SiteSetting {
       | 'LodgingBusiness';
     priceRange?: string | null;
     /**
+     * For pages without their own description in the SEO tab. Max 160 characters.
+     */
+    defaultMetaDescription?: string | null;
+    /**
+     * For pages without their own SEO image. Empty = the logo.
+     */
+    defaultOgImage?: (string | null) | Media;
+    /**
+     * Towns and regions in the business JSON-LD (areaServed). "België" is always added. Empty = Kempen, Geel, Blankenberge.
+     */
+    areaServed?:
+      | {
+          kind: 'City' | 'AdministrativeArea';
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
      * For staging or a site under construction.
      */
     noIndex?: boolean | null;
@@ -3836,6 +3869,15 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         schemaType?: T;
         priceRange?: T;
+        defaultMetaDescription?: T;
+        defaultOgImage?: T;
+        areaServed?:
+          | T
+          | {
+              kind?: T;
+              name?: T;
+              id?: T;
+            };
         noIndex?: T;
       };
   updatedAt?: T;

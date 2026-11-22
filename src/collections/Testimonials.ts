@@ -9,7 +9,8 @@ import { l } from '@/utilities/label'
 
 /**
  * Client quotes. Only real, attributable quotes, with the client's permission, copied
- * word for word: never invented copy. No stars or Review markup (Google treats reviews a
+ * word for word: never invented copy. Stars are shown only as the client gave them on
+ * Google (`rating`), never as Review/AggregateRating markup (Google treats reviews a
  * business publishes about itself as self-serving).
  */
 export const Testimonials: CollectionConfig<'testimonials'> = {
@@ -67,6 +68,41 @@ export const Testimonials: CollectionConfig<'testimonials'> = {
       label: l('Context', 'Context'),
       localized: true,
       admin: { description: l('Bv. "Klant sinds 2021".', 'E.g. "Client since 2021".') },
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'source',
+          type: 'select',
+          label: l('Bron', 'Source'),
+          defaultValue: 'direct',
+          options: [
+            { label: l('Rechtstreeks', 'Direct'), value: 'direct' },
+            { label: 'Google', value: 'google' },
+          ],
+          admin: {
+            description: l(
+              'Google: toont een Google-badge bij het citaat.',
+              'Google: shows a Google badge with the quote.',
+            ),
+          },
+        },
+        {
+          name: 'rating',
+          type: 'number',
+          label: l('Sterren (zoals op Google)', 'Stars (as on Google)'),
+          min: 1,
+          max: 5,
+          admin: {
+            condition: (_, siblingData) => siblingData?.source === 'google',
+            description: l(
+              'Alleen invullen zoals de klant het echt gaf. Leeg = geen sterren.',
+              'Only as the client actually gave it. Empty = no stars.',
+            ),
+          },
+        },
+      ],
     },
     {
       name: 'project',

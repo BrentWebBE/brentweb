@@ -73,6 +73,8 @@ const nl = {
   },
   painFixLabel: 'Wat helpt',
   testimonialCase: 'Lees het project',
+  googleReview: 'Review op Google',
+  stars: '{n} van 5 sterren',
   websiteCheckBanner: {
     label: 'Adres van uw website',
     placeholder: 'www.uwzaak.be',
@@ -155,6 +157,8 @@ const en: Strings = {
   },
   painFixLabel: 'What helps',
   testimonialCase: 'Read the project',
+  googleReview: 'Review on Google',
+  stars: '{n} out of 5 stars',
   websiteCheckBanner: {
     label: 'Your website address',
     placeholder: 'www.yourbusiness.com',

@@ -336,6 +336,60 @@ export const SiteSettings: GlobalConfig = {
               admin: { placeholder: '€€' },
             },
             {
+              name: 'defaultMetaDescription',
+              type: 'textarea',
+              localized: true,
+              label: l('Standaard meta-omschrijving', 'Default meta description'),
+              maxLength: 160,
+              admin: {
+                description: l(
+                  "Voor pagina's zonder eigen omschrijving in hun SEO-tab. Max. 160 tekens.",
+                  'For pages without their own description in the SEO tab. Max 160 characters.',
+                ),
+              },
+            },
+            {
+              name: 'defaultOgImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: l('Standaard deelafbeelding (1200×630)', 'Default share image (1200×630)'),
+              admin: {
+                description: l(
+                  "Voor pagina's zonder eigen SEO-afbeelding. Leeg = het logo.",
+                  'For pages without their own SEO image. Empty = the logo.',
+                ),
+              },
+            },
+            {
+              name: 'areaServed',
+              type: 'array',
+              label: l('Gebied voor zoekmachines', 'Area served (search engines)'),
+              labels: { singular: l('Gebied', 'Area'), plural: l('Gebieden', 'Areas') },
+              admin: {
+                initCollapsed: true,
+                description: l(
+                  'Gemeenten en regio\'s in de bedrijfs-JSON-LD (areaServed). "België" wordt altijd toegevoegd. Leeg = Kempen, Geel, Blankenberge.',
+                  'Towns and regions in the business JSON-LD (areaServed). "België" is always added. Empty = Kempen, Geel, Blankenberge.',
+                ),
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'kind',
+                      type: 'select',
+                      defaultValue: 'City',
+                      options: ['City', 'AdministrativeArea'],
+                      required: true,
+                      admin: { width: '30%' },
+                    },
+                    { name: 'name', type: 'text', required: true, admin: { width: '70%' } },
+                  ],
+                },
+              ],
+            },
+            {
               name: 'noIndex',
               type: 'checkbox',
               label: l('Zoekmachines blokkeren (noindex)', 'Block search engines (noindex)'),

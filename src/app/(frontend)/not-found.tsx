@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
 
 import { requestLocale } from '@/lib/requestLocale'
 import { homeHref, projectsHref, systemHref } from '@/lib/routing'
 import { ui } from '@/lib/ui-strings'
+import { getSiteSettings } from '@/utilities/getSiteSettings'
+
+/** A real title in the tab and in crawl reports; noindex (Next adds it for 404s too). */
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale } = await requestLocale()
+  const settings = await getSiteSettings(locale)
+  const page = locale === 'nl-BE' ? 'Pagina niet gevonden' : 'Page not found'
+  return {
+    title: { absolute: [page, settings?.businessName].filter(Boolean).join(' | ') },
+    description: ui(locale).notFound.title,
+    robots: { index: false, follow: true },
+  }
+}
 
 /** The 404, in the visitor's language, inside the normal site shell. */
 export default async function NotFound() {

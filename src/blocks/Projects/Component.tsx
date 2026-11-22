@@ -34,7 +34,14 @@ export async function ProjectsBlockComponent({
           .map((i) => ({ note: i.note, project: i.project as Project }))
   if (entries.length === 0) return null
 
-  const more = showLink && link ? <CMSLink {...link} appearance="link" locale={locale} /> : null
+  const more =
+    showLink && link ? (
+      <CMSLink {...link} appearance="link" locale={locale}>
+        <span aria-hidden="true" className="ml-[var(--space-xs)]">
+          →
+        </span>
+      </CMSLink>
+    ) : null
 
   if (layout === 'showcase') {
     return (
@@ -99,7 +106,7 @@ function Showcase({
 }) {
   const t = ui(locale).projects
   return (
-    <section className="field pb-[var(--section-gap)] pt-[var(--space-3xl)]" id="werk">
+    <section className="field py-[calc(var(--section-gap)*0.7)]" id="werk">
       <div className="container">
         <SectionHeading heading={heading} intro={intro} locale={locale} />
         <ol className="grid gap-[var(--section-gap-s)]">
@@ -157,7 +164,7 @@ function Showcase({
             )
           })}
         </ol>
-        {more && <div className="mt-[var(--space-3xl)]">{more}</div>}
+        {more && <div className="mt-[var(--space-2xl)]">{more}</div>}
       </div>
     </section>
   )
