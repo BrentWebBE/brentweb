@@ -3702,6 +3702,16 @@ export interface SiteSetting {
       | 'LodgingBusiness';
     priceRange?: string | null;
     /**
+     * Towns and regions in the business JSON-LD (areaServed). "België" is always added. Empty = Kempen, Geel, Blankenberge.
+     */
+    areaServed?:
+      | {
+          kind: 'City' | 'AdministrativeArea';
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
      * For staging or a site under construction.
      */
     noIndex?: boolean | null;
@@ -3846,6 +3856,13 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         schemaType?: T;
         priceRange?: T;
+        areaServed?:
+          | T
+          | {
+              kind?: T;
+              name?: T;
+              id?: T;
+            };
         noIndex?: T;
       };
   updatedAt?: T;
