@@ -59,6 +59,9 @@ export const Media: CollectionConfig = {
     // Not derived from import.meta.url: that points into .next/ once bundled.
     staticDir: path.resolve(process.cwd(), 'public/media'),
     adminThumbnail: 'thumbnail',
+    // Raster images only. No SVG (script-capable, and sharp hands it to librsvg) and
+    // no other document types: these files are served from the site's own origin.
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif'],
     focalPoint: true,
     // Crops use the focal point set by the editor.
     imageSizes: [

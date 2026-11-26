@@ -11,6 +11,20 @@ import { assertPublicHttpsUrl, isPrivateAddress } from './safeUrl'
  */
 export const chromePath = (): string | undefined => runtimeEnv('CHROME_PATH')
 
+/** Allowlisted environment for the Chromium child process: nothing secret. */
+const CHROMIUM_ENV_KEYS = ['PATH', 'HOME', 'TMPDIR', 'LANG', 'LC_ALL', 'TZ', 'FONTCONFIG_PATH']
+
+export function chromiumEnv(
+  source: Record<string, string | undefined> = process.env,
+): Record<string, string> {
+  const env: Record<string, string> = {}
+  for (const key of CHROMIUM_ENV_KEYS) {
+    const value = source[key]
+    if (value) env[key] = value
+  }
+  return env
+}
+
 export type Capture = { data: Buffer; width: number; height: number }
 
 const VIEWPORTS = {
@@ -92,6 +106,9 @@ export async function captureSite(rawUrl: string): Promise<Record<Device, Captur
   const browser = await puppeteer.launch({
     executablePath,
     headless: true,
+    // Chromium renders arbitrary third-party sites; it must not inherit the server's
+    // secrets (PAYLOAD_SECRET, API keys, DATABASE_URI). Only what it needs to run.
+    env: chromiumEnv(),
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--hide-scrollbars', '--mute-audio'],
   })
 

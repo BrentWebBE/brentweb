@@ -64,7 +64,7 @@
     "react-hook-form": "7.71.1",
     "resend": "^6.38.1",
     "server-only": "^0.0.1",
-    "sharp": "0.35.4",
+    "sharp": "0.35.5",
     "sonner": "^1.7.4",
     "stripe": "18.5.0",
     "tailwind-merge": "^3.4.0",
@@ -103,6 +103,10 @@
       "sharp",
       "esbuild",
       "unrs-resolver"
-    ]
+    ],
+    "overrides": {
+      "mongoose": "^8.24.7",
+      "dompurify": "^3.4.17"
+    }
   }
 }

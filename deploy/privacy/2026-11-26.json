@@ -1,0 +1,3422 @@
+{
+ "nl-BE": {
+  "intro": "Laatst bijgewerkt: 26 november 2026",
+  "richText": {
+   "root": {
+    "direction": "ltr",
+    "format": "",
+    "indent": 0,
+    "version": 1,
+    "type": "root",
+    "children": [
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Inleiding",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Dit privacybeleid legt uit hoe Brent Schoenmakers, handelend onder de naam BrentWeb (\"ik\", \"me\" of \"mijn\"), uw persoonsgegevens verzamelt, gebruikt en beschermt wanneer u deze website (brentweb.be) bezoekt. Ik ben de verwerkingsverantwoordelijke voor deze gegevens en ben bereikbaar via brent@brentweb.be.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Waar uw gegevens staan",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "De website, haar database, het analysesysteem, mijn klantenbeheersysteem (CRM) en de automatisering die aanvragen daarin zet, draaien op mijn eigen server bij Hetzner in Duitsland (Neurenberg). De dagelijkse back-ups zijn versleuteld en staan eveneens bij Hetzner in de EU. Welke externe diensten er daarnaast gegevens ontvangen, leest u onder \"Diensten van derden\".",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Analysegegevens",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Ik gebruik Umami, een cookieloze analysetool die ik zelf host op die server. Er wordt niets in uw browser opgeslagen: geen cookies, geen lokale opslag, geen bezoekers-ID. Umami gebruikt uw IP-adres enkel om een benaderend land en een dagelijks wisselende, niet-omkeerbare hash af te leiden, en bewaart het zelf niet. Ik zie enkel geaggregeerde cijfers:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Bezochte pagina's en hoe lang een bezoek duurt",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Browser, besturingssysteem en type toestel",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Verwijzingsbron (hoe u deze website vond)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Benaderend land",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Of er een formulier verstuurd of de kostenraming gestart werd, en of er op een e-mail-, telefoon- of WhatsApp-link geklikt werd: enkel dát het gebeurde en op welke pagina, nooit het adres of nummer",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "De gegevens worden niet gedeeld met of verkocht aan derden en nooit op de publieke website getoond. Als uw browser een Do Not Track-signaal stuurt, wordt er niets geregistreerd.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Formulieren, kostenraming en websitecheck",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Wanneer u het contactformulier, de kostenraming of de gratis websitecheck gebruikt, verzamel ik:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Uw naam en e-mailadres",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Bij het contactformulier: uw bericht, budget, tijdlijn en eventueel de website van uw zaak",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Bij de kostenraming: uw antwoorden, de berekende raming, een optionele projectbeschrijving, bedrijfsnaam en notities",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Bij de gratis websitecheck: het adres van uw website, om het rapport op te maken en naar u te sturen",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "De pagina van deze website van waaruit u het formulier verstuurde",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Ik gebruik deze gegevens uitsluitend om op uw aanvraag te reageren. U ontvangt een bevestiging per e-mail (bij de kostenraming met de pdf-samenvatting) en ik ontvang een melding in mijn mailbox. De aanvraag wordt ook bewaard in het beheerpaneel van deze website en in mijn zelf gehoste CRM (Twenty), waar mijn eveneens zelf gehoste automatiseringstool (n8n) ze in zet. Buiten de diensten die hieronder vermeld staan, deel ik ze met niemand.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Om misbruik te voorkomen wordt het aantal inzendingen per IP-adres beperkt. Die teller staat enkel in het werkgeheugen van de server, wordt nooit naar schijf geschreven en verdwijnt automatisch na hooguit twee uur zonder activiteit. Een verborgen veld op elk formulier helpt spam te herkennen en bevat geen persoonsgegevens.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Een gesprek plannen",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Als u via \"Plan een gesprek\" een moment kiest, gebeurt dat in mijn eigen Nextcloud-agenda op cloud.brentweb.be, op dezelfde server. Ik ontvang dan uw naam, uw e-mailadres, het gekozen moment en wat u eventueel als toelichting invult, en gebruik die enkel om het gesprek te plannen en te voeren.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Telefoon en WhatsApp",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Als u mij belt of een WhatsApp-bericht stuurt, zie ik uw telefoonnummer, en bij WhatsApp ook uw profielnaam en wat u schrijft. Ik gebruik die gegevens enkel om op uw vraag te antwoorden en bewaar ze niet langer dan nodig, maximaal 12 maanden, tenzij er een samenwerking uit voortkomt.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "De telefoon- en WhatsApp-knoppen op deze site zijn gewone links: er wordt niets geladen van WhatsApp of Meta tot u er zelf op klikt. Het zelf gehoste analysesysteem telt enkel dat er op zo een link geklikt is, zonder uw nummer.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Serverlogboeken",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Zoals elke webserver registreert mijn server bij elk bezoek enkele technische gegevens: uw IP-adres, het tijdstip, de opgevraagde pagina en uw browser. Ik gebruik die enkel om de site te beveiligen en storingen op te sporen. De logboeken worden na 14 dagen verwijderd. Mijn beveiligingsmonitoring bewaart meldingen over verdachte verzoeken, met het IP-adres in kwestie, 90 dagen.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Rechtsgronden",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Ik verwerk uw gegevens enkel wanneer de AVG (GDPR) daarvoor een grond biedt:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Precontractuele maatregelen (art. 6.1.b):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " om uw vraag via een formulier, telefoon, WhatsApp of een geplande afspraak te beantwoorden en een offerte op te maken",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Toestemming (art. 6.1.a):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " voor de AI-analyse van uw projectbeschrijving in de kostenraming, die enkel gebeurt als u daar zelf op klikt",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Gerechtvaardigd belang (art. 6.1.f):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " voor de cookieloze bezoekersstatistieken, de beveiliging van de site (serverlogboeken, rate limiting en spamdetectie) en de taalcookie",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Met het vakje dat u bij een formulier aanvinkt, bevestigt u dat u weet wat er met uw gegevens gebeurt.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Bewaartermijnen",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Aanvragen via de formulieren (beheerpaneel, CRM en mailbox): maximaal 12 maanden, tenzij er een samenwerking uit voortkomt. Dan gelden de wettelijke bewaartermijnen, onder meer voor de boekhouding",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Telefoon- en WhatsApp-gesprekken: maximaal 12 maanden, onder dezelfde voorwaarde",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Analysegegevens: maximaal 14 maanden",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Serverlogboeken: 14 dagen; beveiligingsmeldingen: 90 dagen",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Het verwerkingslogboek van de automatisering (n8n): 14 dagen",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Back-ups: verwijderde gegevens kunnen nog tot 6 maanden in de versleutelde back-ups staan en worden daarna automatisch overschreven",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 7,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Taalcookie (bw-locale): één jaar",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Cookies en lokale opslag",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Deze website gebruikt geen tracking- of advertentiecookies. Ze gebruikt enkel:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "bw-locale (cookie, één jaar):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " onthoudt de taal die u koos, zodat u bij een volgend bezoek meteen in uw taal terechtkomt. Bevat geen persoonsgegevens en wordt niet gedeeld.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "bw:preloaded (sessieopslag, tot u het tabblad sluit):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " onthoudt dat de openingsanimatie al getoond werd, zodat die niet bij elke pagina terugkomt.",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "U kunt cookies en opgeslagen sitegegevens ook beheren of wissen via de instellingen van uw browser.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Gegevensbeveiliging",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Ik neem onder meer deze maatregelen om uw gegevens te beschermen:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "HTTPS-versleuteling voor alle verkeer, met Strict Transport Security (HSTS)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Rate limiting op elk formulier, om misbruik te beperken",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Een beheerpaneel dat niet publiek bereikbaar is",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Versleutelde back-ups, regelmatige beveiligingsupdates en monitoring",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Geen enkele overdracht via het internet is volledig veilig, dus absolute veiligheid kan ik niet garanderen.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Diensten van derden",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Deze website gebruikt de volgende diensten van derden. Enkele daarvan zijn Amerikaanse bedrijven. Waar zij gegevens buiten de EU verwerken, gebeurt dat op basis van het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Cloudflare:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " al het verkeer naar brentweb.be loopt via het netwerk van Cloudflare, dat de site beschermt tegen aanvallen en misbruik. Daarvoor verwerkt Cloudflare bij elk bezoek technische gegevens, zoals uw IP-adres. Cloudflare is een Amerikaans bedrijf en kan die gegevens ook buiten de EU verwerken; zijn eigen privacybeleid is van toepassing.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Resend:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " verstuurt de e-mails van de formulieren: de melding aan mij en de bevestiging aan u, inclusief de pdf-samenvatting van de kostenraming. De e-mails worden vanuit de EU (Ierland) verstuurd; Resend is een Amerikaans bedrijf.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Microsoft 365:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " mijn mailbox. De meldingen van de formulieren en de e-mails die u mij stuurt, komen daarin terecht.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Anthropic (Claude):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " alleen als u in de kostenraming op \"Analyseer mijn beschrijving\" klikt: uw projectbeschrijving en antwoorden worden naar de API van Anthropic gestuurd om ze te analyseren. Uw naam en e-mailadres niet. Anthropic kan deze gegevens in de Verenigde Staten verwerken.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "WhatsApp (Meta):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " alleen als u mij zelf via WhatsApp contacteert. Op die berichten is ook het privacybeleid van WhatsApp van toepassing.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Google Maps en OpenStreetMap:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " de kaart in de contactsectie wordt enkel geladen nadat u zelf op \"Kaart tonen\" klikt. Voor die klik maakt de site geen enkele verbinding met Google of OpenStreetMap. Daarna ontvangt die dienst, zoals bij elk bezoek aan een website, onder meer uw IP-adres, en geldt ook zijn eigen privacybeleid.",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Uw rechten",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "U hebt het recht om:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "inzage te vragen in de persoonsgegevens die ik over u bewaar",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "onjuiste gegevens te laten corrigeren",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "uw gegevens te laten wissen",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "de verwerking te laten beperken",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "bezwaar te maken tegen verwerking op basis van gerechtvaardigd belang",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "uw gegevens in een gangbaar formaat te ontvangen (overdraagbaarheid)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 7,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "uw toestemming op elk moment in te trekken, zonder dat dit afbreuk doet aan de verwerking die daarvoor plaatsvond",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Om deze rechten uit te oefenen, mailt u naar brent@brentweb.be. Ik antwoord binnen één maand.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Bent u niet tevreden over hoe ik met uw gegevens omga, dan kunt u een klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel (www.gegevensbeschermingsautoriteit.be).",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Privacy van kinderen",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Deze website is niet bedoeld voor kinderen jonger dan 13 jaar. Ik verzamel niet bewust persoonsgegevens van kinderen.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Wijzigingen aan dit beleid",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Ik kan dit privacybeleid af en toe bijwerken. De datum bovenaan deze pagina toont wanneer de tekst voor het laatst gewijzigd is.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Contact",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Hebt u vragen over dit privacybeleid, mail dan naar brent@brentweb.be.",
+        "version": 1
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "en": {
+  "intro": "Last updated: November 26, 2026",
+  "richText": {
+   "root": {
+    "direction": "ltr",
+    "format": "",
+    "indent": 0,
+    "version": 1,
+    "type": "root",
+    "children": [
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Introduction",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "This Privacy Policy explains how Brent Schoenmakers, trading as BrentWeb (\"I\", \"me\" or \"my\"), collects, uses and protects your personal data when you visit this website (brentweb.be). I am the controller of this data and can be reached at brent@brentweb.be.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Where your data is kept",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "The website, its database, the analytics system, my customer relationship management system (CRM) and the automation that files enquiries into it all run on my own server at Hetzner in Germany (Nuremberg). The daily backups are encrypted and are also kept at Hetzner in the EU. Which outside services receive data as well is listed under \"Third-Party Services\".",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Analytics Data",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "I use Umami, a cookieless analytics tool that I host myself on that server. Nothing is stored in your browser: no cookies, no local storage, no visitor ID. Umami only uses your IP address to derive an approximate country and a daily rotating, irreversible hash, and does not store it. I only see aggregated figures:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Pages visited and how long a visit lasts",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Browser, operating system and device type",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Referral source (how you found this website)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Approximate country",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Whether a form was sent or the cost estimator started, and whether an email, phone or WhatsApp link was clicked: only that it happened and on which page, never the address or number",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "The data is not shared with or sold to third parties and is never shown on the public website. If your browser sends a Do Not Track signal, nothing is recorded.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Forms, Cost Estimator & Website Check",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "When you use the contact form, the cost estimator or the free website check, I collect:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Your name and email address",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Contact form: your message, budget, timeline and, optionally, your business website",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Cost estimator: your answers, the calculated estimate, an optional project description, company name and notes",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Free website check: your website address, to prepare the report and send it to you",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "The page of this website from which you sent the form",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "I use this data only to respond to your enquiry. You receive a confirmation by email (for the cost estimator, with the PDF summary) and I receive a notification in my mailbox. The enquiry is also stored in this website's admin panel and in my self-hosted CRM (Twenty), where my likewise self-hosted automation tool (n8n) files it. I share it with no one other than the services listed below.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "To prevent abuse, the number of submissions per IP address is limited. That counter only lives in the server's memory, is never written to disk and disappears automatically after at most two hours of inactivity. A hidden field on every form helps detect spam and contains no personal data.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Booking a call",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "If you pick a time via \"Book a call\", that happens in my own Nextcloud calendar at cloud.brentweb.be, on the same server. I then receive your name, your email address, the chosen time and any note you add, and use them only to plan and hold the call.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Phone and WhatsApp",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "If you call me or send a WhatsApp message, I see your phone number, and with WhatsApp also your profile name and what you write. I only use that to answer your question and keep it no longer than needed, at most 12 months, unless it leads to a project.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "The phone and WhatsApp buttons on this site are plain links: nothing is loaded from WhatsApp or Meta until you click one yourself. The self-hosted analytics only counts that such a link was clicked, without your number.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Server Logs",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Like every web server, mine records a few technical details on each visit: your IP address, the time, the page requested and your browser. I only use them to secure the site and track down faults. The logs are deleted after 14 days. My security monitoring keeps alerts about suspicious requests, including the IP address involved, for 90 days.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Legal Bases",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "I only process your data when the GDPR provides a basis for it:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Pre-contractual measures (Art. 6(1)(b)):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " to answer your enquiry via a form, phone, WhatsApp or a booked call, and to prepare a quote",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Consent (Art. 6(1)(a)):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " for the AI analysis of your project description in the cost estimator, which only happens when you click it yourself",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Legitimate interest (Art. 6(1)(f)):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " for the cookieless visitor statistics, the security of the site (server logs, rate limiting and spam detection) and the language cookie",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "The box you tick on a form confirms that you know what happens with your data.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Retention",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Enquiries via the forms (admin panel, CRM and mailbox): at most 12 months, unless they lead to a project. Then the statutory retention periods apply, among others for accounting",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Phone and WhatsApp conversations: at most 12 months, on the same condition",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Analytics data: at most 14 months",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Server logs: 14 days; security alerts: 90 days",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "The automation's processing log (n8n): 14 days",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Backups: deleted data can remain in the encrypted backups for up to 6 months and is then overwritten automatically",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 7,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Language cookie (bw-locale): one year",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Cookies and Local Storage",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "This website uses no tracking or advertising cookies. It only uses:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "bw-locale (cookie, one year):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " remembers the language you chose, so your next visit opens in your language right away. It contains no personal data and is not shared.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "bw:preloaded (session storage, until you close the tab):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " remembers that the opening animation was already shown, so it does not return on every page.",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "You can also manage or clear cookies and stored site data in your browser settings.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Data Security",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Among other things, I take these measures to protect your data:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "HTTPS encryption for all traffic, with Strict Transport Security (HSTS)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Rate limiting on every form, to limit abuse",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "An admin panel that is not publicly reachable",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "Encrypted backups, regular security updates and monitoring",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "No transmission over the internet is completely secure, so I cannot guarantee absolute security.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Third-Party Services",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "This website uses the following third-party services. Some of them are US companies. Where they process data outside the EU, this is based on the EU-US Data Privacy Framework or the European Commission's standard contractual clauses.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Cloudflare:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " all traffic to brentweb.be runs through Cloudflare's network, which protects the site against attacks and abuse. To do so, Cloudflare processes technical data on every visit, such as your IP address. Cloudflare is a US company and may also process that data outside the EU; its own privacy policy applies.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Resend:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " sends the emails from the forms: the notification to me and the confirmation to you, including the PDF summary of the cost estimate. The emails are sent from the EU (Ireland); Resend is a US company.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Microsoft 365:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " my mailbox. Form notifications and the emails you send me end up there.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Anthropic (Claude):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " only if you click \"Analyse my description\" in the cost estimator: your project description and answers are sent to Anthropic's API for analysis. Your name and email address are not. Anthropic may process this data in the United States.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "WhatsApp (Meta):",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " only if you contact me via WhatsApp yourself. WhatsApp's privacy policy also applies to those messages.",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 1,
+          "mode": "normal",
+          "style": "",
+          "text": "Google Maps and OpenStreetMap:",
+          "version": 1
+         },
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": " the map in the contact section only loads after you click \"Show the map\" yourself. Before that click, the site makes no connection to Google or OpenStreetMap at all. After it, that service receives your IP address, among other things, as with any website visit, and its own privacy policy applies.",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Your Rights",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "You have the right to:",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "list",
+      "listType": "bullet",
+      "start": 1,
+      "tag": "ul",
+      "children": [
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 1,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "request access to the personal data I hold about you",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 2,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "have incorrect data corrected",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 3,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "have your data erased",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 4,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "have processing restricted",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 5,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "object to processing based on legitimate interest",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 6,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "receive your data in a common format (portability)",
+          "version": 1
+         }
+        ]
+       },
+       {
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "type": "listitem",
+        "value": 7,
+        "children": [
+         {
+          "type": "text",
+          "detail": 0,
+          "format": 0,
+          "mode": "normal",
+          "style": "",
+          "text": "withdraw your consent at any time, without affecting processing that took place before",
+          "version": 1
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "To exercise these rights, email brent@brentweb.be. I will reply within one month.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "If you are not satisfied with how I handle your data, you can lodge a complaint with the Belgian Data Protection Authority (Gegevensbeschermingsautoriteit), Rue de la Presse 35, 1000 Brussels (www.dataprotectionauthority.be).",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Children's Privacy",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "This website is not intended for children under 13. I do not knowingly collect personal data from children.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Changes to This Policy",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "I may update this Privacy Policy from time to time. The date at the top of this page shows when the text last changed.",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "heading",
+      "tag": "h2",
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "Contact",
+        "version": 1
+       }
+      ]
+     },
+     {
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "type": "paragraph",
+      "textFormat": 0,
+      "children": [
+       {
+        "type": "text",
+        "detail": 0,
+        "format": 0,
+        "mode": "normal",
+        "style": "",
+        "text": "If you have questions about this Privacy Policy, email brent@brentweb.be.",
+        "version": 1
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
